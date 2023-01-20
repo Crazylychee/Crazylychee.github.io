@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>html elements on Hugo tranquilpeak theme</title>
+    <link>https://example.org/tags/html-elements/</link>
+    <description>Recent content in html elements on Hugo tranquilpeak theme</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 28 May 2015 00:00:00 +0000</lastBuildDate><atom:link href="https://example.org/tags/html-elements/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Elements showcase</title>
+      <link>https://example.org/2015/05/elements-showcase/</link>
+      <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/2015/05/elements-showcase/</guid>
+      <description>&lt;p&gt;Check out how Tranquilpeak theme display well HTML elements (title, paragraph, blockquote, table and more..). It&amp;rsquo;s simple and elegant.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://example.org/2015/05/java/</link>
+      <pubDate>Thu, 28 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://example.org/2015/05/java/</guid>
+      <description>public class GirlFriend { private int age; } public void method(){ int age =10; System.out.println(age); } public class GirlFriend { private int age; public void method(){ int age = 10; System.out .println(this.age); } 1.5this 1.作用 可以区别成员变量和局部变量
+1.6构造方法
+public class Student { private String name； private int agej public Student(）{ //空参构造 } public Student(String name，int age）{ //带参构造 } } 构造方法的格式 public class Student 修饰符 类名(参数){ 方法体; }
+特点:
+1.方法名与类名相同，大小写也要一致 2.没有返回值类型，连void都没有 3.</description>
+    </item>
+    
+  </channel>
+</rss>
