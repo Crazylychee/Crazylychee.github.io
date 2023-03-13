@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-loading-bar.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="## mysql高级 **今日目标** &#x3D;&#x3D;此篇博客搬运自b站黑马程序员的javaweb学习资料，仅供个人学习参考，尊重他人知识劳动成果&#x3D;&#x3D; - 掌握约束的使用 - 掌握表关系及建表原则 - 重点掌握多表查询操作 - 掌握事务操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL高级">
+<meta property="og:url" content="http://example.com/2023/03/13/mysql%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Crazylychee">
+<meta property="og:description" content="## mysql高级 **今日目标** &#x3D;&#x3D;此篇博客搬运自b站黑马程序员的javaweb学习资料，仅供个人学习参考，尊重他人知识劳动成果&#x3D;&#x3D; - 掌握约束的使用 - 掌握表关系及建表原则 - 重点掌握多表查询操作 - 掌握事务操作">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714459747-ec11a17c-41f2-4d2a-944e-b4c79c9739e3.png#from=url&id=BYkYX&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714459825-47dfd1a4-d2e2-4f2a-ad80-6a377d4f7c4f.png#from=url&id=azGJj&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714459913-a1ea3276-785d-4fd2-9b59-404262f707b8.png#from=url&id=cTKRP&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460027-e890394d-0a59-4dee-b30a-a5b6967bc317.png#from=url&id=rUaG2&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460131-a6eb5812-8580-4522-84c0-8b6aebc38781.png#from=url&id=PUTLU&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460219-41040f9e-1c57-4534-80b0-fa490292a5fa.png#from=url&id=D7ELU&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460307-327b8ae7-379a-4310-ad49-bcbcf362b2a1.png#from=url&id=oUc9T&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460386-861f4eb9-e8b0-4b7c-9537-675a1b76f67b.png#from=url&id=xXPk7&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460481-37bc3e0a-493b-4f89-9cc3-747efc295066.png#from=url&id=ZPQxi&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460567-92ebf758-2c98-41ce-9908-8367a8de023a.png#from=url&id=AUZDX&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460749-38e71dd8-2207-4aec-bf4f-8faf7a46003d.png#from=url&id=kwmwM&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460861-d8ae1a7c-d1e2-4833-ab60-140892c74bfb.png#from=url&id=IEqet&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460949-da06b0c8-0645-4ea9-9098-b4c30335ca89.png#from=url&id=lPgFA&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461041-95169fc8-3b04-474d-986a-32adaa1c383c.png#from=url&id=hafjS&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461123-a281eb19-67ae-4e65-bcf3-11db6bc74f87.png#from=url&id=yjgU1&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461204-e448e142-d513-4787-9e76-acc5425486fb.png#from=url&id=Umgnm&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461287-825cf3e6-c396-4f45-8c0a-c8a5efcd234b.png#from=url&id=bkW4N&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461369-bfde08fc-ce98-474f-9864-cd41978cb4c0.png#from=url&id=yZKSg&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461441-835b9a64-1792-44f5-ad68-d9749185c3ae.png#from=url&id=xw42d&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461519-8d90a0ff-8dd8-4736-ab12-c791117da281.png#from=url&id=fwbvD&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461620-436e5c4d-def9-442b-8347-9e254b9fcacc.png#from=url&id=RtneZ&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461718-50dad9a3-e002-4420-875a-f8701c17ec0f.png#from=url&id=Qa31C&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461789-3ecb41ef-e6fb-452a-816f-96838e364804.png#from=url&id=Fl3JA&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461896-29571181-732a-4861-acfc-fb2782cadc54.png#from=url&id=t9MfZ&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461989-cd610f26-4c67-411c-9af4-63e68440425b.png#from=url&id=b6TFV&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462067-2b05fea4-6edd-42d6-8900-1b5cf7e50b30.png#from=url&id=oUr2K&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462152-f4211638-c6f4-40b1-8926-da8680d2f1fb.png#from=url&id=yV1Ys&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462269-5b5020cc-ea64-4680-bbe7-049cd3f9df2c.png#from=url&id=NgIFj&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462269-5b5020cc-ea64-4680-bbe7-049cd3f9df2c.png#from=url&id=T5vyG&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462346-5eaeb402-5766-4475-84a5-3d0d0f9b29c8.png#from=url&id=Izame&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462443-cdca2f6b-5c2c-42d3-a4ea-c7d1a88871a5.png#from=url&id=q2yjy&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462523-255d27b4-e1c6-4193-be4a-6659122bbbd1.png#from=url&id=xQBbp&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462269-5b5020cc-ea64-4680-bbe7-049cd3f9df2c.png#from=url&id=j5SCi&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462606-da92a0ca-3faf-4536-9be8-2d4921004f1e.png#from=url&id=xw8iN&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462684-2512c4b3-a5d5-407b-b0e0-168a93b414cd.png#from=url&id=qcIrA&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462766-0e7e26c9-afd9-4dc9-b072-0b4853a9a669.png#from=url&id=L2qaw&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462847-098caef1-3899-4f74-92f4-46b6dc4f63c4.png#from=url&id=ttgPp&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462932-86d9620d-f4f8-4682-8772-5fb3ffcfeb8f.png#from=url&id=YvkAF&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="article:published_time" content="2023-03-13T13:34:58.369Z">
+<meta property="article:modified_time" content="2023-03-13T13:39:31.202Z">
+<meta property="article:author" content="Flog and boat">
+<meta property="article:tag" content="数据库 java 基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714459747-ec11a17c-41f2-4d2a-944e-b4c79c9739e3.png#from=url&id=BYkYX&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">
+
+
+<link rel="canonical" href="http://example.com/2023/03/13/mysql%E5%9F%BA%E7%A1%80/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/03/13/mysql%E5%9F%BA%E7%A1%80/","path":"2023/03/13/mysql基础/","title":"MySQL高级"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>MySQL高级 | Crazylychee</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Crazylychee</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">1.1 概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E5%88%86%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">1.2 分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E9%9D%9E%E7%A9%BA%E7%BA%A6%E6%9D%9F"><span class="nav-number">3.</span> <span class="nav-text">1.3 非空约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E5%94%AF%E4%B8%80%E7%BA%A6%E6%9D%9F"><span class="nav-number">4.</span> <span class="nav-text">1.4 唯一约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E4%B8%BB%E9%94%AE%E7%BA%A6%E6%9D%9F"><span class="nav-number">5.</span> <span class="nav-text">1.5 主键约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-%E9%BB%98%E8%AE%A4%E7%BA%A6%E6%9D%9F"><span class="nav-number">6.</span> <span class="nav-text">1.6 默认约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-%E7%BA%A6%E6%9D%9F%E7%BB%83%E4%B9%A0"><span class="nav-number">7.</span> <span class="nav-text">1.7 约束练习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-8-%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9F"><span class="nav-number">8.</span> <span class="nav-text">1.8 外键约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-8-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">8.1.</span> <span class="nav-text">1.8.1 概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-8-2-%E8%AF%AD%E6%B3%95"><span class="nav-number">8.2.</span> <span class="nav-text">1.8.2 语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-8-3-%E7%BB%83%E4%B9%A0"><span class="nav-number">8.3.</span> <span class="nav-text">1.8.3 练习</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="nav-number"></span> <span class="nav-text">2，数据库设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">2.1 数据库设计简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E8%A1%A8%E5%85%B3%E7%B3%BB-%E4%B8%80%E5%AF%B9%E5%A4%9A"><span class="nav-number">2.</span> <span class="nav-text">2.2 表关系(一对多)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E8%A1%A8%E5%85%B3%E7%B3%BB-%E5%A4%9A%E5%AF%B9%E5%A4%9A"><span class="nav-number">3.</span> <span class="nav-text">2.3 表关系(多对多)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E8%A1%A8%E5%85%B3%E7%B3%BB-%E4%B8%80%E5%AF%B9%E4%B8%80"><span class="nav-number">4.</span> <span class="nav-text">2.4 表关系(一对一)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E6%A1%88%E4%BE%8B"><span class="nav-number">5.</span> <span class="nav-text">2.5 数据库设计案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%EF%BC%8C%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="nav-number"></span> <span class="nav-text">3，多表查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%86%85%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="nav-number">1.</span> <span class="nav-text">3.1 内连接查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%A4%96%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="nav-number">2.</span> <span class="nav-text">3.2 外连接查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="nav-number">3.</span> <span class="nav-text">3.3 子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E6%A1%88%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">3.4 案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%EF%BC%8C%E4%BA%8B%E5%8A%A1"><span class="nav-number"></span> <span class="nav-text">4，事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">4.1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E8%AF%AD%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">4.2 语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E4%BB%A3%E7%A0%81%E9%AA%8C%E8%AF%81"><span class="nav-number">3.</span> <span class="nav-text">4.3 代码验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%9B%9B%E5%A4%A7%E7%89%B9%E5%BE%81"><span class="nav-number">4.</span> <span class="nav-text">4.4 事务的四大特征</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Flog and boat"
+      src="https://s3.bmp.ovh/imgs/2023/03/11/103be36d036cff61.png">
+  <p class="site-author-name" itemprop="name">Flog and boat</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Crazylychee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Crazylychee" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://github.com/" title="https:&#x2F;&#x2F;github.com" rel="noopener" target="_blank">Title</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/13/mysql%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://s3.bmp.ovh/imgs/2023/03/11/103be36d036cff61.png">
+      <meta itemprop="name" content="Flog and boat">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Crazylychee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="MySQL高级 | Crazylychee">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MySQL高级
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-03-13 21:34:58 / 修改时间：21:39:31" itemprop="dateCreated datePublished" datetime="2023-03-13T21:34:58+08:00">2023-03-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%90%8E%E5%8F%B0/" itemprop="url" rel="index"><span itemprop="name">后台</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>24 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <meta name="referrer" content="no-referrer"/>
+## mysql高级
+**今日目标**
+==此篇博客搬运自b站黑马程序员的javaweb学习资料，仅供个人学习参考，尊重他人知识劳动成果==
+- 掌握约束的使用
+- 掌握表关系及建表原则
+- 重点掌握多表查询操作
+- 掌握事务操作
+<span id="more"></span>
+## 1，约束
+![](https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714459626-a3678e56-ece0-418b-a6d8-7e40d29d7215.png#from=url&id=YJAIA&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=)
+上面表中可以看到表中数据存在一些问题：
+
+<ul>
+<li>id 列一般是用标示数据的唯一性的，而上述表中的id为1的有三条数据，并且 马花疼 没有id进行标示</li>
+<li>柳白 这条数据的age列的数据是3000，而人也不可能活到3000岁</li>
+<li>马运 这条数据的math数学成绩是-5，而数学学得再不好也不可能出现负分</li>
+<li>柳青 这条数据的english列（英文成绩）值为null，而成绩即使没考也得是0分</li>
+</ul>
+<p>针对上述数据问题，我们就可以从数据库层面在添加数据的时候进行限制，这个就是约束。</p>
+<h3 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h3><ul>
+<li>约束是作用于表中列上的规则，用于限制加入表的数据例如：我们可以给id列加约束，让其值不能重复，不能为null值。</li>
+<li>约束的存在保证了数据库中数据的正确性、有效性和完整性添加约束可以在添加数据的时候就限制不正确的数据，年龄是3000，数学成绩是-5分这样无效的数据，继而保障数据的完整性。</li>
+</ul>
+<h3 id="1-2-分类"><a href="#1-2-分类" class="headerlink" title="1.2 分类"></a>1.2 分类</h3><ul>
+<li><strong>非空约束： 关键字是 NOT NULL</strong></li>
+</ul>
+<p>保证列中所有的数据不能有null值。<br>例如：id列在添加 马花疼 这条数据时就不能添加成功。</p>
+<ul>
+<li><strong>唯一约束：关键字是 UNIQUE</strong>保证列中所有数据各不相同。例如：id列中三条数据的值都是1，这样的数据在添加时是绝对不允许的。</li>
+<li><strong>主键约束： 关键字是 PRIMARY KEY</strong></li>
+</ul>
+<p>主键是一行数据的唯一标识，要求非空且唯一。一般我们都会给没张表添加一个主键列用来唯一标识数据。<br>例如：上图表中id就可以作为主键，来标识每条数据。那么这样就要求数据中id的值不能重复，不能为null值。</p>
+<ul>
+<li><strong>检查约束： 关键字是 CHECK</strong>保证列中的值满足某一条件。例如：我们可以给age列添加一个范围，最低年龄可以设置为1，最大年龄就可以设置为300，这样的数据才更合理些。注意：MySQL不支持检查约束。这样是不是就没办法保证年龄在指定的范围内了？从数据库层面不能保证，以后可以在java代码中进行限制，一样也可以实现要求。</li>
+<li><strong>默认约束： 关键字是 DEFAULT</strong>保存数据时，未指定值则采用默认值。例如：我们在给english列添加该约束，指定默认值是0，这样在添加数据时没有指定具体值时就会采用默认给定的0。</li>
+<li><strong>外键约束： 关键字是 FOREIGN KEY</strong>外键用来让两个表的数据之间建立链接，保证数据的一致性和完整性。外键约束现在可能还不太好理解，后面我们会重点进行讲解。</li>
+</ul>
+<h3 id="1-3-非空约束"><a href="#1-3-非空约束" class="headerlink" title="1.3 非空约束"></a>1.3 非空约束</h3><ul>
+<li>概念非空约束用于保证列中所有数据不能有NULL值</li>
+<li>语法<ul>
+<li>添加约束– 创建表时添加非空约束 CREATE TABLE 表名(    列名 数据类型 NOT NULL,    … );  – 建完表后添加非空约束 ALTER TABLE 表名 MODIFY 字段名 数据类型 NOT NULL; </li>
+<li>删除约束ALTER TABLE 表名 MODIFY 字段名 数据类型;</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-4-唯一约束"><a href="#1-4-唯一约束" class="headerlink" title="1.4 唯一约束"></a>1.4 唯一约束</h3><ul>
+<li>概念唯一约束用于保证列中所有数据各不相同</li>
+<li>语法<ul>
+<li>添加约束– 创建表时添加唯一约束 CREATE TABLE 表名(    列名 数据类型 UNIQUE [AUTO_INCREMENT],    – AUTO_INCREMENT: 当不指定值时自动增长    … );  CREATE TABLE 表名(    列名 数据类型,    …    [CONSTRAINT] [约束名称] UNIQUE(列名) );  – 建完表后添加唯一约束 ALTER TABLE 表名 MODIFY 字段名 数据类型 UNIQUE; </li>
+<li>删除约束ALTER TABLE 表名 DROP INDEX 字段名;</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-5-主键约束"><a href="#1-5-主键约束" class="headerlink" title="1.5 主键约束"></a>1.5 主键约束</h3><ul>
+<li>概念主键是一行数据的唯一标识，要求非空且唯一一张表只能有一个主键</li>
+<li>语法<ul>
+<li>添加约束– 创建表时添加主键约束 CREATE TABLE 表名(    列名 数据类型 PRIMARY KEY [AUTO_INCREMENT],    … );  CREATE TABLE 表名(    列名 数据类型,    [CONSTRAINT] [约束名称] PRIMARY KEY(列名) );  – 建完表后添加主键约束 ALTER TABLE 表名 ADD PRIMARY KEY(字段名); </li>
+<li>删除约束ALTER TABLE 表名 DROP PRIMARY KEY;</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-6-默认约束"><a href="#1-6-默认约束" class="headerlink" title="1.6 默认约束"></a>1.6 默认约束</h3><ul>
+<li>概念保存数据时，未指定值则采用默认值</li>
+<li>语法<ul>
+<li>添加约束– 创建表时添加默认约束 CREATE TABLE 表名(    列名 数据类型 DEFAULT 默认值,    … );  – 建完表后添加默认约束 ALTER TABLE 表名 ALTER 列名 SET DEFAULT 默认值; </li>
+<li>删除约束ALTER TABLE 表名 ALTER 列名 DROP DEFAULT;</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-7-约束练习"><a href="#1-7-约束练习" class="headerlink" title="1.7 约束练习"></a>1.7 约束练习</h3><p><strong>根据需求，为表添加合适的约束</strong><br>– 员工表 CREATE TABLE emp ( 	id INT,  – 员工id，主键且自增长     ename VARCHAR(50), – 员工姓名，非空且唯一     joindate DATE,  – 入职日期，非空     salary DOUBLE(7,2),  – 工资，非空     bonus DOUBLE(7,2)  – 奖金，如果没有将近默认为0 );<br>上面一定给出了具体的要求，我们可以根据要求创建这张表，并为每一列添加对应的约束。建表语句如下：<br>DROP TABLE IF EXISTS emp; – 员工表 CREATE TABLE emp (   id INT PRIMARY KEY, – 员工id，主键且自增长   ename VARCHAR(50) NOT NULL UNIQUE, – 员工姓名，非空并且唯一   joindate DATE NOT NULL , – 入职日期，非空   salary DOUBLE(7,2) NOT NULL , – 工资，非空   bonus DOUBLE(7,2) DEFAULT 0 – 奖金，如果没有奖金默认为0 );<br>通过上面语句可以创建带有约束的 emp 表，约束能不能发挥作用呢。接下来我们一一进行验证，先添加一条没有问题的数据<br>INSERT INTO emp(id,ename,joindate,salary,bonus) values(1,’张三’,’1999-11-11’,8800,5000); </p>
+<ul>
+<li><strong>验证主键约束，非空且唯一</strong></li>
+</ul>
+<p>INSERT INTO emp(id,ename,joindate,salary,bonus) values(null,’张三’,’1999-11-11’,8800,5000);<br>执行结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714459747-ec11a17c-41f2-4d2a-944e-b4c79c9739e3.png#from=url&id=BYkYX&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上面的结果可以看到，字段 id 不能为null。那我们重新添加一条数据，如下：<br>INSERT INTO emp(id,ename,joindate,salary,bonus) values(1,’张三’,’1999-11-11’,8800,5000);<br>执行结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714459825-47dfd1a4-d2e2-4f2a-ad80-6a377d4f7c4f.png#from=url&id=azGJj&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上面结果可以看到，1这个值重复了。所以主键约束是用来限制数据非空且唯一的。那我们再添加一条符合要求的数据<br>INSERT INTO emp(id,ename,joindate,salary,bonus) values(2,’李四’,’1999-11-11’,8800,5000);<br>执行结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714459913-a1ea3276-785d-4fd2-9b59-404262f707b8.png#from=url&id=cTKRP&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><strong>验证非空约束</strong></li>
+</ul>
+<p>INSERT INTO emp(id,ename,joindate,salary,bonus) values(3,null,’1999-11-11’,8800,5000);<br>执行结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460027-e890394d-0a59-4dee-b30a-a5b6967bc317.png#from=url&id=rUaG2&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上面结果可以看到，ename 字段的非空约束生效了。</p>
+<ul>
+<li><strong>验证唯一约束</strong></li>
+</ul>
+<p>INSERT INTO emp(id,ename,joindate,salary,bonus) values(3,’李四’,’1999-11-11’,8800,5000);<br>执行结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460131-a6eb5812-8580-4522-84c0-8b6aebc38781.png#from=url&id=PUTLU&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上面结果可以看到，ename 字段的唯一约束生效了。</p>
+<ul>
+<li><strong>验证默认约束</strong></li>
+</ul>
+<p>INSERT INTO emp(id,ename,joindate,salary) values(3,’王五’,’1999-11-11’,8800);<br>执行完上面语句后查询表中数据，如下图可以看到王五这条数据的bonus列就有了默认值0。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460219-41040f9e-1c57-4534-80b0-fa490292a5fa.png#from=url&id=D7ELU&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>注意：默认约束只有在不给值时才会采用默认值。如果给了null，那值就是null值。<br>如下：<br>INSERT INTO emp(id,ename,joindate,salary,bonus) values(4,’赵六’,’1999-11-11’,8800,null);<br>执行完上面语句后查询表中数据，如下图可以看到赵六这条数据的bonus列的值是null。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460307-327b8ae7-379a-4310-ad49-bcbcf362b2a1.png#from=url&id=oUc9T&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><strong>验证自动增长： auto_increment 当列是数字类型 并且唯一约束</strong></li>
+</ul>
+<p>重新创建 emp 表，并给id列添加自动增长<br>– 员工表 CREATE TABLE emp (   id INT PRIMARY KEY auto_increment, – 员工id，主键且自增长   ename VARCHAR(50) NOT NULL UNIQUE, – 员工姓名，非空并且唯一   joindate DATE NOT NULL , – 入职日期，非空   salary DOUBLE(7,2) NOT NULL , – 工资，非空   bonus DOUBLE(7,2) DEFAULT 0 – 奖金，如果没有奖金默认为0 );<br>接下来给emp添加数据，分别验证不给id列添加值以及给id列添加null值，id列的值会不会自动增长：<br>INSERT INTO emp(ename,joindate,salary,bonus) values(‘赵六’,’1999-11-11’,8800,null); INSERT INTO emp(id,ename,joindate,salary,bonus) values(null,’赵六2’,’1999-11-11’,8800,null); INSERT INTO emp(id,ename,joindate,salary,bonus) values(null,’赵六3’,’1999-11-11’,8800,null); </p>
+<h3 id="1-8-外键约束"><a href="#1-8-外键约束" class="headerlink" title="1.8 外键约束"></a>1.8 外键约束</h3><h4 id="1-8-1-概述"><a href="#1-8-1-概述" class="headerlink" title="1.8.1 概述"></a>1.8.1 概述</h4><p>外键用来让两个表的数据之间建立链接，保证数据的一致性和完整性。<br>如何理解上面的概念呢？如下图有两张表，员工表和部门表：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460386-861f4eb9-e8b0-4b7c-9537-675a1b76f67b.png#from=url&id=xXPk7&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>员工表中的dep_id字段是部门表的id字段关联，也就是说1号学生张三属于1号部门研发部的员工。现在我要删除1号部门，就会出现错误的数据（员工表中属于1号部门的数据）。而我们上面说的两张表的关系只是我们认为它们有关系，此时需要通过外键让这两张表产生数据库层面的关系，这样你要删除部门表中的1号部门的数据将无法删除。</p>
+<h4 id="1-8-2-语法"><a href="#1-8-2-语法" class="headerlink" title="1.8.2 语法"></a>1.8.2 语法</h4><ul>
+<li>添加外键约束</li>
+</ul>
+<p>– 创建表时添加外键约束 CREATE TABLE 表名(    列名 数据类型,    …    [CONSTRAINT] [外键名称] FOREIGN KEY(外键列名) REFERENCES 主表(主表列名)  );  – 建完表后添加外键约束 ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称); </p>
+<ul>
+<li>删除外键约束</li>
+</ul>
+<p>ALTER TABLE 表名 DROP FOREIGN KEY 外键名称; </p>
+<h4 id="1-8-3-练习"><a href="#1-8-3-练习" class="headerlink" title="1.8.3 练习"></a>1.8.3 练习</h4><p>根据上述语法创建员工表和部门表，并添加上外键约束：<br>– 删除表 DROP TABLE IF EXISTS emp; DROP TABLE IF EXISTS dept; – 部门表 CREATE TABLE dept( 	id int primary key auto_increment, 	dep_name varchar(20), 	addr varchar(20) ); – 员工表  CREATE TABLE emp( 	id int primary key auto_increment, 	name varchar(20), 	age int, 	dep_id int, 	– 添加外键 dep_id,关联 dept 表的id主键 	CONSTRAINT fk_emp_dept FOREIGN KEY(dep_id) REFERENCES dept(id)	 );<br>添加数据<br>– 添加 2 个部门 insert into dept(dep_name,addr) values (‘研发部’,’广州’),(‘销售部’, ‘深圳’); – 添加员工,dep_id 表示员工所在的部门 INSERT INTO emp (NAME, age, dep_id) VALUES  (‘张三’, 20, 1), (‘李四’, 20, 1), (‘王五’, 20, 1), (‘赵六’, 20, 2), (‘孙七’, 22, 2), (‘周八’, 18, 2);<br>此时删除 研发部 这条数据，会发现无法删除。<br>删除外键<br>alter table emp drop FOREIGN key fk_emp_dept;<br>重新添加外键<br>alter table emp add CONSTRAINT fk_emp_dept FOREIGN key(dep_id) REFERENCES dept(id); </p>
+<h2 id="2，数据库设计"><a href="#2，数据库设计" class="headerlink" title="2，数据库设计"></a>2，数据库设计</h2><h3 id="2-1-数据库设计简介"><a href="#2-1-数据库设计简介" class="headerlink" title="2.1 数据库设计简介"></a>2.1 数据库设计简介</h3><ul>
+<li>软件的研发步骤<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460481-37bc3e0a-493b-4f89-9cc3-747efc295066.png#from=url&id=ZPQxi&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>数据库设计概念<ul>
+<li>数据库设计就是根据业务系统的具体需求，结合我们所选用的DBMS，为这个业务系统构造出最优的数据存储模型。</li>
+<li>建立数据库中的表结构以及表与表之间的关联关系的过程。</li>
+<li>有哪些表？表里有哪些字段？表和表之间有什么关系？</li>
+</ul>
+</li>
+<li>数据库设计的步骤<ul>
+<li>需求分析（数据是什么? 数据具有哪些属性? 数据与属性的特点是什么）</li>
+<li>逻辑分析（通过ER图对数据库进行逻辑建模，不需要考虑我们所选用的数据库管理系统）如下图就是ER(Entity&#x2F;Relation)图：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460567-92ebf758-2c98-41ce-9908-8367a8de023a.png#from=url&id=AUZDX&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>物理设计（根据数据库自身的特点把逻辑设计转换为物理设计）</li>
+<li>维护设计（1.对新的需求进行建表；2.表优化）</li>
+</ul>
+</li>
+<li>表关系<ul>
+<li>一对一<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460749-38e71dd8-2207-4aec-bf4f-8faf7a46003d.png#from=url&id=kwmwM&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">上图左边是用户的详细信息，而我们真正在展示用户信息时最长用的则是上图右边红框所示，所以我们会将详细信息查分成两周那个表。<ul>
+<li>如：用户 和 用户详情</li>
+<li>一对一关系多用于表拆分，将一个实体中经常使用的字段放一张表，不经常使用的字段放另一张表，用于提升查询性能</li>
+</ul>
+</li>
+<li>一对多<ul>
+<li>如：部门 和 员工</li>
+<li>一个部门对应多个员工，一个员工对应一个部门。如下图：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460861-d8ae1a7c-d1e2-4833-ab60-140892c74bfb.png#from=url&id=IEqet&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+</ul>
+</li>
+<li>多对多<ul>
+<li>如：商品 和 订单</li>
+<li>一个商品对应多个订单，一个订单包含多个商品。如下图：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460949-da06b0c8-0645-4ea9-9098-b4c30335ca89.png#from=url&id=lPgFA&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-表关系-一对多"><a href="#2-2-表关系-一对多" class="headerlink" title="2.2 表关系(一对多)"></a>2.2 表关系(一对多)</h3><ul>
+<li>一对多<ul>
+<li>如：部门 和 员工</li>
+<li>一个部门对应多个员工，一个员工对应一个部门。</li>
+</ul>
+</li>
+<li>实现方式在多的一方建立外键，指向一的一方的主键</li>
+<li>案例我们还是以 员工表 和 部门表 举例:<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461041-95169fc8-3b04-474d-986a-32adaa1c383c.png#from=url&id=hafjS&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">经过分析发现，员工表属于多的一方，而部门表属于一的一方，此时我们会在员工表中添加一列（dep_id），指向于部门表的主键（id）：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461123-a281eb19-67ae-4e65-bcf3-11db6bc74f87.png#from=url&id=yjgU1&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">建表语句如下：– 删除表 DROP TABLE IF EXISTS tb_emp; DROP TABLE IF EXISTS tb_dept; – 部门表 CREATE TABLE tb_dept( 	id int primary key auto_increment, 	dep_name varchar(20), 	addr varchar(20) ); – 员工表  CREATE TABLE tb_emp( 	id int primary key auto_increment, 	name varchar(20), 	age int, 	dep_id int, 	– 添加外键 dep_id,关联 dept 表的id主键 	CONSTRAINT fk_emp_dept FOREIGN KEY(dep_id) REFERENCES tb_dept(id)	 ); 查看表结构模型图：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461204-e448e142-d513-4787-9e76-acc5425486fb.png#from=url&id=Umgnm&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+</ul>
+<h3 id="2-3-表关系-多对多"><a href="#2-3-表关系-多对多" class="headerlink" title="2.3 表关系(多对多)"></a>2.3 表关系(多对多)</h3><ul>
+<li>多对多<ul>
+<li>如：商品 和 订单</li>
+<li>一个商品对应多个订单，一个订单包含多个商品</li>
+</ul>
+</li>
+<li>实现方式建立第三张中间表，中间表至少包含两个外键，分别关联两方主键</li>
+<li>案例我们以 订单表 和 商品表 举例：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461287-825cf3e6-c396-4f45-8c0a-c8a5efcd234b.png#from=url&id=bkW4N&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">经过分析发现，订单表和商品表都属于多的一方，此时需要创建一个中间表，在中间表中添加订单表的外键和商品表的外键指向两张表的主键：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461369-bfde08fc-ce98-474f-9864-cd41978cb4c0.png#from=url&id=yZKSg&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">建表语句如下：– 删除表 DROP TABLE IF EXISTS tb_order_goods; DROP TABLE IF EXISTS tb_order; DROP TABLE IF EXISTS tb_goods; – 订单表 CREATE TABLE tb_order( 	id int primary key auto_increment, 	payment double(10,2), 	payment_type TINYINT, 	status TINYINT ); – 商品表 CREATE TABLE tb_goods( 	id int primary key auto_increment, 	title varchar(100), 	price double(10,2) ); – 订单商品中间表 CREATE TABLE tb_order_goods( 	id int primary key auto_increment, 	order_id int, 	goods_id int, 	count int ); – 建完表后，添加外键 alter table tb_order_goods add CONSTRAINT fk_order_id FOREIGN key(order_id) REFERENCES tb_order(id); alter table tb_order_goods add CONSTRAINT fk_goods_id FOREIGN key(goods_id) REFERENCES tb_goods(id); 查看表结构模型图：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461441-835b9a64-1792-44f5-ad68-d9749185c3ae.png#from=url&id=xw42d&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+</ul>
+<h3 id="2-4-表关系-一对一"><a href="#2-4-表关系-一对一" class="headerlink" title="2.4 表关系(一对一)"></a>2.4 表关系(一对一)</h3><ul>
+<li><p>一对一</p>
+<ul>
+<li>如：用户 和 用户详情</li>
+<li>一对一关系多用于表拆分，将一个实体中经常使用的字段放一张表，不经常使用的字段放另一张表，用于提升查询性能</li>
+</ul>
+</li>
+<li><p>实现方式在任意一方加入外键，关联另一方主键，并且设置外键为唯一(UNIQUE)</p>
+</li>
+<li><p>案例我们以 用户表 举例：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461519-8d90a0ff-8dd8-4736-ab12-c791117da281.png#from=url&id=fwbvD&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">而在真正使用过程中发现 id、photo、nickname、age、gender 字段比较常用，此时就可以将这张表查分成两张表。</p>
+<p>  <img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461620-436e5c4d-def9-442b-8347-9e254b9fcacc.png#from=url&id=RtneZ&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>  建表语句如下：</p>
+</li>
+</ul>
+<p>create table tb_user_desc ( 	id int primary key auto_increment, 	city varchar(20), 	edu varchar(10), 	income int, 	status char(2), 	des varchar(100) ); create table tb_user ( 	id int primary key auto_increment, 	photo varchar(100), 	nickname varchar(50), 	age int, 	gender char(1), 	desc_id int unique, 	– 添加外键 	CONSTRAINT fk_user_desc FOREIGN KEY(desc_id) REFERENCES tb_user_desc(id)	 );<br>    查看表结构模型图：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461718-50dad9a3-e002-4420-875a-f8701c17ec0f.png#from=url&id=Qa31C&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="2-5-数据库设计案例"><a href="#2-5-数据库设计案例" class="headerlink" title="2.5 数据库设计案例"></a>2.5 数据库设计案例</h3><p>根据下图设计表及表和表之间的关系：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461789-3ecb41ef-e6fb-452a-816f-96838e364804.png#from=url&id=Fl3JA&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>经过分析，我们分为 专辑表曲目表短评表用户表 4张表。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461896-29571181-732a-4861-acfc-fb2782cadc54.png#from=url&id=t9MfZ&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>一个专辑可以有多个曲目，一个曲目只能属于某一张专辑，所以专辑表和曲目表的关系是一对多。<br>一个专辑可以被多个用户进行评论，一个用户可以对多个专辑进行评论，所以专辑表和用户表的关系是 多对多。<br>一个用户可以发多个短评，一个短评只能是某一个人发的，所以用户表和短评表的关系是 一对多。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461989-cd610f26-4c67-411c-9af4-63e68440425b.png#from=url&id=b6TFV&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="3，多表查询"><a href="#3，多表查询" class="headerlink" title="3，多表查询"></a>3，多表查询</h2><p>多表查询顾名思义就是从多张表中一次性的查询出我们想要的数据。我们通过具体的sql给他们演示，先准备环境<br>DROP TABLE IF EXISTS emp; DROP TABLE IF EXISTS dept; # 创建部门表 	CREATE TABLE dept(         did INT PRIMARY KEY AUTO_INCREMENT,         dname VARCHAR(20)     ); 	# 创建员工表 	CREATE TABLE emp (         id INT PRIMARY KEY AUTO_INCREMENT,         NAME VARCHAR(10),         gender CHAR(1), – 性别         salary DOUBLE, – 工资         join_date DATE, – 入职日期         dep_id INT,         FOREIGN KEY (dep_id) REFERENCES dept(did) – 外键，关联部门表(部门表的主键)     ); 	– 添加部门数据 	INSERT INTO dept (dNAME) VALUES (‘研发部’),(‘市场部’),(‘财务部’),(‘销售部’); 	– 添加员工数据 	INSERT INTO emp(NAME,gender,salary,join_date,dep_id) VALUES 	(‘孙悟空’,’男’,7200,’2013-02-24’,1), 	(‘猪八戒’,’男’,3600,’2010-12-02’,2), 	(‘唐僧’,’男’,9000,’2008-08-08’,2), 	(‘白骨精’,’女’,5000,’2015-10-07’,3), 	(‘蜘蛛精’,’女’,4500,’2011-03-14’,1), 	(‘小白龙’,’男’,2500,’2011-02-14’,null);	<br>执行下面的多表查询语句<br>select * from emp , dept;  – 从emp和dept表中查询所有的字段数据<br>结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462067-2b05fea4-6edd-42d6-8900-1b5cf7e50b30.png#from=url&id=oUr2K&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上面的结果我们看到有一些无效的数据，如 孙悟空 这个员工属于1号部门，但也同时关联的2、3、4号部门。所以我们要通过限制员工表中的 dep_id 字段的值和部门表 did 字段的值相等来消除这些无效的数据，<br>select * from emp , dept where emp.dep_id &#x3D; dept.did;<br>执行后结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462152-f4211638-c6f4-40b1-8926-da8680d2f1fb.png#from=url&id=yV1Ys&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>上面语句就是连接查询，那么多表查询都有哪些呢？</p>
+<ul>
+<li>连接查询<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462269-5b5020cc-ea64-4680-bbe7-049cd3f9df2c.png#from=url&id=NgIFj&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><ul>
+<li>内连接查询 ：相当于查询AB交集数据</li>
+<li>外连接查询 <ul>
+<li>左外连接查询 ：相当于查询A表所有数据和交集部门数据</li>
+<li>右外连接查询 ： 相当于查询B表所有数据和交集部分数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>子查询</li>
+</ul>
+<h3 id="3-1-内连接查询"><a href="#3-1-内连接查询" class="headerlink" title="3.1 内连接查询"></a>3.1 内连接查询</h3><ul>
+<li>语法</li>
+</ul>
+<p>– 隐式内连接 SELECT 字段列表 FROM 表1,表2… WHERE 条件; – 显示内连接 SELECT 字段列表 FROM 表1 [INNER] JOIN 表2 ON 条件;<br>内连接相当于查询 A B 交集数据<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462269-5b5020cc-ea64-4680-bbe7-049cd3f9df2c.png#from=url&id=T5vyG&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>案例<ul>
+<li>隐式内连接SELECT 	* FROM 	emp, 	dept WHERE 	emp.dep_id &#x3D; dept.did; 执行上述语句结果如下：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462346-5eaeb402-5766-4475-84a5-3d0d0f9b29c8.png#from=url&id=Izame&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>查询 emp的 name， gender，dept表的dnameSELECT 	emp. NAME, 	emp.gender, 	dept.dname FROM 	emp, 	dept WHERE 	emp.dep_id &#x3D; dept.did; 执行语句结果如下：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462443-cdca2f6b-5c2c-42d3-a4ea-c7d1a88871a5.png#from=url&id=q2yjy&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">上面语句中使用表名指定字段所属有点麻烦，sql也支持给表指别名，上述语句可以改进为SELECT 	t1. NAME, 	t1.gender, 	t2.dname FROM 	emp t1, 	dept t2 WHERE 	t1.dep_id &#x3D; t2.did; </li>
+<li>显式内连接select * from emp inner join dept on emp.dep_id &#x3D; dept.did; – 上面语句中的inner可以省略，可以书写为如下语句 select * from emp  join dept on emp.dep_id &#x3D; dept.did; 执行结果如下：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462523-255d27b4-e1c6-4193-be4a-6659122bbbd1.png#from=url&id=xQBbp&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-外连接查询"><a href="#3-2-外连接查询" class="headerlink" title="3.2 外连接查询"></a>3.2 外连接查询</h3><ul>
+<li>语法– 左外连接 SELECT 字段列表 FROM 表1 LEFT [OUTER] JOIN 表2 ON 条件; – 右外连接 SELECT 字段列表 FROM 表1 RIGHT [OUTER] JOIN 表2 ON 条件; 左外连接：相当于查询A表所有数据和交集部分数据右外连接：相当于查询B表所有数据和交集部分数据<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462269-5b5020cc-ea64-4680-bbe7-049cd3f9df2c.png#from=url&id=j5SCi&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>案例<ul>
+<li>查询emp表所有数据和对应的部门信息（左外连接）select * from emp left join dept on emp.dep_id &#x3D; dept.did; 执行语句结果如下：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462606-da92a0ca-3faf-4536-9be8-2d4921004f1e.png#from=url&id=xw8iN&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">结果显示查询到了左表（emp）中所有的数据及两张表能关联的数据。</li>
+<li>查询dept表所有数据和对应的员工信息（右外连接）select * from emp right join dept on emp.dep_id &#x3D; dept.did; 执行语句结果如下：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462684-2512c4b3-a5d5-407b-b0e0-168a93b414cd.png#from=url&id=qcIrA&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">结果显示查询到了右表（dept）中所有的数据及两张表能关联的数据。要查询出部门表中所有的数据，也可以通过左外连接实现，只需要将两个表的位置进行互换：select * from dept left join emp on emp.dep_id &#x3D; dept.did;</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-子查询"><a href="#3-3-子查询" class="headerlink" title="3.3 子查询"></a>3.3 子查询</h3><ul>
+<li>概念查询中嵌套查询，称嵌套查询为子查询。什么是查询中嵌套查询呢？我们通过一个例子来看：<strong>需求：查询工资高于猪八戒的员工信息。</strong>来实现这个需求，我们就可以通过二步实现，第一步：先查询出来 猪八戒的工资select salary from emp where name &#x3D; ‘猪八戒’ 第二步：查询工资高于猪八戒的员工信息select * from emp where salary &gt; 3600; 第二步中的3600可以通过第一步的sql查询出来，所以将3600用第一步的sql语句进行替换select * from emp where salary &gt; (select salary from emp where name &#x3D; ‘猪八戒’); 这就是查询语句中嵌套查询语句。</li>
+<li>子查询根据查询结果不同，作用不同<ul>
+<li>子查询语句结果是单行单列，子查询语句作为条件值，使用 &#x3D; !&#x3D; &gt; &lt; 等进行条件判断</li>
+<li>子查询语句结果是多行单列，子查询语句作为条件值，使用 in 等关键字进行条件判断</li>
+<li>子查询语句结果是多行多列，子查询语句作为虚拟表</li>
+</ul>
+</li>
+<li>案例<ul>
+<li>查询 ‘财务部’ 和 ‘市场部’ 所有的员工信息– 查询 ‘财务部’ 或者 ‘市场部’ 所有的员工的部门did select did from dept where dname &#x3D; ‘财务部’ or dname &#x3D; ‘市场部’; select * from emp where dep_id in (select did from dept where dname &#x3D; ‘财务部’ or dname &#x3D; ‘市场部’); </li>
+<li>查询入职日期是 ‘2011-11-11’ 之后的员工信息和部门信息– 查询入职日期是 ‘2011-11-11’ 之后的员工信息 select * from emp where join_date &gt; ‘2011-11-11’ ; – 将上面语句的结果作为虚拟表和dept表进行内连接查询 select * from (select * from emp where join_date &gt; ‘2011-11-11’ ) t1, dept where t1.dep_id &#x3D; dept.did;</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-案例"><a href="#3-4-案例" class="headerlink" title="3.4 案例"></a>3.4 案例</h3><ul>
+<li>环境准备：</li>
+</ul>
+<p>DROP TABLE IF EXISTS emp; DROP TABLE IF EXISTS dept; DROP TABLE IF EXISTS job; DROP TABLE IF EXISTS salarygrade; – 部门表 CREATE TABLE dept (   did INT PRIMARY KEY PRIMARY KEY, – 部门id   dname VARCHAR(50), – 部门名称   loc VARCHAR(50) – 部门所在地 ); – 职务表，职务名称，职务描述 CREATE TABLE job (   id INT PRIMARY KEY,   jname VARCHAR(20),   description VARCHAR(50) ); – 员工表 CREATE TABLE emp (   id INT PRIMARY KEY, – 员工id   ename VARCHAR(50), – 员工姓名   job_id INT, – 职务id   mgr INT , – 上级领导   joindate DATE, – 入职日期   salary DECIMAL(7,2), – 工资   bonus DECIMAL(7,2), – 奖金   dept_id INT, – 所在部门编号   CONSTRAINT emp_jobid_ref_job_id_fk FOREIGN KEY (job_id) REFERENCES job (id),   CONSTRAINT emp_deptid_ref_dept_id_fk FOREIGN KEY (dept_id) REFERENCES dept (id) ); – 工资等级表 CREATE TABLE salarygrade (   grade INT PRIMARY KEY,   – 级别   losalary INT,  – 最低工资   hisalary INT – 最高工资 ); 				 – 添加4个部门 INSERT INTO dept(did,dname,loc) VALUES  (10,’教研部’,’北京’), (20,’学工部’,’上海’), (30,’销售部’,’广州’), (40,’财务部’,’深圳’); – 添加4个职务 INSERT INTO job (id, jname, description) VALUES (1, ‘董事长’, ‘管理整个公司，接单’), (2, ‘经理’, ‘管理部门员工’), (3, ‘销售员’, ‘向客人推销产品’), (4, ‘文员’, ‘使用办公软件’); – 添加员工 INSERT INTO emp(id,ename,job_id,mgr,joindate,salary,bonus,dept_id) VALUES  (1001,’孙悟空’,4,1004,’2000-12-17’,’8000.00’,NULL,20), (1002,’卢俊义’,3,1006,’2001-02-20’,’16000.00’,’3000.00’,30), (1003,’林冲’,3,1006,’2001-02-22’,’12500.00’,’5000.00’,30), (1004,’唐僧’,2,1009,’2001-04-02’,’29750.00’,NULL,20), (1005,’李逵’,4,1006,’2001-09-28’,’12500.00’,’14000.00’,30), (1006,’宋江’,2,1009,’2001-05-01’,’28500.00’,NULL,30), (1007,’刘备’,2,1009,’2001-09-01’,’24500.00’,NULL,10), (1008,’猪八戒’,4,1004,’2007-04-19’,’30000.00’,NULL,20), (1009,’罗贯中’,1,NULL,’2001-11-17’,’50000.00’,NULL,10), (1010,’吴用’,3,1006,’2001-09-08’,’15000.00’,’0.00’,30), (1011,’沙僧’,4,1004,’2007-05-23’,’11000.00’,NULL,20), (1012,’李逵’,4,1006,’2001-12-03’,’9500.00’,NULL,30), (1013,’小白龙’,4,1004,’2001-12-03’,’30000.00’,NULL,20), (1014,’关羽’,4,1007,’2002-01-23’,’13000.00’,NULL,10); – 添加5个工资等级 INSERT INTO salarygrade(grade,losalary,hisalary) VALUES  (1,7000,12000), (2,12010,14000), (3,14010,20000), (4,20010,30000), (5,30010,99990); </p>
+<ul>
+<li>需求<ol>
+<li>查询所有员工信息。查询员工编号，员工姓名，工资，职务名称，职务描述&#x2F;* 	分析： 		1. 员工编号，员工姓名，工资 信息在emp 员工表中 		2. 职务名称，职务描述 信息在 job 职务表中 		3. job 职务表 和 emp 员工表 是 一对多的关系 emp.job_id &#x3D; job.id *&#x2F; – 方式一 ：隐式内连接 SELECT 	emp.id, 	emp.ename, 	emp.salary, 	job.jname, 	job.description FROM 	emp, 	job WHERE 	emp.job_id &#x3D; job.id; – 方式二 ：显式内连接 SELECT 	emp.id, 	emp.ename, 	emp.salary, 	job.jname, 	job.description FROM 	emp INNER JOIN job ON emp.job_id &#x3D; job.id; </li>
+<li>查询员工编号，员工姓名，工资，职务名称，职务描述，部门名称，部门位置&#x2F;* 	分析： 		1. 员工编号，员工姓名，工资 信息在emp 员工表中 		2. 职务名称，职务描述 信息在 job 职务表中 		3. job 职务表 和 emp 员工表 是 一对多的关系 emp.job_id &#x3D; job.id 		4. 部门名称，部门位置 来自于 部门表 dept 		5. dept 和 emp 一对多关系 dept.id &#x3D; emp.dept_id *&#x2F; – 方式一 ：隐式内连接 SELECT 	emp.id, 	emp.ename, 	emp.salary, 	job.jname, 	job.description, 	dept.dname, 	dept.loc FROM 	emp, 	job, 	dept WHERE 	emp.job_id &#x3D; job.id 	and dept.id &#x3D; emp.dept_id ; – 方式二 ：显式内连接 SELECT 	emp.id, 	emp.ename, 	emp.salary, 	job.jname, 	job.description, 	dept.dname, 	dept.loc FROM 	emp INNER JOIN job ON emp.job_id &#x3D; job.id INNER JOIN dept ON dept.id &#x3D; emp.dept_id </li>
+<li>查询员工姓名，工资，工资等级&#x2F;* 	分析： 		1. 员工姓名，工资 信息在emp 员工表中 		2. 工资等级 信息在 salarygrade 工资等级表中 		3. emp.salary &gt;&#x3D; salarygrade.losalary  and emp.salary &lt;&#x3D; salarygrade.hisalary *&#x2F; SELECT 	emp.ename, 	emp.salary, 	t2.* FROM 	emp, 	salarygrade t2 WHERE 	emp.salary &gt;&#x3D; t2.losalary AND emp.salary &lt;&#x3D; t2.hisalary </li>
+<li>查询员工姓名，工资，职务名称，职务描述，部门名称，部门位置，工资等级&#x2F;* 	分析： 		1. 员工编号，员工姓名，工资 信息在emp 员工表中 		2. 职务名称，职务描述 信息在 job 职务表中 		3. job 职务表 和 emp 员工表 是 一对多的关系 emp.job_id &#x3D; job.id 		4. 部门名称，部门位置 来自于 部门表 dept 		5. dept 和 emp 一对多关系 dept.id &#x3D; emp.dept_id 		6. 工资等级 信息在 salarygrade 工资等级表中 		7. emp.salary &gt;&#x3D; salarygrade.losalary  and emp.salary &lt;&#x3D; salarygrade.hisalary *&#x2F; SELECT 	emp.id, 	emp.ename, 	emp.salary, 	job.jname, 	job.description, 	dept.dname, 	dept.loc, 	t2.grade FROM 	emp INNER JOIN job ON emp.job_id &#x3D; job.id INNER JOIN dept ON dept.id &#x3D; emp.dept_id INNER JOIN salarygrade t2 ON emp.salary BETWEEN t2.losalary and t2.hisalary; </li>
+<li>查询出部门编号、部门名称、部门位置、部门人数&#x2F;* 	分析： 		1. 部门编号、部门名称、部门位置 来自于部门 dept 表 		2. 部门人数: 在emp表中 按照dept_id 进行分组，然后count(<em>)统计数量 		3. 使用子查询，让部门表和分组后的表进行内连接 <em>&#x2F; – 根据部门id分组查询每一个部门id和员工数 select dept_id, count(</em>) from emp group by dept_id; SELECT 	dept.id, 	dept.dname, 	dept.loc, 	t1.count FROM 	dept, 	( 		SELECT 			dept_id, 			count(</em>) count 		FROM 			emp 		GROUP BY 			dept_id 	) t1 WHERE 	dept.id &#x3D; t1.dept_id</li>
+</ol>
+</li>
+</ul>
+<h2 id="4，事务"><a href="#4，事务" class="headerlink" title="4，事务"></a>4，事务</h2><h3 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h3><p>数据库的事务（Transaction）是一种机制、一个操作序列，包含了一组数据库操作命令。<br>事务把所有的命令作为一个整体一起向系统提交或撤销操作请求，即这一组数据库命令要么同时成功，要么同时失败。<br>事务是一个不可分割的工作逻辑单元。<br>这些概念不好理解，接下来举例说明，如下图有一张表<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462766-0e7e26c9-afd9-4dc9-b072-0b4853a9a669.png#from=url&id=L2qaw&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>张三和李四账户中各有100块钱，现李四需要转换500块钱给张三，具体的转账操作为</p>
+<ul>
+<li>第一步：查询李四账户余额</li>
+<li>第二步：从李四账户金额 -500</li>
+<li>第三步：给张三账户金额 +500</li>
+</ul>
+<p>现在假设在转账过程中第二步完成后出现了异常第三步没有执行，就会造成李四账户金额少了500，而张三金额并没有多500；这样的系统是有问题的。如果解决呢？使用事务可以解决上述问题<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462847-098caef1-3899-4f74-92f4-46b6dc4f63c4.png#from=url&id=ttgPp&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上图可以看到在转账前开启事务，如果出现了异常回滚事务，三步正常执行就提交事务，这样就可以完美解决问题。</p>
+<h3 id="4-2-语法"><a href="#4-2-语法" class="headerlink" title="4.2 语法"></a>4.2 语法</h3><ul>
+<li>开启事务START TRANSACTION; 或者   BEGIN; </li>
+<li>提交事务commit; </li>
+<li>回滚事务rollback;</li>
+</ul>
+<h3 id="4-3-代码验证"><a href="#4-3-代码验证" class="headerlink" title="4.3 代码验证"></a>4.3 代码验证</h3><ul>
+<li>环境准备DROP TABLE IF EXISTS account; – 创建账户表 CREATE TABLE account( 	id int PRIMARY KEY auto_increment, 	name varchar(10), 	money double(10,2) ); – 添加数据 INSERT INTO account(name,money) values(‘张三’,1000),(‘李四’,1000); </li>
+<li>不加事务演示问题– 转账操作 – 1. 查询李四账户金额是否大于500 – 2. 李四账户 -500 UPDATE account set money &#x3D; money - 500 where name &#x3D; ‘李四’; 出现异常了…  – 此处不是注释，在整体执行时会出问题，后面的sql则不执行 – 3. 张三账户 +500 UPDATE account set money &#x3D; money + 500 where name &#x3D; ‘张三’; 整体执行结果肯定会出问题，我们查询账户表中数据，发现李四账户少了500。<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462932-86d9620d-f4f8-4682-8772-5fb3ffcfeb8f.png#from=url&id=YvkAF&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>添加事务sql如下：– 开启事务 BEGIN; – 转账操作 – 1. 查询李四账户金额是否大于500 – 2. 李四账户 -500 UPDATE account set money &#x3D; money - 500 where name &#x3D; ‘李四’; 出现异常了…  – 此处不是注释，在整体执行时会出问题，后面的sql则不执行 – 3. 张三账户 +500 UPDATE account set money &#x3D; money + 500 where name &#x3D; ‘张三’; – 提交事务 COMMIT; – 回滚事务 ROLLBACK; 上面sql中的执行成功进选择执行提交事务，而出现问题则执行回滚事务的语句。以后我们肯定不可能这样操作，而是在java中进行操作，在java中可以抓取异常，没出现异常提交事务，出现异常回滚事务。</li>
+</ul>
+<h3 id="4-4-事务的四大特征"><a href="#4-4-事务的四大特征" class="headerlink" title="4.4 事务的四大特征"></a>4.4 事务的四大特征</h3><ul>
+<li>原子性（Atomicity）: 事务是不可分割的最小操作单位，要么同时成功，要么同时失败</li>
+<li>一致性（Consistency） :事务完成时，必须使所有的数据都保持一致状态</li>
+<li>隔离性（Isolation） :多个事务之间，操作的可见性</li>
+<li>持久性（Durability） :事务一旦提交或回滚，它对数据库中的数据的改变就是永久的</li>
+</ul>
+<p>SELECT @@autocommit; set @@autocommit &#x3D; 0;<br>说明：<br>mysql中事务是自动提交的。<br>也就是说我们不添加事务执行sql语句，语句执行完毕会自动的提交事务。<br>可以通过下面语句查询默认提交方式：<br>查询到的结果是1 则表示自动提交，结果是0表示手动提交。当然也可以通过下面语句修改提交方式</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Flog and boat 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Flog and boat 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93-java-%E5%9F%BA%E7%A1%80/" rel="tag"># 数据库 java 基础</a>
+          </div>
+
+        
+  <div class="addthis_inline_share_toolbox social-like">
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-640c9a3bfe681ed1" async="async"></script>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/03/12/%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="大学英语学习笔记">
+                  <i class="fa fa-chevron-left"></i> 大学英语学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/03/13/mysql%E9%AB%98%E7%BA%A7/" rel="next" title="MySQL基础">
+                  MySQL基础 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Flog and boat</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">34k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:53</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="400" alpha="0.7" zIndex="-1" src="https://cdnjs.cloudflare.com/ajax/libs/ribbon.js/1.0.2/ribbon.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

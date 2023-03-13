@@ -3,7 +3,9 @@
   <entry>
     <title>git的使用</title>
     <url>/2023/03/12/Git/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>第一次使用git，有些磕磕绊绊，好在在我不懈地查找解决办法下，终于解决了，来记录下。</p>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>第一次使用git，有些磕磕绊绊，好在在我不懈地查找解决办法下，终于解决了，来记录下。</p>
 <span id="more"></span>
 <p>我的主要目的是上传本地仓库的内容到远程仓库，下面的步骤也是围绕此展开。</p>
 <h3 id="正文分享"><a href="#正文分享" class="headerlink" title="正文分享"></a>正文分享</h3><p>1.进入想要创建仓库的文件夹，然后右键点击git bash，进入命令行窗口。（如果第一次用<br>是要输入个人信息的<br>git config –global user.name “xxx”<br>git config –global user.email “<a href="mailto:xxxx@xxx.com">xxxx@xxx.com</a>“<br>）<br>git init   初始化成为仓库<br>git add .    添加此文件夹所有文件到工作区。<br>git status     查看工作区的内容<br>git commit -m “项目名称”<br>（在做push之前要   添加SSH key  不然每次push pull都要输密码<br>ssh-keygen -t rsa -C “<a href="mailto:xxxxx@xxx.com">xxxxx@xxx.com</a>“           这是在本地创建ssh key，写自己注册github的邮箱<br>然后一路回车<br>找到C盘中的user文件夹，找到生成的.ssh文件夹<br>用记事本打开里面的ssh public版复制到github的ssh设置窗口）</p>
@@ -23,7 +25,12 @@
   <entry>
     <title>Java基础知识笔记</title>
     <url>/2023/03/12/Java/</url>
-    <content><![CDATA[<h2 id="Java基础知识笔记"><a href="#Java基础知识笔记" class="headerlink" title="Java基础知识笔记"></a>Java基础知识笔记</h2><h3 id="Java的背景"><a href="#Java的背景" class="headerlink" title="Java的背景"></a>Java的背景</h3><span id="more"></span>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+## Java基础知识笔记
+
+
+
+<h3 id="Java的背景"><a href="#Java的背景" class="headerlink" title="Java的背景"></a>Java的背景</h3><span id="more"></span>
 <p>Sun 公司制定的Java虚拟机规范在技术上规定了JVM的统一标准，具体定义了JVM的如下细节:<br>指令集、寄存器、类文件的格式、栈、垃圾回收堆、存储区<br>Sun 公司制定这些规范的目的是为了提供统一的标准，最终实现Java程序的平台无关性。</p>
 <p>java是一门编译、解释型语言，编译会形成字节码文件（.class），每个平台都有属于他们的虚拟机JVM，而字节码文件可以通过JVM进行执行。可以认为JVM分为向上和向下两个部分，所有平台上的JVM向上提供给 Java字节码程序的接口完全相同，但向下适应不同平台的接口则互不相同。</p>
 <p>需要开发Java程序，则应该选择安装JDK（java development kit），JDK包含JRE，JRE也包含了平台所需的虚拟机JVM。</p>
@@ -250,9 +257,20 @@
   <entry>
     <title>前端知识</title>
     <url>/2023/03/12/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<h2 id="Web标准"><a href="#Web标准" class="headerlink" title="Web标准"></a>Web标准</h2><h3 id="Web标准的构成"><a href="#Web标准的构成" class="headerlink" title="Web标准的构成"></a>Web标准的构成</h3><p>主要包括结构（Structure）、表现（Presentation）和行为（Behavior）三个方面</p>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+## Web标准
+### Web标准的构成
+主要包括结构（Structure）、表现（Presentation）和行为（Behavior）三个方面
 <span id="more"></span>
-<p>结构<br>结构用于对网页元素进行整理和分类，现阶段主要学的是HTML<br>表现<br>表现用于设置网页元素的版式、颜色、大小等外观样式，主要指的是CSS<br>行为<br>行为是指网页模型的定义及交互的编写，现阶段主要学的是Javascript<br>Web标准提出的最佳体验方案：结构、样式、行为相分离<br>简单理解：结构写到HTML文件中，表现写到CSS文件中，行为写到JavaScript文件中</p>
+结构
+结构用于对网页元素进行整理和分类，现阶段主要学的是HTML
+表现
+表现用于设置网页元素的版式、颜色、大小等外观样式，主要指的是CSS
+行为
+行为是指网页模型的定义及交互的编写，现阶段主要学的是Javascript
+Web标准提出的最佳体验方案：结构、样式、行为相分离
+简单理解：结构写到HTML文件中，表现写到CSS文件中，行为写到JavaScript文件中
+
 <h3 id="为什么需要Web标准"><a href="#为什么需要Web标准" class="headerlink" title="为什么需要Web标准"></a>为什么需要Web标准</h3><p>遵循Web标准除了可以让不同的开发人员写出的页面更标准、更统一外，还有以下优点：<br>1让Web的发展前景更广阔令<br>2、内容能被更广泛的设备访问<br>3.更容易被搜寻引擎搜索<br>4.降低网站流量费用<br>5.使网站更易于维护<br>6.提高页面浏览速度</p>
 <h3 id="网页总结"><a href="#网页总结" class="headerlink" title="网页总结"></a>网页总结</h3><p>网页是图片、链接、文字、声音、视频等元素组成其实就是一个htm文件(后缀名为html<br>网页生成制作：有前端人员书写HTML文件,然后浏览器打开,就能看到了网页<br>HTML:超文本标记语言,用来制作网页的一门语言.有标签组成的.比如图片标签链接标签视频标签等<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674460998983-b7add9b0-42f7-4a9b-b86e-ddaa036aac9e.png#averageHue=%23f4f7f4&clientId=u8906dc9b-ad41-4&from=paste&height=258&id=ue4150605&name=image.png&originHeight=387&originWidth=765&originalType=binary&ratio=1&rotation=0&showTitle=false&size=105249&status=done&style=none&taskId=ub77a4493-91eb-4f32-a6df-ece797b50b6&title=&width=510" alt="image.png"></p>
 <h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h3><p>能够说出标签的书写注意规范<br>能够写出HTML骨架标签<br>能够写出超链接标签<br>能够写出图片标签并说出 alt 和 title 的区另<br>能多说出相对路径的三种形式</p>
@@ -377,7 +395,8 @@ div是 division的缩写，表示分割、分区。span意为跨度、跨距
 1，在我们写表单元素之前,应该有个表单域把他们进行包含
 2、表单域是form标签
 
-<h4 id="3-4-1-表单元素"><a href="#3-4-1-表单元素" class="headerlink" title="3.4.1 表单元素"></a>3.4.1 <input>表单元素</h4><p>在英文单词中，input是输入的意思，而在表单元素中<input>标签用于收集用户信息<br>在<input>标签中，包含一个type属性，根据不同的type属性值，输入字段拥有很多种形式（可以是文本<br>字段、复选框、掩码后的文本控件、单选按钮、按钮等）<br><input type="属性值"  /><br><input />标签为单标签<br> type属性设置不同的属性值用来指定不同的控件类型<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674522938301-96fbfdc0-202c-4fa6-877a-a66c8ef8ae70.png#averageHue=%23f5f8f5&clientId=u793f6397-9d7a-4&from=paste&height=409&id=u3d953225&name=image.png&originHeight=613&originWidth=1163&originalType=binary&ratio=1&rotation=0&showTitle=false&size=325004&status=done&style=none&taskId=u9cb88c9f-ed25-436a-b1fd-7c91f0e0144&title=&width=775.3333333333334" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674523185635-9db543e0-e227-4dde-beda-a88483c79e04.png#averageHue=%23f1f4f1&clientId=u793f6397-9d7a-4&from=paste&height=591&id=u653952cf&name=image.png&originHeight=887&originWidth=868&originalType=binary&ratio=1&rotation=0&showTitle=false&size=148567&status=done&style=none&taskId=u1649b072-460f-49e6-a90f-a5e31975637&title=&width=578.6666666666666" alt="image.png"></p>
+<h4 id="3-4-1-表单元素"><a href="#3-4-1-表单元素" class="headerlink" title="3.4.1 表单元素"></a>3.4.1 <input>表单元素</h4><p>在英文单词中，input是输入的意思，而在表单元素中<input>标签用于收集用户信息<br>在<input>标签中，包含一个type属性，根据不同的type属性值，输入字段拥有很多种形式（可以是文本<br>字段、复选框、掩码后的文本控件、单选按钮、按钮等）<br><input type="属性值"  /><br><input />标签为单标签<br> type属性设置不同的属性值用来指定不同的控件类型<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674522938301-96fbfdc0-202c-4fa6-877a-a66c8ef8ae70.png#averageHue=%23f5f8f5&clientId=u793f6397-9d7a-4&from=paste&height=409&id=u3d953225&name=image.png&originHeight=613&originWidth=1163&originalType=binary&ratio=1&rotation=0&showTitle=false&size=325004&status=done&style=none&taskId=u9cb88c9f-ed25-436a-b1fd-7c91f0e0144&title=&width=775.3333333333334" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674523185635-9db543e0-e227-4dde-beda-a88483c79e04.png#averageHue=%23f1f4f1&clientId=u793f6397-9d7a-4&from=paste&height=591&id=u653952cf&name=image.png&originHeight=887&originWidth=868&originalType=binary&ratio=1&rotation=0&showTitle=false&size=148567&status=done&style=none&taskId=u1649b072-460f-49e6-a90f-a5e31975637&title=&width=578.6666666666666" alt="image.png"></p>
 <p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674523371165-5af0a1f0-c82c-4d69-b6df-130ce018c021.png#averageHue=%23f5f8f5&clientId=u793f6397-9d7a-4&from=paste&height=193&id=u497c2009&name=image.png&originHeight=289&originWidth=1193&originalType=binary&ratio=1&rotation=0&showTitle=false&size=148428&status=done&style=none&taskId=u3c5932a2-970d-444b-8de6-f45a944f7bb&title=&width=795.3333333333334" alt="image.png"></p>
 <ol>
 <li>name 和value 是每个表单元素都有的属性值主要给后台人员使用</li>
@@ -408,13 +427,9 @@ id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性
 </select>
 
 <ol>
-<li><select>中至少包含一对<option> 。<br>2.在<option>中定义 selected &#x3D;“selected”时，当前项即为默认选中项</li>
+<li>&lt;select&gt;中至少包含一对&lt;option&gt; 。<br>2.在&lt;option&gt;中定义 selected &#x3D;“selected”时，当前项即为默认选中项</li>
 </ol>
-<h4 id="3-4-4-表单元素"><a href="#3-4-4-表单元素" class="headerlink" title="3.4.4 表单元素"></a>3.4.4 <textarea>表单元素</h4><p>语法：</p>
-<textarea row="3" cols="20">
-文本内容
-</textarea>
-<p>1.通过<textarea>标签可以轻松地创建多行文本输入框<br>2. cols&#x3D;“每行中的字符数”，rows&#x3D;“显示的行数”，我们在实际开发中不会使用，都是用CSS来改变大小<br>M</p>
+<h4 id="3-4-4-lt-textarea-gt-表单元素"><a href="#3-4-4-lt-textarea-gt-表单元素" class="headerlink" title="3.4.4 &lt;textarea&gt;表单元素"></a>3.4.4 &lt;textarea&gt;表单元素</h4><p>语法：<br>&lt;textarea row&#x3D;”3” cols&#x3D;”20”&gt;<br>文本内容<br>&lt;&#x2F;textarea&gt;<br>1.通过&lt;textarea&gt;标签可以轻松地创建多行文本输入框<br>2. cols&#x3D;“每行中的字符数”，rows&#x3D;“显示的行数”，我们在实际开发中不会使用，都是用CSS来改变大小</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674525582552-1df12586-9e60-4728-80ff-5b3762a20fd0.png#averageHue=%23f2f3f2&clientId=u1948e378-7cf7-4&from=paste&height=439&id=u49577e82&name=image.png&originHeight=659&originWidth=807&originalType=binary&ratio=1&rotation=0&showTitle=false&size=248976&status=done&style=none&taskId=u595acbb5-2a93-4b1b-af3c-57154bcc476&title=&width=538" alt="image.png"></p>
 <p>W3C：<a href="http://www.w3school.com.cn/">http://www.w3school.com.cn/</a><br>公<br>MDN: <a href="https://developer.mozilla.org/zh-CN">https://developer.mozilla.org/zh-CN</a></p>
 <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>1.CSS简介<br>1.2 CSS-网页的美容师<br>CSS是层叠样式表(Cascading Style Sheets）的简称<br>有时我们也会称之为CSS样式表或级联样式表<br>HTML<br>CSS<br>CSS是也是一种标记语言<br>CSS主要用于设置HTML页面中的文本内容（字体、大小、对齐方式等）、图片的外形（宽高、边框样式<br>边距等）以及版面的布局和外观显示样式<br>CSS让我们的网页更加丰富多彩，布局更加灵活自如。简单理解：CSS可以美化HTML，让HTML更漂亮<br>让页面布局更简单</p>
@@ -430,9 +445,14 @@ id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性
   <entry>
     <title>大学英语学习笔记</title>
     <url>/2023/03/12/%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="听力"><a href="#听力" class="headerlink" title="听力"></a>听力</h3><h3 id="阅读"><a href="#阅读" class="headerlink" title="阅读"></a>阅读</h3><h3 id="作文"><a href="#作文" class="headerlink" title="作文"></a>作文</h3><p>Directions: For this part, you are allowed 30 minutes to write an essay commenting on the saying “Help others, and you will be helped when you are in need.”You can cite examples to illustrate your views. You should write at least 150 words but no more than 200 words.</p>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+### 听力
+### 阅读
+### 作文
+Directions: For this part, you are allowed 30 minutes to write an essay commenting on the saying “Help others, and you will be helped when you are in need.”You can cite examples to illustrate your views. You should write at least 150 words but no more than 200 words.
 <span id="more"></span>
-<p>Nowadays, the growing individuals are trying to help others as they firmly believe that “Help others, and you will be helped when you are in need. “ This proverb reflects the truth that kindness begets kindness. To start with, helping others can bring us a sense of satisfaction and happiness. When we do something good for others, we are usually rewarded with understanding, respect, and appreciation. It also makes us feel that we are being useful and making a difference in the world. Furthermore, helping others can also be beneficial to ourselves since it is one of the best ways to strengthen relationships and make new friends. In addition, when we help others, we are more likely to receive help in return when we are in need. This is because good deeds can inspire others to reciprocate or even surpass the kindness we gave in times of difficulties. For example, I had a friend who was struggling with a medical condition. He received lots of help from his family, friends, and colleagues. It was heartwarming to witness so many people coming together to support him during this trying time. In conclusion, helping others is not only beneficial to others, but also to ourselves.It is an act of kindness that will not only be appreciated, but also repaid in the future.</p>
+Nowadays, the growing individuals are trying to help others as they firmly believe that "Help others, and you will be helped when you are in need. " This proverb reflects the truth that kindness begets kindness. To start with, helping others can bring us a sense of satisfaction and happiness. When we do something good for others, we are usually rewarded with understanding, respect, and appreciation. It also makes us feel that we are being useful and making a difference in the world. Furthermore, helping others can also be beneficial to ourselves since it is one of the best ways to strengthen relationships and make new friends. In addition, when we help others, we are more likely to receive help in return when we are in need. This is because good deeds can inspire others to reciprocate or even surpass the kindness we gave in times of difficulties. For example, I had a friend who was struggling with a medical condition. He received lots of help from his family, friends, and colleagues. It was heartwarming to witness so many people coming together to support him during this trying time. In conclusion, helping others is not only beneficial to others, but also to ourselves.It is an act of kindness that will not only be appreciated, but also repaid in the future.
+
 <p>这篇作业我是直接用了ai写作的，它给了我一定的思路在，再遇到这样的作文时我不能再说不会写。<br>——————总结：<br>优秀表达上（也不说优秀，就是自己要积累一些吧）：<br>1.the growing individuals<br>2.proverb<br>3.reflect<br>4.beget<br>5.reciprocate<br>6.surpass</p>
 ]]></content>
       <categories>
@@ -459,9 +479,17 @@ id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性
   <entry>
     <title>一次失败的博客建立</title>
     <url>/2023/03/12/%E8%BF%98%E6%9C%AA%E6%88%90%E5%8A%9F%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/</url>
-    <content><![CDATA[<p>前言<br>    一个个人博客，我其实早就想创建了但是，一来没有时间，二来不知从何入手，所以我一直没能创建。</p>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+前言
+    一个个人博客，我其实早就想创建了但是，一来没有时间，二来不知从何入手，所以我一直没能创建。
 <span id="more"></span>
-<p>今天的博客是基于hugo框架+github page 搭建的个人博客，已经能够访问，但是准备好的主题却没能正常显示。这就算是我折腾两天的结果吧！记录以未来怀念。<br>步骤<br>    注意：我的步骤其实也是学习网络上hugo博客创建而来，觉得不清楚可以去搜索一下。<br>    运行环境：win11<br>    准备工具：1.git   2.hugo（下载最新版，记得下extended版的，下拉展开隐藏会有，我当时还找不到。。。）<br>安装hugo：你要先在文件路径没有空格的地方（推荐不是系统盘的根目录）创建hugo文件夹，在里面又创建一个bin文件夹和Sites文件夹，安装就是把这个就是把压缩包里的所有东西放到bin文件夹中（不要漏），把里面的.exe文件改名为hugo.exe，然后就是去配置hugo的环境变量了，配置为bin的路径，配置好就安装完成了。</p>
+今天的博客是基于hugo框架+github page 搭建的个人博客，已经能够访问，但是准备好的主题却没能正常显示。这就算是我折腾两天的结果吧！记录以未来怀念。
+步骤
+    注意：我的步骤其实也是学习网络上hugo博客创建而来，觉得不清楚可以去搜索一下。
+    运行环境：win11
+    准备工具：1.git   2.hugo（下载最新版，记得下extended版的，下拉展开隐藏会有，我当时还找不到。。。）
+安装hugo：你要先在文件路径没有空格的地方（推荐不是系统盘的根目录）创建hugo文件夹，在里面又创建一个bin文件夹和Sites文件夹，安装就是把这个就是把压缩包里的所有东西放到bin文件夹中（不要漏），把里面的.exe文件改名为hugo.exe，然后就是去配置hugo的环境变量了，配置为bin的路径，配置好就安装完成了。
+
 <p>接下来的操作：1.进入Sites文件夹打开cmd<br>   2.hugo new site +网站名<br>   3.cd 网站名<br>   4.这一步，我们要去将一个别人做好的主题下载到我们的themes文件夹（有些版本的hugo好像是theme），方法有两个，一个是网站下载，一个是git下载。网站下载去hugo官网选好主题按download跳转到github界面，直接在<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674201377650-82465745-511c-4e58-8f3f-4e26e4032cc3.png#averageHue=%23dbb187&clientId=uba3523dd-25dc-4&from=paste&height=389&id=u963cb658&name=image.png&originHeight=583&originWidth=657&originalType=binary&ratio=1&rotation=0&showTitle=false&size=50086&status=done&style=none&taskId=u9f26e0ee-eddb-49ff-852c-6d6451883d3&title=&width=438" alt="image.png"><br>下载，然后解压到themes。如果是git下载，就要复制上面的ssh，在网站文件夹命令行 git init<br>git submodule add + ssh themes&#x2F;主题名<br>echo theme &#x3D; “主题名“ &gt;&gt; config.toml        应用主题<br>hugo new 文件夹名&#x2F;文件名.md       添加.md内容，有些主题好像对文件夹名有要求<br>hugo server -t 主题名称 –buildDrafts          预览主题<br>也可直接运行博客<br>hugo server<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674202084263-26c29710-24ec-49c4-8a55-404a56f0f9d7.png#averageHue=%2311100f&clientId=uba3523dd-25dc-4&from=paste&height=394&id=uf6089aa2&name=image.png&originHeight=591&originWidth=928&originalType=binary&ratio=1&rotation=0&showTitle=false&size=60191&status=done&style=none&taskId=uc84cf6ce-9029-4ce1-9b61-d62a9410ccd&title=&width=618.6666666666666" alt="image.png"><br>在浏览器中访问  http：&#x2F;&#x2F;localhost:1313&#x2F;        就可以看到博客预览的样子，按ctrl + C结束<br>接下来进入themes&#x2F;主题名&#x2F;examplesite中  复制config.toml到网站文件夹覆盖掉原来的config.toml配置文件。然后命令行  hugo 就能生成public文件夹了,生成之后在public文件夹中   git init<br>5.我们这里要到github上创建仓库，仓库名要求是：github用户名.github.io<br>把README也勾选上，是public仓库。<br>6.我们在生成的public目录下，为git本地库添加远程库（仅第一次需要）命令行是：git remote add origin +ssh<br>git pull origin master –allow-unrelated-histories<br>git add .<br>git commit -m “first commit”        这个first commit是提交说明，可以改成其他的<br>git push -u origin master          提交远程<br>&lt;我看有些博客说在拉取前要先清空备份除.git文件夹以外的所有文件，add时再放入，但我没做好像也没事&gt;<br>7.然后就能在github pages 那里看到。大体步骤就是这些，为啥搞了两天呢？<br>下面我来唠唠：<br>hugo文件夹作用：<br>·archetypes: Archetypes 是内容模板文件，其中包含预配置的首选项（日期、标题、草稿<br>等）。可以用自定义的预配置前端字段创建新的原型。<br>·assets: Assets 文件夹存储所有文件，这些文件由Hugo Pipes 处理（例如 CSS&#x2F;Sass 文<br>件）。默认不创建这个目录。<br>·config.toml: Hugo使用 config.toml、config.yaml或 config.json（可以在网站根目<br>录中找到）作为默认网站配置文件。除了单独的配置文件之外，你还可以使用 config directory<br>来分隔不同的环境<br>·content：所有内容文件放在这里。顶级文件夹计为内容部分。如果你有 devops 和nodejs<br>部分，那么你需要有content&#x2F;devops&#x2F;first-post.md 和 content&#x2F;nodejs&#x2F;second-post.md 目<br>录。<br>·data：这里用来存储配置文件，Hug0会在生成你网站时用到<br>·layouts：以.html文件的形式存储模板。有关更多信息，请参见 Styling 部分<br>·static：存储所有静态内容：图片、CSS、JavaScript 等。当Hugo创建你的网站时，static 目<br>录中的所有资源均按原样复制<br>themes：你所选择的Hugo 主题<br>出错：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203817331-393a4a5e-8f57-4ea2-bb7d-9d9aad4be5d2.png#averageHue=%2313110f&clientId=uba3523dd-25dc-4&from=paste&height=103&id=u35080c44&name=image.png&originHeight=155&originWidth=1384&originalType=binary&ratio=1&rotation=0&showTitle=false&size=25563&status=done&style=none&taskId=u41383014-a6d1-4cb8-8293-bf6f36e34b3&title=&width=922.6666666666666" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203960893-7f22518a-ed24-416c-904c-c78985b7cfe9.png#clientId=uba3523dd-25dc-4&from=paste&height=130&id=u1b32907e&name=image.png&originHeight=195&originWidth=954&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29046&status=done&style=none&taskId=ud8f4c0cd-f19a-403e-9fd5-9160cdbfc4f&title=&width=636" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203736742-1e5d3f49-34d6-4b13-a353-f50023b77b0a.png#averageHue=%23191614&clientId=uba3523dd-25dc-4&from=paste&height=148&id=u51ce33ea&name=image.png&originHeight=222&originWidth=1444&originalType=binary&ratio=1&rotation=0&showTitle=false&size=46134&status=done&style=none&taskId=u6f492162-9bea-496e-8877-632cc3a14a9&title=&width=962.6666666666666" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203771391-acffef91-b538-496b-bfb2-ceaa1338de85.png#averageHue=%23e5feeb&clientId=uba3523dd-25dc-4&from=paste&height=234&id=u020a1dfb&name=image.png&originHeight=351&originWidth=803&originalType=binary&ratio=1&rotation=0&showTitle=false&size=26096&status=done&style=none&taskId=ub31895a1-cdf9-4024-bbbe-b1c8c0f69c5&title=&width=535.3333333333334" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203904069-5c3e6be5-80b5-424b-9e50-5123aa004300.png#averageHue=%23e2ba94&clientId=uba3523dd-25dc-4&from=paste&height=562&id=u27f7c7de&name=image.png&originHeight=843&originWidth=855&originalType=binary&ratio=1&rotation=0&showTitle=false&size=221075&status=done&style=none&taskId=uc5eb1cf8-a3a7-413b-9cb7-f2240c6d585&title=&width=570" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674204112772-4b50c8e3-d08f-4974-bb66-341f1c397ac8.png#averageHue=%23fee9e7&clientId=uba3523dd-25dc-4&from=paste&height=179&id=ua3b5032a&name=image.png&originHeight=268&originWidth=789&originalType=binary&ratio=1&rotation=0&showTitle=false&size=33708&status=done&style=none&taskId=uc351a646-f757-45a6-ac96-08bdafc9ff2&title=&width=526" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203910302-859f9727-1d00-4158-813d-794b757cec1b.png#averageHue=%23fcfcfc&clientId=uba3523dd-25dc-4&from=paste&height=93&id=u89cc7d1f&name=image.png&originHeight=140&originWidth=966&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21475&status=done&style=none&taskId=u0083b253-1b8b-4405-941e-c5990aeb780&title=&width=644" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674204128927-56e56fc6-3611-4248-b789-8839cb9c664b.png#averageHue=%23fbfbfb&clientId=uba3523dd-25dc-4&from=paste&height=551&id=uf6dc9392&name=image.png&originHeight=827&originWidth=505&originalType=binary&ratio=1&rotation=0&showTitle=false&size=86531&status=done&style=none&taskId=u8d92943c-dfd0-48d9-b21d-36cf69d6766&title=&width=336.6666666666667" alt="image.png"></p>
 ]]></content>
       <categories>
@@ -469,6 +497,628 @@ id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性
       </categories>
       <tags>
         <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL基础</title>
+    <url>/2023/03/13/mysql%E9%AB%98%E7%BA%A7/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+==此篇博客搬运自b站黑马程序员的javaweb学习资料，仅供个人学习参考，尊重他人知识劳动成果==
+
+<h2 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h2><p><strong>今日目标：</strong></p>
+<ul>
+<li>完成MySQL的安装及登陆基本操作</li>
+<li>能通过SQL对数据库进行CRUD</li>
+<li>能通过SQL对表进行CRUD</li>
+<li>能通过SQL对数据进行CRUD<span id="more"></span></li>
+</ul>
+<h2 id="1，数据库相关概念"><a href="#1，数据库相关概念" class="headerlink" title="1，数据库相关概念"></a>1，数据库相关概念</h2><p>以前我们做系统，数据持久化的存储采用的是文件存储。存储到文件中可以达到系统关闭数据不会丢失的效果，当然文件存储也有它的弊端。<br>假设在文件中存储以下的数据：<br>姓名	年龄	性别	住址 张三	23	男	北京西三旗 李四	24	女	北京西二旗 王五	25	男	西安软件新城<br>现要修改李四这条数据的性别数据改为男，我们现学习的IO技术可以通过将所有的数据读取到内存中，然后进行修改再存到该文件中。通过这种方式操作存在很大问题，现在只有三条数据，如果文件中存储1T的数据，那么就会发现内存根本就存储不了。<br>现需要既能持久化存储数据，也要能避免上述问题的技术使用在我们的系统中。数据库就是这样的一门技术。</p>
+<h3 id="1-1-数据库"><a href="#1-1-数据库" class="headerlink" title="1.1 数据库"></a>1.1 数据库</h3><ul>
+<li>存储和管理数据的仓库，数据是有组织的进行存储。</li>
+<li>数据库英文名是 DataBase，简称DB。</li>
+</ul>
+<p>数据库就是将数据存储在硬盘上，可以达到持久化存储的效果。那又是如何解决上述问题的？使用数据库管理系统。</p>
+<h3 id="1-2-数据库管理系统"><a href="#1-2-数据库管理系统" class="headerlink" title="1.2 数据库管理系统"></a>1.2 数据库管理系统</h3><ul>
+<li>管理数据库的大型软件</li>
+<li>英文：DataBase Management System，简称 DBMS</li>
+</ul>
+<p>在电脑上安装了数据库管理系统后，就可以通过数据库管理系统创建数据库来存储数据，也可以通过该系统对数据库中的数据进行数据的增删改查相关的操作。我们平时说的MySQL数据库其实是MySQL数据库管理系统。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670448-f876f028-3650-437b-86ba-9f1777697b8b.png#averageHue=%23e8effb&from=url&id=KEgms&originHeight=352&originWidth=421&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>通过上面的描述，大家应该已经知道了 数据库管理系统 和 数据库 的关系。那么有有哪些常见的数据库管理系统呢？</p>
+<h3 id="1-3-常见的数据库管理系统"><a href="#1-3-常见的数据库管理系统" class="headerlink" title="1.3 常见的数据库管理系统"></a>1.3 常见的数据库管理系统</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670556-45989d81-50b5-47ea-a1dd-97e8d2873bcd.png#averageHue=%23e5e2dc&from=url&id=pYz1N&originHeight=464&originWidth=1215&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>接下来对上面列举的数据库管理系统进行简单的介绍：</p>
+<ul>
+<li>Oracle：收费的大型数据库，Oracle 公司的产品</li>
+<li>MySQL： 开源免费的中小型数据库。后来 Sun公司收购了 MySQL，而 Sun 公司又被 Oracle 收购</li>
+<li>SQL Server：MicroSoft 公司收费的中型的数据库。C#、.net 等语言常使用</li>
+<li>PostgreSQL：开源免费中小型的数据库</li>
+<li>DB2：IBM 公司的大型收费数据库产品</li>
+<li>SQLite：嵌入式的微型数据库。如：作为 Android 内置数据库</li>
+<li>MariaDB：开源免费中小型的数据库</li>
+</ul>
+<p>我们课程上学习的是MySQL数据库管理系统，PostgreSQL在一些公司也有使用，此时大家肯定会想以后在公司中如果使用我们没有学习过程的PostgreSQL数据库管理系统怎么办？这点大家大可不必担心，如下图所示：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670736-88ee6661-2114-40a4-a4ea-29610e4d8612.png#averageHue=%23c7b2a1&from=url&id=kDYfG&originHeight=340&originWidth=618&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>我们可以通过数据库管理系统操作数据库，对数据库中的数据进行增删改查操作，而怎么样让用户跟数据库管理系统打交道呢？就可以通过一门编程语言（SQL）来实现。</p>
+<h3 id="1-4-SQL"><a href="#1-4-SQL" class="headerlink" title="1.4 SQL"></a>1.4 SQL</h3><ul>
+<li>英文：Structured Query Language，简称 SQL，结构化查询语言</li>
+<li>操作关系型数据库的编程语言</li>
+<li>定义操作所有关系型数据库的统一标准，可以使用SQL操作所有的关系型数据库管理系统，以后工作中如果使用到了其他的数据库管理系统，也同样的使用SQL来操作。</li>
+</ul>
+<h2 id="2，MySQL"><a href="#2，MySQL" class="headerlink" title="2，MySQL"></a>2，MySQL</h2><h3 id="2-1-MySQL安装"><a href="#2-1-MySQL安装" class="headerlink" title="2.1 MySQL安装"></a>2.1 MySQL安装</h3><p><strong>安装环境:Win10 64位</strong><br><strong>软件版本:MySQL 5.7.24 解压版</strong></p>
+<h4 id="2-1-1-下载"><a href="#2-1-1-下载" class="headerlink" title="2.1.1 下载"></a>2.1.1 下载</h4><p><a href="https://downloads.mysql.com/archives/community/">https://downloads.mysql.com/archives/community/</a><br>点开上面的链接就能看到如下界面：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670825-6d9955e2-d24e-4a98-8e02-7babb66380dc.png#averageHue=%23faf9f5&from=url&id=U6hlI&originHeight=829&originWidth=1798&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>选择选择和自己<strong>系统位数</strong>相对应的版本点击右边的Download，此时会进到另一个页面，同样在接近页面底部的地方找到如下图所示的位置：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714691851-5c3d7b01-0bee-4197-95b4-b69f0b6ae4e9.png#averageHue=%23f8f5f4&clientId=u8a39f7ae-d7b0-4&from=paste&id=u5b6c87e1&originHeight=386&originWidth=661&originalType=url&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&taskId=u2079adb1-3004-4c9a-b0bb-1e5c66d4013&title="><br>不用理会上面的登录和注册按钮，直接点击 No thanks, just start my download. 就可以下载。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670938-36266e0b-5cb2-4be5-a419-59df434ad39e.png#averageHue=%23f8f5f1&from=url&id=ZM2oK&originHeight=44&originWidth=249&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="2-1-2-安装-解压"><a href="#2-1-2-安装-解压" class="headerlink" title="2.1.2 安装(解压)"></a>2.1.2 安装(解压)</h4><p>下载完成后我们得到的是一个压缩包，将其解压，我们就可以得到MySQL 5.7.24的软件本体了(就是一个文件夹)，我们可以把它放在你想安装的位置。</p>
+<hr>
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671029-08a000e7-6bdd-4b9d-8ac5-fae2f153efce.png#averageHue=%23fcfbf9&from=url&id=daBpM&originHeight=263&originWidth=603&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="2-2-MySQL卸载"><a href="#2-2-MySQL卸载" class="headerlink" title="2.2 MySQL卸载"></a>2.2 MySQL卸载</h3><p>如果你想卸载MySQL，也很简单。<br>右键开始菜单，选择命令提示符(管理员)，打开黑框。</p>
+<ol>
+<li>敲入net stop mysql，回车。</li>
+</ol>
+<p>net stop mysql<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671111-cea35c49-d2e1-43de-8449-db1ff36e8d91.png#averageHue=%23363635&from=url&id=yEEkq&originHeight=192&originWidth=366&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ol>
+<li>再敲入mysqld -remove mysql，回车。</li>
+</ol>
+<p>mysqld -remove mysql<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671212-3c4e4047-74ce-4ea5-9f22-db3e634b1efa.png#averageHue=%23151515&from=url&id=fDCA6&originHeight=99&originWidth=336&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ol>
+<li>最后删除MySQL目录及相关的环境变量。</li>
+</ol>
+<p><strong>至此，MySQL卸载完成！</strong></p>
+<h3 id="2-3-MySQL配置"><a href="#2-3-MySQL配置" class="headerlink" title="2.3 MySQL配置"></a>2.3 MySQL配置</h3><h4 id="2-3-1-添加环境变量"><a href="#2-3-1-添加环境变量" class="headerlink" title="2.3.1 添加环境变量"></a>2.3.1 添加环境变量</h4><p>环境变量里面有很多选项，这里我们只用到Path这个参数。为什么在初始化的开始要添加环境变量呢？<br>在黑框(即CMD)中输入一个可执行程序的名字，Windows会先在环境变量中的Path所指的路径中寻找一遍，如果找到了就直接执行，没找到就在当前工作目录找，如果还没找到，就报错。我们添加环境变量的目的就是能够在任意一个黑框直接调用MySQL中的相关程序而不用总是修改工作目录，大大简化了操作。<br>右键此电脑→属性，点击高级系统设置<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671299-c2b0d79c-ce67-4d58-8b69-31a76088a1ce.png#averageHue=%23f9f5f4&from=url&id=nPxFD&originHeight=239&originWidth=275&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>点击环境变量<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671383-4e85dbc9-be2c-4167-9437-ca533b8c20ef.png#averageHue=%23f7f5f5&from=url&id=zeWZw&originHeight=586&originWidth=472&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>在系统变量中新建MYSQL_HOME<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671470-7e0d6f5c-a664-45d2-9ff4-42f1b4183ff8.png#averageHue=%23efefee&from=url&id=TfjFw&originHeight=181&originWidth=649&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>在系统变量中找到并<strong>双击</strong>Path<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671561-b3978943-3991-480b-8e90-68ddbedf9d5a.png#averageHue=%23f3f0ef&from=url&id=c4I2q&originHeight=646&originWidth=607&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>点击新建<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671647-01b137c8-7ce8-45e3-ae8e-5820145cee32.png#averageHue=%23f5f2f1&from=url&id=nkGlv&originHeight=413&originWidth=510&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>最后点击确定。<br><strong>如何验证是否添加成功？</strong><br>右键开始菜单(就是屏幕左下角)，选择命令提示符(管理员)，打开黑框，敲入mysql，回车。<br>如果提示Can’t connect to MySQL server on ‘localhost’则证明添加成功；<br>如果提示mysql不是内部或外部命令，也不是可运行的程序或批处理文件则表示添加添加失败，请重新检查步骤并重试。</p>
+<h4 id="2-3-2-新建配置文件"><a href="#2-3-2-新建配置文件" class="headerlink" title="2.3.2 新建配置文件"></a>2.3.2 新建配置文件</h4><p>新建一个文本文件，内容如下：<br>[mysql] default-character-set&#x3D;utf8 [mysqld] character-set-server&#x3D;utf8 default-storage-engine&#x3D;INNODB sql_mode&#x3D;STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION<br>把上面的文本文件另存为，在保存类型里选所有文件 (<em>.</em>)，文件名叫my.ini，存放的路径为MySQL的根目录(例如我的是D:\software\mysql-5.7.24-winx64,根据自己的MySQL目录位置修改)。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671740-4f0f9bff-5ba4-4e08-af4d-a330e14dad4d.png#averageHue=%23eeebe9&from=url&id=iIjbX&originHeight=282&originWidth=340&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671840-c9b3d11d-de94-45c1-a1cc-454aa018f4ca.png#averageHue=%23ebe6e5&from=url&id=xCJDl&originHeight=82&originWidth=584&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>上面代码意思就是配置数据库的默认编码集为utf-8和默认存储引擎为INNODB。</p>
+<h4 id="2-3-3-初始化MySQL"><a href="#2-3-3-初始化MySQL" class="headerlink" title="2.3.3 初始化MySQL"></a>2.3.3 初始化MySQL</h4><p>在刚才的黑框中敲入mysqld –initialize-insecure，回车，稍微等待一会，如果出现没有出现报错信息(如下图)则证明data目录初始化没有问题，此时再查看MySQL目录下已经有data目录生成。<br>mysqld –initialize-insecure<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671928-a4bc9fbc-147d-4eea-a9eb-01a8d25bccd4.png#averageHue=%23363636&from=url&id=JxWZw&originHeight=197&originWidth=491&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>tips：如果出现如下错误<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672023-259cbc11-3ba0-4f82-9fec-05e4167e355a.png#averageHue=%231e1a1a&from=url&id=sUjdw&originHeight=95&originWidth=959&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>是由于权限不足导致的，去C:\Windows\System32 下以管理员方式运行 cmd.exe<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672109-5191f0a9-939f-42fd-9a61-524dae6bf80f.png#averageHue=%23f1edec&from=url&id=dMBd1&originHeight=188&originWidth=459&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672192-9356fe91-8662-44e7-85a1-b4355bc35602.png#averageHue=%23454343&from=url&id=qwrjm&originHeight=147&originWidth=730&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="2-3-4-注册MySQL服务"><a href="#2-3-4-注册MySQL服务" class="headerlink" title="2.3.4 注册MySQL服务"></a>2.3.4 注册MySQL服务</h4><p>在黑框里敲入mysqld -install，回车。<br>mysqld -install<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672300-029066a9-ace1-42c9-b8c0-9effa353699c.png#averageHue=%23131313&from=url&id=pDZ3h&originHeight=93&originWidth=441&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>现在你的计算机上已经安装好了MySQL服务了。<br>MySQL服务器</p>
+<h4 id="2-3-5-启动MySQL服务"><a href="#2-3-5-启动MySQL服务" class="headerlink" title="2.3.5 启动MySQL服务"></a>2.3.5 启动MySQL服务</h4><p>在黑框里敲入net start mysql，回车。<br>net start mysql  &#x2F;&#x2F; 启动mysql服务      net stop mysql  &#x2F;&#x2F; 停止mysql服务<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672378-ec8c20bb-24c4-4d5c-91c5-2c1cd7d700c8.png#averageHue=%231d1d1d&from=url&id=Zo1qP&originHeight=68&originWidth=297&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="2-3-6-修改默认账户密码"><a href="#2-3-6-修改默认账户密码" class="headerlink" title="2.3.6 修改默认账户密码"></a>2.3.6 修改默认账户密码</h4><p>在黑框里敲入mysqladmin -u root password 1234，这里的1234就是指默认管理员(即root账户)的密码，可以自行修改成你喜欢的。<br>mysqladmin -u root password 1234<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672460-a74974cc-864c-41d8-91e3-a5497f7b1ec5.png#averageHue=%231a1a1a&from=url&id=yW3MC&originHeight=75&originWidth=726&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br><strong>至此，MySQL 5.7 解压版安装完毕！</strong></p>
+<h3 id="2-4-MySQL登陆和退出"><a href="#2-4-MySQL登陆和退出" class="headerlink" title="2.4 MySQL登陆和退出"></a>2.4 MySQL登陆和退出</h3><h4 id="2-4-1-登陆"><a href="#2-4-1-登陆" class="headerlink" title="2.4.1 登陆"></a>2.4.1 登陆</h4><p>右键开始菜单，选择命令提示符，打开黑框。<br>在黑框中输入，mysql -uroot -p1234，回车，出现下图且左下角为mysql&gt;，则登录成功。<br>mysql -uroot -p1234<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672547-84e73281-5ea3-41f1-9df1-5d9b7cdf8183.png#averageHue=%23282828&from=url&id=QHdlZ&originHeight=323&originWidth=640&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br><strong>到这里你就可以开始你的MySQL之旅了！</strong><br>登陆参数：<br>mysql -u用户名 -p密码 -h要连接的mysql服务器的ip地址(默认127.0.0.1) -P端口号(默认3306) </p>
+<h4 id="2-4-2-退出"><a href="#2-4-2-退出" class="headerlink" title="2.4.2 退出"></a>2.4.2 退出</h4><p>退出mysql：<br>exit quit </p>
+<h3 id="2-5-MySQL数据模型"><a href="#2-5-MySQL数据模型" class="headerlink" title="2.5 MySQL数据模型"></a>2.5 MySQL数据模型</h3><p><strong>关系型数据库：</strong><br>关系型数据库是建立在关系模型基础上的数据库，简单说，关系型数据库是由多张能互相连接的 二维表 组成的数据库<br>如下图，订单信息表 和 客户信息表 都是有行有列二维表我们将这样的称为关系型数据库。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672628-6e5bef07-a2ab-4cc5-8d40-7ddc7bf104cd.png#averageHue=%23f6f6ea&from=url&id=jE11i&originHeight=217&originWidth=1251&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>接下来看关系型数据库的优点：</p>
+<ul>
+<li>都是使用表结构，格式一致，易于维护。</li>
+<li>使用通用的 SQL 语言操作，使用方便，可用于复杂查询。 <ul>
+<li>关系型数据库都可以通过SQL进行操作，所以使用方便。</li>
+<li>复杂查询。现在需要查询001号订单数据，我们可以看到该订单是1号客户的订单，而1号订单是李聪这个客户。以后也可以在一张表中进行统计分析等操作。</li>
+</ul>
+</li>
+<li>数据存储在磁盘中，安全。</li>
+</ul>
+<p><strong>数据模型：</strong><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672720-e0cc70a2-2c01-4fb9-b3c2-abe1c509a411.png#averageHue=%23fbfafa&from=url&id=u8goD&originHeight=483&originWidth=1047&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>如上图，我们通过客户端可以通过数据库管理系统创建数据库，在数据库中创建表，在表中添加数据。创建的每一个数据库对应到磁盘上都是一个文件夹。比如可以通过SQL语句创建一个数据库（数据库名称为db1），语句如下。该语句咱们后面会学习。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672818-1e215a58-2dda-439d-88ff-3960f060e9fa.png#averageHue=%23181815&from=url&id=MgHE5&originHeight=44&originWidth=304&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>我们可以在数据库安装目录下的data目录下看到多了一个 db1 的文件夹。所以，<strong>在MySQL中一个数据库对应到磁盘上的一个文件夹。</strong><br>而一个数据库下可以创建多张表，我们到MySQL中自带的mysql数据库的文件夹目录下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672901-824574b5-a83a-4b20-a69f-992f4ca0613b.png#averageHue=%23ebe7dc&from=url&id=uXNCv&originHeight=251&originWidth=1102&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>而上图中右边的 db.frm 是表文件，db.MYD 是数据文件，通过这两个文件就可以查询到数据展示成二维表的效果。<br><strong>小结：</strong></p>
+<ul>
+<li>MySQL中可以创建多个数据库，每个数据库对应到磁盘上的一个文件夹</li>
+<li>在每个数据库中可以创建多个表，每张都对应到磁盘上一个 frm 文件</li>
+<li>每张表可以存储多条数据，数据会被存储到磁盘中 MYD 文件中</li>
+</ul>
+<h2 id="3，SQL概述"><a href="#3，SQL概述" class="headerlink" title="3，SQL概述"></a>3，SQL概述</h2><p>了解了数据模型后，接下来我们就学习SQL语句，通过SQL语句对数据库、表、数据进行增删改查操作。</p>
+<h3 id="3-1-SQL简介"><a href="#3-1-SQL简介" class="headerlink" title="3.1 SQL简介"></a>3.1 SQL简介</h3><ul>
+<li>英文：Structured Query Language，简称 SQL</li>
+<li>结构化查询语言，一门操作关系型数据库的编程语言</li>
+<li>定义操作所有关系型数据库的统一标准</li>
+<li>对于同一个需求，每一种数据库操作的方式可能会存在一些不一样的地方，我们称为“方言”</li>
+</ul>
+<h3 id="3-2-通用语法"><a href="#3-2-通用语法" class="headerlink" title="3.2 通用语法"></a>3.2 通用语法</h3><ul>
+<li>SQL 语句可以单行或多行书写，以分号结尾。<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673008-699c8af7-ecd2-4d14-a3b2-5a2bbf5f4ebc.png#averageHue=%2327261e&from=url&id=BMYW6&originHeight=241&originWidth=281&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">如上，以分号结尾才是一个完整的sql语句。</li>
+<li>MySQL 数据库的 SQL 语句不区分大小写，关键字建议使用大写。同样的一条sql语句写成下图的样子，一样可以运行处结果。<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673103-a956a982-764b-4f09-b5c8-f897da73000d.png#averageHue=%2325231c&from=url&id=dy8De&originHeight=242&originWidth=284&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>注释<ul>
+<li>单行注释: – 注释内容 或 #注释内容(MySQL 特有)<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673187-9ef223d1-3030-4cb5-a05b-db53144caa82.png#averageHue=%232d2720&from=url&id=XsOSU&originHeight=234&originWidth=488&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673288-470af100-8489-4ce3-b9ac-b09c17fdcfc3.png#averageHue=%232e2821&from=url&id=xoQrV&originHeight=234&originWidth=475&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">注意：使用– 添加单行注释时，–后面一定要加空格，而#没有要求。</li>
+<li>多行注释: &#x2F;_ 注释 _&#x2F;</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-SQL分类"><a href="#3-3-SQL分类" class="headerlink" title="3.3 SQL分类"></a>3.3 SQL分类</h3><ul>
+<li>DDL(Data Definition Language) ： 数据定义语言，用来定义数据库对象：数据库，表，列等DDL简单理解就是用来操作数据库，表等<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673391-e4be0ca4-c96b-433d-b5b1-6fe0d8602acf.png#averageHue=%23f7f3ec&from=url&id=d6Dfd&originHeight=509&originWidth=1111&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>DML(Data Manipulation Language) 数据操作语言，用来对数据库中表的数据进行增删改DML简单理解就对表中数据进行增删改<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673515-96f8f8bd-2c53-4813-94fd-ced9ce69bd6e.png#averageHue=%23f5f2eb&from=url&id=X2QR7&originHeight=512&originWidth=1090&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>DQL(Data Query Language) 数据查询语言，用来查询数据库中表的记录(数据)DQL简单理解就是对数据进行查询操作。从数据库表中查询到我们想要的数据。</li>
+<li>DCL(Data Control Language) 数据控制语言，用来定义数据库的访问权限和安全级别，及创建用户DML简单理解就是对数据库进行权限控制。比如我让某一个数据库表只能让某一个用户进行操作等。</li>
+</ul>
+<p>注意： 以后我们最常操作的是 DML 和 DQL ，因为我们开发中最常操作的就是数据。</p>
+<h2 id="4，DDL-操作数据库"><a href="#4，DDL-操作数据库" class="headerlink" title="4，DDL:操作数据库"></a>4，DDL:操作数据库</h2><p>我们先来学习DDL来操作数据库。而操作数据库主要就是对数据库的增删查操作。</p>
+<h3 id="4-1-查询"><a href="#4-1-查询" class="headerlink" title="4.1 查询"></a>4.1 查询</h3><p>查询所有的数据库<br>SHOW DATABASES;<br>运行上面语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673630-41cfd29e-804e-4040-a881-d5b8012796de.png#averageHue=%2324231c&from=url&id=eDhha&originHeight=219&originWidth=298&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>上述查询到的是的这些数据库是mysql安装好自带的数据库，我们以后不要操作这些数据库。</p>
+<h3 id="4-2-创建数据库"><a href="#4-2-创建数据库" class="headerlink" title="4.2 创建数据库"></a>4.2 创建数据库</h3><ul>
+<li><strong>创建数据库</strong>：</li>
+</ul>
+<p>CREATE DATABASE 数据库名称;<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673715-1b30bea7-4bc9-4ed9-8693-b1148f684678.png#averageHue=%232e2921&from=url&id=PlGdS&originHeight=306&originWidth=401&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>而在创建数据库的时候，我并不知道db1数据库有没有创建，直接再次创建名为db1的数据库就会出现错误。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673808-dd6cfc69-816f-43bb-89c1-80f318b94f6f.png#averageHue=%232a2920&from=url&id=fj7XI&originHeight=53&originWidth=734&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>为了避免上面的错误，在创建数据库的时候先做判断，如果不存在再创建。</p>
+<ul>
+<li><strong>创建数据库(判断，如果不存在则创建)</strong></li>
+</ul>
+<p>CREATE DATABASE IF NOT EXISTS 数据库名称;<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673894-fb91cdfb-5540-4846-b773-d179d8a0b586.png#averageHue=%232f2a22&from=url&id=Z3CP1&originHeight=388&originWidth=525&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上面的效果可以看到虽然db1数据库已经存在，再创建db1也没有报错，而创建db2数据库则创建成功。</p>
+<h3 id="4-3-删除数据库"><a href="#4-3-删除数据库" class="headerlink" title="4.3 删除数据库"></a>4.3 删除数据库</h3><ul>
+<li><strong>删除数据库</strong></li>
+</ul>
+<p>DROP DATABASE 数据库名称; </p>
+<ul>
+<li><strong>删除数据库(判断，如果存在则删除)</strong></li>
+</ul>
+<p>DROP DATABASE IF EXISTS 数据库名称;<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673992-dd5a4e1f-a2f9-4d9a-b96d-8446a42999d3.png#averageHue=%2323251d&from=url&id=eRhxx&originHeight=94&originWidth=781&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="4-4-使用数据库"><a href="#4-4-使用数据库" class="headerlink" title="4.4 使用数据库"></a>4.4 使用数据库</h3><p>数据库创建好了，要在数据库中创建表，得先明确在哪儿个数据库中操作，此时就需要使用数据库。</p>
+<ul>
+<li><strong>使用数据库</strong></li>
+</ul>
+<p>USE 数据库名称; </p>
+<ul>
+<li><strong>查看当前使用的数据库</strong></li>
+</ul>
+<p>SELECT DATABASE();<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674092-56fcd588-a387-4488-a853-24f3facaf1ff.png#averageHue=%232e2a21&from=url&id=lyz2S&originHeight=204&originWidth=311&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="5，DDL-操作表"><a href="#5，DDL-操作表" class="headerlink" title="5，DDL:操作表"></a>5，DDL:操作表</h2><p>操作表也就是对表进行增（Create）删（Retrieve）改（Update）查（Delete）。</p>
+<h3 id="5-1-查询表"><a href="#5-1-查询表" class="headerlink" title="5.1 查询表"></a>5.1 查询表</h3><ul>
+<li><strong>查询当前数据库下所有表名称</strong></li>
+</ul>
+<p>SHOW TABLES;<br>我们创建的数据库中没有任何表，因此我们进入mysql自带的mysql数据库，执行上述语句查看<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674184-96b4dd67-d76e-48b1-9b3e-03da65f9d7da.png#averageHue=%23202622&from=url&id=nR0Xb&originHeight=68&originWidth=213&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><strong>查询表结构</strong></li>
+</ul>
+<p>DESC 表名称;<br>查看mysql数据库中func表的结构，运行语句如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674282-746e0e01-ff80-448b-bc1f-273717f05dca.png#averageHue=%2328241d&from=url&id=iDCOl&originHeight=218&originWidth=804&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="5-2-创建表"><a href="#5-2-创建表" class="headerlink" title="5.2 创建表"></a>5.2 创建表</h3><ul>
+<li><strong>创建表</strong></li>
+</ul>
+<p>CREATE TABLE 表名 ( 	字段名1  数据类型1, 	字段名2  数据类型2, 	… 	字段名n  数据类型n );<br>注意：最后一行末尾，不能加逗号<br>知道了创建表的语句，那么我们创建创建如下结构的表<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674377-4603260a-0b76-4687-a9ef-3f5cd9a9c0f0.png#averageHue=%23ededed&from=url&id=eLqV8&originHeight=160&originWidth=369&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">create table tb_user ( 	id int,     username varchar(20),     password varchar(32) );<br>运行语句如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674464-22c3290b-3b6a-4857-92a6-69b25f6c05c0.png#averageHue=%232e2821&from=url&id=TwTzS&originHeight=517&originWidth=684&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="5-3-数据类型"><a href="#5-3-数据类型" class="headerlink" title="5.3 数据类型"></a>5.3 数据类型</h3><p>MySQL 支持多种类型，可以分为三类：</p>
+<ul>
+<li>数值tinyint : 小整数型，占一个字节 int	： 大整数类型，占四个字节 	eg ： age int double ： 浮点类型 	使用格式： 字段名 double(总长度,小数点后保留的位数) 	eg ： score double(5,2)    </li>
+<li>日期date ： 日期值。只包含年月日 	eg ：birthday date ：  datetime ： 混合日期和时间值。包含年月日时分秒 </li>
+<li>字符串char ： 定长字符串。 	优点：存储性能高 	缺点：浪费空间 	eg ： name char(10)  如果存储的数据字符个数不足10个，也会占10个的空间 varchar ： 变长字符串。 	优点：节约空间 	缺点：存储性能底 	eg ： name varchar(10) 如果存储的数据字符个数不足10个，那就数据字符个数是几就占几个的空间</li>
+</ul>
+<p>	 </p>
+<p>注意：其他类型参考资料中的《MySQL数据类型].xlsx》<br><strong>案例：</strong><br>需求：设计一张学生表，请注重数据类型、长度的合理性 	1. 编号 	2. 姓名，姓名最长不超过10个汉字 	3. 性别，因为取值只有两种可能，因此最多一个汉字 	4. 生日，取值为年月日 	5. 入学成绩，小数点后保留两位 	6. 邮件地址，最大长度不超过 64 	7. 家庭联系电话，不一定是手机号码，可能会出现 - 等字符 	8. 学生状态（用数字表示，正常、休学、毕业…）<br>语句设计如下：<br>create table student ( 	id int,     name varchar(10),     gender char(1),     birthday date,     score double(5,2),     email varchar(15),     tel varchar(15),     status tinyint ); </p>
+<h3 id="5-4-删除表"><a href="#5-4-删除表" class="headerlink" title="5.4 删除表"></a>5.4 删除表</h3><ul>
+<li><strong>删除表</strong></li>
+</ul>
+<p>DROP TABLE 表名; </p>
+<ul>
+<li><strong>删除表时判断表是否存在</strong></li>
+</ul>
+<p>DROP TABLE IF EXISTS 表名;<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674568-08777ee8-5b6b-4983-a791-be93c264c1c0.png#averageHue=%23362f25&from=url&id=JfllM&originHeight=327&originWidth=624&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="5-5-修改表"><a href="#5-5-修改表" class="headerlink" title="5.5 修改表"></a>5.5 修改表</h3><ul>
+<li><strong>修改表名</strong></li>
+</ul>
+<p>ALTER TABLE 表名 RENAME TO 新的表名; – 将表名student修改为stu alter table student rename to stu; </p>
+<ul>
+<li><strong>添加一列</strong></li>
+</ul>
+<p>ALTER TABLE 表名 ADD 列名 数据类型; – 给stu表添加一列address，该字段类型是varchar(50) alter table stu add address varchar(50); </p>
+<ul>
+<li><strong>修改数据类型</strong></li>
+</ul>
+<p>ALTER TABLE 表名 MODIFY 列名 新数据类型; – 将stu表中的address字段的类型改为 char(50) alter table stu modify address char(50); </p>
+<ul>
+<li><strong>修改列名和数据类型</strong></li>
+</ul>
+<p>ALTER TABLE 表名 CHANGE 列名 新列名 新数据类型; – 将stu表中的address字段名改为 addr，类型改为varchar(50) alter table stu change address addr varchar(50); </p>
+<ul>
+<li><strong>删除列</strong></li>
+</ul>
+<p>ALTER TABLE 表名 DROP 列名; – 将stu表中的addr字段 删除 alter table stu drop addr; </p>
+<h2 id="6，navicat使用"><a href="#6，navicat使用" class="headerlink" title="6，navicat使用"></a>6，navicat使用</h2><p>通过上面的学习，我们发现在命令行中写sql语句特别不方便，尤其是编写创建表的语句，我们只能在记事本上写好后直接复制到命令行进行执行。那么有没有刚好的工具提供给我们进行使用呢？ 有。</p>
+<h3 id="6-1-navicat概述"><a href="#6-1-navicat概述" class="headerlink" title="6.1 navicat概述"></a>6.1 navicat概述</h3><ul>
+<li>Navicat for MySQL 是管理和开发 MySQL 或 MariaDB 的理想解决方案。</li>
+<li>这套全面的前端工具为数据库管理、开发和维护提供了一款直观而强大的图形界面。</li>
+<li>官网： <a href="http://www.navicat.com.cn/">http://www.navicat.com.cn</a></li>
+</ul>
+<h3 id="6-2-navicat安装"><a href="#6-2-navicat安装" class="headerlink" title="6.2 navicat安装"></a>6.2 navicat安装</h3><p>参考 : 资料\navicat安装包\navicat_mysql_x86\navicat安装步骤.md</p>
+<h3 id="6-3-navicat使用"><a href="#6-3-navicat使用" class="headerlink" title="6.3 navicat使用"></a>6.3 navicat使用</h3><h4 id="6-3-1-建立和mysql服务的连接"><a href="#6-3-1-建立和mysql服务的连接" class="headerlink" title="6.3.1 建立和mysql服务的连接"></a>6.3.1 建立和mysql服务的连接</h4><p>第一步： 点击连接，选择MySQL<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674718-7c3d5a67-9143-4b48-91d9-232dab66e4fb.png#averageHue=%23e4dfd6&from=url&id=CKjFS&originHeight=194&originWidth=880&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>第二步：填写连接数据库必要的信息<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674820-96790521-f841-4ce6-9ea7-9adb7587ceb2.png#averageHue=%23f9f8f8&from=url&id=C3SBc&originHeight=589&originWidth=523&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>以上操作没有问题就会出现如下图所示界面：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675000-547ad4bd-9252-445a-8d03-3cc5fb81217d.png#averageHue=%23ededed&from=url&id=IRr8C&originHeight=142&originWidth=217&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="6-3-2-操作"><a href="#6-3-2-操作" class="headerlink" title="6.3.2 操作"></a>6.3.2 操作</h4><p>连接成功后就能看到如下图界面：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675090-70d3288f-5def-49a5-8850-0c22d2bf3491.png#averageHue=%23f3f2f1&from=url&id=cQMtF&originHeight=256&originWidth=890&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><strong>修改表结构</strong></li>
+</ul>
+<p>通过下图操作修改表结构：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675189-56cb285e-7b84-40d1-be30-a92fcf85d13e.png#averageHue=%23f2f2f0&from=url&id=Lf5HY&originHeight=293&originWidth=883&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>点击了设计表后即出现如下图所示界面，在图中红框中直接修改字段名，类型等信息：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675284-c361f191-1578-4ce7-a6f1-4436cd8183f8.png#averageHue=%23e0dad0&from=url&id=jUFqb&originHeight=439&originWidth=934&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><strong>编写SQL语句并执行</strong></li>
+</ul>
+<p>按照如下图所示进行操作即可书写SQL语句并执行sql语句。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675391-de7d58eb-7692-40cb-95ea-62d624cd18f6.png#averageHue=%23dbd1c3&from=url&id=HTUN7&originHeight=420&originWidth=921&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="7，DML"><a href="#7，DML" class="headerlink" title="7，DML"></a>7，DML</h2><p>DML主要是对数据进行增（insert）删（delete）改（update）操作。</p>
+<h3 id="7-1-添加数据"><a href="#7-1-添加数据" class="headerlink" title="7.1 添加数据"></a>7.1 添加数据</h3><ul>
+<li><strong>给指定列添加数据</strong></li>
+</ul>
+<p>INSERT INTO 表名(列名1,列名2,…) VALUES(值1,值2,…); </p>
+<ul>
+<li><strong>给全部列添加数据</strong></li>
+</ul>
+<p>INSERT INTO 表名 VALUES(值1,值2,…); </p>
+<ul>
+<li><strong>批量添加数据</strong></li>
+</ul>
+<p>INSERT INTO 表名(列名1,列名2,…) VALUES(值1,值2,…),(值1,值2,…),(值1,值2,…)…; INSERT INTO 表名 VALUES(值1,值2,…),(值1,值2,…),(值1,值2,…)…; </p>
+<ul>
+<li><strong>练习</strong></li>
+</ul>
+<p>为了演示以下的增删改操作是否操作成功，故先将查询所有数据的语句介绍给大家：<br>select * from stu; – 给指定列添加数据 INSERT INTO stu (id, NAME) VALUES (1, ‘张三’); – 给所有列添加数据，列名的列表可以省略的 INSERT INTO stu (id,NAME,sex,birthday,score,email,tel,STATUS) VALUES (2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#x69;&#x73;&#105;&#x40;&#105;&#116;&#x63;&#x61;&#x73;&#x74;&#x2e;&#99;&#110;">&#108;&#x69;&#x73;&#105;&#x40;&#105;&#116;&#x63;&#x61;&#x73;&#x74;&#x2e;&#99;&#110;</a>‘,’13888888888’,1); INSERT INTO stu VALUES (2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#x69;&#115;&#x69;&#x40;&#x69;&#116;&#99;&#97;&#115;&#116;&#46;&#99;&#x6e;">&#108;&#x69;&#115;&#x69;&#x40;&#x69;&#116;&#99;&#97;&#115;&#116;&#46;&#99;&#x6e;</a>‘,’13888888888’,1); – 批量添加数据 INSERT INTO stu VALUES  	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#x6c;&#x69;&#115;&#105;&#64;&#x69;&#x74;&#x63;&#97;&#115;&#116;&#46;&#99;&#110;">&#x6c;&#x69;&#115;&#105;&#64;&#x69;&#x74;&#x63;&#97;&#115;&#116;&#46;&#99;&#110;</a>‘,’13888888888’,1), 	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#x69;&#x73;&#x69;&#64;&#105;&#116;&#x63;&#x61;&#115;&#116;&#x2e;&#99;&#110;">&#108;&#x69;&#x73;&#x69;&#64;&#105;&#116;&#x63;&#x61;&#115;&#116;&#x2e;&#99;&#110;</a>‘,’13888888888’,1), 	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#x6c;&#105;&#115;&#x69;&#x40;&#105;&#116;&#99;&#x61;&#115;&#x74;&#46;&#x63;&#x6e;">&#x6c;&#105;&#115;&#x69;&#x40;&#105;&#116;&#99;&#x61;&#115;&#x74;&#46;&#x63;&#x6e;</a>‘,’13888888888’,1); </p>
+<h3 id="7-2-修改数据"><a href="#7-2-修改数据" class="headerlink" title="7.2 修改数据"></a>7.2 修改数据</h3><ul>
+<li><strong>修改表数据</strong></li>
+</ul>
+<p>UPDATE 表名 SET 列名1&#x3D;值1,列名2&#x3D;值2,… [WHERE 条件] ;<br>注意：</p>
+<ol>
+<li>修改语句中如果不加条件，则将所有数据都修改！</li>
+<li>像上面的语句中的中括号，表示在写sql语句中可以省略这部分</li>
+</ol>
+<ul>
+<li><strong>练习</strong>update stu set sex &#x3D; ‘女’ where name &#x3D; ‘张三’; <ul>
+<li>将张三的性别改为女</li>
+<li>将张三的生日改为 1999-12-12 分数改为99.99update stu set birthday &#x3D; ‘1999-12-12’, score &#x3D; 99.99 where name &#x3D; ‘张三’; </li>
+<li>注意：如果update语句没有加where条件，则会将表中所有数据全部修改！update stu set sex &#x3D; ‘女’; 上面语句的执行完后查询到的结果是：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675505-7981eca9-8cc4-413e-a433-563baae5d8b2.png#averageHue=%23e2ded4&from=url&id=vAKuD&originHeight=167&originWidth=539&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+</ul>
+</li>
+</ul>
+<h3 id="7-3-删除数据"><a href="#7-3-删除数据" class="headerlink" title="7.3 删除数据"></a>7.3 删除数据</h3><ul>
+<li><strong>删除数据</strong></li>
+</ul>
+<p>DELETE FROM 表名 [WHERE 条件] ; </p>
+<ul>
+<li><strong>练习</strong></li>
+</ul>
+<p>– 删除张三记录 delete from stu where name &#x3D; ‘张三’; – 删除stu表中所有的数据 delete from stu; </p>
+<h2 id="8，DQL"><a href="#8，DQL" class="headerlink" title="8，DQL"></a>8，DQL</h2><p>下面是黑马程序员展示试题库数据的页面<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675593-25dc3496-2a56-42c6-9c5d-1f40716a889d.png#averageHue=%23f7f7f6&from=url&id=Gbxjr&originHeight=639&originWidth=1617&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>页面上展示的数据肯定是在数据库中的试题库表中进行存储，而我们需要将数据库中的数据查询出来并展示在页面给用户看。上图中的是最基本的查询效果，那么数据库其实是很多的，不可能在将所有的数据在一页进行全部展示，而页面上会有分页展示的效果，如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675733-1fcf6c7c-fae1-4eaf-b878-e70175587b58.png#averageHue=%23f8f8f8&from=url&id=Sc5Rw&originHeight=47&originWidth=1518&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>当然上图中的难度字段当我们点击也可以实现排序查询操作。从这个例子我们就可以看出，对于数据库的查询时灵活多变的，需要根据具体的需求来实现，而数据库查询操作也是最重要的操作，所以此部分需要大家重点掌握。<br>接下来我们先介绍查询的完整语法：<br>SELECT      字段列表 FROM      表名列表  WHERE      条件列表 GROUP BY     分组字段 HAVING     分组后条件 ORDER BY     排序字段 LIMIT     分页限定<br>为了给大家演示查询的语句，我们需要先准备表及一些数据：<br>– 删除stu表 drop table if exists stu; – 创建stu表 CREATE TABLE stu (  id int, – 编号  name varchar(20), – 姓名  age int, – 年龄  sex varchar(5), – 性别  address varchar(100), – 地址  math double(5,2), – 数学成绩  english double(5,2), – 英语成绩  hire_date date – 入学时间 ); – 添加数据 INSERT INTO stu(id,NAME,age,sex,address,math,english,hire_date)  VALUES  (1,’马运’,55,’男’,’杭州’,66,78,’1995-09-01’), (2,’马花疼’,45,’女’,’深圳’,98,87,’1998-09-01’), (3,’马斯克’,55,’男’,’香港’,56,77,’1999-09-02’), (4,’柳白’,20,’女’,’湖南’,76,65,’1997-09-05’), (5,’柳青’,20,’男’,’湖南’,86,NULL,’1998-09-01’), (6,’刘德花’,57,’男’,’香港’,99,99,’1998-09-01’), (7,’张学右’,22,’女’,’香港’,99,99,’1998-09-01’), (8,’德玛西亚’,18,’男’,’南京’,56,65,’1994-09-02’);<br>接下来咱们从最基本的查询语句开始学起。</p>
+<h3 id="8-1-基础查询"><a href="#8-1-基础查询" class="headerlink" title="8.1 基础查询"></a>8.1 基础查询</h3><h4 id="8-1-1-语法"><a href="#8-1-1-语法" class="headerlink" title="8.1.1 语法"></a>8.1.1 语法</h4><ul>
+<li><strong>查询多个字段</strong></li>
+</ul>
+<p>SELECT 字段列表 FROM 表名; SELECT * FROM 表名; – 查询所有数据 </p>
+<ul>
+<li><strong>去除重复记录</strong></li>
+</ul>
+<p>SELECT DISTINCT 字段列表 FROM 表名; </p>
+<ul>
+<li><strong>起别名</strong></li>
+</ul>
+<p>AS: AS 也可以省略 </p>
+<h4 id="8-1-2-练习"><a href="#8-1-2-练习" class="headerlink" title="8.1.2 练习"></a>8.1.2 练习</h4><ul>
+<li>查询name、age两列select name,age from stu; </li>
+<li>查询所有列的数据，列名的列表可以使用<em>替代select * from stu; 上面语句中的</em>不建议大家使用，因为在这写<em>不方便我们阅读sql语句。我们写字段列表的话，可以添加注释对每一个字段进行说明<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675824-262a94ab-b898-4448-8144-c8cc94d1d89a.png#averageHue=%23f3f4eb&from=url&id=tfx7O&originHeight=122&originWidth=218&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">而在上课期间为了简约课程的时间，老师很多地方都会写</em>。</li>
+<li>查询地址信息select address from stu; 执行上面语句结果如下：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675910-b90cff4e-158d-4044-86f6-5a880e8d5957.png#averageHue=%23d5cfc6&from=url&id=PQwmL&originHeight=251&originWidth=210&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">从上面的结果我们可以看到有重复的数据，我们也可以使用 distinct 关键字去重重复数据。</li>
+<li>去除重复记录select distinct address from stu; </li>
+<li>查询姓名、数学成绩、英语成绩。并通过as给math和english起别名（as关键字可以省略）select name,math as 数学成绩,english as 英文成绩 from stu; select name,math 数学成绩,english 英文成绩 from stu;</li>
+</ul>
+<h3 id="8-2-条件查询"><a href="#8-2-条件查询" class="headerlink" title="8.2 条件查询"></a>8.2 条件查询</h3><h4 id="8-2-1-语法"><a href="#8-2-1-语法" class="headerlink" title="8.2.1 语法"></a>8.2.1 语法</h4><p>SELECT 字段列表 FROM 表名 WHERE 条件列表; </p>
+<ul>
+<li><strong>条件</strong></li>
+</ul>
+<p>条件列表可以使用以下运算符<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675991-55a7bce1-e557-472a-99f7-c21c873eab33.png#averageHue=%23faf9f9&from=url&id=nmnVq&originHeight=703&originWidth=1133&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="8-2-2-条件查询练习"><a href="#8-2-2-条件查询练习" class="headerlink" title="8.2.2 条件查询练习"></a>8.2.2 条件查询练习</h4><ul>
+<li>查询年龄大于20岁的学员信息select * from stu where age &gt; 20; </li>
+<li>查询年龄大于等于20岁的学员信息select * from stu where age &gt;&#x3D; 20; </li>
+<li>查询年龄大于等于20岁 并且 年龄 小于等于 30岁 的学员信息select * from stu where age &gt;&#x3D; 20 &amp;&amp;  age &lt;&#x3D; 30; select * from stu where age &gt;&#x3D; 20 and  age &lt;&#x3D; 30; 上面语句中 &amp;&amp; 和 and 都表示并且的意思。建议使用 and 。也可以使用 between … and 来实现上面需求select * from stu where age BETWEEN 20 and 30; </li>
+<li>查询入学日期在’1998-09-01’ 到 ‘1999-09-01’ 之间的学员信息select * from stu where hire_date BETWEEN ‘1998-09-01’ and ‘1999-09-01’; </li>
+<li>查询年龄等于18岁的学员信息select * from stu where age &#x3D; 18; </li>
+<li>查询年龄不等于18岁的学员信息select * from stu where age !&#x3D; 18; select * from stu where age &lt;&gt; 18; </li>
+<li>查询年龄等于18岁 或者 年龄等于20岁 或者 年龄等于22岁的学员信息select * from stu where age &#x3D; 18 or age &#x3D; 20 or age &#x3D; 22; select * from stu where age in (18,20 ,22); </li>
+<li>查询英语成绩为 null的学员信息null值的比较不能使用 &#x3D; 或者 !&#x3D; 。需要使用 is 或者 is notselect * from stu where english &#x3D; null; – 这个语句是不行的 select * from stu where english is null; select * from stu where english is not null;</li>
+</ul>
+<h4 id="8-2-3-模糊查询练习"><a href="#8-2-3-模糊查询练习" class="headerlink" title="8.2.3 模糊查询练习"></a>8.2.3 模糊查询练习</h4><p>模糊查询使用like关键字，可以使用通配符进行占位:<br>（1）_ : 代表单个任意字符<br>（2）% : 代表任意个数字符</p>
+<ul>
+<li>查询姓’马’的学员信息select * from stu where name like ‘马%’; </li>
+<li>查询第二个字是’花’的学员信息select * from stu where name like ‘_花%’; </li>
+<li>查询名字中包含 ‘德’ 的学员信息select * from stu where name like ‘%德%’;</li>
+</ul>
+<h3 id="8-3-排序查询"><a href="#8-3-排序查询" class="headerlink" title="8.3 排序查询"></a>8.3 排序查询</h3><h4 id="8-3-1-语法"><a href="#8-3-1-语法" class="headerlink" title="8.3.1 语法"></a>8.3.1 语法</h4><p>SELECT 字段列表 FROM 表名 ORDER BY 排序字段名1 [排序方式1],排序字段名2 [排序方式2] …;<br>上述语句中的排序方式有两种，分别是：</p>
+<ul>
+<li>ASC ： 升序排列 <strong>（默认值）</strong></li>
+<li>DESC ： 降序排列</li>
+</ul>
+<p>注意：如果有多个排序条件，当前边的条件值一样时，才会根据第二条件进行排序</p>
+<h4 id="8-3-2-练习"><a href="#8-3-2-练习" class="headerlink" title="8.3.2 练习"></a>8.3.2 练习</h4><ul>
+<li>查询学生信息，按照年龄升序排列select * from stu order by age ; </li>
+<li>查询学生信息，按照数学成绩降序排列select * from stu order by math desc ; </li>
+<li>查询学生信息，按照数学成绩降序排列，如果数学成绩一样，再按照英语成绩升序排列select * from stu order by math desc , english asc ;</li>
+</ul>
+<h3 id="8-4-聚合函数"><a href="#8-4-聚合函数" class="headerlink" title="8.4 聚合函数"></a>8.4 聚合函数</h3><h4 id="8-4-1-概念"><a href="#8-4-1-概念" class="headerlink" title="8.4.1 概念"></a>8.4.1 概念</h4><p>将一列数据作为一个整体，进行纵向计算。<br>如何理解呢？假设有如下表<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714676082-da1ee867-9940-49ee-9579-14fb77899a5a.png#averageHue=%23f7f6f4&from=url&id=HT9oT&originHeight=354&originWidth=938&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>现有一需求让我们求表中所有数据的数学成绩的总和。这就是对math字段进行纵向求和。</p>
+<h4 id="8-4-2-聚合函数分类"><a href="#8-4-2-聚合函数分类" class="headerlink" title="8.4.2 聚合函数分类"></a>8.4.2 聚合函数分类</h4><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>count(列名)</td>
+<td>统计数量（一般选用不为null的列）</td>
+</tr>
+<tr>
+<td>max(列名)</td>
+<td>最大值</td>
+</tr>
+<tr>
+<td>min(列名)</td>
+<td>最小值</td>
+</tr>
+<tr>
+<td>sum(列名)</td>
+<td>求和</td>
+</tr>
+<tr>
+<td>avg(列名)</td>
+<td>平均值</td>
+</tr>
+</tbody></table>
+<h4 id="8-4-3-聚合函数语法"><a href="#8-4-3-聚合函数语法" class="headerlink" title="8.4.3 聚合函数语法"></a>8.4.3 聚合函数语法</h4><p>SELECT 聚合函数名(列名) FROM 表;<br>注意：null 值不参与所有聚合函数运算</p>
+<h4 id="8-4-4-练习"><a href="#8-4-4-练习" class="headerlink" title="8.4.4 练习"></a>8.4.4 练习</h4><ul>
+<li>统计班级一共有多少个学生select count(id) from stu; select count(english) from stu; 上面语句根据某个字段进行统计，如果该字段某一行的值为null的话，将不会被统计。所以可以在count(<em>) 来实现。</em> 表示所有字段数据，一行中也不可能所有的数据都为null，所以建议使用 count(<em>)select count(</em>) from stu; </li>
+<li>查询数学成绩的最高分select max(math) from stu; </li>
+<li>查询数学成绩的最低分select min(math) from stu; </li>
+<li>查询数学成绩的总分select sum(math) from stu; </li>
+<li>查询数学成绩的平均分select avg(math) from stu; </li>
+<li>查询英语成绩的最低分select min(english) from stu;</li>
+</ul>
+<h3 id="8-5-分组查询"><a href="#8-5-分组查询" class="headerlink" title="8.5 分组查询"></a>8.5 分组查询</h3><h4 id="8-5-1-语法"><a href="#8-5-1-语法" class="headerlink" title="8.5.1 语法"></a>8.5.1 语法</h4><p>SELECT 字段列表 FROM 表名 [WHERE 分组前条件限定] GROUP BY 分组字段名 [HAVING 分组后条件过滤];<br>注意：分组之后，查询的字段为聚合函数和分组字段，查询其他字段无任何意义</p>
+<h4 id="8-5-2-练习"><a href="#8-5-2-练习" class="headerlink" title="8.5.2 练习"></a>8.5.2 练习</h4><ul>
+<li>查询男同学和女同学各自的数学平均分select sex, avg(math) from stu group by sex; 注意：分组之后，查询的字段为聚合函数和分组字段，查询其他字段无任何意义select name, sex, avg(math) from stu group by sex;  – 这里查询name字段就没有任何意义 </li>
+<li>查询男同学和女同学各自的数学平均分，以及各自人数select sex, avg(math),count(*) from stu group by sex; </li>
+<li>查询男同学和女同学各自的数学平均分，以及各自人数，要求：分数低于70分的不参与分组select sex, avg(math),count(*) from stu where math &gt; 70 group by sex; </li>
+<li>查询男同学和女同学各自的数学平均分，以及各自人数，要求：分数低于70分的不参与分组，分组之后人数大于2个的select sex, avg(math),count(<em>) from stu where math &gt; 70 group by sex having count(</em>)  &gt; 2;</li>
+</ul>
+<p><strong>where 和 having 区别：</strong></p>
+<ul>
+<li>执行时机不一样：where 是分组之前进行限定，不满足where条件，则不参与分组，而having是分组之后对结果进行过滤。</li>
+<li>可判断的条件不一样：where 不能对聚合函数进行判断，having 可以。</li>
+</ul>
+<h3 id="8-6-分页查询"><a href="#8-6-分页查询" class="headerlink" title="8.6 分页查询"></a>8.6 分页查询</h3><p>如下图所示，大家在很多网站都见过类似的效果，如京东、百度、淘宝等。分页查询是将数据一页一页的展示给用户看，用户也可以通过点击查看下一页的数据。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714676183-eaa915e4-96b0-41c0-8711-e57a4ad5db52.png#averageHue=%23f4f4f4&from=url&id=JY05d&originHeight=235&originWidth=862&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>接下来我们先说分页查询的语法。</p>
+<h4 id="8-6-1-语法"><a href="#8-6-1-语法" class="headerlink" title="8.6.1 语法"></a>8.6.1 语法</h4><p>SELECT 字段列表 FROM 表名 LIMIT  起始索引 , 查询条目数;<br>注意： 上述语句中的起始索引是从0开始</p>
+<h4 id="8-6-2-练习"><a href="#8-6-2-练习" class="headerlink" title="8.6.2 练习"></a>8.6.2 练习</h4><ul>
+<li>从0开始查询，查询3条数据select * from stu limit 0 , 3; </li>
+<li>每页显示3条数据，查询第1页数据select * from stu limit 0 , 3; </li>
+<li>每页显示3条数据，查询第2页数据select * from stu limit 3 , 3; </li>
+<li>每页显示3条数据，查询第3页数据select * from stu limit 6 , 3;</li>
+</ul>
+<p>从上面的练习推导出起始索引计算公式：<br>起始索引 &#x3D; (当前页码 - 1) * 每页显示的条数 </p>
+]]></content>
+      <categories>
+        <category>后台</category>
+      </categories>
+      <tags>
+        <tag>数据库 java 基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MySQL高级</title>
+    <url>/2023/03/13/mysql%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+## mysql高级
+**今日目标**
+==此篇博客搬运自b站黑马程序员的javaweb学习资料，仅供个人学习参考，尊重他人知识劳动成果==
+- 掌握约束的使用
+- 掌握表关系及建表原则
+- 重点掌握多表查询操作
+- 掌握事务操作
+<span id="more"></span>
+## 1，约束
+![](https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714459626-a3678e56-ece0-418b-a6d8-7e40d29d7215.png#from=url&id=YJAIA&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=)
+上面表中可以看到表中数据存在一些问题：
+
+<ul>
+<li>id 列一般是用标示数据的唯一性的，而上述表中的id为1的有三条数据，并且 马花疼 没有id进行标示</li>
+<li>柳白 这条数据的age列的数据是3000，而人也不可能活到3000岁</li>
+<li>马运 这条数据的math数学成绩是-5，而数学学得再不好也不可能出现负分</li>
+<li>柳青 这条数据的english列（英文成绩）值为null，而成绩即使没考也得是0分</li>
+</ul>
+<p>针对上述数据问题，我们就可以从数据库层面在添加数据的时候进行限制，这个就是约束。</p>
+<h3 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h3><ul>
+<li>约束是作用于表中列上的规则，用于限制加入表的数据例如：我们可以给id列加约束，让其值不能重复，不能为null值。</li>
+<li>约束的存在保证了数据库中数据的正确性、有效性和完整性添加约束可以在添加数据的时候就限制不正确的数据，年龄是3000，数学成绩是-5分这样无效的数据，继而保障数据的完整性。</li>
+</ul>
+<h3 id="1-2-分类"><a href="#1-2-分类" class="headerlink" title="1.2 分类"></a>1.2 分类</h3><ul>
+<li><strong>非空约束： 关键字是 NOT NULL</strong></li>
+</ul>
+<p>保证列中所有的数据不能有null值。<br>例如：id列在添加 马花疼 这条数据时就不能添加成功。</p>
+<ul>
+<li><strong>唯一约束：关键字是 UNIQUE</strong>保证列中所有数据各不相同。例如：id列中三条数据的值都是1，这样的数据在添加时是绝对不允许的。</li>
+<li><strong>主键约束： 关键字是 PRIMARY KEY</strong></li>
+</ul>
+<p>主键是一行数据的唯一标识，要求非空且唯一。一般我们都会给没张表添加一个主键列用来唯一标识数据。<br>例如：上图表中id就可以作为主键，来标识每条数据。那么这样就要求数据中id的值不能重复，不能为null值。</p>
+<ul>
+<li><strong>检查约束： 关键字是 CHECK</strong>保证列中的值满足某一条件。例如：我们可以给age列添加一个范围，最低年龄可以设置为1，最大年龄就可以设置为300，这样的数据才更合理些。注意：MySQL不支持检查约束。这样是不是就没办法保证年龄在指定的范围内了？从数据库层面不能保证，以后可以在java代码中进行限制，一样也可以实现要求。</li>
+<li><strong>默认约束： 关键字是 DEFAULT</strong>保存数据时，未指定值则采用默认值。例如：我们在给english列添加该约束，指定默认值是0，这样在添加数据时没有指定具体值时就会采用默认给定的0。</li>
+<li><strong>外键约束： 关键字是 FOREIGN KEY</strong>外键用来让两个表的数据之间建立链接，保证数据的一致性和完整性。外键约束现在可能还不太好理解，后面我们会重点进行讲解。</li>
+</ul>
+<h3 id="1-3-非空约束"><a href="#1-3-非空约束" class="headerlink" title="1.3 非空约束"></a>1.3 非空约束</h3><ul>
+<li>概念非空约束用于保证列中所有数据不能有NULL值</li>
+<li>语法<ul>
+<li>添加约束– 创建表时添加非空约束 CREATE TABLE 表名(    列名 数据类型 NOT NULL,    … );  – 建完表后添加非空约束 ALTER TABLE 表名 MODIFY 字段名 数据类型 NOT NULL; </li>
+<li>删除约束ALTER TABLE 表名 MODIFY 字段名 数据类型;</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-4-唯一约束"><a href="#1-4-唯一约束" class="headerlink" title="1.4 唯一约束"></a>1.4 唯一约束</h3><ul>
+<li>概念唯一约束用于保证列中所有数据各不相同</li>
+<li>语法<ul>
+<li>添加约束– 创建表时添加唯一约束 CREATE TABLE 表名(    列名 数据类型 UNIQUE [AUTO_INCREMENT],    – AUTO_INCREMENT: 当不指定值时自动增长    … );  CREATE TABLE 表名(    列名 数据类型,    …    [CONSTRAINT] [约束名称] UNIQUE(列名) );  – 建完表后添加唯一约束 ALTER TABLE 表名 MODIFY 字段名 数据类型 UNIQUE; </li>
+<li>删除约束ALTER TABLE 表名 DROP INDEX 字段名;</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-5-主键约束"><a href="#1-5-主键约束" class="headerlink" title="1.5 主键约束"></a>1.5 主键约束</h3><ul>
+<li>概念主键是一行数据的唯一标识，要求非空且唯一一张表只能有一个主键</li>
+<li>语法<ul>
+<li>添加约束– 创建表时添加主键约束 CREATE TABLE 表名(    列名 数据类型 PRIMARY KEY [AUTO_INCREMENT],    … );  CREATE TABLE 表名(    列名 数据类型,    [CONSTRAINT] [约束名称] PRIMARY KEY(列名) );  – 建完表后添加主键约束 ALTER TABLE 表名 ADD PRIMARY KEY(字段名); </li>
+<li>删除约束ALTER TABLE 表名 DROP PRIMARY KEY;</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-6-默认约束"><a href="#1-6-默认约束" class="headerlink" title="1.6 默认约束"></a>1.6 默认约束</h3><ul>
+<li>概念保存数据时，未指定值则采用默认值</li>
+<li>语法<ul>
+<li>添加约束– 创建表时添加默认约束 CREATE TABLE 表名(    列名 数据类型 DEFAULT 默认值,    … );  – 建完表后添加默认约束 ALTER TABLE 表名 ALTER 列名 SET DEFAULT 默认值; </li>
+<li>删除约束ALTER TABLE 表名 ALTER 列名 DROP DEFAULT;</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-7-约束练习"><a href="#1-7-约束练习" class="headerlink" title="1.7 约束练习"></a>1.7 约束练习</h3><p><strong>根据需求，为表添加合适的约束</strong><br>– 员工表 CREATE TABLE emp ( 	id INT,  – 员工id，主键且自增长     ename VARCHAR(50), – 员工姓名，非空且唯一     joindate DATE,  – 入职日期，非空     salary DOUBLE(7,2),  – 工资，非空     bonus DOUBLE(7,2)  – 奖金，如果没有将近默认为0 );<br>上面一定给出了具体的要求，我们可以根据要求创建这张表，并为每一列添加对应的约束。建表语句如下：<br>DROP TABLE IF EXISTS emp; – 员工表 CREATE TABLE emp (   id INT PRIMARY KEY, – 员工id，主键且自增长   ename VARCHAR(50) NOT NULL UNIQUE, – 员工姓名，非空并且唯一   joindate DATE NOT NULL , – 入职日期，非空   salary DOUBLE(7,2) NOT NULL , – 工资，非空   bonus DOUBLE(7,2) DEFAULT 0 – 奖金，如果没有奖金默认为0 );<br>通过上面语句可以创建带有约束的 emp 表，约束能不能发挥作用呢。接下来我们一一进行验证，先添加一条没有问题的数据<br>INSERT INTO emp(id,ename,joindate,salary,bonus) values(1,’张三’,’1999-11-11’,8800,5000); </p>
+<ul>
+<li><strong>验证主键约束，非空且唯一</strong></li>
+</ul>
+<p>INSERT INTO emp(id,ename,joindate,salary,bonus) values(null,’张三’,’1999-11-11’,8800,5000);<br>执行结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714459747-ec11a17c-41f2-4d2a-944e-b4c79c9739e3.png#from=url&id=BYkYX&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上面的结果可以看到，字段 id 不能为null。那我们重新添加一条数据，如下：<br>INSERT INTO emp(id,ename,joindate,salary,bonus) values(1,’张三’,’1999-11-11’,8800,5000);<br>执行结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714459825-47dfd1a4-d2e2-4f2a-ad80-6a377d4f7c4f.png#from=url&id=azGJj&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上面结果可以看到，1这个值重复了。所以主键约束是用来限制数据非空且唯一的。那我们再添加一条符合要求的数据<br>INSERT INTO emp(id,ename,joindate,salary,bonus) values(2,’李四’,’1999-11-11’,8800,5000);<br>执行结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714459913-a1ea3276-785d-4fd2-9b59-404262f707b8.png#from=url&id=cTKRP&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><strong>验证非空约束</strong></li>
+</ul>
+<p>INSERT INTO emp(id,ename,joindate,salary,bonus) values(3,null,’1999-11-11’,8800,5000);<br>执行结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460027-e890394d-0a59-4dee-b30a-a5b6967bc317.png#from=url&id=rUaG2&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上面结果可以看到，ename 字段的非空约束生效了。</p>
+<ul>
+<li><strong>验证唯一约束</strong></li>
+</ul>
+<p>INSERT INTO emp(id,ename,joindate,salary,bonus) values(3,’李四’,’1999-11-11’,8800,5000);<br>执行结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460131-a6eb5812-8580-4522-84c0-8b6aebc38781.png#from=url&id=PUTLU&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上面结果可以看到，ename 字段的唯一约束生效了。</p>
+<ul>
+<li><strong>验证默认约束</strong></li>
+</ul>
+<p>INSERT INTO emp(id,ename,joindate,salary) values(3,’王五’,’1999-11-11’,8800);<br>执行完上面语句后查询表中数据，如下图可以看到王五这条数据的bonus列就有了默认值0。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460219-41040f9e-1c57-4534-80b0-fa490292a5fa.png#from=url&id=D7ELU&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>注意：默认约束只有在不给值时才会采用默认值。如果给了null，那值就是null值。<br>如下：<br>INSERT INTO emp(id,ename,joindate,salary,bonus) values(4,’赵六’,’1999-11-11’,8800,null);<br>执行完上面语句后查询表中数据，如下图可以看到赵六这条数据的bonus列的值是null。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460307-327b8ae7-379a-4310-ad49-bcbcf362b2a1.png#from=url&id=oUc9T&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><strong>验证自动增长： auto_increment 当列是数字类型 并且唯一约束</strong></li>
+</ul>
+<p>重新创建 emp 表，并给id列添加自动增长<br>– 员工表 CREATE TABLE emp (   id INT PRIMARY KEY auto_increment, – 员工id，主键且自增长   ename VARCHAR(50) NOT NULL UNIQUE, – 员工姓名，非空并且唯一   joindate DATE NOT NULL , – 入职日期，非空   salary DOUBLE(7,2) NOT NULL , – 工资，非空   bonus DOUBLE(7,2) DEFAULT 0 – 奖金，如果没有奖金默认为0 );<br>接下来给emp添加数据，分别验证不给id列添加值以及给id列添加null值，id列的值会不会自动增长：<br>INSERT INTO emp(ename,joindate,salary,bonus) values(‘赵六’,’1999-11-11’,8800,null); INSERT INTO emp(id,ename,joindate,salary,bonus) values(null,’赵六2’,’1999-11-11’,8800,null); INSERT INTO emp(id,ename,joindate,salary,bonus) values(null,’赵六3’,’1999-11-11’,8800,null); </p>
+<h3 id="1-8-外键约束"><a href="#1-8-外键约束" class="headerlink" title="1.8 外键约束"></a>1.8 外键约束</h3><h4 id="1-8-1-概述"><a href="#1-8-1-概述" class="headerlink" title="1.8.1 概述"></a>1.8.1 概述</h4><p>外键用来让两个表的数据之间建立链接，保证数据的一致性和完整性。<br>如何理解上面的概念呢？如下图有两张表，员工表和部门表：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460386-861f4eb9-e8b0-4b7c-9537-675a1b76f67b.png#from=url&id=xXPk7&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>员工表中的dep_id字段是部门表的id字段关联，也就是说1号学生张三属于1号部门研发部的员工。现在我要删除1号部门，就会出现错误的数据（员工表中属于1号部门的数据）。而我们上面说的两张表的关系只是我们认为它们有关系，此时需要通过外键让这两张表产生数据库层面的关系，这样你要删除部门表中的1号部门的数据将无法删除。</p>
+<h4 id="1-8-2-语法"><a href="#1-8-2-语法" class="headerlink" title="1.8.2 语法"></a>1.8.2 语法</h4><ul>
+<li>添加外键约束</li>
+</ul>
+<p>– 创建表时添加外键约束 CREATE TABLE 表名(    列名 数据类型,    …    [CONSTRAINT] [外键名称] FOREIGN KEY(外键列名) REFERENCES 主表(主表列名)  );  – 建完表后添加外键约束 ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称); </p>
+<ul>
+<li>删除外键约束</li>
+</ul>
+<p>ALTER TABLE 表名 DROP FOREIGN KEY 外键名称; </p>
+<h4 id="1-8-3-练习"><a href="#1-8-3-练习" class="headerlink" title="1.8.3 练习"></a>1.8.3 练习</h4><p>根据上述语法创建员工表和部门表，并添加上外键约束：<br>– 删除表 DROP TABLE IF EXISTS emp; DROP TABLE IF EXISTS dept; – 部门表 CREATE TABLE dept( 	id int primary key auto_increment, 	dep_name varchar(20), 	addr varchar(20) ); – 员工表  CREATE TABLE emp( 	id int primary key auto_increment, 	name varchar(20), 	age int, 	dep_id int, 	– 添加外键 dep_id,关联 dept 表的id主键 	CONSTRAINT fk_emp_dept FOREIGN KEY(dep_id) REFERENCES dept(id)	 );<br>添加数据<br>– 添加 2 个部门 insert into dept(dep_name,addr) values (‘研发部’,’广州’),(‘销售部’, ‘深圳’); – 添加员工,dep_id 表示员工所在的部门 INSERT INTO emp (NAME, age, dep_id) VALUES  (‘张三’, 20, 1), (‘李四’, 20, 1), (‘王五’, 20, 1), (‘赵六’, 20, 2), (‘孙七’, 22, 2), (‘周八’, 18, 2);<br>此时删除 研发部 这条数据，会发现无法删除。<br>删除外键<br>alter table emp drop FOREIGN key fk_emp_dept;<br>重新添加外键<br>alter table emp add CONSTRAINT fk_emp_dept FOREIGN key(dep_id) REFERENCES dept(id); </p>
+<h2 id="2，数据库设计"><a href="#2，数据库设计" class="headerlink" title="2，数据库设计"></a>2，数据库设计</h2><h3 id="2-1-数据库设计简介"><a href="#2-1-数据库设计简介" class="headerlink" title="2.1 数据库设计简介"></a>2.1 数据库设计简介</h3><ul>
+<li>软件的研发步骤<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460481-37bc3e0a-493b-4f89-9cc3-747efc295066.png#from=url&id=ZPQxi&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>数据库设计概念<ul>
+<li>数据库设计就是根据业务系统的具体需求，结合我们所选用的DBMS，为这个业务系统构造出最优的数据存储模型。</li>
+<li>建立数据库中的表结构以及表与表之间的关联关系的过程。</li>
+<li>有哪些表？表里有哪些字段？表和表之间有什么关系？</li>
+</ul>
+</li>
+<li>数据库设计的步骤<ul>
+<li>需求分析（数据是什么? 数据具有哪些属性? 数据与属性的特点是什么）</li>
+<li>逻辑分析（通过ER图对数据库进行逻辑建模，不需要考虑我们所选用的数据库管理系统）如下图就是ER(Entity&#x2F;Relation)图：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460567-92ebf758-2c98-41ce-9908-8367a8de023a.png#from=url&id=AUZDX&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>物理设计（根据数据库自身的特点把逻辑设计转换为物理设计）</li>
+<li>维护设计（1.对新的需求进行建表；2.表优化）</li>
+</ul>
+</li>
+<li>表关系<ul>
+<li>一对一<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460749-38e71dd8-2207-4aec-bf4f-8faf7a46003d.png#from=url&id=kwmwM&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">上图左边是用户的详细信息，而我们真正在展示用户信息时最长用的则是上图右边红框所示，所以我们会将详细信息查分成两周那个表。<ul>
+<li>如：用户 和 用户详情</li>
+<li>一对一关系多用于表拆分，将一个实体中经常使用的字段放一张表，不经常使用的字段放另一张表，用于提升查询性能</li>
+</ul>
+</li>
+<li>一对多<ul>
+<li>如：部门 和 员工</li>
+<li>一个部门对应多个员工，一个员工对应一个部门。如下图：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460861-d8ae1a7c-d1e2-4833-ab60-140892c74bfb.png#from=url&id=IEqet&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+</ul>
+</li>
+<li>多对多<ul>
+<li>如：商品 和 订单</li>
+<li>一个商品对应多个订单，一个订单包含多个商品。如下图：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714460949-da06b0c8-0645-4ea9-9098-b4c30335ca89.png#from=url&id=lPgFA&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-表关系-一对多"><a href="#2-2-表关系-一对多" class="headerlink" title="2.2 表关系(一对多)"></a>2.2 表关系(一对多)</h3><ul>
+<li>一对多<ul>
+<li>如：部门 和 员工</li>
+<li>一个部门对应多个员工，一个员工对应一个部门。</li>
+</ul>
+</li>
+<li>实现方式在多的一方建立外键，指向一的一方的主键</li>
+<li>案例我们还是以 员工表 和 部门表 举例:<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461041-95169fc8-3b04-474d-986a-32adaa1c383c.png#from=url&id=hafjS&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">经过分析发现，员工表属于多的一方，而部门表属于一的一方，此时我们会在员工表中添加一列（dep_id），指向于部门表的主键（id）：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461123-a281eb19-67ae-4e65-bcf3-11db6bc74f87.png#from=url&id=yjgU1&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">建表语句如下：– 删除表 DROP TABLE IF EXISTS tb_emp; DROP TABLE IF EXISTS tb_dept; – 部门表 CREATE TABLE tb_dept( 	id int primary key auto_increment, 	dep_name varchar(20), 	addr varchar(20) ); – 员工表  CREATE TABLE tb_emp( 	id int primary key auto_increment, 	name varchar(20), 	age int, 	dep_id int, 	– 添加外键 dep_id,关联 dept 表的id主键 	CONSTRAINT fk_emp_dept FOREIGN KEY(dep_id) REFERENCES tb_dept(id)	 ); 查看表结构模型图：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461204-e448e142-d513-4787-9e76-acc5425486fb.png#from=url&id=Umgnm&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+</ul>
+<h3 id="2-3-表关系-多对多"><a href="#2-3-表关系-多对多" class="headerlink" title="2.3 表关系(多对多)"></a>2.3 表关系(多对多)</h3><ul>
+<li>多对多<ul>
+<li>如：商品 和 订单</li>
+<li>一个商品对应多个订单，一个订单包含多个商品</li>
+</ul>
+</li>
+<li>实现方式建立第三张中间表，中间表至少包含两个外键，分别关联两方主键</li>
+<li>案例我们以 订单表 和 商品表 举例：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461287-825cf3e6-c396-4f45-8c0a-c8a5efcd234b.png#from=url&id=bkW4N&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">经过分析发现，订单表和商品表都属于多的一方，此时需要创建一个中间表，在中间表中添加订单表的外键和商品表的外键指向两张表的主键：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461369-bfde08fc-ce98-474f-9864-cd41978cb4c0.png#from=url&id=yZKSg&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">建表语句如下：– 删除表 DROP TABLE IF EXISTS tb_order_goods; DROP TABLE IF EXISTS tb_order; DROP TABLE IF EXISTS tb_goods; – 订单表 CREATE TABLE tb_order( 	id int primary key auto_increment, 	payment double(10,2), 	payment_type TINYINT, 	status TINYINT ); – 商品表 CREATE TABLE tb_goods( 	id int primary key auto_increment, 	title varchar(100), 	price double(10,2) ); – 订单商品中间表 CREATE TABLE tb_order_goods( 	id int primary key auto_increment, 	order_id int, 	goods_id int, 	count int ); – 建完表后，添加外键 alter table tb_order_goods add CONSTRAINT fk_order_id FOREIGN key(order_id) REFERENCES tb_order(id); alter table tb_order_goods add CONSTRAINT fk_goods_id FOREIGN key(goods_id) REFERENCES tb_goods(id); 查看表结构模型图：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461441-835b9a64-1792-44f5-ad68-d9749185c3ae.png#from=url&id=xw42d&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+</ul>
+<h3 id="2-4-表关系-一对一"><a href="#2-4-表关系-一对一" class="headerlink" title="2.4 表关系(一对一)"></a>2.4 表关系(一对一)</h3><ul>
+<li><p>一对一</p>
+<ul>
+<li>如：用户 和 用户详情</li>
+<li>一对一关系多用于表拆分，将一个实体中经常使用的字段放一张表，不经常使用的字段放另一张表，用于提升查询性能</li>
+</ul>
+</li>
+<li><p>实现方式在任意一方加入外键，关联另一方主键，并且设置外键为唯一(UNIQUE)</p>
+</li>
+<li><p>案例我们以 用户表 举例：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461519-8d90a0ff-8dd8-4736-ab12-c791117da281.png#from=url&id=fwbvD&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">而在真正使用过程中发现 id、photo、nickname、age、gender 字段比较常用，此时就可以将这张表查分成两张表。</p>
+<p>  <img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461620-436e5c4d-def9-442b-8347-9e254b9fcacc.png#from=url&id=RtneZ&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>  建表语句如下：</p>
+</li>
+</ul>
+<p>create table tb_user_desc ( 	id int primary key auto_increment, 	city varchar(20), 	edu varchar(10), 	income int, 	status char(2), 	des varchar(100) ); create table tb_user ( 	id int primary key auto_increment, 	photo varchar(100), 	nickname varchar(50), 	age int, 	gender char(1), 	desc_id int unique, 	– 添加外键 	CONSTRAINT fk_user_desc FOREIGN KEY(desc_id) REFERENCES tb_user_desc(id)	 );<br>    查看表结构模型图：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461718-50dad9a3-e002-4420-875a-f8701c17ec0f.png#from=url&id=Qa31C&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="2-5-数据库设计案例"><a href="#2-5-数据库设计案例" class="headerlink" title="2.5 数据库设计案例"></a>2.5 数据库设计案例</h3><p>根据下图设计表及表和表之间的关系：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461789-3ecb41ef-e6fb-452a-816f-96838e364804.png#from=url&id=Fl3JA&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>经过分析，我们分为 专辑表曲目表短评表用户表 4张表。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461896-29571181-732a-4861-acfc-fb2782cadc54.png#from=url&id=t9MfZ&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>一个专辑可以有多个曲目，一个曲目只能属于某一张专辑，所以专辑表和曲目表的关系是一对多。<br>一个专辑可以被多个用户进行评论，一个用户可以对多个专辑进行评论，所以专辑表和用户表的关系是 多对多。<br>一个用户可以发多个短评，一个短评只能是某一个人发的，所以用户表和短评表的关系是 一对多。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714461989-cd610f26-4c67-411c-9af4-63e68440425b.png#from=url&id=b6TFV&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="3，多表查询"><a href="#3，多表查询" class="headerlink" title="3，多表查询"></a>3，多表查询</h2><p>多表查询顾名思义就是从多张表中一次性的查询出我们想要的数据。我们通过具体的sql给他们演示，先准备环境<br>DROP TABLE IF EXISTS emp; DROP TABLE IF EXISTS dept; # 创建部门表 	CREATE TABLE dept(         did INT PRIMARY KEY AUTO_INCREMENT,         dname VARCHAR(20)     ); 	# 创建员工表 	CREATE TABLE emp (         id INT PRIMARY KEY AUTO_INCREMENT,         NAME VARCHAR(10),         gender CHAR(1), – 性别         salary DOUBLE, – 工资         join_date DATE, – 入职日期         dep_id INT,         FOREIGN KEY (dep_id) REFERENCES dept(did) – 外键，关联部门表(部门表的主键)     ); 	– 添加部门数据 	INSERT INTO dept (dNAME) VALUES (‘研发部’),(‘市场部’),(‘财务部’),(‘销售部’); 	– 添加员工数据 	INSERT INTO emp(NAME,gender,salary,join_date,dep_id) VALUES 	(‘孙悟空’,’男’,7200,’2013-02-24’,1), 	(‘猪八戒’,’男’,3600,’2010-12-02’,2), 	(‘唐僧’,’男’,9000,’2008-08-08’,2), 	(‘白骨精’,’女’,5000,’2015-10-07’,3), 	(‘蜘蛛精’,’女’,4500,’2011-03-14’,1), 	(‘小白龙’,’男’,2500,’2011-02-14’,null);	<br>执行下面的多表查询语句<br>select * from emp , dept;  – 从emp和dept表中查询所有的字段数据<br>结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462067-2b05fea4-6edd-42d6-8900-1b5cf7e50b30.png#from=url&id=oUr2K&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上面的结果我们看到有一些无效的数据，如 孙悟空 这个员工属于1号部门，但也同时关联的2、3、4号部门。所以我们要通过限制员工表中的 dep_id 字段的值和部门表 did 字段的值相等来消除这些无效的数据，<br>select * from emp , dept where emp.dep_id &#x3D; dept.did;<br>执行后结果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462152-f4211638-c6f4-40b1-8926-da8680d2f1fb.png#from=url&id=yV1Ys&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>上面语句就是连接查询，那么多表查询都有哪些呢？</p>
+<ul>
+<li>连接查询<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462269-5b5020cc-ea64-4680-bbe7-049cd3f9df2c.png#from=url&id=NgIFj&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><ul>
+<li>内连接查询 ：相当于查询AB交集数据</li>
+<li>外连接查询 <ul>
+<li>左外连接查询 ：相当于查询A表所有数据和交集部门数据</li>
+<li>右外连接查询 ： 相当于查询B表所有数据和交集部分数据</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>子查询</li>
+</ul>
+<h3 id="3-1-内连接查询"><a href="#3-1-内连接查询" class="headerlink" title="3.1 内连接查询"></a>3.1 内连接查询</h3><ul>
+<li>语法</li>
+</ul>
+<p>– 隐式内连接 SELECT 字段列表 FROM 表1,表2… WHERE 条件; – 显示内连接 SELECT 字段列表 FROM 表1 [INNER] JOIN 表2 ON 条件;<br>内连接相当于查询 A B 交集数据<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462269-5b5020cc-ea64-4680-bbe7-049cd3f9df2c.png#from=url&id=T5vyG&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li>案例<ul>
+<li>隐式内连接SELECT 	* FROM 	emp, 	dept WHERE 	emp.dep_id &#x3D; dept.did; 执行上述语句结果如下：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462346-5eaeb402-5766-4475-84a5-3d0d0f9b29c8.png#from=url&id=Izame&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>查询 emp的 name， gender，dept表的dnameSELECT 	emp. NAME, 	emp.gender, 	dept.dname FROM 	emp, 	dept WHERE 	emp.dep_id &#x3D; dept.did; 执行语句结果如下：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462443-cdca2f6b-5c2c-42d3-a4ea-c7d1a88871a5.png#from=url&id=q2yjy&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">上面语句中使用表名指定字段所属有点麻烦，sql也支持给表指别名，上述语句可以改进为SELECT 	t1. NAME, 	t1.gender, 	t2.dname FROM 	emp t1, 	dept t2 WHERE 	t1.dep_id &#x3D; t2.did; </li>
+<li>显式内连接select * from emp inner join dept on emp.dep_id &#x3D; dept.did; – 上面语句中的inner可以省略，可以书写为如下语句 select * from emp  join dept on emp.dep_id &#x3D; dept.did; 执行结果如下：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462523-255d27b4-e1c6-4193-be4a-6659122bbbd1.png#from=url&id=xQBbp&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-外连接查询"><a href="#3-2-外连接查询" class="headerlink" title="3.2 外连接查询"></a>3.2 外连接查询</h3><ul>
+<li>语法– 左外连接 SELECT 字段列表 FROM 表1 LEFT [OUTER] JOIN 表2 ON 条件; – 右外连接 SELECT 字段列表 FROM 表1 RIGHT [OUTER] JOIN 表2 ON 条件; 左外连接：相当于查询A表所有数据和交集部分数据右外连接：相当于查询B表所有数据和交集部分数据<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462269-5b5020cc-ea64-4680-bbe7-049cd3f9df2c.png#from=url&id=j5SCi&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>案例<ul>
+<li>查询emp表所有数据和对应的部门信息（左外连接）select * from emp left join dept on emp.dep_id &#x3D; dept.did; 执行语句结果如下：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462606-da92a0ca-3faf-4536-9be8-2d4921004f1e.png#from=url&id=xw8iN&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">结果显示查询到了左表（emp）中所有的数据及两张表能关联的数据。</li>
+<li>查询dept表所有数据和对应的员工信息（右外连接）select * from emp right join dept on emp.dep_id &#x3D; dept.did; 执行语句结果如下：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462684-2512c4b3-a5d5-407b-b0e0-168a93b414cd.png#from=url&id=qcIrA&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">结果显示查询到了右表（dept）中所有的数据及两张表能关联的数据。要查询出部门表中所有的数据，也可以通过左外连接实现，只需要将两个表的位置进行互换：select * from dept left join emp on emp.dep_id &#x3D; dept.did;</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-子查询"><a href="#3-3-子查询" class="headerlink" title="3.3 子查询"></a>3.3 子查询</h3><ul>
+<li>概念查询中嵌套查询，称嵌套查询为子查询。什么是查询中嵌套查询呢？我们通过一个例子来看：<strong>需求：查询工资高于猪八戒的员工信息。</strong>来实现这个需求，我们就可以通过二步实现，第一步：先查询出来 猪八戒的工资select salary from emp where name &#x3D; ‘猪八戒’ 第二步：查询工资高于猪八戒的员工信息select * from emp where salary &gt; 3600; 第二步中的3600可以通过第一步的sql查询出来，所以将3600用第一步的sql语句进行替换select * from emp where salary &gt; (select salary from emp where name &#x3D; ‘猪八戒’); 这就是查询语句中嵌套查询语句。</li>
+<li>子查询根据查询结果不同，作用不同<ul>
+<li>子查询语句结果是单行单列，子查询语句作为条件值，使用 &#x3D; !&#x3D; &gt; &lt; 等进行条件判断</li>
+<li>子查询语句结果是多行单列，子查询语句作为条件值，使用 in 等关键字进行条件判断</li>
+<li>子查询语句结果是多行多列，子查询语句作为虚拟表</li>
+</ul>
+</li>
+<li>案例<ul>
+<li>查询 ‘财务部’ 和 ‘市场部’ 所有的员工信息– 查询 ‘财务部’ 或者 ‘市场部’ 所有的员工的部门did select did from dept where dname &#x3D; ‘财务部’ or dname &#x3D; ‘市场部’; select * from emp where dep_id in (select did from dept where dname &#x3D; ‘财务部’ or dname &#x3D; ‘市场部’); </li>
+<li>查询入职日期是 ‘2011-11-11’ 之后的员工信息和部门信息– 查询入职日期是 ‘2011-11-11’ 之后的员工信息 select * from emp where join_date &gt; ‘2011-11-11’ ; – 将上面语句的结果作为虚拟表和dept表进行内连接查询 select * from (select * from emp where join_date &gt; ‘2011-11-11’ ) t1, dept where t1.dep_id &#x3D; dept.did;</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-4-案例"><a href="#3-4-案例" class="headerlink" title="3.4 案例"></a>3.4 案例</h3><ul>
+<li>环境准备：</li>
+</ul>
+<p>DROP TABLE IF EXISTS emp; DROP TABLE IF EXISTS dept; DROP TABLE IF EXISTS job; DROP TABLE IF EXISTS salarygrade; – 部门表 CREATE TABLE dept (   did INT PRIMARY KEY PRIMARY KEY, – 部门id   dname VARCHAR(50), – 部门名称   loc VARCHAR(50) – 部门所在地 ); – 职务表，职务名称，职务描述 CREATE TABLE job (   id INT PRIMARY KEY,   jname VARCHAR(20),   description VARCHAR(50) ); – 员工表 CREATE TABLE emp (   id INT PRIMARY KEY, – 员工id   ename VARCHAR(50), – 员工姓名   job_id INT, – 职务id   mgr INT , – 上级领导   joindate DATE, – 入职日期   salary DECIMAL(7,2), – 工资   bonus DECIMAL(7,2), – 奖金   dept_id INT, – 所在部门编号   CONSTRAINT emp_jobid_ref_job_id_fk FOREIGN KEY (job_id) REFERENCES job (id),   CONSTRAINT emp_deptid_ref_dept_id_fk FOREIGN KEY (dept_id) REFERENCES dept (id) ); – 工资等级表 CREATE TABLE salarygrade (   grade INT PRIMARY KEY,   – 级别   losalary INT,  – 最低工资   hisalary INT – 最高工资 ); 				 – 添加4个部门 INSERT INTO dept(did,dname,loc) VALUES  (10,’教研部’,’北京’), (20,’学工部’,’上海’), (30,’销售部’,’广州’), (40,’财务部’,’深圳’); – 添加4个职务 INSERT INTO job (id, jname, description) VALUES (1, ‘董事长’, ‘管理整个公司，接单’), (2, ‘经理’, ‘管理部门员工’), (3, ‘销售员’, ‘向客人推销产品’), (4, ‘文员’, ‘使用办公软件’); – 添加员工 INSERT INTO emp(id,ename,job_id,mgr,joindate,salary,bonus,dept_id) VALUES  (1001,’孙悟空’,4,1004,’2000-12-17’,’8000.00’,NULL,20), (1002,’卢俊义’,3,1006,’2001-02-20’,’16000.00’,’3000.00’,30), (1003,’林冲’,3,1006,’2001-02-22’,’12500.00’,’5000.00’,30), (1004,’唐僧’,2,1009,’2001-04-02’,’29750.00’,NULL,20), (1005,’李逵’,4,1006,’2001-09-28’,’12500.00’,’14000.00’,30), (1006,’宋江’,2,1009,’2001-05-01’,’28500.00’,NULL,30), (1007,’刘备’,2,1009,’2001-09-01’,’24500.00’,NULL,10), (1008,’猪八戒’,4,1004,’2007-04-19’,’30000.00’,NULL,20), (1009,’罗贯中’,1,NULL,’2001-11-17’,’50000.00’,NULL,10), (1010,’吴用’,3,1006,’2001-09-08’,’15000.00’,’0.00’,30), (1011,’沙僧’,4,1004,’2007-05-23’,’11000.00’,NULL,20), (1012,’李逵’,4,1006,’2001-12-03’,’9500.00’,NULL,30), (1013,’小白龙’,4,1004,’2001-12-03’,’30000.00’,NULL,20), (1014,’关羽’,4,1007,’2002-01-23’,’13000.00’,NULL,10); – 添加5个工资等级 INSERT INTO salarygrade(grade,losalary,hisalary) VALUES  (1,7000,12000), (2,12010,14000), (3,14010,20000), (4,20010,30000), (5,30010,99990); </p>
+<ul>
+<li>需求<ol>
+<li>查询所有员工信息。查询员工编号，员工姓名，工资，职务名称，职务描述&#x2F;* 	分析： 		1. 员工编号，员工姓名，工资 信息在emp 员工表中 		2. 职务名称，职务描述 信息在 job 职务表中 		3. job 职务表 和 emp 员工表 是 一对多的关系 emp.job_id &#x3D; job.id *&#x2F; – 方式一 ：隐式内连接 SELECT 	emp.id, 	emp.ename, 	emp.salary, 	job.jname, 	job.description FROM 	emp, 	job WHERE 	emp.job_id &#x3D; job.id; – 方式二 ：显式内连接 SELECT 	emp.id, 	emp.ename, 	emp.salary, 	job.jname, 	job.description FROM 	emp INNER JOIN job ON emp.job_id &#x3D; job.id; </li>
+<li>查询员工编号，员工姓名，工资，职务名称，职务描述，部门名称，部门位置&#x2F;* 	分析： 		1. 员工编号，员工姓名，工资 信息在emp 员工表中 		2. 职务名称，职务描述 信息在 job 职务表中 		3. job 职务表 和 emp 员工表 是 一对多的关系 emp.job_id &#x3D; job.id 		4. 部门名称，部门位置 来自于 部门表 dept 		5. dept 和 emp 一对多关系 dept.id &#x3D; emp.dept_id *&#x2F; – 方式一 ：隐式内连接 SELECT 	emp.id, 	emp.ename, 	emp.salary, 	job.jname, 	job.description, 	dept.dname, 	dept.loc FROM 	emp, 	job, 	dept WHERE 	emp.job_id &#x3D; job.id 	and dept.id &#x3D; emp.dept_id ; – 方式二 ：显式内连接 SELECT 	emp.id, 	emp.ename, 	emp.salary, 	job.jname, 	job.description, 	dept.dname, 	dept.loc FROM 	emp INNER JOIN job ON emp.job_id &#x3D; job.id INNER JOIN dept ON dept.id &#x3D; emp.dept_id </li>
+<li>查询员工姓名，工资，工资等级&#x2F;* 	分析： 		1. 员工姓名，工资 信息在emp 员工表中 		2. 工资等级 信息在 salarygrade 工资等级表中 		3. emp.salary &gt;&#x3D; salarygrade.losalary  and emp.salary &lt;&#x3D; salarygrade.hisalary *&#x2F; SELECT 	emp.ename, 	emp.salary, 	t2.* FROM 	emp, 	salarygrade t2 WHERE 	emp.salary &gt;&#x3D; t2.losalary AND emp.salary &lt;&#x3D; t2.hisalary </li>
+<li>查询员工姓名，工资，职务名称，职务描述，部门名称，部门位置，工资等级&#x2F;* 	分析： 		1. 员工编号，员工姓名，工资 信息在emp 员工表中 		2. 职务名称，职务描述 信息在 job 职务表中 		3. job 职务表 和 emp 员工表 是 一对多的关系 emp.job_id &#x3D; job.id 		4. 部门名称，部门位置 来自于 部门表 dept 		5. dept 和 emp 一对多关系 dept.id &#x3D; emp.dept_id 		6. 工资等级 信息在 salarygrade 工资等级表中 		7. emp.salary &gt;&#x3D; salarygrade.losalary  and emp.salary &lt;&#x3D; salarygrade.hisalary *&#x2F; SELECT 	emp.id, 	emp.ename, 	emp.salary, 	job.jname, 	job.description, 	dept.dname, 	dept.loc, 	t2.grade FROM 	emp INNER JOIN job ON emp.job_id &#x3D; job.id INNER JOIN dept ON dept.id &#x3D; emp.dept_id INNER JOIN salarygrade t2 ON emp.salary BETWEEN t2.losalary and t2.hisalary; </li>
+<li>查询出部门编号、部门名称、部门位置、部门人数&#x2F;* 	分析： 		1. 部门编号、部门名称、部门位置 来自于部门 dept 表 		2. 部门人数: 在emp表中 按照dept_id 进行分组，然后count(<em>)统计数量 		3. 使用子查询，让部门表和分组后的表进行内连接 <em>&#x2F; – 根据部门id分组查询每一个部门id和员工数 select dept_id, count(</em>) from emp group by dept_id; SELECT 	dept.id, 	dept.dname, 	dept.loc, 	t1.count FROM 	dept, 	( 		SELECT 			dept_id, 			count(</em>) count 		FROM 			emp 		GROUP BY 			dept_id 	) t1 WHERE 	dept.id &#x3D; t1.dept_id</li>
+</ol>
+</li>
+</ul>
+<h2 id="4，事务"><a href="#4，事务" class="headerlink" title="4，事务"></a>4，事务</h2><h3 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h3><p>数据库的事务（Transaction）是一种机制、一个操作序列，包含了一组数据库操作命令。<br>事务把所有的命令作为一个整体一起向系统提交或撤销操作请求，即这一组数据库命令要么同时成功，要么同时失败。<br>事务是一个不可分割的工作逻辑单元。<br>这些概念不好理解，接下来举例说明，如下图有一张表<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462766-0e7e26c9-afd9-4dc9-b072-0b4853a9a669.png#from=url&id=L2qaw&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>张三和李四账户中各有100块钱，现李四需要转换500块钱给张三，具体的转账操作为</p>
+<ul>
+<li>第一步：查询李四账户余额</li>
+<li>第二步：从李四账户金额 -500</li>
+<li>第三步：给张三账户金额 +500</li>
+</ul>
+<p>现在假设在转账过程中第二步完成后出现了异常第三步没有执行，就会造成李四账户金额少了500，而张三金额并没有多500；这样的系统是有问题的。如果解决呢？使用事务可以解决上述问题<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462847-098caef1-3899-4f74-92f4-46b6dc4f63c4.png#from=url&id=ttgPp&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上图可以看到在转账前开启事务，如果出现了异常回滚事务，三步正常执行就提交事务，这样就可以完美解决问题。</p>
+<h3 id="4-2-语法"><a href="#4-2-语法" class="headerlink" title="4.2 语法"></a>4.2 语法</h3><ul>
+<li>开启事务START TRANSACTION; 或者   BEGIN; </li>
+<li>提交事务commit; </li>
+<li>回滚事务rollback;</li>
+</ul>
+<h3 id="4-3-代码验证"><a href="#4-3-代码验证" class="headerlink" title="4.3 代码验证"></a>4.3 代码验证</h3><ul>
+<li>环境准备DROP TABLE IF EXISTS account; – 创建账户表 CREATE TABLE account( 	id int PRIMARY KEY auto_increment, 	name varchar(10), 	money double(10,2) ); – 添加数据 INSERT INTO account(name,money) values(‘张三’,1000),(‘李四’,1000); </li>
+<li>不加事务演示问题– 转账操作 – 1. 查询李四账户金额是否大于500 – 2. 李四账户 -500 UPDATE account set money &#x3D; money - 500 where name &#x3D; ‘李四’; 出现异常了…  – 此处不是注释，在整体执行时会出问题，后面的sql则不执行 – 3. 张三账户 +500 UPDATE account set money &#x3D; money + 500 where name &#x3D; ‘张三’; 整体执行结果肯定会出问题，我们查询账户表中数据，发现李四账户少了500。<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714462932-86d9620d-f4f8-4682-8772-5fb3ffcfeb8f.png#from=url&id=YvkAF&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>添加事务sql如下：– 开启事务 BEGIN; – 转账操作 – 1. 查询李四账户金额是否大于500 – 2. 李四账户 -500 UPDATE account set money &#x3D; money - 500 where name &#x3D; ‘李四’; 出现异常了…  – 此处不是注释，在整体执行时会出问题，后面的sql则不执行 – 3. 张三账户 +500 UPDATE account set money &#x3D; money + 500 where name &#x3D; ‘张三’; – 提交事务 COMMIT; – 回滚事务 ROLLBACK; 上面sql中的执行成功进选择执行提交事务，而出现问题则执行回滚事务的语句。以后我们肯定不可能这样操作，而是在java中进行操作，在java中可以抓取异常，没出现异常提交事务，出现异常回滚事务。</li>
+</ul>
+<h3 id="4-4-事务的四大特征"><a href="#4-4-事务的四大特征" class="headerlink" title="4.4 事务的四大特征"></a>4.4 事务的四大特征</h3><ul>
+<li>原子性（Atomicity）: 事务是不可分割的最小操作单位，要么同时成功，要么同时失败</li>
+<li>一致性（Consistency） :事务完成时，必须使所有的数据都保持一致状态</li>
+<li>隔离性（Isolation） :多个事务之间，操作的可见性</li>
+<li>持久性（Durability） :事务一旦提交或回滚，它对数据库中的数据的改变就是永久的</li>
+</ul>
+<p>SELECT @@autocommit; set @@autocommit &#x3D; 0;<br>说明：<br>mysql中事务是自动提交的。<br>也就是说我们不添加事务执行sql语句，语句执行完毕会自动的提交事务。<br>可以通过下面语句查询默认提交方式：<br>查询到的结果是1 则表示自动提交，结果是0表示手动提交。当然也可以通过下面语句修改提交方式</p>
+]]></content>
+      <categories>
+        <category>后台</category>
+      </categories>
+      <tags>
+        <tag>数据库 java 基础</tag>
       </tags>
   </entry>
 </search>
