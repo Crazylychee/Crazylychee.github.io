@@ -16,6 +16,104 @@
       </tags>
   </entry>
   <entry>
+    <title>Git使用</title>
+    <url>/2023/08/08/Git/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>第一次使用git，有些磕磕绊绊，好在在我不懈地查找解决办法下，终于解决了，来记录下。<br>23年7月10号我再一次学习了git，作的笔记补充到了后面，可以点击链接跳转<br><a href="#7%E6%9C%8810%E5%8F%B7%E8%A1%A5%E5%85%85%E7%AC%94%E8%AE%B0">7月10号笔记</a></p>
+<span id="more"></span>
+<p>我的主要目的是上传本地仓库的内容到远程仓库，下面的步骤也是围绕此展开。</p>
+<h3 id="正文分享"><a href="#正文分享" class="headerlink" title="正文分享"></a>正文分享</h3><p>1.进入想要创建仓库的文件夹，然后右键点击git bash，进入命令行窗口。（如果第一次用<br>是要输入个人信息的<br>git config –global user.name “xxx”<br>git config –global user.email “<a href="mailto:xxxx@xxx.com">xxxx@xxx.com</a>“<br>）<br>git init   初始化成为仓库<br>git add .    添加此文件夹所有文件到工作区。<br>git status     查看工作区的内容<br>git commit -m “项目名称”<br>（在做push之前要   添加SSH key  不然每次push pull都要输密码<br>ssh-keygen -t rsa -C “<a href="mailto:xxxxx@xxx.com">xxxxx@xxx.com</a>“           这是在本地创建ssh key，写自己注册github的邮箱<br>然后一路回车<br>找到C盘中的user文件夹，找到生成的.ssh文件夹<br>用记事本打开里面的ssh public版复制到github的ssh设置窗口）</p>
+<p>键盘输入ctrl+L                输入到这，窗口太多东西了，来个清屏，全部东西会上移隐藏</p>
+<p>git remote add origin + 你github仓库的网址 + .git               关联本地仓库<br>git push origin master         master是无分支时创建的分支，有分支时填分支名，作用是执行推送<br>git remote add origin +你仓库的ssh（在创建仓库的开始界面有）不过创建分支后我找不到了，使用ssh的关联办法的话   &#x2F;&#x2F;ssh格式  <a href="mailto:git@github.com">git@github.com</a>:hec990&#x2F;testing.git<br>git push -u origin master        -u应该是模式的意思<br>git push origin + branchname          将新分支推送到github<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1673792153339-5ccc6406-c50d-4e8c-9d1f-c2a6f86062ff.png#averageHue=%23100b04&clientId=u1eed3ae3-0d1a-4&from=paste&height=140&id=u4cb77b65&name=image.png&originHeight=231&originWidth=855&originalType=binary&ratio=1&rotation=0&showTitle=false&size=28084&status=done&style=none&taskId=u06103297-3d23-4803-94f6-c5c46523750&title=&width=518.1817882317174#alt=image.png" alt="image.png"><br>我在这出了问题，错误：failed to push some refs to’github.com:maiugug&#x2F;Openwork.git’<br>提示：Updates were rejected because the tip of your current branchis behind<br>its remote counterpart. Integrate the remote changes<br>后来怎么搞都不行，查了两个钟，终于找到了。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1673792197047-b27ec86b-f5df-4009-948c-85063a4256b0.png#averageHue=%23211e1b&clientId=u1eed3ae3-0d1a-4&from=paste&height=144&id=u86720fb3&name=image.png&originHeight=238&originWidth=697&originalType=binary&ratio=1&rotation=0&showTitle=false&size=31531&status=done&style=none&taskId=u5691f56e-5234-4584-93f8-040f322f10a&title=&width=422.42421800878014#alt=image.png" alt="image.png"><br>暂时不知道哪里出错，到时回来找一下。<br>git push -u origin main         push的报错是不一样的，它的是<br>error:src refspec main does not match any<br>error:failed to push some refs to’github.com: maiugug&#x2F;openWork.git<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1673792337552-01145b04-4c1c-4ae2-9fdd-8b238709b7cb.png#averageHue=%230b0703&clientId=u1eed3ae3-0d1a-4&from=paste&height=95&id=u59df749c&name=image.png&originHeight=156&originWidth=780&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20657&status=done&style=none&taskId=u2d531469-06ce-4f11-ad9a-143b906c667&title=&width=472.7272454043738#alt=image.png" alt="image.png"><br>git branch -d + branchname             删除本地分支<br>*<br>上传完了，我松了口气，就又扩展了一些git操作<br>git checkout +branchname           切换到新的分支<br>git checkout -b +branchname               创建分支的同时切换到该分支<br>相当于<br>git branch + branchname<br>git checkout + branchname</p>
+<p>注意远程仓库如果本来有东西的话，就要先进行拉取合并了，再push<br>法一：将远程仓库的master分支拉取到本地，然后合并到本地的master分支上<br>git pul1 –rebase origin master<br>此时冉将本地仓库push到远端仓库中即可<br>git push -u origin master</p>
+<p>法二：将远端仓库的master分支拉取、合并到本地的master分支<br>$git pull origin masten –allow-unrelated-histories<br>然后再将本地仓库git push到远端<br>$git push -u origin master</p>
+<p>git pull origin master          本地同步远程仓库，将远程仓库里的内容拉下来<br>·git rm -r –cached             文件名删除文件【还没用过】？文件名写哪<br>·git commit -m“delete dir”          提交并添加说明【还没用过】  ？给谁添加说明呀<br>git push origin master            将本次更改更新到github项目上去<br>git push origin：[branch name]         删除github远程分支<br>git branch -r                 -r表示remote  查看远程分支</p>
+<p>###7月10号补充笔记</p>
+<h6 id="这次的补充内容是关于合并分支解决版本冲突的，然后还带常见的命令行操作。首先，可以通过键盘输入-cd-选择你所需要进入的文件夹不知道当前目录到底有什么文件夹可以输入-dir-进行查看然后，为了测试git的功能，我还需要创建一个二进制文件。mkdir-文件名-如果文件名没有后缀的话就是文件夹创建错了可以通过，md-文件名-也可以进行创建-rm-文件名-来进行删除创建完了之后，想要改变二进制文件，可以通过-vim-文件名-来进行修改"><a href="#这次的补充内容是关于合并分支解决版本冲突的，然后还带常见的命令行操作。首先，可以通过键盘输入-cd-选择你所需要进入的文件夹不知道当前目录到底有什么文件夹可以输入-dir-进行查看然后，为了测试git的功能，我还需要创建一个二进制文件。mkdir-文件名-如果文件名没有后缀的话就是文件夹创建错了可以通过，md-文件名-也可以进行创建-rm-文件名-来进行删除创建完了之后，想要改变二进制文件，可以通过-vim-文件名-来进行修改" class="headerlink" title="这次的补充内容是关于合并分支解决版本冲突的，然后还带常见的命令行操作。首先，可以通过键盘输入: cd   选择你所需要进入的文件夹不知道当前目录到底有什么文件夹可以输入: dir   进行查看然后，为了测试git的功能，我还需要创建一个二进制文件。mkdir 文件名    如果文件名没有后缀的话就是文件夹创建错了可以通过，md 文件名   也可以进行创建   rm 文件名    来进行删除创建完了之后，想要改变二进制文件，可以通过   vim 文件名   来进行修改"></a>这次的补充内容是关于合并分支解决版本冲突的，然后还带常见的命令行操作。首先，可以通过键盘输入: cd <tab>  选择你所需要进入的文件夹不知道当前目录到底有什么文件夹可以输入: dir   进行查看然后，为了测试git的功能，我还需要创建一个二进制文件。mkdir 文件名    如果文件名没有后缀的话就是文件夹创建错了可以通过，md 文件名   也可以进行创建   rm 文件名    来进行删除创建完了之后，想要改变二进制文件，可以通过   vim 文件名   来进行修改</h6><h5 id="接下来是vim的使用教学"><a href="#接下来是vim的使用教学" class="headerlink" title="接下来是vim的使用教学"></a>接下来是vim的使用教学</h5><p>在前面，我们通过   vim 文件名   进入到vim的操作界面，一开始进入的模式就是vim的普通模式，在普通模式下，可以进行退出vim的操作，还有切换模式的操作。命令如下：<br>:wq    退出并保存<br>:q     只退出<br>i      插入模式<br>o      插入模式<br>总体来说不难，只要实践一下就熟练了。记得在输入指令时一定要用英文输入法，不然就会被判断为无效输入。</p>
+<h5 id="继续说git的冲突版本回退合并分支的命令"><a href="#继续说git的冲突版本回退合并分支的命令" class="headerlink" title="继续说git的冲突版本回退合并分支的命令"></a>继续说git的冲突版本回退合并分支的命令</h5><p>git 是一个只记住二进制文件改变的版本控制软件，所以如果我们只是创建文件夹，而没有在文件夹中创建任意文件，我们的改变就并不会被记录到git之中。简而言之，就是你git add然后git status或git commit 没有任何反应，只显示</p>
+<p>nothing to commit, working tree clean</p>
+<p>接下来，我将会用命令加注释的方式来进行说明<br>git branch 分支名   创建分支<br>git branch -v      查看分支<br>git switch 分支名   切换分支<br>git merge 分支名    把指定分支合并到当前分支上<br>git log            获得commit详细记录<br>git reflog         获得commit简略记录<br>git diff           对比当前文件与暂存区文件的区别<br>git diff –cached  对比暂存区文件与最新版本文件的区别</p>
+]]></content>
+      <categories>
+        <category>代码工具</category>
+      </categories>
+      <tags>
+        <tag>代码工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客建立之重新建立</title>
+    <url>/2023/08/08/blog-problem/</url>
+    <content><![CDATA[<h4 id="这个博客"><a href="#这个博客" class="headerlink" title="这个博客"></a>这个博客</h4><p>我的博客本来只是想在本地文件夹中换个位置，但是没想到在剪切的时候就出问题了，nodemodule文件夹一直剪切不过去，只能停止了。但是在停止以后，我的博客的部署却出了问题，一直用hexo的命令都是显示hexo help的界面。我猜是某些重要文件的损坏，然后让hexo无法识别我的本地博客为工作目录了。</p>
+<span id="more"></span>
+
+<p><img src="/blog-problem%5C1.png" alt="image"></p>
+<p>我在一顿操作之后只能重新部署博客了，之前的博客好看的界面直接打水漂。</p>
+<p>给你们看看之前的博客界面。</p>
+<p><img src="/blog-problem%5C2.png" alt="image"></p>
+<p>但是，我再一次做，肯定要做得比上一次好看呀！！</p>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p><img src="/blog-problem%5C3.png" alt="image"></p>
+<p> 先将这些字段原本的注释打开。然后</p>
+<p> <a href="https://github.com/next-theme/hexo-next-fireworks">https://github.com/next-theme/hexo-next-fireworks</a><br>这个是Next主题用到的烟火特效<br>安装指令：  npm install next-theme&#x2F;hexo-next-fireworks<br>然后在hexo中的<mark>站点配置</mark><br><img src="/blog-problem%5C5.png" alt="image"></p>
+<h4 id="部署配置"><a href="#部署配置" class="headerlink" title="部署配置"></a>部署配置</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">git@github.com:Crazylychee/Crazylychee.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="普通站点配置"><a href="#普通站点配置" class="headerlink" title="普通站点配置"></a>普通站点配置</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Crazylychee&#x27;s</span> <span class="string">website</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;一个分享技术分享生活的个人博客&#x27;</span></span><br><span class="line"><span class="attr">keywords:</span> </span><br><span class="line"><span class="attr">author:</span> <span class="string">Crazylychee</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<h5 id="next主题配置"><a href="#next主题配置" class="headerlink" title="next主题配置"></a>next主题配置</h5><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后看看效果<br>感觉还不错</p>
+<h4 id="配置公益404界面"><a href="#配置公益404界面" class="headerlink" title="配置公益404界面"></a>配置公益404界面</h4><p>需要在站点根目录&#x2F;source&#x2F;commonweal中创建404.html文件<br>写入下面内容</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">IDOCTYPE</span> <span class="attr">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>404<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;</span></span></span><br><span class="line"><span class="string"><span class="tag">https://volunteer.cdn-go.cn/404/latest/404.js</span></span></span><br><span class="line"><span class="string"><span class="tag">&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="设置站点本地搜索"><a href="#设置站点本地搜索" class="headerlink" title="设置站点本地搜索"></a>设置站点本地搜索</h4><p>在站点根目录下<br>$ npm install hexo-generator-searchdb</p>
+<p><img src="/blog-problem%5C6.png" alt="image"></p>
+<h4 id="打开不算子技术统计"><a href="#打开不算子技术统计" class="headerlink" title="打开不算子技术统计"></a>打开不算子技术统计</h4><p><img src="/blog-problem%5C7.png" alt="image"><br>用的hexo，打开themes&#x2F;你的主题&#x2F;layout&#x2F;_partial&#x2F;footer.ejs添加即可。<br>但是我的最新版本的next不用配置，直接在主题config.yml中把busuanzi的开关打开就好了</p>
+<p>在配置期间，我遇到了一个无法解决的问题，所以不得不重新搭建博客<br>具体问题如下<br>一直无法显示主题的内容，但是我换一个landscape主题就可以正常显示<br>？？？？<br>可能是我的next主题配置错误了吧！<br>那就只能重新建站了，不不不，应该从重新下载主题就行。</p>
+<p>重新下载了主题，想重新运行hexo g<br>报错<br>？？？？<br>又hexo s<br>显示的是<br>？？？？<br>原来是我下载的地方好像早就迁移了，我下载了一个错误版本，下面是错误示范：<br>先下载next主题<br><a href="https://theme-next.iissnan.com/getting-started.html#install-next-theme">https://theme-next.iissnan.com/getting-started.html#install-next-theme</a><br>下载最新版本，下载稳定版本就是要下载压缩包了<br>$ cd your-hexo-site<br>$ git clone <a href="https://github.com/iissnan/hexo-theme-next">https://github.com/iissnan/hexo-theme-next</a> themes&#x2F;next<br>用ssh可以更快的<br><a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#105;&#116;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#109;">&#103;&#105;&#116;&#x40;&#103;&#105;&#116;&#104;&#117;&#x62;&#46;&#99;&#x6f;&#109;</a>:iissnan&#x2F;hexo-theme-next.git</p>
+<p>下面是正确示范<br><a href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a><br>git clone <a href="mailto:&#103;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#98;&#x2e;&#99;&#111;&#109;">&#103;&#x69;&#116;&#x40;&#103;&#x69;&#x74;&#x68;&#x75;&#98;&#x2e;&#99;&#111;&#109;</a>:theme-next&#x2F;hexo-theme-next.git themes&#x2F;next<br>结果运行还是出错，直接重新建站。</p>
+]]></content>
+      <categories>
+        <category>代码工具</category>
+      </categories>
+      <tags>
+        <tag>代码工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>datagrip和clion的破解码</title>
+    <url>/2023/08/08/exception_code/</url>
+    <content><![CDATA[<p>使用的材料：<br>环境window11<br>datagrip 2022.2.5<br>参考网站：<br>#<a href="https://www.exception.site/essay/datagrip-2022-pojie">https://www.exception.site/essay/datagrip-2022-pojie</a></p>
+<span id="more"></span>
+<p>仅作为本人的备忘用途，不作为任何商用。</p>
+<p>##datagrip</p>
+<p>激活码：VPQ9LWBJ0Z-eyJsaWNlbnNlSWQiOiJWUFE5TFdCSjBaIiwibGljZW5zZWVOYW1lIjoic2lnbnVwIHNjb290ZXIiLCJhc3NpZ25lZU5hbWUiOiIiLCJhc3NpZ25lZUVtYWlsIjoiIiwibGljZW5zZVJlc3RyaWN0aW9uIjoiIiwiY2hlY2tDb25jdXJyZW50VXNlIjpmYWxzZSwicHJvZHVjdHMiOlt7ImNvZGUiOiJQU0kiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBEQiIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiREIiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOmZhbHNlfSx7ImNvZGUiOiJQV1MiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9XSwibWV0YWRhdGEiOiIwMTIwMjIwOTAyUFNBTjAwMDAwNSIsImhhc2giOiJUUklBTDotMjI4OTE3MTciLCJncmFjZVBlcmlvZERheXMiOjcsImF1dG9Qcm9sb25nYXRlZCI6ZmFsc2UsImlzQXV0b1Byb2xvbmdhdGVkIjpmYWxzZX0&#x3D;-Y35sXvjNUN0+WMouR7PGFzl62+ApqSBgPjwganzPG1ErZKJS1xh3O8MbkZnjiTPkjODi+pyBGjozBojATCzTGx4uCt61zccnyF+XI1fE9H9WTA5DAO3&#x2F;maxGFJ2KthOmkuktNnNi9qa0n7EyRuZ8rVVrc5+ETiEcfo2GctNcGqHKuRF96Bf8EL1GmCOkI8vU293X+n3XKEmN+Q1hEEBGbP9yiF5zhZDzFq0svj8g4c0fnTOrCc4GKyyEps6aDW2&#x2F;DurkotUFddzDhTCyoW1Gao0EZt0AnWUALsogI9ABjdtJq3ndyvuMrXTlOr2C&#x2F;hCGjqIN8ZDA0gf9mnrKBhcMbA&#x3D;&#x3D;-MIIETDCCAjSgAwIBAgIBDTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTIwMTAxOTA5MDU1M1oXDTIyMTAyMTA5MDU1M1owHzEdMBsGA1UEAwwUcHJvZDJ5LWZyb20tMjAyMDEwMTkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUlaUFc1wf+CfY9wzFWEL2euKQ5nswqb57V8QZG7d7RoR6rwYUIXseTOAFq210oMEe++LCjzKDuqwDfsyhgDNTgZBPAaC4vUU2oy+XR+Fq8nBixWIsH668HeOnRK6RRhsr0rJzRB95aZ3EAPzBuQ2qPaNGm17pAX0Rd6MPRgjp75IWwI9eA6aMEdPQEVN7uyOtM5zSsjoj79Lbu1fjShOnQZuJcsV8tqnayeFkNzv2LTOlofU&#x2F;Tbx502Ro073gGjoeRzNvrynAP03pL486P3KCAyiNPhDs2z8&#x2F;COMrxRlZW5mfzo0xsK0dQGNH3UoG&#x2F;9RVwHG4eS8LFpMTR9oetHZBAgMBAAGjgZkwgZYwCQYDVR0TBAIwADAdBgNVHQ4EFgQUJNoRIpb1hUHAk0foMSNM9MCEAv8wSAYDVR0jBEEwP4AUo562SGdCEjZBvW3gubSgUouX8bOhHKQaMBgxFjAUBgNVBAMMDUpldFByb2ZpbGUgQ0GCCQDSbLGDsoN54TATBgNVHSUEDDAKBggrBgEFBQcDATALBgNVHQ8EBAMCBaAwDQYJKoZIhvcNAQELBQADggIBABqRoNGxAQct9dQUFK8xqhiZaYPd30TlmCmSAaGJ0eBpvkVeqA2jGYhAQRqFiAlFC63JKvWvRZO1iRuWCEfUMkdqQ9VQPXziE&#x2F;BlsOIgrL6RlJfuFcEZ8TK3syIfIGQZNCxYhLLUuet2HE6LJYPQ5c0jH4kDooRpcVZ4rBxNwddpctUO2te9UU5&#x2F;FjhioZQsPvd92qOTsV+8Cyl2fvNhNKD1Uu9ff5AkVIQn4JU23ozdB&#x2F;R5oUlebwaTE6WZNBs+TA&#x2F;qPj+5&#x2F;we9NH71WRB0hqUoLI2AKKyiPw++FtN4Su1vsdDlrAzDj9ILjpjJKA1ImuVcG329&#x2F;WTYIKysZ1CWK3zATg9BeCUPAV1pQy8ToXOq+RSYen6winZ2OO93eyHv2Iw5kbn1dqfBw1BuTE29V2FJKicJSu8iEOpfoafwJISXmz1wnnWL3V&#x2F;0NxTulfWsXugOoLfv0ZIBP1xH9kmf22jjQ2JiHhQZP7ZDsreRrOeIQ&#x2F;c4yR8IQvMLfC0WKQqrHu5ZzXTH4NO3CwGWSlTY74kE91zXB5mwWAx1jig+UXYc2w4RkVhy0&#x2F;&#x2F;lOmVya&#x2F;PEepuuTTI4+UJwC7qbVlh5zfhj8oTNUXgN0AOc+Q0&#x2F;WFPl1aw5VV&#x2F;VrO8FCoB15lFVlpKaQ1Yh+DVU8ke+rt9Th0BCHXe0uZOEmH0nOnH&#x2F;0onD</p>
+<p>##clion<br>GSSXZEZ56G-eyJsaWNlbnNlSWQiOiJHU1NYWkVaNTZHIiwibGljZW5zZWVOYW1lIjoic2lnbnVwIHNjb290ZXIiLCJhc3NpZ25lZU5hbWUiOiIiLCJhc3NpZ25lZUVtYWlsIjoiIiwibGljZW5zZVJlc3RyaWN0aW9uIjoiIiwiY2hlY2tDb25jdXJyZW50VXNlIjpmYWxzZSwicHJvZHVjdHMiOlt7ImNvZGUiOiJQU0kiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBTVyIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiUFdTIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfSx7ImNvZGUiOiJDTCIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6ZmFsc2V9LHsiY29kZSI6IlBDV01QIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfV0sIm1ldGFkYXRhIjoiMDEyMDIyMDkwMlBTQU4wMDAwMDUiLCJoYXNoIjoiVFJJQUw6NTM5ODE5MDIyIiwiZ3JhY2VQZXJpb2REYXlzIjo3LCJhdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlLCJpc0F1dG9Qcm9sb25nYXRlZCI6ZmFsc2V9-iAUL9c89hA+oXgFAajsV9QyCOVsENJGkZiGQvW7XKaJID5XtXbxU4iBdMPaiJE1B8dZJy27Vt1WJjin+oQtnSC47t0MCx61vPOBGk&#x2F;KAvEBoi6d8mfP5u729g0GHva3nPXsY3+IbnsWm7SIsB0syvtr1VRmqt7tBKm2F6gRn4Z8SnvkoQuyrvtZN8juJBEz3hYGHH4h+jpMnAYjXZ0M92WaD4aIvtGazp41f4&#x2F;FuXW6IcSHTwualWVHuvS95fuxxAwpbyxPyYLom1Uh&#x2F;la6kY9+zi3R5Z1amOHEOCyZnSoFDcMeKF3yhQU6&#x2F;AjYiT&#x2F;fOfICNcaK&#x2F;BHYZ0VFMI8zOQA&#x3D;&#x3D;-MIIETDCCAjSgAwIBAgIBDTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTIwMTAxOTA5MDU1M1oXDTIyMTAyMTA5MDU1M1owHzEdMBsGA1UEAwwUcHJvZDJ5LWZyb20tMjAyMDEwMTkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUlaUFc1wf+CfY9wzFWEL2euKQ5nswqb57V8QZG7d7RoR6rwYUIXseTOAFq210oMEe++LCjzKDuqwDfsyhgDNTgZBPAaC4vUU2oy+XR+Fq8nBixWIsH668HeOnRK6RRhsr0rJzRB95aZ3EAPzBuQ2qPaNGm17pAX0Rd6MPRgjp75IWwI9eA6aMEdPQEVN7uyOtM5zSsjoj79Lbu1fjShOnQZuJcsV8tqnayeFkNzv2LTOlofU&#x2F;Tbx502Ro073gGjoeRzNvrynAP03pL486P3KCAyiNPhDs2z8&#x2F;COMrxRlZW5mfzo0xsK0dQGNH3UoG&#x2F;9RVwHG4eS8LFpMTR9oetHZBAgMBAAGjgZkwgZYwCQYDVR0TBAIwADAdBgNVHQ4EFgQUJNoRIpb1hUHAk0foMSNM9MCEAv8wSAYDVR0jBEEwP4AUo562SGdCEjZBvW3gubSgUouX8bOhHKQaMBgxFjAUBgNVBAMMDUpldFByb2ZpbGUgQ0GCCQDSbLGDsoN54TATBgNVHSUEDDAKBggrBgEFBQcDATALBgNVHQ8EBAMCBaAwDQYJKoZIhvcNAQELBQADggIBABqRoNGxAQct9dQUFK8xqhiZaYPd30TlmCmSAaGJ0eBpvkVeqA2jGYhAQRqFiAlFC63JKvWvRZO1iRuWCEfUMkdqQ9VQPXziE&#x2F;BlsOIgrL6RlJfuFcEZ8TK3syIfIGQZNCxYhLLUuet2HE6LJYPQ5c0jH4kDooRpcVZ4rBxNwddpctUO2te9UU5&#x2F;FjhioZQsPvd92qOTsV+8Cyl2fvNhNKD1Uu9ff5AkVIQn4JU23ozdB&#x2F;R5oUlebwaTE6WZNBs+TA&#x2F;qPj+5&#x2F;we9NH71WRB0hqUoLI2AKKyiPw++FtN4Su1vsdDlrAzDj9ILjpjJKA1ImuVcG329&#x2F;WTYIKysZ1CWK3zATg9BeCUPAV1pQy8ToXOq+RSYen6winZ2OO93eyHv2Iw5kbn1dqfBw1BuTE29V2FJKicJSu8iEOpfoafwJISXmz1wnnWL3V&#x2F;0NxTulfWsXugOoLfv0ZIBP1xH9kmf22jjQ2JiHhQZP7ZDsreRrOeIQ&#x2F;c4yR8IQvMLfC0WKQqrHu5ZzXTH4NO3CwGWSlTY74kE91zXB5mwWAx1jig+UXYc2w4RkVhy0&#x2F;&#x2F;lOmVya&#x2F;PEepuuTTI4+UJwC7qbVlh5zfhj8oTNUXgN0AOc+Q0&#x2F;WFPl1aw5VV&#x2F;VrO8FCoB15lFVlpKaQ1Yh+DVU8ke+rt9Th0BCHXe0uZOEmH0nOnH&#x2F;0onD</p>
+]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>破解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>java编程经验</title>
+    <url>/2023/08/08/experience_01/</url>
+    <content><![CDATA[<p>这里记录了一些本人在编程时的小技巧</p>
+<span id="more"></span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hong.gUI.awt_;</span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.ActionEvent;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.ActionListener;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 利用TextField文本框来设计计算器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CalculatorTextField</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">MyCalculator</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//计算器类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyCalculator</span> <span class="keyword">extends</span> <span class="title class_">Frame</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyCalculator</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(<span class="string">&quot;加法计算器&quot;</span>);</span><br><span class="line">        setBounds(<span class="number">100</span>,<span class="number">500</span>,<span class="number">800</span>,<span class="number">200</span>);</span><br><span class="line">        <span class="comment">//设置布局</span></span><br><span class="line">        setLayout(<span class="keyword">new</span> <span class="title class_">FlowLayout</span>());</span><br><span class="line">        setVisible(<span class="literal">true</span>);</span><br><span class="line">        TextField textField1=<span class="keyword">new</span> <span class="title class_">TextField</span>(<span class="number">10</span>);<span class="comment">//调节字符数  以便框的大小够大</span></span><br><span class="line">        TextField textField2=<span class="keyword">new</span> <span class="title class_">TextField</span>(<span class="number">10</span>);<span class="comment">//字符数</span></span><br><span class="line">        TextField textField3=<span class="keyword">new</span> <span class="title class_">TextField</span>(<span class="number">20</span>);<span class="comment">//字符数</span></span><br><span class="line">        <span class="type">Button</span> <span class="variable">button</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Button</span>(<span class="string">&quot;=&quot;</span>);</span><br><span class="line">        button.addActionListener(<span class="keyword">new</span> <span class="title class_">MyCalculatorListener</span>(textField1,textField2,textField3));</span><br><span class="line">        <span class="comment">//标签</span></span><br><span class="line">        <span class="type">Label</span> <span class="variable">label</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Label</span>(<span class="string">&quot;+&quot;</span>);</span><br><span class="line">        add(textField1);</span><br><span class="line">        add(label);</span><br><span class="line">        add(textField2);</span><br><span class="line">        add(button);</span><br><span class="line">        add(textField3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//监听器类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyCalculatorListener</span> <span class="keyword">implements</span> <span class="title class_">ActionListener</span>&#123;</span><br><span class="line">    <span class="comment">//获得三个变量</span></span><br><span class="line">    <span class="keyword">private</span> TextField num1,num2,num3;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyCalculatorListener</span><span class="params">(TextField num1, TextField num2, TextField num3)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.num1 = num1;</span><br><span class="line">        <span class="built_in">this</span>.num2 = num2;</span><br><span class="line">        <span class="built_in">this</span>.num3 = num3;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">actionPerformed</span><span class="params">(ActionEvent e)</span> &#123;</span><br><span class="line">        <span class="comment">//1.获得加数和被加数</span></span><br><span class="line">        <span class="type">int</span> n1=Integer.parseInt(num1.getText());</span><br><span class="line">        <span class="type">int</span> n2=Integer.parseInt(num2.getText());</span><br><span class="line">        <span class="comment">//2.将这个值通过加法运算后，放到第三个框</span></span><br><span class="line">        num3.setText(<span class="string">&quot;&quot;</span>+(n1+n2));</span><br><span class="line">        <span class="comment">//3.清除前两个框</span></span><br><span class="line">        num1.setText(<span class="literal">null</span>);</span><br><span class="line">        num2.setText(<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hong.gUI.awt_;</span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.ActionEvent;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.ActionListener;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 利用TextField文本框来设计计算器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CalculatorTextField</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">MyCalculator</span>().loadFrame();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//计算器类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyCalculator</span> <span class="keyword">extends</span> <span class="title class_">Frame</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyCalculator</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(<span class="string">&quot;加法计算器&quot;</span>);<span class="comment">//设置窗口标题</span></span><br><span class="line">        <span class="comment">//setTitle(&quot;加法计算器&quot;);//设置窗口标题</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//属性</span></span><br><span class="line">    TextField textField1,textField2,textField3;<span class="comment">//作用域提高到外面，让每个方法都可以调用文本框，方便监听器获取文本</span></span><br><span class="line">    <span class="comment">//用方法来打开计算器，这样可以重复打开计算器，构造方法只能执行一次</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">loadFrame</span><span class="params">()</span>&#123;</span><br><span class="line">        setBounds(<span class="number">100</span>,<span class="number">500</span>,<span class="number">800</span>,<span class="number">200</span>);</span><br><span class="line">        <span class="comment">//设置布局</span></span><br><span class="line">        setLayout(<span class="keyword">new</span> <span class="title class_">FlowLayout</span>());</span><br><span class="line">        setVisible(<span class="literal">true</span>);</span><br><span class="line">        textField1=<span class="keyword">new</span> <span class="title class_">TextField</span>(<span class="number">10</span>);<span class="comment">//调节字符数  以便框的大小够大</span></span><br><span class="line">        textField2=<span class="keyword">new</span> <span class="title class_">TextField</span>(<span class="number">10</span>);<span class="comment">//字符数</span></span><br><span class="line">        textField3=<span class="keyword">new</span> <span class="title class_">TextField</span>(<span class="number">20</span>);<span class="comment">//字符数</span></span><br><span class="line">        <span class="type">Button</span> <span class="variable">button</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Button</span>(<span class="string">&quot;=&quot;</span>);</span><br><span class="line">        button.addActionListener(<span class="keyword">new</span> <span class="title class_">MyCalculatorListener</span>(<span class="built_in">this</span>));<span class="comment">//优化1：直接将计算器这个对象传进去</span></span><br><span class="line">        <span class="comment">//标签</span></span><br><span class="line">        <span class="type">Label</span> <span class="variable">label</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Label</span>(<span class="string">&quot;+&quot;</span>);</span><br><span class="line">        add(textField1);</span><br><span class="line">        add(label);</span><br><span class="line">        add(textField2);</span><br><span class="line">        add(button);</span><br><span class="line">        add(textField3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//监听器类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyCalculatorListener</span> <span class="keyword">implements</span> <span class="title class_">ActionListener</span>&#123;</span><br><span class="line">    <span class="comment">//获取计算器这个对象，在一个类中组合另外一个类</span></span><br><span class="line">    <span class="comment">//直接将计算器类放进来，这样计算器类添加属性时就不用再麻烦的去重写构造方法了</span></span><br><span class="line">    MyCalculator calculator=<span class="literal">null</span>;</span><br><span class="line">    <span class="comment">//优化1</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyCalculatorListener</span><span class="params">(MyCalculator calculator)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.calculator=calculator;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">actionPerformed</span><span class="params">(ActionEvent e)</span> &#123;</span><br><span class="line">        <span class="comment">//1.获得加数和被加数</span></span><br><span class="line">        <span class="type">int</span> n1=Integer.parseInt(calculator.textField1.getText());<span class="comment">//可以直接调用传进来计算器对象，因为不是私密的属性，所以可以直接调用</span></span><br><span class="line">        <span class="type">int</span> n2=Integer.parseInt(calculator.textField2.getText());</span><br><span class="line">        <span class="comment">//2.将这个值通过加法运算后，放到第三个框</span></span><br><span class="line">        calculator.textField3.setText(<span class="string">&quot;&quot;</span>+(n1+n2));</span><br><span class="line">        <span class="comment">//3.清除前两个框</span></span><br><span class="line">        calculator.textField1.setText(<span class="literal">null</span>);</span><br><span class="line">        calculator.textField2.setText(<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上是用组合原理优化的简单计算器，最大的优点就是<br>1.可以打开多个计算器<br>2.计算器添加属性(就是指添加方法参数时)就不用麻烦的去重写构造方法了</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>经验</tag>
+      </tags>
+  </entry>
+  <entry>
     <title></title>
     <url>/2023/08/08/Java/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer"/>
@@ -248,104 +346,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Git使用</title>
-    <url>/2023/08/08/Git/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
-
-<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>第一次使用git，有些磕磕绊绊，好在在我不懈地查找解决办法下，终于解决了，来记录下。<br>23年7月10号我再一次学习了git，作的笔记补充到了后面，可以点击链接跳转<br><a href="#7%E6%9C%8810%E5%8F%B7%E8%A1%A5%E5%85%85%E7%AC%94%E8%AE%B0">7月10号笔记</a></p>
-<span id="more"></span>
-<p>我的主要目的是上传本地仓库的内容到远程仓库，下面的步骤也是围绕此展开。</p>
-<h3 id="正文分享"><a href="#正文分享" class="headerlink" title="正文分享"></a>正文分享</h3><p>1.进入想要创建仓库的文件夹，然后右键点击git bash，进入命令行窗口。（如果第一次用<br>是要输入个人信息的<br>git config –global user.name “xxx”<br>git config –global user.email “<a href="mailto:xxxx@xxx.com">xxxx@xxx.com</a>“<br>）<br>git init   初始化成为仓库<br>git add .    添加此文件夹所有文件到工作区。<br>git status     查看工作区的内容<br>git commit -m “项目名称”<br>（在做push之前要   添加SSH key  不然每次push pull都要输密码<br>ssh-keygen -t rsa -C “<a href="mailto:xxxxx@xxx.com">xxxxx@xxx.com</a>“           这是在本地创建ssh key，写自己注册github的邮箱<br>然后一路回车<br>找到C盘中的user文件夹，找到生成的.ssh文件夹<br>用记事本打开里面的ssh public版复制到github的ssh设置窗口）</p>
-<p>键盘输入ctrl+L                输入到这，窗口太多东西了，来个清屏，全部东西会上移隐藏</p>
-<p>git remote add origin + 你github仓库的网址 + .git               关联本地仓库<br>git push origin master         master是无分支时创建的分支，有分支时填分支名，作用是执行推送<br>git remote add origin +你仓库的ssh（在创建仓库的开始界面有）不过创建分支后我找不到了，使用ssh的关联办法的话   &#x2F;&#x2F;ssh格式  <a href="mailto:git@github.com">git@github.com</a>:hec990&#x2F;testing.git<br>git push -u origin master        -u应该是模式的意思<br>git push origin + branchname          将新分支推送到github<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1673792153339-5ccc6406-c50d-4e8c-9d1f-c2a6f86062ff.png#averageHue=%23100b04&clientId=u1eed3ae3-0d1a-4&from=paste&height=140&id=u4cb77b65&name=image.png&originHeight=231&originWidth=855&originalType=binary&ratio=1&rotation=0&showTitle=false&size=28084&status=done&style=none&taskId=u06103297-3d23-4803-94f6-c5c46523750&title=&width=518.1817882317174#alt=image.png" alt="image.png"><br>我在这出了问题，错误：failed to push some refs to’github.com:maiugug&#x2F;Openwork.git’<br>提示：Updates were rejected because the tip of your current branchis behind<br>its remote counterpart. Integrate the remote changes<br>后来怎么搞都不行，查了两个钟，终于找到了。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1673792197047-b27ec86b-f5df-4009-948c-85063a4256b0.png#averageHue=%23211e1b&clientId=u1eed3ae3-0d1a-4&from=paste&height=144&id=u86720fb3&name=image.png&originHeight=238&originWidth=697&originalType=binary&ratio=1&rotation=0&showTitle=false&size=31531&status=done&style=none&taskId=u5691f56e-5234-4584-93f8-040f322f10a&title=&width=422.42421800878014#alt=image.png" alt="image.png"><br>暂时不知道哪里出错，到时回来找一下。<br>git push -u origin main         push的报错是不一样的，它的是<br>error:src refspec main does not match any<br>error:failed to push some refs to’github.com: maiugug&#x2F;openWork.git<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1673792337552-01145b04-4c1c-4ae2-9fdd-8b238709b7cb.png#averageHue=%230b0703&clientId=u1eed3ae3-0d1a-4&from=paste&height=95&id=u59df749c&name=image.png&originHeight=156&originWidth=780&originalType=binary&ratio=1&rotation=0&showTitle=false&size=20657&status=done&style=none&taskId=u2d531469-06ce-4f11-ad9a-143b906c667&title=&width=472.7272454043738#alt=image.png" alt="image.png"><br>git branch -d + branchname             删除本地分支<br>*<br>上传完了，我松了口气，就又扩展了一些git操作<br>git checkout +branchname           切换到新的分支<br>git checkout -b +branchname               创建分支的同时切换到该分支<br>相当于<br>git branch + branchname<br>git checkout + branchname</p>
-<p>注意远程仓库如果本来有东西的话，就要先进行拉取合并了，再push<br>法一：将远程仓库的master分支拉取到本地，然后合并到本地的master分支上<br>git pul1 –rebase origin master<br>此时冉将本地仓库push到远端仓库中即可<br>git push -u origin master</p>
-<p>法二：将远端仓库的master分支拉取、合并到本地的master分支<br>$git pull origin masten –allow-unrelated-histories<br>然后再将本地仓库git push到远端<br>$git push -u origin master</p>
-<p>git pull origin master          本地同步远程仓库，将远程仓库里的内容拉下来<br>·git rm -r –cached             文件名删除文件【还没用过】？文件名写哪<br>·git commit -m“delete dir”          提交并添加说明【还没用过】  ？给谁添加说明呀<br>git push origin master            将本次更改更新到github项目上去<br>git push origin：[branch name]         删除github远程分支<br>git branch -r                 -r表示remote  查看远程分支</p>
-<p>###7月10号补充笔记</p>
-<h6 id="这次的补充内容是关于合并分支解决版本冲突的，然后还带常见的命令行操作。首先，可以通过键盘输入-cd-选择你所需要进入的文件夹不知道当前目录到底有什么文件夹可以输入-dir-进行查看然后，为了测试git的功能，我还需要创建一个二进制文件。mkdir-文件名-如果文件名没有后缀的话就是文件夹创建错了可以通过，md-文件名-也可以进行创建-rm-文件名-来进行删除创建完了之后，想要改变二进制文件，可以通过-vim-文件名-来进行修改"><a href="#这次的补充内容是关于合并分支解决版本冲突的，然后还带常见的命令行操作。首先，可以通过键盘输入-cd-选择你所需要进入的文件夹不知道当前目录到底有什么文件夹可以输入-dir-进行查看然后，为了测试git的功能，我还需要创建一个二进制文件。mkdir-文件名-如果文件名没有后缀的话就是文件夹创建错了可以通过，md-文件名-也可以进行创建-rm-文件名-来进行删除创建完了之后，想要改变二进制文件，可以通过-vim-文件名-来进行修改" class="headerlink" title="这次的补充内容是关于合并分支解决版本冲突的，然后还带常见的命令行操作。首先，可以通过键盘输入: cd   选择你所需要进入的文件夹不知道当前目录到底有什么文件夹可以输入: dir   进行查看然后，为了测试git的功能，我还需要创建一个二进制文件。mkdir 文件名    如果文件名没有后缀的话就是文件夹创建错了可以通过，md 文件名   也可以进行创建   rm 文件名    来进行删除创建完了之后，想要改变二进制文件，可以通过   vim 文件名   来进行修改"></a>这次的补充内容是关于合并分支解决版本冲突的，然后还带常见的命令行操作。首先，可以通过键盘输入: cd <tab>  选择你所需要进入的文件夹不知道当前目录到底有什么文件夹可以输入: dir   进行查看然后，为了测试git的功能，我还需要创建一个二进制文件。mkdir 文件名    如果文件名没有后缀的话就是文件夹创建错了可以通过，md 文件名   也可以进行创建   rm 文件名    来进行删除创建完了之后，想要改变二进制文件，可以通过   vim 文件名   来进行修改</h6><h5 id="接下来是vim的使用教学"><a href="#接下来是vim的使用教学" class="headerlink" title="接下来是vim的使用教学"></a>接下来是vim的使用教学</h5><p>在前面，我们通过   vim 文件名   进入到vim的操作界面，一开始进入的模式就是vim的普通模式，在普通模式下，可以进行退出vim的操作，还有切换模式的操作。命令如下：<br>:wq    退出并保存<br>:q     只退出<br>i      插入模式<br>o      插入模式<br>总体来说不难，只要实践一下就熟练了。记得在输入指令时一定要用英文输入法，不然就会被判断为无效输入。</p>
-<h5 id="继续说git的冲突版本回退合并分支的命令"><a href="#继续说git的冲突版本回退合并分支的命令" class="headerlink" title="继续说git的冲突版本回退合并分支的命令"></a>继续说git的冲突版本回退合并分支的命令</h5><p>git 是一个只记住二进制文件改变的版本控制软件，所以如果我们只是创建文件夹，而没有在文件夹中创建任意文件，我们的改变就并不会被记录到git之中。简而言之，就是你git add然后git status或git commit 没有任何反应，只显示</p>
-<p>nothing to commit, working tree clean</p>
-<p>接下来，我将会用命令加注释的方式来进行说明<br>git branch 分支名   创建分支<br>git branch -v      查看分支<br>git switch 分支名   切换分支<br>git merge 分支名    把指定分支合并到当前分支上<br>git log            获得commit详细记录<br>git reflog         获得commit简略记录<br>git diff           对比当前文件与暂存区文件的区别<br>git diff –cached  对比暂存区文件与最新版本文件的区别</p>
-]]></content>
-      <categories>
-        <category>代码工具</category>
-      </categories>
-      <tags>
-        <tag>代码工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客建立之重新建立</title>
-    <url>/2023/08/08/blog-problem/</url>
-    <content><![CDATA[<h4 id="这个博客"><a href="#这个博客" class="headerlink" title="这个博客"></a>这个博客</h4><p>我的博客本来只是想在本地文件夹中换个位置，但是没想到在剪切的时候就出问题了，nodemodule文件夹一直剪切不过去，只能停止了。但是在停止以后，我的博客的部署却出了问题，一直用hexo的命令都是显示hexo help的界面。我猜是某些重要文件的损坏，然后让hexo无法识别我的本地博客为工作目录了。</p>
-<span id="more"></span>
-
-<p><img src="/blog-problem%5C1.png" alt="image"></p>
-<p>我在一顿操作之后只能重新部署博客了，之前的博客好看的界面直接打水漂。</p>
-<p>给你们看看之前的博客界面。</p>
-<p><img src="/blog-problem%5C2.png" alt="image"></p>
-<p>但是，我再一次做，肯定要做得比上一次好看呀！！</p>
-<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p><img src="/blog-problem%5C3.png" alt="image"></p>
-<p> 先将这些字段原本的注释打开。然后</p>
-<p> <a href="https://github.com/next-theme/hexo-next-fireworks">https://github.com/next-theme/hexo-next-fireworks</a><br>这个是Next主题用到的烟火特效<br>安装指令：  npm install next-theme&#x2F;hexo-next-fireworks<br>然后在hexo中的<mark>站点配置</mark><br><img src="/blog-problem%5C5.png" alt="image"></p>
-<h4 id="部署配置"><a href="#部署配置" class="headerlink" title="部署配置"></a>部署配置</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">git@github.com:Crazylychee/Crazylychee.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="普通站点配置"><a href="#普通站点配置" class="headerlink" title="普通站点配置"></a>普通站点配置</h4><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Crazylychee&#x27;s</span> <span class="string">website</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;一个分享技术分享生活的个人博客&#x27;</span></span><br><span class="line"><span class="attr">keywords:</span> </span><br><span class="line"><span class="attr">author:</span> <span class="string">Crazylychee</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-<h5 id="next主题配置"><a href="#next主题配置" class="headerlink" title="next主题配置"></a>next主题配置</h5><figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后看看效果<br>感觉还不错</p>
-<h4 id="配置公益404界面"><a href="#配置公益404界面" class="headerlink" title="配置公益404界面"></a>配置公益404界面</h4><p>需要在站点根目录&#x2F;source&#x2F;commonweal中创建404.html文件<br>写入下面内容</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">IDOCTYPE</span> <span class="attr">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>404<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;</span></span></span><br><span class="line"><span class="string"><span class="tag">https://volunteer.cdn-go.cn/404/latest/404.js</span></span></span><br><span class="line"><span class="string"><span class="tag">&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h4 id="设置站点本地搜索"><a href="#设置站点本地搜索" class="headerlink" title="设置站点本地搜索"></a>设置站点本地搜索</h4><p>在站点根目录下<br>$ npm install hexo-generator-searchdb</p>
-<p><img src="/blog-problem%5C6.png" alt="image"></p>
-<h4 id="打开不算子技术统计"><a href="#打开不算子技术统计" class="headerlink" title="打开不算子技术统计"></a>打开不算子技术统计</h4><p><img src="/blog-problem%5C7.png" alt="image"><br>用的hexo，打开themes&#x2F;你的主题&#x2F;layout&#x2F;_partial&#x2F;footer.ejs添加即可。<br>但是我的最新版本的next不用配置，直接在主题config.yml中把busuanzi的开关打开就好了</p>
-<p>在配置期间，我遇到了一个无法解决的问题，所以不得不重新搭建博客<br>具体问题如下<br>一直无法显示主题的内容，但是我换一个landscape主题就可以正常显示<br>？？？？<br>可能是我的next主题配置错误了吧！<br>那就只能重新建站了，不不不，应该从重新下载主题就行。</p>
-<p>重新下载了主题，想重新运行hexo g<br>报错<br>？？？？<br>又hexo s<br>显示的是<br>？？？？<br>原来是我下载的地方好像早就迁移了，我下载了一个错误版本，下面是错误示范：<br>先下载next主题<br><a href="https://theme-next.iissnan.com/getting-started.html#install-next-theme">https://theme-next.iissnan.com/getting-started.html#install-next-theme</a><br>下载最新版本，下载稳定版本就是要下载压缩包了<br>$ cd your-hexo-site<br>$ git clone <a href="https://github.com/iissnan/hexo-theme-next">https://github.com/iissnan/hexo-theme-next</a> themes&#x2F;next<br>用ssh可以更快的<br><a href="mailto:&#x67;&#105;&#x74;&#64;&#x67;&#105;&#116;&#x68;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#64;&#x67;&#105;&#116;&#x68;&#117;&#x62;&#46;&#99;&#x6f;&#x6d;</a>:iissnan&#x2F;hexo-theme-next.git</p>
-<p>下面是正确示范<br><a href="https://github.com/theme-next/hexo-theme-next">https://github.com/theme-next/hexo-theme-next</a><br>git clone <a href="mailto:&#103;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#104;&#117;&#98;&#46;&#99;&#x6f;&#x6d;">&#103;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#104;&#117;&#98;&#46;&#99;&#x6f;&#x6d;</a>:theme-next&#x2F;hexo-theme-next.git themes&#x2F;next<br>结果运行还是出错，直接重新建站。</p>
-]]></content>
-      <categories>
-        <category>代码工具</category>
-      </categories>
-      <tags>
-        <tag>代码工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>datagrip和clion的破解码</title>
-    <url>/2023/08/08/exception_code/</url>
-    <content><![CDATA[<p>使用的材料：<br>环境window11<br>datagrip 2022.2.5<br>参考网站：<br>#<a href="https://www.exception.site/essay/datagrip-2022-pojie">https://www.exception.site/essay/datagrip-2022-pojie</a></p>
-<span id="more"></span>
-<p>仅作为本人的备忘用途，不作为任何商用。</p>
-<p>##datagrip</p>
-<p>激活码：VPQ9LWBJ0Z-eyJsaWNlbnNlSWQiOiJWUFE5TFdCSjBaIiwibGljZW5zZWVOYW1lIjoic2lnbnVwIHNjb290ZXIiLCJhc3NpZ25lZU5hbWUiOiIiLCJhc3NpZ25lZUVtYWlsIjoiIiwibGljZW5zZVJlc3RyaWN0aW9uIjoiIiwiY2hlY2tDb25jdXJyZW50VXNlIjpmYWxzZSwicHJvZHVjdHMiOlt7ImNvZGUiOiJQU0kiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBEQiIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiREIiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOmZhbHNlfSx7ImNvZGUiOiJQV1MiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9XSwibWV0YWRhdGEiOiIwMTIwMjIwOTAyUFNBTjAwMDAwNSIsImhhc2giOiJUUklBTDotMjI4OTE3MTciLCJncmFjZVBlcmlvZERheXMiOjcsImF1dG9Qcm9sb25nYXRlZCI6ZmFsc2UsImlzQXV0b1Byb2xvbmdhdGVkIjpmYWxzZX0&#x3D;-Y35sXvjNUN0+WMouR7PGFzl62+ApqSBgPjwganzPG1ErZKJS1xh3O8MbkZnjiTPkjODi+pyBGjozBojATCzTGx4uCt61zccnyF+XI1fE9H9WTA5DAO3&#x2F;maxGFJ2KthOmkuktNnNi9qa0n7EyRuZ8rVVrc5+ETiEcfo2GctNcGqHKuRF96Bf8EL1GmCOkI8vU293X+n3XKEmN+Q1hEEBGbP9yiF5zhZDzFq0svj8g4c0fnTOrCc4GKyyEps6aDW2&#x2F;DurkotUFddzDhTCyoW1Gao0EZt0AnWUALsogI9ABjdtJq3ndyvuMrXTlOr2C&#x2F;hCGjqIN8ZDA0gf9mnrKBhcMbA&#x3D;&#x3D;-MIIETDCCAjSgAwIBAgIBDTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTIwMTAxOTA5MDU1M1oXDTIyMTAyMTA5MDU1M1owHzEdMBsGA1UEAwwUcHJvZDJ5LWZyb20tMjAyMDEwMTkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUlaUFc1wf+CfY9wzFWEL2euKQ5nswqb57V8QZG7d7RoR6rwYUIXseTOAFq210oMEe++LCjzKDuqwDfsyhgDNTgZBPAaC4vUU2oy+XR+Fq8nBixWIsH668HeOnRK6RRhsr0rJzRB95aZ3EAPzBuQ2qPaNGm17pAX0Rd6MPRgjp75IWwI9eA6aMEdPQEVN7uyOtM5zSsjoj79Lbu1fjShOnQZuJcsV8tqnayeFkNzv2LTOlofU&#x2F;Tbx502Ro073gGjoeRzNvrynAP03pL486P3KCAyiNPhDs2z8&#x2F;COMrxRlZW5mfzo0xsK0dQGNH3UoG&#x2F;9RVwHG4eS8LFpMTR9oetHZBAgMBAAGjgZkwgZYwCQYDVR0TBAIwADAdBgNVHQ4EFgQUJNoRIpb1hUHAk0foMSNM9MCEAv8wSAYDVR0jBEEwP4AUo562SGdCEjZBvW3gubSgUouX8bOhHKQaMBgxFjAUBgNVBAMMDUpldFByb2ZpbGUgQ0GCCQDSbLGDsoN54TATBgNVHSUEDDAKBggrBgEFBQcDATALBgNVHQ8EBAMCBaAwDQYJKoZIhvcNAQELBQADggIBABqRoNGxAQct9dQUFK8xqhiZaYPd30TlmCmSAaGJ0eBpvkVeqA2jGYhAQRqFiAlFC63JKvWvRZO1iRuWCEfUMkdqQ9VQPXziE&#x2F;BlsOIgrL6RlJfuFcEZ8TK3syIfIGQZNCxYhLLUuet2HE6LJYPQ5c0jH4kDooRpcVZ4rBxNwddpctUO2te9UU5&#x2F;FjhioZQsPvd92qOTsV+8Cyl2fvNhNKD1Uu9ff5AkVIQn4JU23ozdB&#x2F;R5oUlebwaTE6WZNBs+TA&#x2F;qPj+5&#x2F;we9NH71WRB0hqUoLI2AKKyiPw++FtN4Su1vsdDlrAzDj9ILjpjJKA1ImuVcG329&#x2F;WTYIKysZ1CWK3zATg9BeCUPAV1pQy8ToXOq+RSYen6winZ2OO93eyHv2Iw5kbn1dqfBw1BuTE29V2FJKicJSu8iEOpfoafwJISXmz1wnnWL3V&#x2F;0NxTulfWsXugOoLfv0ZIBP1xH9kmf22jjQ2JiHhQZP7ZDsreRrOeIQ&#x2F;c4yR8IQvMLfC0WKQqrHu5ZzXTH4NO3CwGWSlTY74kE91zXB5mwWAx1jig+UXYc2w4RkVhy0&#x2F;&#x2F;lOmVya&#x2F;PEepuuTTI4+UJwC7qbVlh5zfhj8oTNUXgN0AOc+Q0&#x2F;WFPl1aw5VV&#x2F;VrO8FCoB15lFVlpKaQ1Yh+DVU8ke+rt9Th0BCHXe0uZOEmH0nOnH&#x2F;0onD</p>
-<p>##clion<br>GSSXZEZ56G-eyJsaWNlbnNlSWQiOiJHU1NYWkVaNTZHIiwibGljZW5zZWVOYW1lIjoic2lnbnVwIHNjb290ZXIiLCJhc3NpZ25lZU5hbWUiOiIiLCJhc3NpZ25lZUVtYWlsIjoiIiwibGljZW5zZVJlc3RyaWN0aW9uIjoiIiwiY2hlY2tDb25jdXJyZW50VXNlIjpmYWxzZSwicHJvZHVjdHMiOlt7ImNvZGUiOiJQU0kiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBTVyIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiUFdTIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfSx7ImNvZGUiOiJDTCIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6ZmFsc2V9LHsiY29kZSI6IlBDV01QIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfV0sIm1ldGFkYXRhIjoiMDEyMDIyMDkwMlBTQU4wMDAwMDUiLCJoYXNoIjoiVFJJQUw6NTM5ODE5MDIyIiwiZ3JhY2VQZXJpb2REYXlzIjo3LCJhdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlLCJpc0F1dG9Qcm9sb25nYXRlZCI6ZmFsc2V9-iAUL9c89hA+oXgFAajsV9QyCOVsENJGkZiGQvW7XKaJID5XtXbxU4iBdMPaiJE1B8dZJy27Vt1WJjin+oQtnSC47t0MCx61vPOBGk&#x2F;KAvEBoi6d8mfP5u729g0GHva3nPXsY3+IbnsWm7SIsB0syvtr1VRmqt7tBKm2F6gRn4Z8SnvkoQuyrvtZN8juJBEz3hYGHH4h+jpMnAYjXZ0M92WaD4aIvtGazp41f4&#x2F;FuXW6IcSHTwualWVHuvS95fuxxAwpbyxPyYLom1Uh&#x2F;la6kY9+zi3R5Z1amOHEOCyZnSoFDcMeKF3yhQU6&#x2F;AjYiT&#x2F;fOfICNcaK&#x2F;BHYZ0VFMI8zOQA&#x3D;&#x3D;-MIIETDCCAjSgAwIBAgIBDTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTIwMTAxOTA5MDU1M1oXDTIyMTAyMTA5MDU1M1owHzEdMBsGA1UEAwwUcHJvZDJ5LWZyb20tMjAyMDEwMTkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUlaUFc1wf+CfY9wzFWEL2euKQ5nswqb57V8QZG7d7RoR6rwYUIXseTOAFq210oMEe++LCjzKDuqwDfsyhgDNTgZBPAaC4vUU2oy+XR+Fq8nBixWIsH668HeOnRK6RRhsr0rJzRB95aZ3EAPzBuQ2qPaNGm17pAX0Rd6MPRgjp75IWwI9eA6aMEdPQEVN7uyOtM5zSsjoj79Lbu1fjShOnQZuJcsV8tqnayeFkNzv2LTOlofU&#x2F;Tbx502Ro073gGjoeRzNvrynAP03pL486P3KCAyiNPhDs2z8&#x2F;COMrxRlZW5mfzo0xsK0dQGNH3UoG&#x2F;9RVwHG4eS8LFpMTR9oetHZBAgMBAAGjgZkwgZYwCQYDVR0TBAIwADAdBgNVHQ4EFgQUJNoRIpb1hUHAk0foMSNM9MCEAv8wSAYDVR0jBEEwP4AUo562SGdCEjZBvW3gubSgUouX8bOhHKQaMBgxFjAUBgNVBAMMDUpldFByb2ZpbGUgQ0GCCQDSbLGDsoN54TATBgNVHSUEDDAKBggrBgEFBQcDATALBgNVHQ8EBAMCBaAwDQYJKoZIhvcNAQELBQADggIBABqRoNGxAQct9dQUFK8xqhiZaYPd30TlmCmSAaGJ0eBpvkVeqA2jGYhAQRqFiAlFC63JKvWvRZO1iRuWCEfUMkdqQ9VQPXziE&#x2F;BlsOIgrL6RlJfuFcEZ8TK3syIfIGQZNCxYhLLUuet2HE6LJYPQ5c0jH4kDooRpcVZ4rBxNwddpctUO2te9UU5&#x2F;FjhioZQsPvd92qOTsV+8Cyl2fvNhNKD1Uu9ff5AkVIQn4JU23ozdB&#x2F;R5oUlebwaTE6WZNBs+TA&#x2F;qPj+5&#x2F;we9NH71WRB0hqUoLI2AKKyiPw++FtN4Su1vsdDlrAzDj9ILjpjJKA1ImuVcG329&#x2F;WTYIKysZ1CWK3zATg9BeCUPAV1pQy8ToXOq+RSYen6winZ2OO93eyHv2Iw5kbn1dqfBw1BuTE29V2FJKicJSu8iEOpfoafwJISXmz1wnnWL3V&#x2F;0NxTulfWsXugOoLfv0ZIBP1xH9kmf22jjQ2JiHhQZP7ZDsreRrOeIQ&#x2F;c4yR8IQvMLfC0WKQqrHu5ZzXTH4NO3CwGWSlTY74kE91zXB5mwWAx1jig+UXYc2w4RkVhy0&#x2F;&#x2F;lOmVya&#x2F;PEepuuTTI4+UJwC7qbVlh5zfhj8oTNUXgN0AOc+Q0&#x2F;WFPl1aw5VV&#x2F;VrO8FCoB15lFVlpKaQ1Yh+DVU8ke+rt9Th0BCHXe0uZOEmH0nOnH&#x2F;0onD</p>
-]]></content>
-      <categories>
-        <category>软件</category>
-      </categories>
-      <tags>
-        <tag>破解</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>java编程经验</title>
-    <url>/2023/08/08/experience_01/</url>
-    <content><![CDATA[<p>这里记录了一些本人在编程时的小技巧</p>
-<span id="more"></span>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hong.gUI.awt_;</span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.ActionEvent;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.ActionListener;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 利用TextField文本框来设计计算器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CalculatorTextField</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">MyCalculator</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//计算器类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyCalculator</span> <span class="keyword">extends</span> <span class="title class_">Frame</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyCalculator</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(<span class="string">&quot;加法计算器&quot;</span>);</span><br><span class="line">        setBounds(<span class="number">100</span>,<span class="number">500</span>,<span class="number">800</span>,<span class="number">200</span>);</span><br><span class="line">        <span class="comment">//设置布局</span></span><br><span class="line">        setLayout(<span class="keyword">new</span> <span class="title class_">FlowLayout</span>());</span><br><span class="line">        setVisible(<span class="literal">true</span>);</span><br><span class="line">        TextField textField1=<span class="keyword">new</span> <span class="title class_">TextField</span>(<span class="number">10</span>);<span class="comment">//调节字符数  以便框的大小够大</span></span><br><span class="line">        TextField textField2=<span class="keyword">new</span> <span class="title class_">TextField</span>(<span class="number">10</span>);<span class="comment">//字符数</span></span><br><span class="line">        TextField textField3=<span class="keyword">new</span> <span class="title class_">TextField</span>(<span class="number">20</span>);<span class="comment">//字符数</span></span><br><span class="line">        <span class="type">Button</span> <span class="variable">button</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Button</span>(<span class="string">&quot;=&quot;</span>);</span><br><span class="line">        button.addActionListener(<span class="keyword">new</span> <span class="title class_">MyCalculatorListener</span>(textField1,textField2,textField3));</span><br><span class="line">        <span class="comment">//标签</span></span><br><span class="line">        <span class="type">Label</span> <span class="variable">label</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Label</span>(<span class="string">&quot;+&quot;</span>);</span><br><span class="line">        add(textField1);</span><br><span class="line">        add(label);</span><br><span class="line">        add(textField2);</span><br><span class="line">        add(button);</span><br><span class="line">        add(textField3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//监听器类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyCalculatorListener</span> <span class="keyword">implements</span> <span class="title class_">ActionListener</span>&#123;</span><br><span class="line">    <span class="comment">//获得三个变量</span></span><br><span class="line">    <span class="keyword">private</span> TextField num1,num2,num3;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyCalculatorListener</span><span class="params">(TextField num1, TextField num2, TextField num3)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.num1 = num1;</span><br><span class="line">        <span class="built_in">this</span>.num2 = num2;</span><br><span class="line">        <span class="built_in">this</span>.num3 = num3;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">actionPerformed</span><span class="params">(ActionEvent e)</span> &#123;</span><br><span class="line">        <span class="comment">//1.获得加数和被加数</span></span><br><span class="line">        <span class="type">int</span> n1=Integer.parseInt(num1.getText());</span><br><span class="line">        <span class="type">int</span> n2=Integer.parseInt(num2.getText());</span><br><span class="line">        <span class="comment">//2.将这个值通过加法运算后，放到第三个框</span></span><br><span class="line">        num3.setText(<span class="string">&quot;&quot;</span>+(n1+n2));</span><br><span class="line">        <span class="comment">//3.清除前两个框</span></span><br><span class="line">        num1.setText(<span class="literal">null</span>);</span><br><span class="line">        num2.setText(<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.hong.gUI.awt_;</span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.ActionEvent;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.ActionListener;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 利用TextField文本框来设计计算器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CalculatorTextField</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">MyCalculator</span>().loadFrame();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//计算器类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyCalculator</span> <span class="keyword">extends</span> <span class="title class_">Frame</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyCalculator</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="built_in">super</span>(<span class="string">&quot;加法计算器&quot;</span>);<span class="comment">//设置窗口标题</span></span><br><span class="line">        <span class="comment">//setTitle(&quot;加法计算器&quot;);//设置窗口标题</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//属性</span></span><br><span class="line">    TextField textField1,textField2,textField3;<span class="comment">//作用域提高到外面，让每个方法都可以调用文本框，方便监听器获取文本</span></span><br><span class="line">    <span class="comment">//用方法来打开计算器，这样可以重复打开计算器，构造方法只能执行一次</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">loadFrame</span><span class="params">()</span>&#123;</span><br><span class="line">        setBounds(<span class="number">100</span>,<span class="number">500</span>,<span class="number">800</span>,<span class="number">200</span>);</span><br><span class="line">        <span class="comment">//设置布局</span></span><br><span class="line">        setLayout(<span class="keyword">new</span> <span class="title class_">FlowLayout</span>());</span><br><span class="line">        setVisible(<span class="literal">true</span>);</span><br><span class="line">        textField1=<span class="keyword">new</span> <span class="title class_">TextField</span>(<span class="number">10</span>);<span class="comment">//调节字符数  以便框的大小够大</span></span><br><span class="line">        textField2=<span class="keyword">new</span> <span class="title class_">TextField</span>(<span class="number">10</span>);<span class="comment">//字符数</span></span><br><span class="line">        textField3=<span class="keyword">new</span> <span class="title class_">TextField</span>(<span class="number">20</span>);<span class="comment">//字符数</span></span><br><span class="line">        <span class="type">Button</span> <span class="variable">button</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Button</span>(<span class="string">&quot;=&quot;</span>);</span><br><span class="line">        button.addActionListener(<span class="keyword">new</span> <span class="title class_">MyCalculatorListener</span>(<span class="built_in">this</span>));<span class="comment">//优化1：直接将计算器这个对象传进去</span></span><br><span class="line">        <span class="comment">//标签</span></span><br><span class="line">        <span class="type">Label</span> <span class="variable">label</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Label</span>(<span class="string">&quot;+&quot;</span>);</span><br><span class="line">        add(textField1);</span><br><span class="line">        add(label);</span><br><span class="line">        add(textField2);</span><br><span class="line">        add(button);</span><br><span class="line">        add(textField3);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//监听器类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyCalculatorListener</span> <span class="keyword">implements</span> <span class="title class_">ActionListener</span>&#123;</span><br><span class="line">    <span class="comment">//获取计算器这个对象，在一个类中组合另外一个类</span></span><br><span class="line">    <span class="comment">//直接将计算器类放进来，这样计算器类添加属性时就不用再麻烦的去重写构造方法了</span></span><br><span class="line">    MyCalculator calculator=<span class="literal">null</span>;</span><br><span class="line">    <span class="comment">//优化1</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyCalculatorListener</span><span class="params">(MyCalculator calculator)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.calculator=calculator;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">actionPerformed</span><span class="params">(ActionEvent e)</span> &#123;</span><br><span class="line">        <span class="comment">//1.获得加数和被加数</span></span><br><span class="line">        <span class="type">int</span> n1=Integer.parseInt(calculator.textField1.getText());<span class="comment">//可以直接调用传进来计算器对象，因为不是私密的属性，所以可以直接调用</span></span><br><span class="line">        <span class="type">int</span> n2=Integer.parseInt(calculator.textField2.getText());</span><br><span class="line">        <span class="comment">//2.将这个值通过加法运算后，放到第三个框</span></span><br><span class="line">        calculator.textField3.setText(<span class="string">&quot;&quot;</span>+(n1+n2));</span><br><span class="line">        <span class="comment">//3.清除前两个框</span></span><br><span class="line">        calculator.textField1.setText(<span class="literal">null</span>);</span><br><span class="line">        calculator.textField2.setText(<span class="literal">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>以上是用组合原理优化的简单计算器，最大的优点就是<br>1.可以打开多个计算器<br>2.计算器添加属性(就是指添加方法参数时)就不用麻烦的去重写构造方法了</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-      </categories>
-      <tags>
-        <tag>经验</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>clion的踩坑史</title>
     <url>/2023/08/08/clion_1/</url>
     <content><![CDATA[<p>前言:之前一直用的是vs2013,编译器用的也是msvc,结果换环境之后,发现之前写的课设,在gcc下根本跑不了.</p>
@@ -364,22 +364,362 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/08/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>MySQL基础</title>
+    <url>/2023/08/09/mysql%E9%AB%98%E7%BA%A7/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+<mark>此篇博客搬运自b站黑马程序员的javaweb学习资料，仅供个人学习参考，尊重他人知识劳动成果</mark>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h2 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h2><p><strong>今日目标：</strong></p>
+<ul>
+<li>完成MySQL的安装及登陆基本操作</li>
+<li>能通过SQL对数据库进行CRUD</li>
+<li>能通过SQL对表进行CRUD</li>
+<li>能通过SQL对数据进行CRUD<span id="more"></span></li>
+</ul>
+<h2 id="1，数据库相关概念"><a href="#1，数据库相关概念" class="headerlink" title="1，数据库相关概念"></a>1，数据库相关概念</h2><p>以前我们做系统，数据持久化的存储采用的是文件存储。存储到文件中可以达到系统关闭数据不会丢失的效果，当然文件存储也有它的弊端。<br>假设在文件中存储以下的数据：<br>姓名	年龄	性别	住址 张三	23	男	北京西三旗 李四	24	女	北京西二旗 王五	25	男	西安软件新城<br>现要修改李四这条数据的性别数据改为男，我们现学习的IO技术可以通过将所有的数据读取到内存中，然后进行修改再存到该文件中。通过这种方式操作存在很大问题，现在只有三条数据，如果文件中存储1T的数据，那么就会发现内存根本就存储不了。<br>现需要既能持久化存储数据，也要能避免上述问题的技术使用在我们的系统中。数据库就是这样的一门技术。</p>
+<h3 id="1-1-数据库"><a href="#1-1-数据库" class="headerlink" title="1.1 数据库"></a>1.1 数据库</h3><ul>
+<li>存储和管理数据的仓库，数据是有组织的进行存储。</li>
+<li>数据库英文名是 DataBase，简称DB。</li>
+</ul>
+<p>数据库就是将数据存储在硬盘上，可以达到持久化存储的效果。那又是如何解决上述问题的？使用数据库管理系统。</p>
+<h3 id="1-2-数据库管理系统"><a href="#1-2-数据库管理系统" class="headerlink" title="1.2 数据库管理系统"></a>1.2 数据库管理系统</h3><ul>
+<li>管理数据库的大型软件</li>
+<li>英文：DataBase Management System，简称 DBMS</li>
+</ul>
+<p>在电脑上安装了数据库管理系统后，就可以通过数据库管理系统创建数据库来存储数据，也可以通过该系统对数据库中的数据进行数据的增删改查相关的操作。我们平时说的MySQL数据库其实是MySQL数据库管理系统。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670448-f876f028-3650-437b-86ba-9f1777697b8b.png#averageHue=%23e8effb&from=url&id=KEgms&originHeight=352&originWidth=421&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>通过上面的描述，大家应该已经知道了 数据库管理系统 和 数据库 的关系。那么有有哪些常见的数据库管理系统呢？</p>
+<h3 id="1-3-常见的数据库管理系统"><a href="#1-3-常见的数据库管理系统" class="headerlink" title="1.3 常见的数据库管理系统"></a>1.3 常见的数据库管理系统</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670556-45989d81-50b5-47ea-a1dd-97e8d2873bcd.png#averageHue=%23e5e2dc&from=url&id=pYz1N&originHeight=464&originWidth=1215&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>接下来对上面列举的数据库管理系统进行简单的介绍：</p>
+<ul>
+<li>Oracle：收费的大型数据库，Oracle 公司的产品</li>
+<li>MySQL： 开源免费的中小型数据库。后来 Sun公司收购了 MySQL，而 Sun 公司又被 Oracle 收购</li>
+<li>SQL Server：MicroSoft 公司收费的中型的数据库。C#、.net 等语言常使用</li>
+<li>PostgreSQL：开源免费中小型的数据库</li>
+<li>DB2：IBM 公司的大型收费数据库产品</li>
+<li>SQLite：嵌入式的微型数据库。如：作为 Android 内置数据库</li>
+<li>MariaDB：开源免费中小型的数据库</li>
+</ul>
+<p>我们课程上学习的是MySQL数据库管理系统，PostgreSQL在一些公司也有使用，此时大家肯定会想以后在公司中如果使用我们没有学习过程的PostgreSQL数据库管理系统怎么办？这点大家大可不必担心，如下图所示：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670736-88ee6661-2114-40a4-a4ea-29610e4d8612.png#averageHue=%23c7b2a1&from=url&id=kDYfG&originHeight=340&originWidth=618&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>我们可以通过数据库管理系统操作数据库，对数据库中的数据进行增删改查操作，而怎么样让用户跟数据库管理系统打交道呢？就可以通过一门编程语言（SQL）来实现。</p>
+<h3 id="1-4-SQL"><a href="#1-4-SQL" class="headerlink" title="1.4 SQL"></a>1.4 SQL</h3><ul>
+<li>英文：Structured Query Language，简称 SQL，结构化查询语言</li>
+<li>操作关系型数据库的编程语言</li>
+<li>定义操作所有关系型数据库的统一标准，可以使用SQL操作所有的关系型数据库管理系统，以后工作中如果使用到了其他的数据库管理系统，也同样的使用SQL来操作。</li>
+</ul>
+<h2 id="2，MySQL"><a href="#2，MySQL" class="headerlink" title="2，MySQL"></a>2，MySQL</h2><h3 id="2-1-MySQL安装"><a href="#2-1-MySQL安装" class="headerlink" title="2.1 MySQL安装"></a>2.1 MySQL安装</h3><p><strong>安装环境:Win10 64位</strong><br><strong>软件版本:MySQL 5.7.24 解压版</strong></p>
+<h4 id="2-1-1-下载"><a href="#2-1-1-下载" class="headerlink" title="2.1.1 下载"></a>2.1.1 下载</h4><p><a href="https://downloads.mysql.com/archives/community/">https://downloads.mysql.com/archives/community/</a><br>点开上面的链接就能看到如下界面：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670825-6d9955e2-d24e-4a98-8e02-7babb66380dc.png#averageHue=%23faf9f5&from=url&id=U6hlI&originHeight=829&originWidth=1798&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>选择选择和自己<strong>系统位数</strong>相对应的版本点击右边的Download，此时会进到另一个页面，同样在接近页面底部的地方找到如下图所示的位置：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714691851-5c3d7b01-0bee-4197-95b4-b69f0b6ae4e9.png#averageHue=%23f8f5f4&clientId=u8a39f7ae-d7b0-4&from=paste&id=u5b6c87e1&originHeight=386&originWidth=661&originalType=url&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&taskId=u2079adb1-3004-4c9a-b0bb-1e5c66d4013&title="><br>不用理会上面的登录和注册按钮，直接点击 No thanks, just start my download. 就可以下载。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670938-36266e0b-5cb2-4be5-a419-59df434ad39e.png#averageHue=%23f8f5f1&from=url&id=ZM2oK&originHeight=44&originWidth=249&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="2-1-2-安装-解压"><a href="#2-1-2-安装-解压" class="headerlink" title="2.1.2 安装(解压)"></a>2.1.2 安装(解压)</h4><p>下载完成后我们得到的是一个压缩包，将其解压，我们就可以得到MySQL 5.7.24的软件本体了(就是一个文件夹)，我们可以把它放在你想安装的位置。</p>
+<hr>
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671029-08a000e7-6bdd-4b9d-8ac5-fae2f153efce.png#averageHue=%23fcfbf9&from=url&id=daBpM&originHeight=263&originWidth=603&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="2-2-MySQL卸载"><a href="#2-2-MySQL卸载" class="headerlink" title="2.2 MySQL卸载"></a>2.2 MySQL卸载</h3><p>如果你想卸载MySQL，也很简单。<br>右键开始菜单，选择命令提示符(管理员)，打开黑框。</p>
+<ol>
+<li>敲入net stop mysql，回车。</li>
+</ol>
+<p>net stop mysql<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671111-cea35c49-d2e1-43de-8449-db1ff36e8d91.png#averageHue=%23363635&from=url&id=yEEkq&originHeight=192&originWidth=366&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ol>
+<li>再敲入mysqld -remove mysql，回车。</li>
+</ol>
+<p>mysqld -remove mysql<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671212-3c4e4047-74ce-4ea5-9f22-db3e634b1efa.png#averageHue=%23151515&from=url&id=fDCA6&originHeight=99&originWidth=336&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ol>
+<li>最后删除MySQL目录及相关的环境变量。</li>
+</ol>
+<p><strong>至此，MySQL卸载完成！</strong></p>
+<h3 id="2-3-MySQL配置"><a href="#2-3-MySQL配置" class="headerlink" title="2.3 MySQL配置"></a>2.3 MySQL配置</h3><h4 id="2-3-1-添加环境变量"><a href="#2-3-1-添加环境变量" class="headerlink" title="2.3.1 添加环境变量"></a>2.3.1 添加环境变量</h4><p>环境变量里面有很多选项，这里我们只用到Path这个参数。为什么在初始化的开始要添加环境变量呢？<br>在黑框(即CMD)中输入一个可执行程序的名字，Windows会先在环境变量中的Path所指的路径中寻找一遍，如果找到了就直接执行，没找到就在当前工作目录找，如果还没找到，就报错。我们添加环境变量的目的就是能够在任意一个黑框直接调用MySQL中的相关程序而不用总是修改工作目录，大大简化了操作。<br>右键此电脑→属性，点击高级系统设置<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671299-c2b0d79c-ce67-4d58-8b69-31a76088a1ce.png#averageHue=%23f9f5f4&from=url&id=nPxFD&originHeight=239&originWidth=275&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>点击环境变量<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671383-4e85dbc9-be2c-4167-9437-ca533b8c20ef.png#averageHue=%23f7f5f5&from=url&id=zeWZw&originHeight=586&originWidth=472&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>在系统变量中新建MYSQL_HOME<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671470-7e0d6f5c-a664-45d2-9ff4-42f1b4183ff8.png#averageHue=%23efefee&from=url&id=TfjFw&originHeight=181&originWidth=649&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>在系统变量中找到并<strong>双击</strong>Path<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671561-b3978943-3991-480b-8e90-68ddbedf9d5a.png#averageHue=%23f3f0ef&from=url&id=c4I2q&originHeight=646&originWidth=607&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>点击新建<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671647-01b137c8-7ce8-45e3-ae8e-5820145cee32.png#averageHue=%23f5f2f1&from=url&id=nkGlv&originHeight=413&originWidth=510&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>最后点击确定。<br><strong>如何验证是否添加成功？</strong><br>右键开始菜单(就是屏幕左下角)，选择命令提示符(管理员)，打开黑框，敲入mysql，回车。<br>如果提示Can’t connect to MySQL server on ‘localhost’则证明添加成功；<br>如果提示mysql不是内部或外部命令，也不是可运行的程序或批处理文件则表示添加添加失败，请重新检查步骤并重试。</p>
+<h4 id="2-3-2-新建配置文件"><a href="#2-3-2-新建配置文件" class="headerlink" title="2.3.2 新建配置文件"></a>2.3.2 新建配置文件</h4><p>新建一个文本文件，内容如下：<br>[mysql] default-character-set&#x3D;utf8 [mysqld] character-set-server&#x3D;utf8 default-storage-engine&#x3D;INNODB sql_mode&#x3D;STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION<br>把上面的文本文件另存为，在保存类型里选所有文件 (<em>.</em>)，文件名叫my.ini，存放的路径为MySQL的根目录(例如我的是D:\software\mysql-5.7.24-winx64,根据自己的MySQL目录位置修改)。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671740-4f0f9bff-5ba4-4e08-af4d-a330e14dad4d.png#averageHue=%23eeebe9&from=url&id=iIjbX&originHeight=282&originWidth=340&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671840-c9b3d11d-de94-45c1-a1cc-454aa018f4ca.png#averageHue=%23ebe6e5&from=url&id=xCJDl&originHeight=82&originWidth=584&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>上面代码意思就是配置数据库的默认编码集为utf-8和默认存储引擎为INNODB。</p>
+<h4 id="2-3-3-初始化MySQL"><a href="#2-3-3-初始化MySQL" class="headerlink" title="2.3.3 初始化MySQL"></a>2.3.3 初始化MySQL</h4><p>在刚才的黑框中敲入mysqld –initialize-insecure，回车，稍微等待一会，如果出现没有出现报错信息(如下图)则证明data目录初始化没有问题，此时再查看MySQL目录下已经有data目录生成。<br>mysqld –initialize-insecure<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671928-a4bc9fbc-147d-4eea-a9eb-01a8d25bccd4.png#averageHue=%23363636&from=url&id=JxWZw&originHeight=197&originWidth=491&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>tips：如果出现如下错误<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672023-259cbc11-3ba0-4f82-9fec-05e4167e355a.png#averageHue=%231e1a1a&from=url&id=sUjdw&originHeight=95&originWidth=959&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>是由于权限不足导致的，去C:\Windows\System32 下以管理员方式运行 cmd.exe<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672109-5191f0a9-939f-42fd-9a61-524dae6bf80f.png#averageHue=%23f1edec&from=url&id=dMBd1&originHeight=188&originWidth=459&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672192-9356fe91-8662-44e7-85a1-b4355bc35602.png#averageHue=%23454343&from=url&id=qwrjm&originHeight=147&originWidth=730&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="2-3-4-注册MySQL服务"><a href="#2-3-4-注册MySQL服务" class="headerlink" title="2.3.4 注册MySQL服务"></a>2.3.4 注册MySQL服务</h4><p>在黑框里敲入mysqld -install，回车。<br>mysqld -install<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672300-029066a9-ace1-42c9-b8c0-9effa353699c.png#averageHue=%23131313&from=url&id=pDZ3h&originHeight=93&originWidth=441&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>现在你的计算机上已经安装好了MySQL服务了。<br>MySQL服务器</p>
+<h4 id="2-3-5-启动MySQL服务"><a href="#2-3-5-启动MySQL服务" class="headerlink" title="2.3.5 启动MySQL服务"></a>2.3.5 启动MySQL服务</h4><p>在黑框里敲入net start mysql，回车。<br>net start mysql  &#x2F;&#x2F; 启动mysql服务      net stop mysql  &#x2F;&#x2F; 停止mysql服务<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672378-ec8c20bb-24c4-4d5c-91c5-2c1cd7d700c8.png#averageHue=%231d1d1d&from=url&id=Zo1qP&originHeight=68&originWidth=297&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="2-3-6-修改默认账户密码"><a href="#2-3-6-修改默认账户密码" class="headerlink" title="2.3.6 修改默认账户密码"></a>2.3.6 修改默认账户密码</h4><p>在黑框里敲入mysqladmin -u root password 1234，这里的1234就是指默认管理员(即root账户)的密码，可以自行修改成你喜欢的。<br>mysqladmin -u root password 1234<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672460-a74974cc-864c-41d8-91e3-a5497f7b1ec5.png#averageHue=%231a1a1a&from=url&id=yW3MC&originHeight=75&originWidth=726&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br><strong>至此，MySQL 5.7 解压版安装完毕！</strong></p>
+<h3 id="2-4-MySQL登陆和退出"><a href="#2-4-MySQL登陆和退出" class="headerlink" title="2.4 MySQL登陆和退出"></a>2.4 MySQL登陆和退出</h3><h4 id="2-4-1-登陆"><a href="#2-4-1-登陆" class="headerlink" title="2.4.1 登陆"></a>2.4.1 登陆</h4><p>右键开始菜单，选择命令提示符，打开黑框。<br>在黑框中输入，mysql -uroot -p1234，回车，出现下图且左下角为mysql&gt;，则登录成功。<br>mysql -uroot -p1234<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672547-84e73281-5ea3-41f1-9df1-5d9b7cdf8183.png#averageHue=%23282828&from=url&id=QHdlZ&originHeight=323&originWidth=640&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br><strong>到这里你就可以开始你的MySQL之旅了！</strong><br>登陆参数：<br>mysql -u用户名 -p密码 -h要连接的mysql服务器的ip地址(默认127.0.0.1) -P端口号(默认3306) </p>
+<h4 id="2-4-2-退出"><a href="#2-4-2-退出" class="headerlink" title="2.4.2 退出"></a>2.4.2 退出</h4><p>退出mysql：<br>exit quit </p>
+<h3 id="2-5-MySQL数据模型"><a href="#2-5-MySQL数据模型" class="headerlink" title="2.5 MySQL数据模型"></a>2.5 MySQL数据模型</h3><p><strong>关系型数据库：</strong><br>关系型数据库是建立在关系模型基础上的数据库，简单说，关系型数据库是由多张能互相连接的 二维表 组成的数据库<br>如下图，订单信息表 和 客户信息表 都是有行有列二维表我们将这样的称为关系型数据库。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672628-6e5bef07-a2ab-4cc5-8d40-7ddc7bf104cd.png#averageHue=%23f6f6ea&from=url&id=jE11i&originHeight=217&originWidth=1251&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>接下来看关系型数据库的优点：</p>
+<ul>
+<li>都是使用表结构，格式一致，易于维护。</li>
+<li>使用通用的 SQL 语言操作，使用方便，可用于复杂查询。 <ul>
+<li>关系型数据库都可以通过SQL进行操作，所以使用方便。</li>
+<li>复杂查询。现在需要查询001号订单数据，我们可以看到该订单是1号客户的订单，而1号订单是李聪这个客户。以后也可以在一张表中进行统计分析等操作。</li>
+</ul>
+</li>
+<li>数据存储在磁盘中，安全。</li>
+</ul>
+<p><strong>数据模型：</strong><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672720-e0cc70a2-2c01-4fb9-b3c2-abe1c509a411.png#averageHue=%23fbfafa&from=url&id=u8goD&originHeight=483&originWidth=1047&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>如上图，我们通过客户端可以通过数据库管理系统创建数据库，在数据库中创建表，在表中添加数据。创建的每一个数据库对应到磁盘上都是一个文件夹。比如可以通过SQL语句创建一个数据库（数据库名称为db1），语句如下。该语句咱们后面会学习。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672818-1e215a58-2dda-439d-88ff-3960f060e9fa.png#averageHue=%23181815&from=url&id=MgHE5&originHeight=44&originWidth=304&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>我们可以在数据库安装目录下的data目录下看到多了一个 db1 的文件夹。所以，<strong>在MySQL中一个数据库对应到磁盘上的一个文件夹。</strong><br>而一个数据库下可以创建多张表，我们到MySQL中自带的mysql数据库的文件夹目录下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672901-824574b5-a83a-4b20-a69f-992f4ca0613b.png#averageHue=%23ebe7dc&from=url&id=uXNCv&originHeight=251&originWidth=1102&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>而上图中右边的 db.frm 是表文件，db.MYD 是数据文件，通过这两个文件就可以查询到数据展示成二维表的效果。<br><strong>小结：</strong></p>
+<ul>
+<li>MySQL中可以创建多个数据库，每个数据库对应到磁盘上的一个文件夹</li>
+<li>在每个数据库中可以创建多个表，每张都对应到磁盘上一个 frm 文件</li>
+<li>每张表可以存储多条数据，数据会被存储到磁盘中 MYD 文件中</li>
+</ul>
+<h2 id="3，SQL概述"><a href="#3，SQL概述" class="headerlink" title="3，SQL概述"></a>3，SQL概述</h2><p>了解了数据模型后，接下来我们就学习SQL语句，通过SQL语句对数据库、表、数据进行增删改查操作。</p>
+<h3 id="3-1-SQL简介"><a href="#3-1-SQL简介" class="headerlink" title="3.1 SQL简介"></a>3.1 SQL简介</h3><ul>
+<li>英文：Structured Query Language，简称 SQL</li>
+<li>结构化查询语言，一门操作关系型数据库的编程语言</li>
+<li>定义操作所有关系型数据库的统一标准</li>
+<li>对于同一个需求，每一种数据库操作的方式可能会存在一些不一样的地方，我们称为“方言”</li>
+</ul>
+<h3 id="3-2-通用语法"><a href="#3-2-通用语法" class="headerlink" title="3.2 通用语法"></a>3.2 通用语法</h3><ul>
+<li>SQL 语句可以单行或多行书写，以分号结尾。<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673008-699c8af7-ecd2-4d14-a3b2-5a2bbf5f4ebc.png#averageHue=%2327261e&from=url&id=BMYW6&originHeight=241&originWidth=281&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">如上，以分号结尾才是一个完整的sql语句。</li>
+<li>MySQL 数据库的 SQL 语句不区分大小写，关键字建议使用大写。同样的一条sql语句写成下图的样子，一样可以运行处结果。<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673103-a956a982-764b-4f09-b5c8-f897da73000d.png#averageHue=%2325231c&from=url&id=dy8De&originHeight=242&originWidth=284&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>注释<ul>
+<li>单行注释: – 注释内容 或 #注释内容(MySQL 特有)<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673187-9ef223d1-3030-4cb5-a05b-db53144caa82.png#averageHue=%232d2720&from=url&id=XsOSU&originHeight=234&originWidth=488&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673288-470af100-8489-4ce3-b9ac-b09c17fdcfc3.png#averageHue=%232e2821&from=url&id=xoQrV&originHeight=234&originWidth=475&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">注意：使用– 添加单行注释时，–后面一定要加空格，而#没有要求。</li>
+<li>多行注释: &#x2F;_ 注释 _&#x2F;</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-SQL分类"><a href="#3-3-SQL分类" class="headerlink" title="3.3 SQL分类"></a>3.3 SQL分类</h3><ul>
+<li>DDL(Data Definition Language) ： 数据定义语言，用来定义数据库对象：数据库，表，列等DDL简单理解就是用来操作数据库，表等<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673391-e4be0ca4-c96b-433d-b5b1-6fe0d8602acf.png#averageHue=%23f7f3ec&from=url&id=d6Dfd&originHeight=509&originWidth=1111&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>DML(Data Manipulation Language) 数据操作语言，用来对数据库中表的数据进行增删改DML简单理解就对表中数据进行增删改<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673515-96f8f8bd-2c53-4813-94fd-ced9ce69bd6e.png#averageHue=%23f5f2eb&from=url&id=X2QR7&originHeight=512&originWidth=1090&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li>DQL(Data Query Language) 数据查询语言，用来查询数据库中表的记录(数据)DQL简单理解就是对数据进行查询操作。从数据库表中查询到我们想要的数据。</li>
+<li>DCL(Data Control Language) 数据控制语言，用来定义数据库的访问权限和安全级别，及创建用户DML简单理解就是对数据库进行权限控制。比如我让某一个数据库表只能让某一个用户进行操作等。</li>
+</ul>
+<p>注意： 以后我们最常操作的是 DML 和 DQL ，因为我们开发中最常操作的就是数据。</p>
+<h2 id="4，DDL-操作数据库"><a href="#4，DDL-操作数据库" class="headerlink" title="4，DDL:操作数据库"></a>4，DDL:操作数据库</h2><p>我们先来学习DDL来操作数据库。而操作数据库主要就是对数据库的增删查操作。</p>
+<h3 id="4-1-查询"><a href="#4-1-查询" class="headerlink" title="4.1 查询"></a>4.1 查询</h3><p>查询所有的数据库<br>SHOW DATABASES;<br>运行上面语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673630-41cfd29e-804e-4040-a881-d5b8012796de.png#averageHue=%2324231c&from=url&id=eDhha&originHeight=219&originWidth=298&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>上述查询到的是的这些数据库是mysql安装好自带的数据库，我们以后不要操作这些数据库。</p>
+<h3 id="4-2-创建数据库"><a href="#4-2-创建数据库" class="headerlink" title="4.2 创建数据库"></a>4.2 创建数据库</h3><ul>
+<li><strong>创建数据库</strong>：</li>
+</ul>
+<p>CREATE DATABASE 数据库名称;<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673715-1b30bea7-4bc9-4ed9-8693-b1148f684678.png#averageHue=%232e2921&from=url&id=PlGdS&originHeight=306&originWidth=401&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>而在创建数据库的时候，我并不知道db1数据库有没有创建，直接再次创建名为db1的数据库就会出现错误。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673808-dd6cfc69-816f-43bb-89c1-80f318b94f6f.png#averageHue=%232a2920&from=url&id=fj7XI&originHeight=53&originWidth=734&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>为了避免上面的错误，在创建数据库的时候先做判断，如果不存在再创建。</p>
+<ul>
+<li><strong>创建数据库(判断，如果不存在则创建)</strong></li>
+</ul>
+<p>CREATE DATABASE IF NOT EXISTS 数据库名称;<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673894-fb91cdfb-5540-4846-b773-d179d8a0b586.png#averageHue=%232f2a22&from=url&id=Z3CP1&originHeight=388&originWidth=525&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上面的效果可以看到虽然db1数据库已经存在，再创建db1也没有报错，而创建db2数据库则创建成功。</p>
+<h3 id="4-3-删除数据库"><a href="#4-3-删除数据库" class="headerlink" title="4.3 删除数据库"></a>4.3 删除数据库</h3><ul>
+<li><strong>删除数据库</strong></li>
+</ul>
+<p>DROP DATABASE 数据库名称; </p>
+<ul>
+<li><strong>删除数据库(判断，如果存在则删除)</strong></li>
+</ul>
+<p>DROP DATABASE IF EXISTS 数据库名称;<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673992-dd5a4e1f-a2f9-4d9a-b96d-8446a42999d3.png#averageHue=%2323251d&from=url&id=eRhxx&originHeight=94&originWidth=781&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="4-4-使用数据库"><a href="#4-4-使用数据库" class="headerlink" title="4.4 使用数据库"></a>4.4 使用数据库</h3><p>数据库创建好了，要在数据库中创建表，得先明确在哪儿个数据库中操作，此时就需要使用数据库。</p>
+<ul>
+<li><strong>使用数据库</strong></li>
+</ul>
+<p>USE 数据库名称; </p>
+<ul>
+<li><strong>查看当前使用的数据库</strong></li>
+</ul>
+<p>SELECT DATABASE();<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674092-56fcd588-a387-4488-a853-24f3facaf1ff.png#averageHue=%232e2a21&from=url&id=lyz2S&originHeight=204&originWidth=311&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="5，DDL-操作表"><a href="#5，DDL-操作表" class="headerlink" title="5，DDL:操作表"></a>5，DDL:操作表</h2><p>操作表也就是对表进行增（Create）删（Retrieve）改（Update）查（Delete）。</p>
+<h3 id="5-1-查询表"><a href="#5-1-查询表" class="headerlink" title="5.1 查询表"></a>5.1 查询表</h3><ul>
+<li><strong>查询当前数据库下所有表名称</strong></li>
+</ul>
+<p>SHOW TABLES;<br>我们创建的数据库中没有任何表，因此我们进入mysql自带的mysql数据库，执行上述语句查看<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674184-96b4dd67-d76e-48b1-9b3e-03da65f9d7da.png#averageHue=%23202622&from=url&id=nR0Xb&originHeight=68&originWidth=213&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><strong>查询表结构</strong></li>
+</ul>
+<p>DESC 表名称;<br>查看mysql数据库中func表的结构，运行语句如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674282-746e0e01-ff80-448b-bc1f-273717f05dca.png#averageHue=%2328241d&from=url&id=iDCOl&originHeight=218&originWidth=804&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="5-2-创建表"><a href="#5-2-创建表" class="headerlink" title="5.2 创建表"></a>5.2 创建表</h3><ul>
+<li><strong>创建表</strong></li>
+</ul>
+<p>CREATE TABLE 表名 ( 	字段名1  数据类型1, 	字段名2  数据类型2, 	… 	字段名n  数据类型n );<br>注意：最后一行末尾，不能加逗号<br>知道了创建表的语句，那么我们创建创建如下结构的表<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674377-4603260a-0b76-4687-a9ef-3f5cd9a9c0f0.png#averageHue=%23ededed&from=url&id=eLqV8&originHeight=160&originWidth=369&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">create table tb_user ( 	id int,     username varchar(20),     password varchar(32) );<br>运行语句如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674464-22c3290b-3b6a-4857-92a6-69b25f6c05c0.png#averageHue=%232e2821&from=url&id=TwTzS&originHeight=517&originWidth=684&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="5-3-数据类型"><a href="#5-3-数据类型" class="headerlink" title="5.3 数据类型"></a>5.3 数据类型</h3><p>MySQL 支持多种类型，可以分为三类：</p>
+<ul>
+<li>数值tinyint : 小整数型，占一个字节 int	： 大整数类型，占四个字节 	eg ： age int double ： 浮点类型 	使用格式： 字段名 double(总长度,小数点后保留的位数) 	eg ： score double(5,2)    </li>
+<li>日期date ： 日期值。只包含年月日 	eg ：birthday date ：  datetime ： 混合日期和时间值。包含年月日时分秒 </li>
+<li>字符串char ： 定长字符串。 	优点：存储性能高 	缺点：浪费空间 	eg ： name char(10)  如果存储的数据字符个数不足10个，也会占10个的空间 varchar ： 变长字符串。 	优点：节约空间 	缺点：存储性能底 	eg ： name varchar(10) 如果存储的数据字符个数不足10个，那就数据字符个数是几就占几个的空间</li>
+</ul>
+<p>	 </p>
+<p>注意：其他类型参考资料中的《MySQL数据类型].xlsx》<br><strong>案例：</strong><br>需求：设计一张学生表，请注重数据类型、长度的合理性 	1. 编号 	2. 姓名，姓名最长不超过10个汉字 	3. 性别，因为取值只有两种可能，因此最多一个汉字 	4. 生日，取值为年月日 	5. 入学成绩，小数点后保留两位 	6. 邮件地址，最大长度不超过 64 	7. 家庭联系电话，不一定是手机号码，可能会出现 - 等字符 	8. 学生状态（用数字表示，正常、休学、毕业…）<br>语句设计如下：<br>create table student ( 	id int,     name varchar(10),     gender char(1),     birthday date,     score double(5,2),     email varchar(15),     tel varchar(15),     status tinyint ); </p>
+<h3 id="5-4-删除表"><a href="#5-4-删除表" class="headerlink" title="5.4 删除表"></a>5.4 删除表</h3><ul>
+<li><strong>删除表</strong></li>
+</ul>
+<p>DROP TABLE 表名; </p>
+<ul>
+<li><strong>删除表时判断表是否存在</strong></li>
+</ul>
+<p>DROP TABLE IF EXISTS 表名;<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674568-08777ee8-5b6b-4983-a791-be93c264c1c0.png#averageHue=%23362f25&from=url&id=JfllM&originHeight=327&originWidth=624&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h3 id="5-5-修改表"><a href="#5-5-修改表" class="headerlink" title="5.5 修改表"></a>5.5 修改表</h3><ul>
+<li><strong>修改表名</strong></li>
+</ul>
+<p>ALTER TABLE 表名 RENAME TO 新的表名; – 将表名student修改为stu alter table student rename to stu; </p>
+<ul>
+<li><strong>添加一列</strong></li>
+</ul>
+<p>ALTER TABLE 表名 ADD 列名 数据类型; – 给stu表添加一列address，该字段类型是varchar(50) alter table stu add address varchar(50); </p>
+<ul>
+<li><strong>修改数据类型</strong></li>
+</ul>
+<p>ALTER TABLE 表名 MODIFY 列名 新数据类型; – 将stu表中的address字段的类型改为 char(50) alter table stu modify address char(50); </p>
+<ul>
+<li><strong>修改列名和数据类型</strong></li>
+</ul>
+<p>ALTER TABLE 表名 CHANGE 列名 新列名 新数据类型; – 将stu表中的address字段名改为 addr，类型改为varchar(50) alter table stu change address addr varchar(50); </p>
+<ul>
+<li><strong>删除列</strong></li>
+</ul>
+<p>ALTER TABLE 表名 DROP 列名; – 将stu表中的addr字段 删除 alter table stu drop addr; </p>
+<h2 id="6，navicat使用"><a href="#6，navicat使用" class="headerlink" title="6，navicat使用"></a>6，navicat使用</h2><p>通过上面的学习，我们发现在命令行中写sql语句特别不方便，尤其是编写创建表的语句，我们只能在记事本上写好后直接复制到命令行进行执行。那么有没有刚好的工具提供给我们进行使用呢？ 有。</p>
+<h3 id="6-1-navicat概述"><a href="#6-1-navicat概述" class="headerlink" title="6.1 navicat概述"></a>6.1 navicat概述</h3><ul>
+<li>Navicat for MySQL 是管理和开发 MySQL 或 MariaDB 的理想解决方案。</li>
+<li>这套全面的前端工具为数据库管理、开发和维护提供了一款直观而强大的图形界面。</li>
+<li>官网： <a href="http://www.navicat.com.cn/">http://www.navicat.com.cn</a></li>
+</ul>
+<h3 id="6-2-navicat安装"><a href="#6-2-navicat安装" class="headerlink" title="6.2 navicat安装"></a>6.2 navicat安装</h3><p>参考 : 资料\navicat安装包\navicat_mysql_x86\navicat安装步骤.md</p>
+<h3 id="6-3-navicat使用"><a href="#6-3-navicat使用" class="headerlink" title="6.3 navicat使用"></a>6.3 navicat使用</h3><h4 id="6-3-1-建立和mysql服务的连接"><a href="#6-3-1-建立和mysql服务的连接" class="headerlink" title="6.3.1 建立和mysql服务的连接"></a>6.3.1 建立和mysql服务的连接</h4><p>第一步： 点击连接，选择MySQL<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674718-7c3d5a67-9143-4b48-91d9-232dab66e4fb.png#averageHue=%23e4dfd6&from=url&id=CKjFS&originHeight=194&originWidth=880&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>第二步：填写连接数据库必要的信息<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674820-96790521-f841-4ce6-9ea7-9adb7587ceb2.png#averageHue=%23f9f8f8&from=url&id=C3SBc&originHeight=589&originWidth=523&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>以上操作没有问题就会出现如下图所示界面：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675000-547ad4bd-9252-445a-8d03-3cc5fb81217d.png#averageHue=%23ededed&from=url&id=IRr8C&originHeight=142&originWidth=217&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="6-3-2-操作"><a href="#6-3-2-操作" class="headerlink" title="6.3.2 操作"></a>6.3.2 操作</h4><p>连接成功后就能看到如下图界面：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675090-70d3288f-5def-49a5-8850-0c22d2bf3491.png#averageHue=%23f3f2f1&from=url&id=cQMtF&originHeight=256&originWidth=890&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><strong>修改表结构</strong></li>
+</ul>
+<p>通过下图操作修改表结构：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675189-56cb285e-7b84-40d1-be30-a92fcf85d13e.png#averageHue=%23f2f2f0&from=url&id=Lf5HY&originHeight=293&originWidth=883&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>点击了设计表后即出现如下图所示界面，在图中红框中直接修改字段名，类型等信息：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675284-c361f191-1578-4ce7-a6f1-4436cd8183f8.png#averageHue=%23e0dad0&from=url&id=jUFqb&originHeight=439&originWidth=934&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<ul>
+<li><strong>编写SQL语句并执行</strong></li>
+</ul>
+<p>按照如下图所示进行操作即可书写SQL语句并执行sql语句。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675391-de7d58eb-7692-40cb-95ea-62d624cd18f6.png#averageHue=%23dbd1c3&from=url&id=HTUN7&originHeight=420&originWidth=921&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h2 id="7，DML"><a href="#7，DML" class="headerlink" title="7，DML"></a>7，DML</h2><p>DML主要是对数据进行增（insert）删（delete）改（update）操作。</p>
+<h3 id="7-1-添加数据"><a href="#7-1-添加数据" class="headerlink" title="7.1 添加数据"></a>7.1 添加数据</h3><ul>
+<li><strong>给指定列添加数据</strong></li>
+</ul>
+<p>INSERT INTO 表名(列名1,列名2,…) VALUES(值1,值2,…); </p>
+<ul>
+<li><strong>给全部列添加数据</strong></li>
+</ul>
+<p>INSERT INTO 表名 VALUES(值1,值2,…); </p>
+<ul>
+<li><strong>批量添加数据</strong></li>
+</ul>
+<p>INSERT INTO 表名(列名1,列名2,…) VALUES(值1,值2,…),(值1,值2,…),(值1,值2,…)…; INSERT INTO 表名 VALUES(值1,值2,…),(值1,值2,…),(值1,值2,…)…; </p>
+<ul>
+<li><strong>练习</strong></li>
+</ul>
+<p>为了演示以下的增删改操作是否操作成功，故先将查询所有数据的语句介绍给大家：<br>select * from stu; – 给指定列添加数据 INSERT INTO stu (id, NAME) VALUES (1, ‘张三’); – 给所有列添加数据，列名的列表可以省略的 INSERT INTO stu (id,NAME,sex,birthday,score,email,tel,STATUS) VALUES (2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#x69;&#x73;&#x69;&#x40;&#105;&#x74;&#99;&#x61;&#x73;&#x74;&#46;&#99;&#x6e;">&#108;&#x69;&#x73;&#x69;&#x40;&#105;&#x74;&#99;&#x61;&#x73;&#x74;&#46;&#99;&#x6e;</a>‘,’13888888888’,1); INSERT INTO stu VALUES (2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#x6c;&#x69;&#x73;&#105;&#x40;&#x69;&#x74;&#x63;&#x61;&#115;&#x74;&#46;&#x63;&#110;">&#x6c;&#x69;&#x73;&#105;&#x40;&#x69;&#x74;&#x63;&#x61;&#115;&#x74;&#46;&#x63;&#110;</a>‘,’13888888888’,1); – 批量添加数据 INSERT INTO stu VALUES  	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#x6c;&#105;&#115;&#x69;&#x40;&#x69;&#x74;&#x63;&#x61;&#115;&#x74;&#x2e;&#99;&#110;">&#x6c;&#105;&#115;&#x69;&#x40;&#x69;&#x74;&#x63;&#x61;&#115;&#x74;&#x2e;&#99;&#110;</a>‘,’13888888888’,1), 	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#105;&#x73;&#105;&#x40;&#105;&#x74;&#x63;&#x61;&#115;&#116;&#46;&#x63;&#x6e;">&#108;&#105;&#x73;&#105;&#x40;&#105;&#x74;&#x63;&#x61;&#115;&#116;&#46;&#x63;&#x6e;</a>‘,’13888888888’,1), 	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#x69;&#x73;&#x69;&#64;&#x69;&#116;&#x63;&#x61;&#115;&#x74;&#x2e;&#x63;&#110;">&#108;&#x69;&#x73;&#x69;&#64;&#x69;&#116;&#x63;&#x61;&#115;&#x74;&#x2e;&#x63;&#110;</a>‘,’13888888888’,1); </p>
+<h3 id="7-2-修改数据"><a href="#7-2-修改数据" class="headerlink" title="7.2 修改数据"></a>7.2 修改数据</h3><ul>
+<li><strong>修改表数据</strong></li>
+</ul>
+<p>UPDATE 表名 SET 列名1&#x3D;值1,列名2&#x3D;值2,… [WHERE 条件] ;<br>注意：</p>
+<ol>
+<li>修改语句中如果不加条件，则将所有数据都修改！</li>
+<li>像上面的语句中的中括号，表示在写sql语句中可以省略这部分</li>
+</ol>
+<ul>
+<li><strong>练习</strong>update stu set sex &#x3D; ‘女’ where name &#x3D; ‘张三’; <ul>
+<li>将张三的性别改为女</li>
+<li>将张三的生日改为 1999-12-12 分数改为99.99update stu set birthday &#x3D; ‘1999-12-12’, score &#x3D; 99.99 where name &#x3D; ‘张三’; </li>
+<li>注意：如果update语句没有加where条件，则会将表中所有数据全部修改！update stu set sex &#x3D; ‘女’; 上面语句的执行完后查询到的结果是：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675505-7981eca9-8cc4-413e-a433-563baae5d8b2.png#averageHue=%23e2ded4&from=url&id=vAKuD&originHeight=167&originWidth=539&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
+</ul>
+</li>
+</ul>
+<h3 id="7-3-删除数据"><a href="#7-3-删除数据" class="headerlink" title="7.3 删除数据"></a>7.3 删除数据</h3><ul>
+<li><strong>删除数据</strong></li>
+</ul>
+<p>DELETE FROM 表名 [WHERE 条件] ; </p>
+<ul>
+<li><strong>练习</strong></li>
+</ul>
+<p>– 删除张三记录 delete from stu where name &#x3D; ‘张三’; – 删除stu表中所有的数据 delete from stu; </p>
+<h2 id="8，DQL"><a href="#8，DQL" class="headerlink" title="8，DQL"></a>8，DQL</h2><p>下面是黑马程序员展示试题库数据的页面<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675593-25dc3496-2a56-42c6-9c5d-1f40716a889d.png#averageHue=%23f7f7f6&from=url&id=Gbxjr&originHeight=639&originWidth=1617&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>页面上展示的数据肯定是在数据库中的试题库表中进行存储，而我们需要将数据库中的数据查询出来并展示在页面给用户看。上图中的是最基本的查询效果，那么数据库其实是很多的，不可能在将所有的数据在一页进行全部展示，而页面上会有分页展示的效果，如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675733-1fcf6c7c-fae1-4eaf-b878-e70175587b58.png#averageHue=%23f8f8f8&from=url&id=Sc5Rw&originHeight=47&originWidth=1518&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>当然上图中的难度字段当我们点击也可以实现排序查询操作。从这个例子我们就可以看出，对于数据库的查询时灵活多变的，需要根据具体的需求来实现，而数据库查询操作也是最重要的操作，所以此部分需要大家重点掌握。<br>接下来我们先介绍查询的完整语法：<br>SELECT      字段列表 FROM      表名列表  WHERE      条件列表 GROUP BY     分组字段 HAVING     分组后条件 ORDER BY     排序字段 LIMIT     分页限定<br>为了给大家演示查询的语句，我们需要先准备表及一些数据：<br>– 删除stu表 drop table if exists stu; – 创建stu表 CREATE TABLE stu (  id int, – 编号  name varchar(20), – 姓名  age int, – 年龄  sex varchar(5), – 性别  address varchar(100), – 地址  math double(5,2), – 数学成绩  english double(5,2), – 英语成绩  hire_date date – 入学时间 ); – 添加数据 INSERT INTO stu(id,NAME,age,sex,address,math,english,hire_date)  VALUES  (1,’马运’,55,’男’,’杭州’,66,78,’1995-09-01’), (2,’马花疼’,45,’女’,’深圳’,98,87,’1998-09-01’), (3,’马斯克’,55,’男’,’香港’,56,77,’1999-09-02’), (4,’柳白’,20,’女’,’湖南’,76,65,’1997-09-05’), (5,’柳青’,20,’男’,’湖南’,86,NULL,’1998-09-01’), (6,’刘德花’,57,’男’,’香港’,99,99,’1998-09-01’), (7,’张学右’,22,’女’,’香港’,99,99,’1998-09-01’), (8,’德玛西亚’,18,’男’,’南京’,56,65,’1994-09-02’);<br>接下来咱们从最基本的查询语句开始学起。</p>
+<h3 id="8-1-基础查询"><a href="#8-1-基础查询" class="headerlink" title="8.1 基础查询"></a>8.1 基础查询</h3><h4 id="8-1-1-语法"><a href="#8-1-1-语法" class="headerlink" title="8.1.1 语法"></a>8.1.1 语法</h4><ul>
+<li><strong>查询多个字段</strong></li>
+</ul>
+<p>SELECT 字段列表 FROM 表名; SELECT * FROM 表名; – 查询所有数据 </p>
+<ul>
+<li><strong>去除重复记录</strong></li>
+</ul>
+<p>SELECT DISTINCT 字段列表 FROM 表名; </p>
+<ul>
+<li><strong>起别名</strong></li>
+</ul>
+<p>AS: AS 也可以省略 </p>
+<h4 id="8-1-2-练习"><a href="#8-1-2-练习" class="headerlink" title="8.1.2 练习"></a>8.1.2 练习</h4><ul>
+<li>查询name、age两列select name,age from stu; </li>
+<li>查询所有列的数据，列名的列表可以使用<em>替代select * from stu; 上面语句中的</em>不建议大家使用，因为在这写<em>不方便我们阅读sql语句。我们写字段列表的话，可以添加注释对每一个字段进行说明<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675824-262a94ab-b898-4448-8144-c8cc94d1d89a.png#averageHue=%23f3f4eb&from=url&id=tfx7O&originHeight=122&originWidth=218&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">而在上课期间为了简约课程的时间，老师很多地方都会写</em>。</li>
+<li>查询地址信息select address from stu; 执行上面语句结果如下：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675910-b90cff4e-158d-4044-86f6-5a880e8d5957.png#averageHue=%23d5cfc6&from=url&id=PQwmL&originHeight=251&originWidth=210&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">从上面的结果我们可以看到有重复的数据，我们也可以使用 distinct 关键字去重重复数据。</li>
+<li>去除重复记录select distinct address from stu; </li>
+<li>查询姓名、数学成绩、英语成绩。并通过as给math和english起别名（as关键字可以省略）select name,math as 数学成绩,english as 英文成绩 from stu; select name,math 数学成绩,english 英文成绩 from stu;</li>
+</ul>
+<h3 id="8-2-条件查询"><a href="#8-2-条件查询" class="headerlink" title="8.2 条件查询"></a>8.2 条件查询</h3><h4 id="8-2-1-语法"><a href="#8-2-1-语法" class="headerlink" title="8.2.1 语法"></a>8.2.1 语法</h4><p>SELECT 字段列表 FROM 表名 WHERE 条件列表; </p>
+<ul>
+<li><strong>条件</strong></li>
+</ul>
+<p>条件列表可以使用以下运算符<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675991-55a7bce1-e557-472a-99f7-c21c873eab33.png#averageHue=%23faf9f9&from=url&id=nmnVq&originHeight=703&originWidth=1133&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<h4 id="8-2-2-条件查询练习"><a href="#8-2-2-条件查询练习" class="headerlink" title="8.2.2 条件查询练习"></a>8.2.2 条件查询练习</h4><ul>
+<li>查询年龄大于20岁的学员信息select * from stu where age &gt; 20; </li>
+<li>查询年龄大于等于20岁的学员信息select * from stu where age &gt;&#x3D; 20; </li>
+<li>查询年龄大于等于20岁 并且 年龄 小于等于 30岁 的学员信息select * from stu where age &gt;&#x3D; 20 &amp;&amp;  age &lt;&#x3D; 30; select * from stu where age &gt;&#x3D; 20 and  age &lt;&#x3D; 30; 上面语句中 &amp;&amp; 和 and 都表示并且的意思。建议使用 and 。也可以使用 between … and 来实现上面需求select * from stu where age BETWEEN 20 and 30; </li>
+<li>查询入学日期在’1998-09-01’ 到 ‘1999-09-01’ 之间的学员信息select * from stu where hire_date BETWEEN ‘1998-09-01’ and ‘1999-09-01’; </li>
+<li>查询年龄等于18岁的学员信息select * from stu where age &#x3D; 18; </li>
+<li>查询年龄不等于18岁的学员信息select * from stu where age !&#x3D; 18; select * from stu where age &lt;&gt; 18; </li>
+<li>查询年龄等于18岁 或者 年龄等于20岁 或者 年龄等于22岁的学员信息select * from stu where age &#x3D; 18 or age &#x3D; 20 or age &#x3D; 22; select * from stu where age in (18,20 ,22); </li>
+<li>查询英语成绩为 null的学员信息null值的比较不能使用 &#x3D; 或者 !&#x3D; 。需要使用 is 或者 is notselect * from stu where english &#x3D; null; – 这个语句是不行的 select * from stu where english is null; select * from stu where english is not null;</li>
+</ul>
+<h4 id="8-2-3-模糊查询练习"><a href="#8-2-3-模糊查询练习" class="headerlink" title="8.2.3 模糊查询练习"></a>8.2.3 模糊查询练习</h4><p>模糊查询使用like关键字，可以使用通配符进行占位:<br>（1）_ : 代表单个任意字符<br>（2）% : 代表任意个数字符</p>
+<ul>
+<li>查询姓’马’的学员信息select * from stu where name like ‘马%’; </li>
+<li>查询第二个字是’花’的学员信息select * from stu where name like ‘_花%’; </li>
+<li>查询名字中包含 ‘德’ 的学员信息select * from stu where name like ‘%德%’;</li>
+</ul>
+<h3 id="8-3-排序查询"><a href="#8-3-排序查询" class="headerlink" title="8.3 排序查询"></a>8.3 排序查询</h3><h4 id="8-3-1-语法"><a href="#8-3-1-语法" class="headerlink" title="8.3.1 语法"></a>8.3.1 语法</h4><p>SELECT 字段列表 FROM 表名 ORDER BY 排序字段名1 [排序方式1],排序字段名2 [排序方式2] …;<br>上述语句中的排序方式有两种，分别是：</p>
+<ul>
+<li>ASC ： 升序排列 <strong>（默认值）</strong></li>
+<li>DESC ： 降序排列</li>
+</ul>
+<p>注意：如果有多个排序条件，当前边的条件值一样时，才会根据第二条件进行排序</p>
+<h4 id="8-3-2-练习"><a href="#8-3-2-练习" class="headerlink" title="8.3.2 练习"></a>8.3.2 练习</h4><ul>
+<li>查询学生信息，按照年龄升序排列select * from stu order by age ; </li>
+<li>查询学生信息，按照数学成绩降序排列select * from stu order by math desc ; </li>
+<li>查询学生信息，按照数学成绩降序排列，如果数学成绩一样，再按照英语成绩升序排列select * from stu order by math desc , english asc ;</li>
+</ul>
+<h3 id="8-4-聚合函数"><a href="#8-4-聚合函数" class="headerlink" title="8.4 聚合函数"></a>8.4 聚合函数</h3><h4 id="8-4-1-概念"><a href="#8-4-1-概念" class="headerlink" title="8.4.1 概念"></a>8.4.1 概念</h4><p>将一列数据作为一个整体，进行纵向计算。<br>如何理解呢？假设有如下表<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714676082-da1ee867-9940-49ee-9579-14fb77899a5a.png#averageHue=%23f7f6f4&from=url&id=HT9oT&originHeight=354&originWidth=938&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>现有一需求让我们求表中所有数据的数学成绩的总和。这就是对math字段进行纵向求和。</p>
+<h4 id="8-4-2-聚合函数分类"><a href="#8-4-2-聚合函数分类" class="headerlink" title="8.4.2 聚合函数分类"></a>8.4.2 聚合函数分类</h4><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>count(列名)</td>
+<td>统计数量（一般选用不为null的列）</td>
+</tr>
+<tr>
+<td>max(列名)</td>
+<td>最大值</td>
+</tr>
+<tr>
+<td>min(列名)</td>
+<td>最小值</td>
+</tr>
+<tr>
+<td>sum(列名)</td>
+<td>求和</td>
+</tr>
+<tr>
+<td>avg(列名)</td>
+<td>平均值</td>
+</tr>
+</tbody></table>
+<h4 id="8-4-3-聚合函数语法"><a href="#8-4-3-聚合函数语法" class="headerlink" title="8.4.3 聚合函数语法"></a>8.4.3 聚合函数语法</h4><p>SELECT 聚合函数名(列名) FROM 表;<br>注意：null 值不参与所有聚合函数运算</p>
+<h4 id="8-4-4-练习"><a href="#8-4-4-练习" class="headerlink" title="8.4.4 练习"></a>8.4.4 练习</h4><ul>
+<li>统计班级一共有多少个学生select count(id) from stu; select count(english) from stu; 上面语句根据某个字段进行统计，如果该字段某一行的值为null的话，将不会被统计。所以可以在count(<em>) 来实现。</em> 表示所有字段数据，一行中也不可能所有的数据都为null，所以建议使用 count(<em>)select count(</em>) from stu; </li>
+<li>查询数学成绩的最高分select max(math) from stu; </li>
+<li>查询数学成绩的最低分select min(math) from stu; </li>
+<li>查询数学成绩的总分select sum(math) from stu; </li>
+<li>查询数学成绩的平均分select avg(math) from stu; </li>
+<li>查询英语成绩的最低分select min(english) from stu;</li>
+</ul>
+<h3 id="8-5-分组查询"><a href="#8-5-分组查询" class="headerlink" title="8.5 分组查询"></a>8.5 分组查询</h3><h4 id="8-5-1-语法"><a href="#8-5-1-语法" class="headerlink" title="8.5.1 语法"></a>8.5.1 语法</h4><p>SELECT 字段列表 FROM 表名 [WHERE 分组前条件限定] GROUP BY 分组字段名 [HAVING 分组后条件过滤];<br>注意：分组之后，查询的字段为聚合函数和分组字段，查询其他字段无任何意义</p>
+<h4 id="8-5-2-练习"><a href="#8-5-2-练习" class="headerlink" title="8.5.2 练习"></a>8.5.2 练习</h4><ul>
+<li>查询男同学和女同学各自的数学平均分select sex, avg(math) from stu group by sex; 注意：分组之后，查询的字段为聚合函数和分组字段，查询其他字段无任何意义select name, sex, avg(math) from stu group by sex;  – 这里查询name字段就没有任何意义 </li>
+<li>查询男同学和女同学各自的数学平均分，以及各自人数select sex, avg(math),count(*) from stu group by sex; </li>
+<li>查询男同学和女同学各自的数学平均分，以及各自人数，要求：分数低于70分的不参与分组select sex, avg(math),count(*) from stu where math &gt; 70 group by sex; </li>
+<li>查询男同学和女同学各自的数学平均分，以及各自人数，要求：分数低于70分的不参与分组，分组之后人数大于2个的select sex, avg(math),count(<em>) from stu where math &gt; 70 group by sex having count(</em>)  &gt; 2;</li>
+</ul>
+<p><strong>where 和 having 区别：</strong></p>
+<ul>
+<li>执行时机不一样：where 是分组之前进行限定，不满足where条件，则不参与分组，而having是分组之后对结果进行过滤。</li>
+<li>可判断的条件不一样：where 不能对聚合函数进行判断，having 可以。</li>
+</ul>
+<h3 id="8-6-分页查询"><a href="#8-6-分页查询" class="headerlink" title="8.6 分页查询"></a>8.6 分页查询</h3><p>如下图所示，大家在很多网站都见过类似的效果，如京东、百度、淘宝等。分页查询是将数据一页一页的展示给用户看，用户也可以通过点击查看下一页的数据。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714676183-eaa915e4-96b0-41c0-8711-e57a4ad5db52.png#averageHue=%23f4f4f4&from=url&id=JY05d&originHeight=235&originWidth=862&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>接下来我们先说分页查询的语法。</p>
+<h4 id="8-6-1-语法"><a href="#8-6-1-语法" class="headerlink" title="8.6.1 语法"></a>8.6.1 语法</h4><p>SELECT 字段列表 FROM 表名 LIMIT  起始索引 , 查询条目数;<br>注意： 上述语句中的起始索引是从0开始</p>
+<h4 id="8-6-2-练习"><a href="#8-6-2-练习" class="headerlink" title="8.6.2 练习"></a>8.6.2 练习</h4><ul>
+<li>从0开始查询，查询3条数据select * from stu limit 0 , 3; </li>
+<li>每页显示3条数据，查询第1页数据select * from stu limit 0 , 3; </li>
+<li>每页显示3条数据，查询第2页数据select * from stu limit 3 , 3; </li>
+<li>每页显示3条数据，查询第3页数据select * from stu limit 6 , 3;</li>
+</ul>
+<p>从上面的练习推导出起始索引计算公式：<br>起始索引 &#x3D; (当前页码 - 1) * 每页显示的条数 </p>
 ]]></content>
+      <categories>
+        <category>后台</category>
+      </categories>
+      <tags>
+        <tag>数据库 java 基础</tag>
+      </tags>
   </entry>
   <entry>
     <title>MySQL高级</title>
@@ -644,6 +984,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2023/08/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>java awt报错lambda</title>
     <url>/2023/08/08/problem/</url>
     <content><![CDATA[<p>以下是本人在学习过程中遇到的一些问题，还望各位大佬能够指点一二</p>
@@ -661,384 +1019,6 @@
       </categories>
       <tags>
         <tag>问与答</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL基础</title>
-    <url>/2023/08/09/mysql%E9%AB%98%E7%BA%A7/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
-<mark>此篇博客搬运自b站黑马程序员的javaweb学习资料，仅供个人学习参考，尊重他人知识劳动成果</mark>
-
-<h2 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h2><p><strong>今日目标：</strong></p>
-<ul>
-<li>完成MySQL的安装及登陆基本操作</li>
-<li>能通过SQL对数据库进行CRUD</li>
-<li>能通过SQL对表进行CRUD</li>
-<li>能通过SQL对数据进行CRUD<span id="more"></span></li>
-</ul>
-<h2 id="1，数据库相关概念"><a href="#1，数据库相关概念" class="headerlink" title="1，数据库相关概念"></a>1，数据库相关概念</h2><p>以前我们做系统，数据持久化的存储采用的是文件存储。存储到文件中可以达到系统关闭数据不会丢失的效果，当然文件存储也有它的弊端。<br>假设在文件中存储以下的数据：<br>姓名	年龄	性别	住址 张三	23	男	北京西三旗 李四	24	女	北京西二旗 王五	25	男	西安软件新城<br>现要修改李四这条数据的性别数据改为男，我们现学习的IO技术可以通过将所有的数据读取到内存中，然后进行修改再存到该文件中。通过这种方式操作存在很大问题，现在只有三条数据，如果文件中存储1T的数据，那么就会发现内存根本就存储不了。<br>现需要既能持久化存储数据，也要能避免上述问题的技术使用在我们的系统中。数据库就是这样的一门技术。</p>
-<h3 id="1-1-数据库"><a href="#1-1-数据库" class="headerlink" title="1.1 数据库"></a>1.1 数据库</h3><ul>
-<li>存储和管理数据的仓库，数据是有组织的进行存储。</li>
-<li>数据库英文名是 DataBase，简称DB。</li>
-</ul>
-<p>数据库就是将数据存储在硬盘上，可以达到持久化存储的效果。那又是如何解决上述问题的？使用数据库管理系统。</p>
-<h3 id="1-2-数据库管理系统"><a href="#1-2-数据库管理系统" class="headerlink" title="1.2 数据库管理系统"></a>1.2 数据库管理系统</h3><ul>
-<li>管理数据库的大型软件</li>
-<li>英文：DataBase Management System，简称 DBMS</li>
-</ul>
-<p>在电脑上安装了数据库管理系统后，就可以通过数据库管理系统创建数据库来存储数据，也可以通过该系统对数据库中的数据进行数据的增删改查相关的操作。我们平时说的MySQL数据库其实是MySQL数据库管理系统。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670448-f876f028-3650-437b-86ba-9f1777697b8b.png#averageHue=%23e8effb&from=url&id=KEgms&originHeight=352&originWidth=421&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>通过上面的描述，大家应该已经知道了 数据库管理系统 和 数据库 的关系。那么有有哪些常见的数据库管理系统呢？</p>
-<h3 id="1-3-常见的数据库管理系统"><a href="#1-3-常见的数据库管理系统" class="headerlink" title="1.3 常见的数据库管理系统"></a>1.3 常见的数据库管理系统</h3><p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670556-45989d81-50b5-47ea-a1dd-97e8d2873bcd.png#averageHue=%23e5e2dc&from=url&id=pYz1N&originHeight=464&originWidth=1215&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>接下来对上面列举的数据库管理系统进行简单的介绍：</p>
-<ul>
-<li>Oracle：收费的大型数据库，Oracle 公司的产品</li>
-<li>MySQL： 开源免费的中小型数据库。后来 Sun公司收购了 MySQL，而 Sun 公司又被 Oracle 收购</li>
-<li>SQL Server：MicroSoft 公司收费的中型的数据库。C#、.net 等语言常使用</li>
-<li>PostgreSQL：开源免费中小型的数据库</li>
-<li>DB2：IBM 公司的大型收费数据库产品</li>
-<li>SQLite：嵌入式的微型数据库。如：作为 Android 内置数据库</li>
-<li>MariaDB：开源免费中小型的数据库</li>
-</ul>
-<p>我们课程上学习的是MySQL数据库管理系统，PostgreSQL在一些公司也有使用，此时大家肯定会想以后在公司中如果使用我们没有学习过程的PostgreSQL数据库管理系统怎么办？这点大家大可不必担心，如下图所示：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670736-88ee6661-2114-40a4-a4ea-29610e4d8612.png#averageHue=%23c7b2a1&from=url&id=kDYfG&originHeight=340&originWidth=618&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>我们可以通过数据库管理系统操作数据库，对数据库中的数据进行增删改查操作，而怎么样让用户跟数据库管理系统打交道呢？就可以通过一门编程语言（SQL）来实现。</p>
-<h3 id="1-4-SQL"><a href="#1-4-SQL" class="headerlink" title="1.4 SQL"></a>1.4 SQL</h3><ul>
-<li>英文：Structured Query Language，简称 SQL，结构化查询语言</li>
-<li>操作关系型数据库的编程语言</li>
-<li>定义操作所有关系型数据库的统一标准，可以使用SQL操作所有的关系型数据库管理系统，以后工作中如果使用到了其他的数据库管理系统，也同样的使用SQL来操作。</li>
-</ul>
-<h2 id="2，MySQL"><a href="#2，MySQL" class="headerlink" title="2，MySQL"></a>2，MySQL</h2><h3 id="2-1-MySQL安装"><a href="#2-1-MySQL安装" class="headerlink" title="2.1 MySQL安装"></a>2.1 MySQL安装</h3><p><strong>安装环境:Win10 64位</strong><br><strong>软件版本:MySQL 5.7.24 解压版</strong></p>
-<h4 id="2-1-1-下载"><a href="#2-1-1-下载" class="headerlink" title="2.1.1 下载"></a>2.1.1 下载</h4><p><a href="https://downloads.mysql.com/archives/community/">https://downloads.mysql.com/archives/community/</a><br>点开上面的链接就能看到如下界面：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670825-6d9955e2-d24e-4a98-8e02-7babb66380dc.png#averageHue=%23faf9f5&from=url&id=U6hlI&originHeight=829&originWidth=1798&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>选择选择和自己<strong>系统位数</strong>相对应的版本点击右边的Download，此时会进到另一个页面，同样在接近页面底部的地方找到如下图所示的位置：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714691851-5c3d7b01-0bee-4197-95b4-b69f0b6ae4e9.png#averageHue=%23f8f5f4&clientId=u8a39f7ae-d7b0-4&from=paste&id=u5b6c87e1&originHeight=386&originWidth=661&originalType=url&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&taskId=u2079adb1-3004-4c9a-b0bb-1e5c66d4013&title="><br>不用理会上面的登录和注册按钮，直接点击 No thanks, just start my download. 就可以下载。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714670938-36266e0b-5cb2-4be5-a419-59df434ad39e.png#averageHue=%23f8f5f1&from=url&id=ZM2oK&originHeight=44&originWidth=249&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<h4 id="2-1-2-安装-解压"><a href="#2-1-2-安装-解压" class="headerlink" title="2.1.2 安装(解压)"></a>2.1.2 安装(解压)</h4><p>下载完成后我们得到的是一个压缩包，将其解压，我们就可以得到MySQL 5.7.24的软件本体了(就是一个文件夹)，我们可以把它放在你想安装的位置。</p>
-<hr>
-<p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671029-08a000e7-6bdd-4b9d-8ac5-fae2f153efce.png#averageHue=%23fcfbf9&from=url&id=daBpM&originHeight=263&originWidth=603&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<h3 id="2-2-MySQL卸载"><a href="#2-2-MySQL卸载" class="headerlink" title="2.2 MySQL卸载"></a>2.2 MySQL卸载</h3><p>如果你想卸载MySQL，也很简单。<br>右键开始菜单，选择命令提示符(管理员)，打开黑框。</p>
-<ol>
-<li>敲入net stop mysql，回车。</li>
-</ol>
-<p>net stop mysql<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671111-cea35c49-d2e1-43de-8449-db1ff36e8d91.png#averageHue=%23363635&from=url&id=yEEkq&originHeight=192&originWidth=366&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<ol>
-<li>再敲入mysqld -remove mysql，回车。</li>
-</ol>
-<p>mysqld -remove mysql<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671212-3c4e4047-74ce-4ea5-9f22-db3e634b1efa.png#averageHue=%23151515&from=url&id=fDCA6&originHeight=99&originWidth=336&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<ol>
-<li>最后删除MySQL目录及相关的环境变量。</li>
-</ol>
-<p><strong>至此，MySQL卸载完成！</strong></p>
-<h3 id="2-3-MySQL配置"><a href="#2-3-MySQL配置" class="headerlink" title="2.3 MySQL配置"></a>2.3 MySQL配置</h3><h4 id="2-3-1-添加环境变量"><a href="#2-3-1-添加环境变量" class="headerlink" title="2.3.1 添加环境变量"></a>2.3.1 添加环境变量</h4><p>环境变量里面有很多选项，这里我们只用到Path这个参数。为什么在初始化的开始要添加环境变量呢？<br>在黑框(即CMD)中输入一个可执行程序的名字，Windows会先在环境变量中的Path所指的路径中寻找一遍，如果找到了就直接执行，没找到就在当前工作目录找，如果还没找到，就报错。我们添加环境变量的目的就是能够在任意一个黑框直接调用MySQL中的相关程序而不用总是修改工作目录，大大简化了操作。<br>右键此电脑→属性，点击高级系统设置<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671299-c2b0d79c-ce67-4d58-8b69-31a76088a1ce.png#averageHue=%23f9f5f4&from=url&id=nPxFD&originHeight=239&originWidth=275&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>点击环境变量<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671383-4e85dbc9-be2c-4167-9437-ca533b8c20ef.png#averageHue=%23f7f5f5&from=url&id=zeWZw&originHeight=586&originWidth=472&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>在系统变量中新建MYSQL_HOME<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671470-7e0d6f5c-a664-45d2-9ff4-42f1b4183ff8.png#averageHue=%23efefee&from=url&id=TfjFw&originHeight=181&originWidth=649&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>在系统变量中找到并<strong>双击</strong>Path<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671561-b3978943-3991-480b-8e90-68ddbedf9d5a.png#averageHue=%23f3f0ef&from=url&id=c4I2q&originHeight=646&originWidth=607&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>点击新建<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671647-01b137c8-7ce8-45e3-ae8e-5820145cee32.png#averageHue=%23f5f2f1&from=url&id=nkGlv&originHeight=413&originWidth=510&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>最后点击确定。<br><strong>如何验证是否添加成功？</strong><br>右键开始菜单(就是屏幕左下角)，选择命令提示符(管理员)，打开黑框，敲入mysql，回车。<br>如果提示Can’t connect to MySQL server on ‘localhost’则证明添加成功；<br>如果提示mysql不是内部或外部命令，也不是可运行的程序或批处理文件则表示添加添加失败，请重新检查步骤并重试。</p>
-<h4 id="2-3-2-新建配置文件"><a href="#2-3-2-新建配置文件" class="headerlink" title="2.3.2 新建配置文件"></a>2.3.2 新建配置文件</h4><p>新建一个文本文件，内容如下：<br>[mysql] default-character-set&#x3D;utf8 [mysqld] character-set-server&#x3D;utf8 default-storage-engine&#x3D;INNODB sql_mode&#x3D;STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION<br>把上面的文本文件另存为，在保存类型里选所有文件 (<em>.</em>)，文件名叫my.ini，存放的路径为MySQL的根目录(例如我的是D:\software\mysql-5.7.24-winx64,根据自己的MySQL目录位置修改)。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671740-4f0f9bff-5ba4-4e08-af4d-a330e14dad4d.png#averageHue=%23eeebe9&from=url&id=iIjbX&originHeight=282&originWidth=340&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671840-c9b3d11d-de94-45c1-a1cc-454aa018f4ca.png#averageHue=%23ebe6e5&from=url&id=xCJDl&originHeight=82&originWidth=584&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>上面代码意思就是配置数据库的默认编码集为utf-8和默认存储引擎为INNODB。</p>
-<h4 id="2-3-3-初始化MySQL"><a href="#2-3-3-初始化MySQL" class="headerlink" title="2.3.3 初始化MySQL"></a>2.3.3 初始化MySQL</h4><p>在刚才的黑框中敲入mysqld –initialize-insecure，回车，稍微等待一会，如果出现没有出现报错信息(如下图)则证明data目录初始化没有问题，此时再查看MySQL目录下已经有data目录生成。<br>mysqld –initialize-insecure<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714671928-a4bc9fbc-147d-4eea-a9eb-01a8d25bccd4.png#averageHue=%23363636&from=url&id=JxWZw&originHeight=197&originWidth=491&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>tips：如果出现如下错误<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672023-259cbc11-3ba0-4f82-9fec-05e4167e355a.png#averageHue=%231e1a1a&from=url&id=sUjdw&originHeight=95&originWidth=959&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>是由于权限不足导致的，去C:\Windows\System32 下以管理员方式运行 cmd.exe<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672109-5191f0a9-939f-42fd-9a61-524dae6bf80f.png#averageHue=%23f1edec&from=url&id=dMBd1&originHeight=188&originWidth=459&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672192-9356fe91-8662-44e7-85a1-b4355bc35602.png#averageHue=%23454343&from=url&id=qwrjm&originHeight=147&originWidth=730&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<h4 id="2-3-4-注册MySQL服务"><a href="#2-3-4-注册MySQL服务" class="headerlink" title="2.3.4 注册MySQL服务"></a>2.3.4 注册MySQL服务</h4><p>在黑框里敲入mysqld -install，回车。<br>mysqld -install<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672300-029066a9-ace1-42c9-b8c0-9effa353699c.png#averageHue=%23131313&from=url&id=pDZ3h&originHeight=93&originWidth=441&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>现在你的计算机上已经安装好了MySQL服务了。<br>MySQL服务器</p>
-<h4 id="2-3-5-启动MySQL服务"><a href="#2-3-5-启动MySQL服务" class="headerlink" title="2.3.5 启动MySQL服务"></a>2.3.5 启动MySQL服务</h4><p>在黑框里敲入net start mysql，回车。<br>net start mysql  &#x2F;&#x2F; 启动mysql服务      net stop mysql  &#x2F;&#x2F; 停止mysql服务<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672378-ec8c20bb-24c4-4d5c-91c5-2c1cd7d700c8.png#averageHue=%231d1d1d&from=url&id=Zo1qP&originHeight=68&originWidth=297&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<h4 id="2-3-6-修改默认账户密码"><a href="#2-3-6-修改默认账户密码" class="headerlink" title="2.3.6 修改默认账户密码"></a>2.3.6 修改默认账户密码</h4><p>在黑框里敲入mysqladmin -u root password 1234，这里的1234就是指默认管理员(即root账户)的密码，可以自行修改成你喜欢的。<br>mysqladmin -u root password 1234<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672460-a74974cc-864c-41d8-91e3-a5497f7b1ec5.png#averageHue=%231a1a1a&from=url&id=yW3MC&originHeight=75&originWidth=726&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br><strong>至此，MySQL 5.7 解压版安装完毕！</strong></p>
-<h3 id="2-4-MySQL登陆和退出"><a href="#2-4-MySQL登陆和退出" class="headerlink" title="2.4 MySQL登陆和退出"></a>2.4 MySQL登陆和退出</h3><h4 id="2-4-1-登陆"><a href="#2-4-1-登陆" class="headerlink" title="2.4.1 登陆"></a>2.4.1 登陆</h4><p>右键开始菜单，选择命令提示符，打开黑框。<br>在黑框中输入，mysql -uroot -p1234，回车，出现下图且左下角为mysql&gt;，则登录成功。<br>mysql -uroot -p1234<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672547-84e73281-5ea3-41f1-9df1-5d9b7cdf8183.png#averageHue=%23282828&from=url&id=QHdlZ&originHeight=323&originWidth=640&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br><strong>到这里你就可以开始你的MySQL之旅了！</strong><br>登陆参数：<br>mysql -u用户名 -p密码 -h要连接的mysql服务器的ip地址(默认127.0.0.1) -P端口号(默认3306) </p>
-<h4 id="2-4-2-退出"><a href="#2-4-2-退出" class="headerlink" title="2.4.2 退出"></a>2.4.2 退出</h4><p>退出mysql：<br>exit quit </p>
-<h3 id="2-5-MySQL数据模型"><a href="#2-5-MySQL数据模型" class="headerlink" title="2.5 MySQL数据模型"></a>2.5 MySQL数据模型</h3><p><strong>关系型数据库：</strong><br>关系型数据库是建立在关系模型基础上的数据库，简单说，关系型数据库是由多张能互相连接的 二维表 组成的数据库<br>如下图，订单信息表 和 客户信息表 都是有行有列二维表我们将这样的称为关系型数据库。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672628-6e5bef07-a2ab-4cc5-8d40-7ddc7bf104cd.png#averageHue=%23f6f6ea&from=url&id=jE11i&originHeight=217&originWidth=1251&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>接下来看关系型数据库的优点：</p>
-<ul>
-<li>都是使用表结构，格式一致，易于维护。</li>
-<li>使用通用的 SQL 语言操作，使用方便，可用于复杂查询。 <ul>
-<li>关系型数据库都可以通过SQL进行操作，所以使用方便。</li>
-<li>复杂查询。现在需要查询001号订单数据，我们可以看到该订单是1号客户的订单，而1号订单是李聪这个客户。以后也可以在一张表中进行统计分析等操作。</li>
-</ul>
-</li>
-<li>数据存储在磁盘中，安全。</li>
-</ul>
-<p><strong>数据模型：</strong><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672720-e0cc70a2-2c01-4fb9-b3c2-abe1c509a411.png#averageHue=%23fbfafa&from=url&id=u8goD&originHeight=483&originWidth=1047&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>如上图，我们通过客户端可以通过数据库管理系统创建数据库，在数据库中创建表，在表中添加数据。创建的每一个数据库对应到磁盘上都是一个文件夹。比如可以通过SQL语句创建一个数据库（数据库名称为db1），语句如下。该语句咱们后面会学习。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672818-1e215a58-2dda-439d-88ff-3960f060e9fa.png#averageHue=%23181815&from=url&id=MgHE5&originHeight=44&originWidth=304&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>我们可以在数据库安装目录下的data目录下看到多了一个 db1 的文件夹。所以，<strong>在MySQL中一个数据库对应到磁盘上的一个文件夹。</strong><br>而一个数据库下可以创建多张表，我们到MySQL中自带的mysql数据库的文件夹目录下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714672901-824574b5-a83a-4b20-a69f-992f4ca0613b.png#averageHue=%23ebe7dc&from=url&id=uXNCv&originHeight=251&originWidth=1102&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>而上图中右边的 db.frm 是表文件，db.MYD 是数据文件，通过这两个文件就可以查询到数据展示成二维表的效果。<br><strong>小结：</strong></p>
-<ul>
-<li>MySQL中可以创建多个数据库，每个数据库对应到磁盘上的一个文件夹</li>
-<li>在每个数据库中可以创建多个表，每张都对应到磁盘上一个 frm 文件</li>
-<li>每张表可以存储多条数据，数据会被存储到磁盘中 MYD 文件中</li>
-</ul>
-<h2 id="3，SQL概述"><a href="#3，SQL概述" class="headerlink" title="3，SQL概述"></a>3，SQL概述</h2><p>了解了数据模型后，接下来我们就学习SQL语句，通过SQL语句对数据库、表、数据进行增删改查操作。</p>
-<h3 id="3-1-SQL简介"><a href="#3-1-SQL简介" class="headerlink" title="3.1 SQL简介"></a>3.1 SQL简介</h3><ul>
-<li>英文：Structured Query Language，简称 SQL</li>
-<li>结构化查询语言，一门操作关系型数据库的编程语言</li>
-<li>定义操作所有关系型数据库的统一标准</li>
-<li>对于同一个需求，每一种数据库操作的方式可能会存在一些不一样的地方，我们称为“方言”</li>
-</ul>
-<h3 id="3-2-通用语法"><a href="#3-2-通用语法" class="headerlink" title="3.2 通用语法"></a>3.2 通用语法</h3><ul>
-<li>SQL 语句可以单行或多行书写，以分号结尾。<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673008-699c8af7-ecd2-4d14-a3b2-5a2bbf5f4ebc.png#averageHue=%2327261e&from=url&id=BMYW6&originHeight=241&originWidth=281&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">如上，以分号结尾才是一个完整的sql语句。</li>
-<li>MySQL 数据库的 SQL 语句不区分大小写，关键字建议使用大写。同样的一条sql语句写成下图的样子，一样可以运行处结果。<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673103-a956a982-764b-4f09-b5c8-f897da73000d.png#averageHue=%2325231c&from=url&id=dy8De&originHeight=242&originWidth=284&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
-<li>注释<ul>
-<li>单行注释: – 注释内容 或 #注释内容(MySQL 特有)<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673187-9ef223d1-3030-4cb5-a05b-db53144caa82.png#averageHue=%232d2720&from=url&id=XsOSU&originHeight=234&originWidth=488&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673288-470af100-8489-4ce3-b9ac-b09c17fdcfc3.png#averageHue=%232e2821&from=url&id=xoQrV&originHeight=234&originWidth=475&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">注意：使用– 添加单行注释时，–后面一定要加空格，而#没有要求。</li>
-<li>多行注释: &#x2F;_ 注释 _&#x2F;</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-3-SQL分类"><a href="#3-3-SQL分类" class="headerlink" title="3.3 SQL分类"></a>3.3 SQL分类</h3><ul>
-<li>DDL(Data Definition Language) ： 数据定义语言，用来定义数据库对象：数据库，表，列等DDL简单理解就是用来操作数据库，表等<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673391-e4be0ca4-c96b-433d-b5b1-6fe0d8602acf.png#averageHue=%23f7f3ec&from=url&id=d6Dfd&originHeight=509&originWidth=1111&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
-<li>DML(Data Manipulation Language) 数据操作语言，用来对数据库中表的数据进行增删改DML简单理解就对表中数据进行增删改<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673515-96f8f8bd-2c53-4813-94fd-ced9ce69bd6e.png#averageHue=%23f5f2eb&from=url&id=X2QR7&originHeight=512&originWidth=1090&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
-<li>DQL(Data Query Language) 数据查询语言，用来查询数据库中表的记录(数据)DQL简单理解就是对数据进行查询操作。从数据库表中查询到我们想要的数据。</li>
-<li>DCL(Data Control Language) 数据控制语言，用来定义数据库的访问权限和安全级别，及创建用户DML简单理解就是对数据库进行权限控制。比如我让某一个数据库表只能让某一个用户进行操作等。</li>
-</ul>
-<p>注意： 以后我们最常操作的是 DML 和 DQL ，因为我们开发中最常操作的就是数据。</p>
-<h2 id="4，DDL-操作数据库"><a href="#4，DDL-操作数据库" class="headerlink" title="4，DDL:操作数据库"></a>4，DDL:操作数据库</h2><p>我们先来学习DDL来操作数据库。而操作数据库主要就是对数据库的增删查操作。</p>
-<h3 id="4-1-查询"><a href="#4-1-查询" class="headerlink" title="4.1 查询"></a>4.1 查询</h3><p>查询所有的数据库<br>SHOW DATABASES;<br>运行上面语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673630-41cfd29e-804e-4040-a881-d5b8012796de.png#averageHue=%2324231c&from=url&id=eDhha&originHeight=219&originWidth=298&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>上述查询到的是的这些数据库是mysql安装好自带的数据库，我们以后不要操作这些数据库。</p>
-<h3 id="4-2-创建数据库"><a href="#4-2-创建数据库" class="headerlink" title="4.2 创建数据库"></a>4.2 创建数据库</h3><ul>
-<li><strong>创建数据库</strong>：</li>
-</ul>
-<p>CREATE DATABASE 数据库名称;<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673715-1b30bea7-4bc9-4ed9-8693-b1148f684678.png#averageHue=%232e2921&from=url&id=PlGdS&originHeight=306&originWidth=401&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>而在创建数据库的时候，我并不知道db1数据库有没有创建，直接再次创建名为db1的数据库就会出现错误。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673808-dd6cfc69-816f-43bb-89c1-80f318b94f6f.png#averageHue=%232a2920&from=url&id=fj7XI&originHeight=53&originWidth=734&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>为了避免上面的错误，在创建数据库的时候先做判断，如果不存在再创建。</p>
-<ul>
-<li><strong>创建数据库(判断，如果不存在则创建)</strong></li>
-</ul>
-<p>CREATE DATABASE IF NOT EXISTS 数据库名称;<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673894-fb91cdfb-5540-4846-b773-d179d8a0b586.png#averageHue=%232f2a22&from=url&id=Z3CP1&originHeight=388&originWidth=525&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>从上面的效果可以看到虽然db1数据库已经存在，再创建db1也没有报错，而创建db2数据库则创建成功。</p>
-<h3 id="4-3-删除数据库"><a href="#4-3-删除数据库" class="headerlink" title="4.3 删除数据库"></a>4.3 删除数据库</h3><ul>
-<li><strong>删除数据库</strong></li>
-</ul>
-<p>DROP DATABASE 数据库名称; </p>
-<ul>
-<li><strong>删除数据库(判断，如果存在则删除)</strong></li>
-</ul>
-<p>DROP DATABASE IF EXISTS 数据库名称;<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714673992-dd5a4e1f-a2f9-4d9a-b96d-8446a42999d3.png#averageHue=%2323251d&from=url&id=eRhxx&originHeight=94&originWidth=781&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<h3 id="4-4-使用数据库"><a href="#4-4-使用数据库" class="headerlink" title="4.4 使用数据库"></a>4.4 使用数据库</h3><p>数据库创建好了，要在数据库中创建表，得先明确在哪儿个数据库中操作，此时就需要使用数据库。</p>
-<ul>
-<li><strong>使用数据库</strong></li>
-</ul>
-<p>USE 数据库名称; </p>
-<ul>
-<li><strong>查看当前使用的数据库</strong></li>
-</ul>
-<p>SELECT DATABASE();<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674092-56fcd588-a387-4488-a853-24f3facaf1ff.png#averageHue=%232e2a21&from=url&id=lyz2S&originHeight=204&originWidth=311&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<h2 id="5，DDL-操作表"><a href="#5，DDL-操作表" class="headerlink" title="5，DDL:操作表"></a>5，DDL:操作表</h2><p>操作表也就是对表进行增（Create）删（Retrieve）改（Update）查（Delete）。</p>
-<h3 id="5-1-查询表"><a href="#5-1-查询表" class="headerlink" title="5.1 查询表"></a>5.1 查询表</h3><ul>
-<li><strong>查询当前数据库下所有表名称</strong></li>
-</ul>
-<p>SHOW TABLES;<br>我们创建的数据库中没有任何表，因此我们进入mysql自带的mysql数据库，执行上述语句查看<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674184-96b4dd67-d76e-48b1-9b3e-03da65f9d7da.png#averageHue=%23202622&from=url&id=nR0Xb&originHeight=68&originWidth=213&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<ul>
-<li><strong>查询表结构</strong></li>
-</ul>
-<p>DESC 表名称;<br>查看mysql数据库中func表的结构，运行语句如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674282-746e0e01-ff80-448b-bc1f-273717f05dca.png#averageHue=%2328241d&from=url&id=iDCOl&originHeight=218&originWidth=804&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<h3 id="5-2-创建表"><a href="#5-2-创建表" class="headerlink" title="5.2 创建表"></a>5.2 创建表</h3><ul>
-<li><strong>创建表</strong></li>
-</ul>
-<p>CREATE TABLE 表名 ( 	字段名1  数据类型1, 	字段名2  数据类型2, 	… 	字段名n  数据类型n );<br>注意：最后一行末尾，不能加逗号<br>知道了创建表的语句，那么我们创建创建如下结构的表<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674377-4603260a-0b76-4687-a9ef-3f5cd9a9c0f0.png#averageHue=%23ededed&from=url&id=eLqV8&originHeight=160&originWidth=369&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">create table tb_user ( 	id int,     username varchar(20),     password varchar(32) );<br>运行语句如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674464-22c3290b-3b6a-4857-92a6-69b25f6c05c0.png#averageHue=%232e2821&from=url&id=TwTzS&originHeight=517&originWidth=684&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<h3 id="5-3-数据类型"><a href="#5-3-数据类型" class="headerlink" title="5.3 数据类型"></a>5.3 数据类型</h3><p>MySQL 支持多种类型，可以分为三类：</p>
-<ul>
-<li>数值tinyint : 小整数型，占一个字节 int	： 大整数类型，占四个字节 	eg ： age int double ： 浮点类型 	使用格式： 字段名 double(总长度,小数点后保留的位数) 	eg ： score double(5,2)    </li>
-<li>日期date ： 日期值。只包含年月日 	eg ：birthday date ：  datetime ： 混合日期和时间值。包含年月日时分秒 </li>
-<li>字符串char ： 定长字符串。 	优点：存储性能高 	缺点：浪费空间 	eg ： name char(10)  如果存储的数据字符个数不足10个，也会占10个的空间 varchar ： 变长字符串。 	优点：节约空间 	缺点：存储性能底 	eg ： name varchar(10) 如果存储的数据字符个数不足10个，那就数据字符个数是几就占几个的空间</li>
-</ul>
-<p>	 </p>
-<p>注意：其他类型参考资料中的《MySQL数据类型].xlsx》<br><strong>案例：</strong><br>需求：设计一张学生表，请注重数据类型、长度的合理性 	1. 编号 	2. 姓名，姓名最长不超过10个汉字 	3. 性别，因为取值只有两种可能，因此最多一个汉字 	4. 生日，取值为年月日 	5. 入学成绩，小数点后保留两位 	6. 邮件地址，最大长度不超过 64 	7. 家庭联系电话，不一定是手机号码，可能会出现 - 等字符 	8. 学生状态（用数字表示，正常、休学、毕业…）<br>语句设计如下：<br>create table student ( 	id int,     name varchar(10),     gender char(1),     birthday date,     score double(5,2),     email varchar(15),     tel varchar(15),     status tinyint ); </p>
-<h3 id="5-4-删除表"><a href="#5-4-删除表" class="headerlink" title="5.4 删除表"></a>5.4 删除表</h3><ul>
-<li><strong>删除表</strong></li>
-</ul>
-<p>DROP TABLE 表名; </p>
-<ul>
-<li><strong>删除表时判断表是否存在</strong></li>
-</ul>
-<p>DROP TABLE IF EXISTS 表名;<br>运行语句效果如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674568-08777ee8-5b6b-4983-a791-be93c264c1c0.png#averageHue=%23362f25&from=url&id=JfllM&originHeight=327&originWidth=624&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<h3 id="5-5-修改表"><a href="#5-5-修改表" class="headerlink" title="5.5 修改表"></a>5.5 修改表</h3><ul>
-<li><strong>修改表名</strong></li>
-</ul>
-<p>ALTER TABLE 表名 RENAME TO 新的表名; – 将表名student修改为stu alter table student rename to stu; </p>
-<ul>
-<li><strong>添加一列</strong></li>
-</ul>
-<p>ALTER TABLE 表名 ADD 列名 数据类型; – 给stu表添加一列address，该字段类型是varchar(50) alter table stu add address varchar(50); </p>
-<ul>
-<li><strong>修改数据类型</strong></li>
-</ul>
-<p>ALTER TABLE 表名 MODIFY 列名 新数据类型; – 将stu表中的address字段的类型改为 char(50) alter table stu modify address char(50); </p>
-<ul>
-<li><strong>修改列名和数据类型</strong></li>
-</ul>
-<p>ALTER TABLE 表名 CHANGE 列名 新列名 新数据类型; – 将stu表中的address字段名改为 addr，类型改为varchar(50) alter table stu change address addr varchar(50); </p>
-<ul>
-<li><strong>删除列</strong></li>
-</ul>
-<p>ALTER TABLE 表名 DROP 列名; – 将stu表中的addr字段 删除 alter table stu drop addr; </p>
-<h2 id="6，navicat使用"><a href="#6，navicat使用" class="headerlink" title="6，navicat使用"></a>6，navicat使用</h2><p>通过上面的学习，我们发现在命令行中写sql语句特别不方便，尤其是编写创建表的语句，我们只能在记事本上写好后直接复制到命令行进行执行。那么有没有刚好的工具提供给我们进行使用呢？ 有。</p>
-<h3 id="6-1-navicat概述"><a href="#6-1-navicat概述" class="headerlink" title="6.1 navicat概述"></a>6.1 navicat概述</h3><ul>
-<li>Navicat for MySQL 是管理和开发 MySQL 或 MariaDB 的理想解决方案。</li>
-<li>这套全面的前端工具为数据库管理、开发和维护提供了一款直观而强大的图形界面。</li>
-<li>官网： <a href="http://www.navicat.com.cn/">http://www.navicat.com.cn</a></li>
-</ul>
-<h3 id="6-2-navicat安装"><a href="#6-2-navicat安装" class="headerlink" title="6.2 navicat安装"></a>6.2 navicat安装</h3><p>参考 : 资料\navicat安装包\navicat_mysql_x86\navicat安装步骤.md</p>
-<h3 id="6-3-navicat使用"><a href="#6-3-navicat使用" class="headerlink" title="6.3 navicat使用"></a>6.3 navicat使用</h3><h4 id="6-3-1-建立和mysql服务的连接"><a href="#6-3-1-建立和mysql服务的连接" class="headerlink" title="6.3.1 建立和mysql服务的连接"></a>6.3.1 建立和mysql服务的连接</h4><p>第一步： 点击连接，选择MySQL<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674718-7c3d5a67-9143-4b48-91d9-232dab66e4fb.png#averageHue=%23e4dfd6&from=url&id=CKjFS&originHeight=194&originWidth=880&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>第二步：填写连接数据库必要的信息<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714674820-96790521-f841-4ce6-9ea7-9adb7587ceb2.png#averageHue=%23f9f8f8&from=url&id=C3SBc&originHeight=589&originWidth=523&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>以上操作没有问题就会出现如下图所示界面：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675000-547ad4bd-9252-445a-8d03-3cc5fb81217d.png#averageHue=%23ededed&from=url&id=IRr8C&originHeight=142&originWidth=217&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<h4 id="6-3-2-操作"><a href="#6-3-2-操作" class="headerlink" title="6.3.2 操作"></a>6.3.2 操作</h4><p>连接成功后就能看到如下图界面：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675090-70d3288f-5def-49a5-8850-0c22d2bf3491.png#averageHue=%23f3f2f1&from=url&id=cQMtF&originHeight=256&originWidth=890&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<ul>
-<li><strong>修改表结构</strong></li>
-</ul>
-<p>通过下图操作修改表结构：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675189-56cb285e-7b84-40d1-be30-a92fcf85d13e.png#averageHue=%23f2f2f0&from=url&id=Lf5HY&originHeight=293&originWidth=883&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>点击了设计表后即出现如下图所示界面，在图中红框中直接修改字段名，类型等信息：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675284-c361f191-1578-4ce7-a6f1-4436cd8183f8.png#averageHue=%23e0dad0&from=url&id=jUFqb&originHeight=439&originWidth=934&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<ul>
-<li><strong>编写SQL语句并执行</strong></li>
-</ul>
-<p>按照如下图所示进行操作即可书写SQL语句并执行sql语句。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675391-de7d58eb-7692-40cb-95ea-62d624cd18f6.png#averageHue=%23dbd1c3&from=url&id=HTUN7&originHeight=420&originWidth=921&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<h2 id="7，DML"><a href="#7，DML" class="headerlink" title="7，DML"></a>7，DML</h2><p>DML主要是对数据进行增（insert）删（delete）改（update）操作。</p>
-<h3 id="7-1-添加数据"><a href="#7-1-添加数据" class="headerlink" title="7.1 添加数据"></a>7.1 添加数据</h3><ul>
-<li><strong>给指定列添加数据</strong></li>
-</ul>
-<p>INSERT INTO 表名(列名1,列名2,…) VALUES(值1,值2,…); </p>
-<ul>
-<li><strong>给全部列添加数据</strong></li>
-</ul>
-<p>INSERT INTO 表名 VALUES(值1,值2,…); </p>
-<ul>
-<li><strong>批量添加数据</strong></li>
-</ul>
-<p>INSERT INTO 表名(列名1,列名2,…) VALUES(值1,值2,…),(值1,值2,…),(值1,值2,…)…; INSERT INTO 表名 VALUES(值1,值2,…),(值1,值2,…),(值1,值2,…)…; </p>
-<ul>
-<li><strong>练习</strong></li>
-</ul>
-<p>为了演示以下的增删改操作是否操作成功，故先将查询所有数据的语句介绍给大家：<br>select * from stu; – 给指定列添加数据 INSERT INTO stu (id, NAME) VALUES (1, ‘张三’); – 给所有列添加数据，列名的列表可以省略的 INSERT INTO stu (id,NAME,sex,birthday,score,email,tel,STATUS) VALUES (2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#105;&#x73;&#x69;&#64;&#x69;&#x74;&#99;&#x61;&#115;&#x74;&#46;&#99;&#x6e;">&#108;&#105;&#x73;&#x69;&#64;&#x69;&#x74;&#99;&#x61;&#115;&#x74;&#46;&#99;&#x6e;</a>‘,’13888888888’,1); INSERT INTO stu VALUES (2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#x69;&#x73;&#105;&#x40;&#x69;&#x74;&#99;&#x61;&#x73;&#x74;&#x2e;&#99;&#x6e;">&#108;&#x69;&#x73;&#105;&#x40;&#x69;&#x74;&#99;&#x61;&#x73;&#x74;&#x2e;&#99;&#x6e;</a>‘,’13888888888’,1); – 批量添加数据 INSERT INTO stu VALUES  	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#105;&#x73;&#x69;&#x40;&#105;&#116;&#99;&#x61;&#x73;&#116;&#46;&#99;&#x6e;">&#108;&#105;&#x73;&#x69;&#x40;&#105;&#116;&#99;&#x61;&#x73;&#116;&#46;&#99;&#x6e;</a>‘,’13888888888’,1), 	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#x6c;&#x69;&#x73;&#105;&#64;&#x69;&#x74;&#99;&#x61;&#115;&#116;&#x2e;&#99;&#110;">&#x6c;&#x69;&#x73;&#105;&#64;&#x69;&#x74;&#99;&#x61;&#115;&#116;&#x2e;&#99;&#110;</a>‘,’13888888888’,1), 	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#x69;&#x73;&#105;&#64;&#105;&#116;&#x63;&#x61;&#115;&#116;&#x2e;&#99;&#110;">&#108;&#x69;&#x73;&#105;&#64;&#105;&#116;&#x63;&#x61;&#115;&#116;&#x2e;&#99;&#110;</a>‘,’13888888888’,1); </p>
-<h3 id="7-2-修改数据"><a href="#7-2-修改数据" class="headerlink" title="7.2 修改数据"></a>7.2 修改数据</h3><ul>
-<li><strong>修改表数据</strong></li>
-</ul>
-<p>UPDATE 表名 SET 列名1&#x3D;值1,列名2&#x3D;值2,… [WHERE 条件] ;<br>注意：</p>
-<ol>
-<li>修改语句中如果不加条件，则将所有数据都修改！</li>
-<li>像上面的语句中的中括号，表示在写sql语句中可以省略这部分</li>
-</ol>
-<ul>
-<li><strong>练习</strong>update stu set sex &#x3D; ‘女’ where name &#x3D; ‘张三’; <ul>
-<li>将张三的性别改为女</li>
-<li>将张三的生日改为 1999-12-12 分数改为99.99update stu set birthday &#x3D; ‘1999-12-12’, score &#x3D; 99.99 where name &#x3D; ‘张三’; </li>
-<li>注意：如果update语句没有加where条件，则会将表中所有数据全部修改！update stu set sex &#x3D; ‘女’; 上面语句的执行完后查询到的结果是：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675505-7981eca9-8cc4-413e-a433-563baae5d8b2.png#averageHue=%23e2ded4&from=url&id=vAKuD&originHeight=167&originWidth=539&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></li>
-</ul>
-</li>
-</ul>
-<h3 id="7-3-删除数据"><a href="#7-3-删除数据" class="headerlink" title="7.3 删除数据"></a>7.3 删除数据</h3><ul>
-<li><strong>删除数据</strong></li>
-</ul>
-<p>DELETE FROM 表名 [WHERE 条件] ; </p>
-<ul>
-<li><strong>练习</strong></li>
-</ul>
-<p>– 删除张三记录 delete from stu where name &#x3D; ‘张三’; – 删除stu表中所有的数据 delete from stu; </p>
-<h2 id="8，DQL"><a href="#8，DQL" class="headerlink" title="8，DQL"></a>8，DQL</h2><p>下面是黑马程序员展示试题库数据的页面<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675593-25dc3496-2a56-42c6-9c5d-1f40716a889d.png#averageHue=%23f7f7f6&from=url&id=Gbxjr&originHeight=639&originWidth=1617&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>页面上展示的数据肯定是在数据库中的试题库表中进行存储，而我们需要将数据库中的数据查询出来并展示在页面给用户看。上图中的是最基本的查询效果，那么数据库其实是很多的，不可能在将所有的数据在一页进行全部展示，而页面上会有分页展示的效果，如下：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675733-1fcf6c7c-fae1-4eaf-b878-e70175587b58.png#averageHue=%23f8f8f8&from=url&id=Sc5Rw&originHeight=47&originWidth=1518&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>当然上图中的难度字段当我们点击也可以实现排序查询操作。从这个例子我们就可以看出，对于数据库的查询时灵活多变的，需要根据具体的需求来实现，而数据库查询操作也是最重要的操作，所以此部分需要大家重点掌握。<br>接下来我们先介绍查询的完整语法：<br>SELECT      字段列表 FROM      表名列表  WHERE      条件列表 GROUP BY     分组字段 HAVING     分组后条件 ORDER BY     排序字段 LIMIT     分页限定<br>为了给大家演示查询的语句，我们需要先准备表及一些数据：<br>– 删除stu表 drop table if exists stu; – 创建stu表 CREATE TABLE stu (  id int, – 编号  name varchar(20), – 姓名  age int, – 年龄  sex varchar(5), – 性别  address varchar(100), – 地址  math double(5,2), – 数学成绩  english double(5,2), – 英语成绩  hire_date date – 入学时间 ); – 添加数据 INSERT INTO stu(id,NAME,age,sex,address,math,english,hire_date)  VALUES  (1,’马运’,55,’男’,’杭州’,66,78,’1995-09-01’), (2,’马花疼’,45,’女’,’深圳’,98,87,’1998-09-01’), (3,’马斯克’,55,’男’,’香港’,56,77,’1999-09-02’), (4,’柳白’,20,’女’,’湖南’,76,65,’1997-09-05’), (5,’柳青’,20,’男’,’湖南’,86,NULL,’1998-09-01’), (6,’刘德花’,57,’男’,’香港’,99,99,’1998-09-01’), (7,’张学右’,22,’女’,’香港’,99,99,’1998-09-01’), (8,’德玛西亚’,18,’男’,’南京’,56,65,’1994-09-02’);<br>接下来咱们从最基本的查询语句开始学起。</p>
-<h3 id="8-1-基础查询"><a href="#8-1-基础查询" class="headerlink" title="8.1 基础查询"></a>8.1 基础查询</h3><h4 id="8-1-1-语法"><a href="#8-1-1-语法" class="headerlink" title="8.1.1 语法"></a>8.1.1 语法</h4><ul>
-<li><strong>查询多个字段</strong></li>
-</ul>
-<p>SELECT 字段列表 FROM 表名; SELECT * FROM 表名; – 查询所有数据 </p>
-<ul>
-<li><strong>去除重复记录</strong></li>
-</ul>
-<p>SELECT DISTINCT 字段列表 FROM 表名; </p>
-<ul>
-<li><strong>起别名</strong></li>
-</ul>
-<p>AS: AS 也可以省略 </p>
-<h4 id="8-1-2-练习"><a href="#8-1-2-练习" class="headerlink" title="8.1.2 练习"></a>8.1.2 练习</h4><ul>
-<li>查询name、age两列select name,age from stu; </li>
-<li>查询所有列的数据，列名的列表可以使用<em>替代select * from stu; 上面语句中的</em>不建议大家使用，因为在这写<em>不方便我们阅读sql语句。我们写字段列表的话，可以添加注释对每一个字段进行说明<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675824-262a94ab-b898-4448-8144-c8cc94d1d89a.png#averageHue=%23f3f4eb&from=url&id=tfx7O&originHeight=122&originWidth=218&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">而在上课期间为了简约课程的时间，老师很多地方都会写</em>。</li>
-<li>查询地址信息select address from stu; 执行上面语句结果如下：<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675910-b90cff4e-158d-4044-86f6-5a880e8d5957.png#averageHue=%23d5cfc6&from=url&id=PQwmL&originHeight=251&originWidth=210&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title=">从上面的结果我们可以看到有重复的数据，我们也可以使用 distinct 关键字去重重复数据。</li>
-<li>去除重复记录select distinct address from stu; </li>
-<li>查询姓名、数学成绩、英语成绩。并通过as给math和english起别名（as关键字可以省略）select name,math as 数学成绩,english as 英文成绩 from stu; select name,math 数学成绩,english 英文成绩 from stu;</li>
-</ul>
-<h3 id="8-2-条件查询"><a href="#8-2-条件查询" class="headerlink" title="8.2 条件查询"></a>8.2 条件查询</h3><h4 id="8-2-1-语法"><a href="#8-2-1-语法" class="headerlink" title="8.2.1 语法"></a>8.2.1 语法</h4><p>SELECT 字段列表 FROM 表名 WHERE 条件列表; </p>
-<ul>
-<li><strong>条件</strong></li>
-</ul>
-<p>条件列表可以使用以下运算符<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714675991-55a7bce1-e557-472a-99f7-c21c873eab33.png#averageHue=%23faf9f9&from=url&id=nmnVq&originHeight=703&originWidth=1133&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="></p>
-<h4 id="8-2-2-条件查询练习"><a href="#8-2-2-条件查询练习" class="headerlink" title="8.2.2 条件查询练习"></a>8.2.2 条件查询练习</h4><ul>
-<li>查询年龄大于20岁的学员信息select * from stu where age &gt; 20; </li>
-<li>查询年龄大于等于20岁的学员信息select * from stu where age &gt;&#x3D; 20; </li>
-<li>查询年龄大于等于20岁 并且 年龄 小于等于 30岁 的学员信息select * from stu where age &gt;&#x3D; 20 &amp;&amp;  age &lt;&#x3D; 30; select * from stu where age &gt;&#x3D; 20 and  age &lt;&#x3D; 30; 上面语句中 &amp;&amp; 和 and 都表示并且的意思。建议使用 and 。也可以使用 between … and 来实现上面需求select * from stu where age BETWEEN 20 and 30; </li>
-<li>查询入学日期在’1998-09-01’ 到 ‘1999-09-01’ 之间的学员信息select * from stu where hire_date BETWEEN ‘1998-09-01’ and ‘1999-09-01’; </li>
-<li>查询年龄等于18岁的学员信息select * from stu where age &#x3D; 18; </li>
-<li>查询年龄不等于18岁的学员信息select * from stu where age !&#x3D; 18; select * from stu where age &lt;&gt; 18; </li>
-<li>查询年龄等于18岁 或者 年龄等于20岁 或者 年龄等于22岁的学员信息select * from stu where age &#x3D; 18 or age &#x3D; 20 or age &#x3D; 22; select * from stu where age in (18,20 ,22); </li>
-<li>查询英语成绩为 null的学员信息null值的比较不能使用 &#x3D; 或者 !&#x3D; 。需要使用 is 或者 is notselect * from stu where english &#x3D; null; – 这个语句是不行的 select * from stu where english is null; select * from stu where english is not null;</li>
-</ul>
-<h4 id="8-2-3-模糊查询练习"><a href="#8-2-3-模糊查询练习" class="headerlink" title="8.2.3 模糊查询练习"></a>8.2.3 模糊查询练习</h4><p>模糊查询使用like关键字，可以使用通配符进行占位:<br>（1）_ : 代表单个任意字符<br>（2）% : 代表任意个数字符</p>
-<ul>
-<li>查询姓’马’的学员信息select * from stu where name like ‘马%’; </li>
-<li>查询第二个字是’花’的学员信息select * from stu where name like ‘_花%’; </li>
-<li>查询名字中包含 ‘德’ 的学员信息select * from stu where name like ‘%德%’;</li>
-</ul>
-<h3 id="8-3-排序查询"><a href="#8-3-排序查询" class="headerlink" title="8.3 排序查询"></a>8.3 排序查询</h3><h4 id="8-3-1-语法"><a href="#8-3-1-语法" class="headerlink" title="8.3.1 语法"></a>8.3.1 语法</h4><p>SELECT 字段列表 FROM 表名 ORDER BY 排序字段名1 [排序方式1],排序字段名2 [排序方式2] …;<br>上述语句中的排序方式有两种，分别是：</p>
-<ul>
-<li>ASC ： 升序排列 <strong>（默认值）</strong></li>
-<li>DESC ： 降序排列</li>
-</ul>
-<p>注意：如果有多个排序条件，当前边的条件值一样时，才会根据第二条件进行排序</p>
-<h4 id="8-3-2-练习"><a href="#8-3-2-练习" class="headerlink" title="8.3.2 练习"></a>8.3.2 练习</h4><ul>
-<li>查询学生信息，按照年龄升序排列select * from stu order by age ; </li>
-<li>查询学生信息，按照数学成绩降序排列select * from stu order by math desc ; </li>
-<li>查询学生信息，按照数学成绩降序排列，如果数学成绩一样，再按照英语成绩升序排列select * from stu order by math desc , english asc ;</li>
-</ul>
-<h3 id="8-4-聚合函数"><a href="#8-4-聚合函数" class="headerlink" title="8.4 聚合函数"></a>8.4 聚合函数</h3><h4 id="8-4-1-概念"><a href="#8-4-1-概念" class="headerlink" title="8.4.1 概念"></a>8.4.1 概念</h4><p>将一列数据作为一个整体，进行纵向计算。<br>如何理解呢？假设有如下表<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714676082-da1ee867-9940-49ee-9579-14fb77899a5a.png#averageHue=%23f7f6f4&from=url&id=HT9oT&originHeight=354&originWidth=938&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>现有一需求让我们求表中所有数据的数学成绩的总和。这就是对math字段进行纵向求和。</p>
-<h4 id="8-4-2-聚合函数分类"><a href="#8-4-2-聚合函数分类" class="headerlink" title="8.4.2 聚合函数分类"></a>8.4.2 聚合函数分类</h4><table>
-<thead>
-<tr>
-<th>函数名</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>count(列名)</td>
-<td>统计数量（一般选用不为null的列）</td>
-</tr>
-<tr>
-<td>max(列名)</td>
-<td>最大值</td>
-</tr>
-<tr>
-<td>min(列名)</td>
-<td>最小值</td>
-</tr>
-<tr>
-<td>sum(列名)</td>
-<td>求和</td>
-</tr>
-<tr>
-<td>avg(列名)</td>
-<td>平均值</td>
-</tr>
-</tbody></table>
-<h4 id="8-4-3-聚合函数语法"><a href="#8-4-3-聚合函数语法" class="headerlink" title="8.4.3 聚合函数语法"></a>8.4.3 聚合函数语法</h4><p>SELECT 聚合函数名(列名) FROM 表;<br>注意：null 值不参与所有聚合函数运算</p>
-<h4 id="8-4-4-练习"><a href="#8-4-4-练习" class="headerlink" title="8.4.4 练习"></a>8.4.4 练习</h4><ul>
-<li>统计班级一共有多少个学生select count(id) from stu; select count(english) from stu; 上面语句根据某个字段进行统计，如果该字段某一行的值为null的话，将不会被统计。所以可以在count(<em>) 来实现。</em> 表示所有字段数据，一行中也不可能所有的数据都为null，所以建议使用 count(<em>)select count(</em>) from stu; </li>
-<li>查询数学成绩的最高分select max(math) from stu; </li>
-<li>查询数学成绩的最低分select min(math) from stu; </li>
-<li>查询数学成绩的总分select sum(math) from stu; </li>
-<li>查询数学成绩的平均分select avg(math) from stu; </li>
-<li>查询英语成绩的最低分select min(english) from stu;</li>
-</ul>
-<h3 id="8-5-分组查询"><a href="#8-5-分组查询" class="headerlink" title="8.5 分组查询"></a>8.5 分组查询</h3><h4 id="8-5-1-语法"><a href="#8-5-1-语法" class="headerlink" title="8.5.1 语法"></a>8.5.1 语法</h4><p>SELECT 字段列表 FROM 表名 [WHERE 分组前条件限定] GROUP BY 分组字段名 [HAVING 分组后条件过滤];<br>注意：分组之后，查询的字段为聚合函数和分组字段，查询其他字段无任何意义</p>
-<h4 id="8-5-2-练习"><a href="#8-5-2-练习" class="headerlink" title="8.5.2 练习"></a>8.5.2 练习</h4><ul>
-<li>查询男同学和女同学各自的数学平均分select sex, avg(math) from stu group by sex; 注意：分组之后，查询的字段为聚合函数和分组字段，查询其他字段无任何意义select name, sex, avg(math) from stu group by sex;  – 这里查询name字段就没有任何意义 </li>
-<li>查询男同学和女同学各自的数学平均分，以及各自人数select sex, avg(math),count(*) from stu group by sex; </li>
-<li>查询男同学和女同学各自的数学平均分，以及各自人数，要求：分数低于70分的不参与分组select sex, avg(math),count(*) from stu where math &gt; 70 group by sex; </li>
-<li>查询男同学和女同学各自的数学平均分，以及各自人数，要求：分数低于70分的不参与分组，分组之后人数大于2个的select sex, avg(math),count(<em>) from stu where math &gt; 70 group by sex having count(</em>)  &gt; 2;</li>
-</ul>
-<p><strong>where 和 having 区别：</strong></p>
-<ul>
-<li>执行时机不一样：where 是分组之前进行限定，不满足where条件，则不参与分组，而having是分组之后对结果进行过滤。</li>
-<li>可判断的条件不一样：where 不能对聚合函数进行判断，having 可以。</li>
-</ul>
-<h3 id="8-6-分页查询"><a href="#8-6-分页查询" class="headerlink" title="8.6 分页查询"></a>8.6 分页查询</h3><p>如下图所示，大家在很多网站都见过类似的效果，如京东、百度、淘宝等。分页查询是将数据一页一页的展示给用户看，用户也可以通过点击查看下一页的数据。<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1678714676183-eaa915e4-96b0-41c0-8711-e57a4ad5db52.png#averageHue=%23f4f4f4&from=url&id=JY05d&originHeight=235&originWidth=862&originalType=binary&ratio=1.5&rotation=0&showTitle=false&status=done&style=none&title="><br>接下来我们先说分页查询的语法。</p>
-<h4 id="8-6-1-语法"><a href="#8-6-1-语法" class="headerlink" title="8.6.1 语法"></a>8.6.1 语法</h4><p>SELECT 字段列表 FROM 表名 LIMIT  起始索引 , 查询条目数;<br>注意： 上述语句中的起始索引是从0开始</p>
-<h4 id="8-6-2-练习"><a href="#8-6-2-练习" class="headerlink" title="8.6.2 练习"></a>8.6.2 练习</h4><ul>
-<li>从0开始查询，查询3条数据select * from stu limit 0 , 3; </li>
-<li>每页显示3条数据，查询第1页数据select * from stu limit 0 , 3; </li>
-<li>每页显示3条数据，查询第2页数据select * from stu limit 3 , 3; </li>
-<li>每页显示3条数据，查询第3页数据select * from stu limit 6 , 3;</li>
-</ul>
-<p>从上面的练习推导出起始索引计算公式：<br>起始索引 &#x3D; (当前页码 - 1) * 每页显示的条数 </p>
-]]></content>
-      <categories>
-        <category>后台</category>
-      </categories>
-      <tags>
-        <tag>数据库 java 基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>英语学习笔记</title>
-    <url>/2023/08/08/%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
-### 听力
-### 阅读
-### 作文
-Directions: For this part, you are allowed 30 minutes to write an essay commenting on the saying “Help others, and you will be helped when you are in need.”You can cite examples to illustrate your views. You should write at least 150 words but no more than 200 words.
-<span id="more"></span>
-Nowadays, the growing individuals are trying to help others as they firmly believe that "Help others, and you will be helped when you are in need. " This proverb reflects the truth that kindness begets kindness. To start with, helping others can bring us a sense of satisfaction and happiness. When we do something good for others, we are usually rewarded with understanding, respect, and appreciation. It also makes us feel that we are being useful and making a difference in the world. Furthermore, helping others can also be beneficial to ourselves since it is one of the best ways to strengthen relationships and make new friends. In addition, when we help others, we are more likely to receive help in return when we are in need. This is because good deeds can inspire others to reciprocate or even surpass the kindness we gave in times of difficulties. For example, I had a friend who was struggling with a medical condition. He received lots of help from his family, friends, and colleagues. It was heartwarming to witness so many people coming together to support him during this trying time. In conclusion, helping others is not only beneficial to others, but also to ourselves.It is an act of kindness that will not only be appreciated, but also repaid in the future.
-
-<p>这篇作业我是直接用了ai写作的，它给了我一定的思路在，再遇到这样的作文时我不能再说不会写。<br>——————总结：<br>优秀表达上（也不说优秀，就是自己要积累一些吧）：<br>1.the growing individuals<br>2.proverb<br>3.reflect<br>4.beget<br>5.reciprocate<br>6.surpass</p>
-]]></content>
-      <categories>
-        <category>英语</category>
-      </categories>
-      <tags>
-        <tag>英语</tag>
       </tags>
   </entry>
   <entry>
@@ -1119,6 +1099,26 @@ Nowadays, the growing individuals are trying to help others as they firmly belie
       </categories>
       <tags>
         <tag>问与答</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>英语学习笔记</title>
+    <url>/2023/08/08/%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<meta name="referrer" content="no-referrer"/>
+### 听力
+### 阅读
+### 作文
+Directions: For this part, you are allowed 30 minutes to write an essay commenting on the saying “Help others, and you will be helped when you are in need.”You can cite examples to illustrate your views. You should write at least 150 words but no more than 200 words.
+<span id="more"></span>
+Nowadays, the growing individuals are trying to help others as they firmly believe that "Help others, and you will be helped when you are in need. " This proverb reflects the truth that kindness begets kindness. To start with, helping others can bring us a sense of satisfaction and happiness. When we do something good for others, we are usually rewarded with understanding, respect, and appreciation. It also makes us feel that we are being useful and making a difference in the world. Furthermore, helping others can also be beneficial to ourselves since it is one of the best ways to strengthen relationships and make new friends. In addition, when we help others, we are more likely to receive help in return when we are in need. This is because good deeds can inspire others to reciprocate or even surpass the kindness we gave in times of difficulties. For example, I had a friend who was struggling with a medical condition. He received lots of help from his family, friends, and colleagues. It was heartwarming to witness so many people coming together to support him during this trying time. In conclusion, helping others is not only beneficial to others, but also to ourselves.It is an act of kindness that will not only be appreciated, but also repaid in the future.
+
+<p>这篇作业我是直接用了ai写作的，它给了我一定的思路在，再遇到这样的作文时我不能再说不会写。<br>——————总结：<br>优秀表达上（也不说优秀，就是自己要积累一些吧）：<br>1.the growing individuals<br>2.proverb<br>3.reflect<br>4.beget<br>5.reciprocate<br>6.surpass</p>
+]]></content>
+      <categories>
+        <category>英语</category>
+      </categories>
+      <tags>
+        <tag>英语</tag>
       </tags>
   </entry>
   <entry>
@@ -1310,26 +1310,6 @@ id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性
       </tags>
   </entry>
   <entry>
-    <title>诗歌摘抄</title>
-    <url>/2023/08/08/%E8%AF%97%E8%AF%8D%E7%A7%AF%E7%B4%AF/</url>
-    <content><![CDATA[<h1 id="诗词积累"><a href="#诗词积累" class="headerlink" title="诗词积累"></a>诗词积累</h1><h6 id="前言：这个前言应该说啥才能配的上诗词的酣畅淋漓，才能表达出它们的含情脉脉，它们在我的生活中宛如一个个被我珍藏的明珠，一方面不舍其被人发现而评头论足、亵渎玷污；一方面我又不想眼睁睁的看着那些绝美的诗句埋没在历史之中。那些如雨的马蹄，如雷的呐喊，如注的热血；中原慈母的白发，江南春闺的遥望，湖湘稚儿的夜哭，故乡柳荫下的诀别，将军圆睁的怒目，猎猎朔风中得军旗……一起点燃了我在面对无趣生活时，眼中的光亮。"><a href="#前言：这个前言应该说啥才能配的上诗词的酣畅淋漓，才能表达出它们的含情脉脉，它们在我的生活中宛如一个个被我珍藏的明珠，一方面不舍其被人发现而评头论足、亵渎玷污；一方面我又不想眼睁睁的看着那些绝美的诗句埋没在历史之中。那些如雨的马蹄，如雷的呐喊，如注的热血；中原慈母的白发，江南春闺的遥望，湖湘稚儿的夜哭，故乡柳荫下的诀别，将军圆睁的怒目，猎猎朔风中得军旗……一起点燃了我在面对无趣生活时，眼中的光亮。" class="headerlink" title="前言：这个前言应该说啥才能配的上诗词的酣畅淋漓，才能表达出它们的含情脉脉，它们在我的生活中宛如一个个被我珍藏的明珠，一方面不舍其被人发现而评头论足、亵渎玷污；一方面我又不想眼睁睁的看着那些绝美的诗句埋没在历史之中。那些如雨的马蹄，如雷的呐喊，如注的热血；中原慈母的白发，江南春闺的遥望，湖湘稚儿的夜哭，故乡柳荫下的诀别，将军圆睁的怒目，猎猎朔风中得军旗……一起点燃了我在面对无趣生活时，眼中的光亮。"></a>前言：这个前言应该说啥才能配的上诗词的酣畅淋漓，才能表达出它们的含情脉脉，它们在我的生活中宛如一个个被我珍藏的明珠，一方面不舍其被人发现而评头论足、亵渎玷污；一方面我又不想眼睁睁的看着那些绝美的诗句埋没在历史之中。那些如雨的马蹄，如雷的呐喊，如注的热血；中原慈母的白发，江南春闺的遥望，湖湘稚儿的夜哭，故乡柳荫下的诀别，将军圆睁的怒目，猎猎朔风中得军旗……一起点燃了我在面对无趣生活时，眼中的光亮。</h6><h4 id="万里无云是我永恒的悲伤"><a href="#万里无云是我永恒的悲伤" class="headerlink" title="万里无云是我永恒的悲伤"></a>万里无云是我永恒的悲伤</h4><span id="more"></span>
-<p>《村庄》海子</p>
-<p>村庄 在五谷丰盛的村庄 我安顿下来</p>
-<p>我顺手摸到的东西越少越好</p>
-<p>珍惜黄昏的村庄 珍惜雨水的村庄</p>
-<p>万里无云如同我永恒的悲伤</p>
-<p>这首海子的诗，我最欣赏的是万里无云如同我永恒的悲伤，大概是因为这样可以标榜自己的独特的情感吧！想到这里我就会感到一阵恶俗，如果我真的这么想（后面不做该改变），那么我其实不就和那些用高雅诗句修饰自己无比浅薄情感而又拿出来。但是，转念一想，其实也不是，现实生活中这种“标榜”也是大众生活的调味品，是对生活中种种不顺的宣泄。正如陈国豪在赢得CUBAL总冠军后的感言：成功只是偶然，失败才是主旋律。在面对目标时，我们没有成功之前所做的所有尝试说得好听点叫“为成功的铺垫”，难听的就是“白用工”，我们每一天都要向着目标前进，或许是考试考高分、某个男女孩子的注意、六级能过、拿得到offer、车子房子票子、家人的陪伴。现实生活不是像网络爽文写的那样，是一路开挂的人生。我们大多数人，求而不得才是常态，而尘世间什么最为痛苦，求而不得最为痛苦，在面对目标时，我们常常不能一蹴而就，于是乎就只能对着目标天天求而不得、天天陷入沉痛的哀思吗？这种悲伤太普通了，大概率不是海子的真实意思，这一种理解太过于肤浅、太过于浅薄。</p>
-<p>《可叹》<br>杜甫杜甫〔唐代〕</p>
-<p><mark>天上浮云如白衣，斯须变幻如苍狗。</mark><br>古往今来共一时，人生万事无不有。<br>近者抉眼去其夫，河东女儿身姓柳。<br>丈夫正色动引经，酆城客子王季友。<br>群书万卷常暗诵，孝经一通看在手。<br>贫穷老瘦家卖屐，好事就之为携酒。<br>豫章太守高帝孙，引为宾客敬颇久。<br>闻道三年未曾语，小心恐惧闭其口。<br>太守得之更不疑，人生反覆看亦丑。<br>明月无瑕岂容易，紫气郁郁犹冲斗。<br>时危可仗真豪俊，二人得置君侧否。<br>太守顷者领山南，邦人思之比父母。<br>王生早曾拜颜色，高山之外皆培塿。<br>用为羲和天为成，用平水土地为厚。<br>王也论道阻江湖，李也丞疑旷前后。<br>死为星辰终不灭，致君尧舜焉肯朽。<br>吾辈碌碌饱饭行，风后力牧长回首。</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-      </categories>
-      <tags>
-        <tag>编程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>搭建博客的失败经历</title>
     <url>/2023/08/08/%E8%BF%98%E6%9C%AA%E6%88%90%E5%8A%9F%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/</url>
     <content><![CDATA[<meta name="referrer" content="no-referrer"/>
@@ -1344,6 +1324,26 @@ id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性
 安装hugo：你要先在文件路径没有空格的地方（推荐不是系统盘的根目录）创建hugo文件夹，在里面又创建一个bin文件夹和Sites文件夹，安装就是把这个就是把压缩包里的所有东西放到bin文件夹中（不要漏），把里面的.exe文件改名为hugo.exe，然后就是去配置hugo的环境变量了，配置为bin的路径，配置好就安装完成了。
 
 <p>接下来的操作：1.进入Sites文件夹打开cmd<br>   2.hugo new site +网站名<br>   3.cd 网站名<br>   4.这一步，我们要去将一个别人做好的主题下载到我们的themes文件夹（有些版本的hugo好像是theme），方法有两个，一个是网站下载，一个是git下载。网站下载去hugo官网选好主题按download跳转到github界面，直接在<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674201377650-82465745-511c-4e58-8f3f-4e26e4032cc3.png#averageHue=%23dbb187&clientId=uba3523dd-25dc-4&from=paste&height=389&id=u963cb658&name=image.png&originHeight=583&originWidth=657&originalType=binary&ratio=1&rotation=0&showTitle=false&size=50086&status=done&style=none&taskId=u9f26e0ee-eddb-49ff-852c-6d6451883d3&title=&width=438" alt="image.png"><br>下载，然后解压到themes。如果是git下载，就要复制上面的ssh，在网站文件夹命令行 git init<br>git submodule add + ssh themes&#x2F;主题名<br>echo theme &#x3D; “主题名“ &gt;&gt; config.toml        应用主题<br>hugo new 文件夹名&#x2F;文件名.md       添加.md内容，有些主题好像对文件夹名有要求<br>hugo server -t 主题名称 –buildDrafts          预览主题<br>也可直接运行博客<br>hugo server<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674202084263-26c29710-24ec-49c4-8a55-404a56f0f9d7.png#averageHue=%2311100f&clientId=uba3523dd-25dc-4&from=paste&height=394&id=uf6089aa2&name=image.png&originHeight=591&originWidth=928&originalType=binary&ratio=1&rotation=0&showTitle=false&size=60191&status=done&style=none&taskId=uc84cf6ce-9029-4ce1-9b61-d62a9410ccd&title=&width=618.6666666666666" alt="image.png"><br>在浏览器中访问  http：&#x2F;&#x2F;localhost:1313&#x2F;        就可以看到博客预览的样子，按ctrl + C结束<br>接下来进入themes&#x2F;主题名&#x2F;examplesite中  复制config.toml到网站文件夹覆盖掉原来的config.toml配置文件。然后命令行  hugo 就能生成public文件夹了,生成之后在public文件夹中   git init<br>5.我们这里要到github上创建仓库，仓库名要求是：github用户名.github.io<br>把README也勾选上，是public仓库。<br>6.我们在生成的public目录下，为git本地库添加远程库（仅第一次需要）命令行是：git remote add origin +ssh<br>git pull origin master –allow-unrelated-histories<br>git add .<br>git commit -m “first commit”        这个first commit是提交说明，可以改成其他的<br>git push -u origin master          提交远程<br>&lt;我看有些博客说在拉取前要先清空备份除.git文件夹以外的所有文件，add时再放入，但我没做好像也没事&gt;<br>7.然后就能在github pages 那里看到。大体步骤就是这些，为啥搞了两天呢？<br>下面我来唠唠：<br>hugo文件夹作用：<br>·archetypes: Archetypes 是内容模板文件，其中包含预配置的首选项（日期、标题、草稿<br>等）。可以用自定义的预配置前端字段创建新的原型。<br>·assets: Assets 文件夹存储所有文件，这些文件由Hugo Pipes 处理（例如 CSS&#x2F;Sass 文<br>件）。默认不创建这个目录。<br>·config.toml: Hugo使用 config.toml、config.yaml或 config.json（可以在网站根目<br>录中找到）作为默认网站配置文件。除了单独的配置文件之外，你还可以使用 config directory<br>来分隔不同的环境<br>·content：所有内容文件放在这里。顶级文件夹计为内容部分。如果你有 devops 和nodejs<br>部分，那么你需要有content&#x2F;devops&#x2F;first-post.md 和 content&#x2F;nodejs&#x2F;second-post.md 目<br>录。<br>·data：这里用来存储配置文件，Hug0会在生成你网站时用到<br>·layouts：以.html文件的形式存储模板。有关更多信息，请参见 Styling 部分<br>·static：存储所有静态内容：图片、CSS、JavaScript 等。当Hugo创建你的网站时，static 目<br>录中的所有资源均按原样复制<br>themes：你所选择的Hugo 主题<br>出错：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203817331-393a4a5e-8f57-4ea2-bb7d-9d9aad4be5d2.png#averageHue=%2313110f&clientId=uba3523dd-25dc-4&from=paste&height=103&id=u35080c44&name=image.png&originHeight=155&originWidth=1384&originalType=binary&ratio=1&rotation=0&showTitle=false&size=25563&status=done&style=none&taskId=u41383014-a6d1-4cb8-8293-bf6f36e34b3&title=&width=922.6666666666666" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203960893-7f22518a-ed24-416c-904c-c78985b7cfe9.png#clientId=uba3523dd-25dc-4&from=paste&height=130&id=u1b32907e&name=image.png&originHeight=195&originWidth=954&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29046&status=done&style=none&taskId=ud8f4c0cd-f19a-403e-9fd5-9160cdbfc4f&title=&width=636" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203736742-1e5d3f49-34d6-4b13-a353-f50023b77b0a.png#averageHue=%23191614&clientId=uba3523dd-25dc-4&from=paste&height=148&id=u51ce33ea&name=image.png&originHeight=222&originWidth=1444&originalType=binary&ratio=1&rotation=0&showTitle=false&size=46134&status=done&style=none&taskId=u6f492162-9bea-496e-8877-632cc3a14a9&title=&width=962.6666666666666" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203771391-acffef91-b538-496b-bfb2-ceaa1338de85.png#averageHue=%23e5feeb&clientId=uba3523dd-25dc-4&from=paste&height=234&id=u020a1dfb&name=image.png&originHeight=351&originWidth=803&originalType=binary&ratio=1&rotation=0&showTitle=false&size=26096&status=done&style=none&taskId=ub31895a1-cdf9-4024-bbbe-b1c8c0f69c5&title=&width=535.3333333333334" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203904069-5c3e6be5-80b5-424b-9e50-5123aa004300.png#averageHue=%23e2ba94&clientId=uba3523dd-25dc-4&from=paste&height=562&id=u27f7c7de&name=image.png&originHeight=843&originWidth=855&originalType=binary&ratio=1&rotation=0&showTitle=false&size=221075&status=done&style=none&taskId=uc5eb1cf8-a3a7-413b-9cb7-f2240c6d585&title=&width=570" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674204112772-4b50c8e3-d08f-4974-bb66-341f1c397ac8.png#averageHue=%23fee9e7&clientId=uba3523dd-25dc-4&from=paste&height=179&id=ua3b5032a&name=image.png&originHeight=268&originWidth=789&originalType=binary&ratio=1&rotation=0&showTitle=false&size=33708&status=done&style=none&taskId=uc351a646-f757-45a6-ac96-08bdafc9ff2&title=&width=526" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203910302-859f9727-1d00-4158-813d-794b757cec1b.png#averageHue=%23fcfcfc&clientId=uba3523dd-25dc-4&from=paste&height=93&id=u89cc7d1f&name=image.png&originHeight=140&originWidth=966&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21475&status=done&style=none&taskId=u0083b253-1b8b-4405-941e-c5990aeb780&title=&width=644" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674204128927-56e56fc6-3611-4248-b789-8839cb9c664b.png#averageHue=%23fbfbfb&clientId=uba3523dd-25dc-4&from=paste&height=551&id=uf6dc9392&name=image.png&originHeight=827&originWidth=505&originalType=binary&ratio=1&rotation=0&showTitle=false&size=86531&status=done&style=none&taskId=u8d92943c-dfd0-48d9-b21d-36cf69d6766&title=&width=336.6666666666667" alt="image.png"></p>
+]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>诗歌摘抄</title>
+    <url>/2023/08/08/%E8%AF%97%E8%AF%8D%E7%A7%AF%E7%B4%AF/</url>
+    <content><![CDATA[<h1 id="诗词积累"><a href="#诗词积累" class="headerlink" title="诗词积累"></a>诗词积累</h1><h6 id="前言：这个前言应该说啥才能配的上诗词的酣畅淋漓，才能表达出它们的含情脉脉，它们在我的生活中宛如一个个被我珍藏的明珠，一方面不舍其被人发现而评头论足、亵渎玷污；一方面我又不想眼睁睁的看着那些绝美的诗句埋没在历史之中。那些如雨的马蹄，如雷的呐喊，如注的热血；中原慈母的白发，江南春闺的遥望，湖湘稚儿的夜哭，故乡柳荫下的诀别，将军圆睁的怒目，猎猎朔风中得军旗……一起点燃了我在面对无趣生活时，眼中的光亮。"><a href="#前言：这个前言应该说啥才能配的上诗词的酣畅淋漓，才能表达出它们的含情脉脉，它们在我的生活中宛如一个个被我珍藏的明珠，一方面不舍其被人发现而评头论足、亵渎玷污；一方面我又不想眼睁睁的看着那些绝美的诗句埋没在历史之中。那些如雨的马蹄，如雷的呐喊，如注的热血；中原慈母的白发，江南春闺的遥望，湖湘稚儿的夜哭，故乡柳荫下的诀别，将军圆睁的怒目，猎猎朔风中得军旗……一起点燃了我在面对无趣生活时，眼中的光亮。" class="headerlink" title="前言：这个前言应该说啥才能配的上诗词的酣畅淋漓，才能表达出它们的含情脉脉，它们在我的生活中宛如一个个被我珍藏的明珠，一方面不舍其被人发现而评头论足、亵渎玷污；一方面我又不想眼睁睁的看着那些绝美的诗句埋没在历史之中。那些如雨的马蹄，如雷的呐喊，如注的热血；中原慈母的白发，江南春闺的遥望，湖湘稚儿的夜哭，故乡柳荫下的诀别，将军圆睁的怒目，猎猎朔风中得军旗……一起点燃了我在面对无趣生活时，眼中的光亮。"></a>前言：这个前言应该说啥才能配的上诗词的酣畅淋漓，才能表达出它们的含情脉脉，它们在我的生活中宛如一个个被我珍藏的明珠，一方面不舍其被人发现而评头论足、亵渎玷污；一方面我又不想眼睁睁的看着那些绝美的诗句埋没在历史之中。那些如雨的马蹄，如雷的呐喊，如注的热血；中原慈母的白发，江南春闺的遥望，湖湘稚儿的夜哭，故乡柳荫下的诀别，将军圆睁的怒目，猎猎朔风中得军旗……一起点燃了我在面对无趣生活时，眼中的光亮。</h6><h4 id="万里无云是我永恒的悲伤"><a href="#万里无云是我永恒的悲伤" class="headerlink" title="万里无云是我永恒的悲伤"></a>万里无云是我永恒的悲伤</h4><span id="more"></span>
+<p>《村庄》海子</p>
+<p>村庄 在五谷丰盛的村庄 我安顿下来</p>
+<p>我顺手摸到的东西越少越好</p>
+<p>珍惜黄昏的村庄 珍惜雨水的村庄</p>
+<p>万里无云如同我永恒的悲伤</p>
+<p>这首海子的诗，我最欣赏的是万里无云如同我永恒的悲伤，大概是因为这样可以标榜自己的独特的情感吧！想到这里我就会感到一阵恶俗，如果我真的这么想（后面不做该改变），那么我其实不就和那些用高雅诗句修饰自己无比浅薄情感而又拿出来。但是，转念一想，其实也不是，现实生活中这种“标榜”也是大众生活的调味品，是对生活中种种不顺的宣泄。正如陈国豪在赢得CUBAL总冠军后的感言：成功只是偶然，失败才是主旋律。在面对目标时，我们没有成功之前所做的所有尝试说得好听点叫“为成功的铺垫”，难听的就是“白用工”，我们每一天都要向着目标前进，或许是考试考高分、某个男女孩子的注意、六级能过、拿得到offer、车子房子票子、家人的陪伴。现实生活不是像网络爽文写的那样，是一路开挂的人生。我们大多数人，求而不得才是常态，而尘世间什么最为痛苦，求而不得最为痛苦，在面对目标时，我们常常不能一蹴而就，于是乎就只能对着目标天天求而不得、天天陷入沉痛的哀思吗？这种悲伤太普通了，大概率不是海子的真实意思，这一种理解太过于肤浅、太过于浅薄。</p>
+<p>《可叹》<br>杜甫杜甫〔唐代〕</p>
+<p><mark>天上浮云如白衣，斯须变幻如苍狗。</mark><br>古往今来共一时，人生万事无不有。<br>近者抉眼去其夫，河东女儿身姓柳。<br>丈夫正色动引经，酆城客子王季友。<br>群书万卷常暗诵，孝经一通看在手。<br>贫穷老瘦家卖屐，好事就之为携酒。<br>豫章太守高帝孙，引为宾客敬颇久。<br>闻道三年未曾语，小心恐惧闭其口。<br>太守得之更不疑，人生反覆看亦丑。<br>明月无瑕岂容易，紫气郁郁犹冲斗。<br>时危可仗真豪俊，二人得置君侧否。<br>太守顷者领山南，邦人思之比父母。<br>王生早曾拜颜色，高山之外皆培塿。<br>用为羲和天为成，用平水土地为厚。<br>王也论道阻江湖，李也丞疑旷前后。<br>死为星辰终不灭，致君尧舜焉肯朽。<br>吾辈碌碌饱饭行，风后力牧长回首。</p>
 ]]></content>
       <categories>
         <category>编程</category>
