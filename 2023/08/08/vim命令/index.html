@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"crazylychee.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本文是对《Linux三剑客》中vim视频教程中的命令进行总结，方便大家学习、收藏，快速掌握vim各种命令的使用。 vim是什么？vim是Linux环境下一款功能强大、高度可定制的文本编辑工具，类似于Windows下面的source insight、sublime、notepad。VI是visual interface的缩写，即可视化接口。vim 即 vi IMproved，在 vi 的基础上做了很">
+<meta property="og:type" content="article">
+<meta property="og:title" content="clion的踩坑史">
+<meta property="og:url" content="https://crazylychee.github.io/2023/08/08/vim%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Crazylychee&#39;s website">
+<meta property="og:description" content="本文是对《Linux三剑客》中vim视频教程中的命令进行总结，方便大家学习、收藏，快速掌握vim各种命令的使用。 vim是什么？vim是Linux环境下一款功能强大、高度可定制的文本编辑工具，类似于Windows下面的source insight、sublime、notepad。VI是visual interface的缩写，即可视化接口。vim 即 vi IMproved，在 vi 的基础上做了很">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-f796a4d852827d7d2883b9a6ed3f7a49_1440w.webp">
+<meta property="article:published_time" content="2023-08-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-07T16:00:00.000Z">
+<meta property="article:author" content="Crazylychee">
+<meta property="article:tag" content="问与答">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic2.zhimg.com/80/v2-f796a4d852827d7d2883b9a6ed3f7a49_1440w.webp">
+
+<link rel="canonical" href="https://crazylychee.github.io/2023/08/08/vim%E5%91%BD%E4%BB%A4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<script async src="/lib/fireworks.js"></script>
+  <title>clion的踩坑史 | Crazylychee's website</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Crazylychee's website</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://crazylychee.github.io/2023/08/08/vim%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/en.png">
+      <meta itemprop="name" content="Crazylychee">
+      <meta itemprop="description" content="一个分享技术分享生活的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Crazylychee's website">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          clion的踩坑史
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-08-08 00:00:00" itemprop="dateCreated datePublished" datetime="2023-08-08T00:00:00+08:00">2023-08-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%97%AE%E4%B8%8E%E7%AD%94/" itemprop="url" rel="index"><span itemprop="name">问与答</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文是对《Linux三剑客》中vim视频教程中的命令进行总结，方便大家学习、收藏，快速掌握vim各种命令的使用。</p>
+<h3 id="vim是什么？"><a href="#vim是什么？" class="headerlink" title="vim是什么？"></a><strong>vim是什么？</strong></h3><p>vim是Linux环境下一款功能强大、高度可定制的文本编辑工具，类似于Windows下面的source insight、sublime、notepad。VI是visual interface的缩写，即可视化接口。vim 即 vi IMproved，在 vi 的基础上做了很多改进，如：增加了多级撤销、多窗口操作、崩溃后也可以恢复、增加了稳定性、关键字自动补全、上下文自动补全等功能。</p>
+<span id="more"></span>
+<h3 id="vim的工作模式"><a href="#vim的工作模式" class="headerlink" title="vim的工作模式"></a><strong>vim的工作模式</strong></h3><p>vim一般有6种工作模式。</p>
+<ul>
+<li>普通模式：使用vim打开一个文件时默认模式，也叫命令模式，允许用户通过各种命令浏览代码、滚屏等操作。</li>
+<li>插入模式：也可以叫做编辑模式，在普通模式下敲击 i 、a 或 o 就进入插入模式，允许用户通过键盘输入、编辑。</li>
+<li>命令行模式：在普通模式下，先输入冒号:，接着输入命令，就可以通过配置命令对vim进行配置了，如改变颜色主题、显示行号等，这些配置命令也可以保存到&#x2F;etc&#x2F;vim&#x2F;vimrc配置文件中，每次打开默认配置执行。</li>
+<li>可视化模式：在普通模式下敲击前盘上的 v 键，就进入可视化模式，然后移动光标就可以选中一块文本，常用来完成文本的复制、粘贴、删除等操作。</li>
+<li>替换模式：如果我们想修改某个字符，不需要先进入插入模式，删除，然后再输入新的字符，直接在普通模式下，敲击R键就可以直接替换。</li>
+<li>EX模式：类似于命令行模式，可以一次运行多个命令</li>
+</ul>
+<p>vim的各种工作模式可以通过不同的键进行切换，用户统一使用ESC键返回到普通模式。</p>
+<h3 id="光标移动命令"><a href="#光标移动命令" class="headerlink" title="光标移动命令"></a><strong>光标移动命令</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">单个字符移动：</span><br><span class="line">h:  向左移动</span><br><span class="line">l:  向右移动</span><br><span class="line">j:  向下移动</span><br><span class="line">k:  向上移动</span><br><span class="line">xh:  向左移动x个字符距离</span><br><span class="line"></span><br><span class="line">单词移动：</span><br><span class="line">w:  将光标移动到下一个单词的开头</span><br><span class="line">b:  将光标移动到前一个单词的开头</span><br><span class="line">e:  将光标移动到下一个单词的词末</span><br><span class="line">E:  移动到单词的结尾(忽略标点符号)</span><br><span class="line">ge:  将光标移动到上一个单词的词末</span><br><span class="line"><span class="number">2</span>w:  指定移动的次数</span><br><span class="line"></span><br><span class="line">行移动：</span><br><span class="line">$:  将光标移动到当前行的行尾</span><br><span class="line"><span class="number">0</span>:  将光标移动到当前行的行首</span><br><span class="line">^:  将光标移动到当前行的第一个非空字符（行首和当前行非空字符不是一个位置）</span><br><span class="line"><span class="number">2</span>|:  移到当前行的第<span class="number">2</span>列</span><br><span class="line">fx:  将光标移动到当前行的第一个字符x上</span><br><span class="line"><span class="number">3f</span>x: 将光标移动到航前行的第<span class="number">3</span>个字符x上</span><br><span class="line">tx:   将光标移动到目标字符x的前一个字符上</span><br><span class="line">fx和tx可以通过;和,进行重复移动，一个是正向重复，一个是反向重复</span><br><span class="line">%:  用于符号间的移动，它会在一对()、[]、&#123;&#125;之间跳跃</span><br><span class="line"></span><br><span class="line">文本块移动：</span><br><span class="line">(：  移到当前句子的开头</span><br><span class="line">):  移到下一个句子的开头</span><br><span class="line">&#123;:  移到当前一段的开头</span><br><span class="line">&#125;:  移到下一段的开头</span><br><span class="line">[[:  移到当前这一节的开头</span><br><span class="line">]]:  移到下一节的开头</span><br><span class="line"></span><br><span class="line">在屏幕中移动</span><br><span class="line">xG:  跳转到指定的第x行，G移动到文件按末尾，``（<span class="number">2</span>次单引号)返回到跳转前的位置</span><br><span class="line">gg:  移动到文件开头</span><br><span class="line">x%:  移动到文件中间，就使用<span class="number">50</span>%</span><br><span class="line">H:  移动到home</span><br><span class="line">M:  移动到屏幕中间</span><br><span class="line">L:  移动到一屏末尾</span><br><span class="line">ctrl+G:  查看当前的位置状态</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="滚屏与跳转"><a href="#滚屏与跳转" class="headerlink" title="滚屏与跳转"></a><strong>滚屏与跳转</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">半屏滚动:  ctrl+u/ctrl+d</span><br><span class="line">全屏滚动:  ctrl+f/ctrl+b</span><br><span class="line"></span><br><span class="line">定位光标的位置</span><br><span class="line">zz:  将光标置于屏幕的中间</span><br><span class="line">zt:  将光标移动到屏幕的顶部</span><br><span class="line">zb:  将光标移动到屏幕的底部</span><br><span class="line"></span><br><span class="line">设置跳转标记</span><br><span class="line">mx,my,mz设置三个位置</span><br><span class="line">`x,`y,`z跳转到设置</span><br></pre></td></tr></table></figure>
+
+<h3 id="文本插入操作"><a href="#文本插入操作" class="headerlink" title="文本插入操作"></a><strong>文本插入操作</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">i:  在当前光标的前面插入字符</span><br><span class="line">a:  在当前光标的后面追加字符</span><br><span class="line">o:  在当前光标的下一行行首插入字符</span><br><span class="line">I:  在一行的开头添加文本</span><br><span class="line">A:  在一行的结尾处添加文本</span><br><span class="line">O:  在光标当前行的上一行插入文本</span><br><span class="line">s:  删除当前光标处的字符并进入到插入模式</span><br><span class="line">S:  删除光标所在处的行，并进入到插入模式</span><br><span class="line">u:  撤销修改</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="文本删除操作"><a href="#文本删除操作" class="headerlink" title="文本删除操作"></a><strong>文本删除操作</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">字符删除</span><br><span class="line">x:  删除当前光标所在处的字符</span><br><span class="line">X:  删除当前光标左边的字符</span><br><span class="line"></span><br><span class="line">单词删除</span><br><span class="line">dw:  删除一个单词(从光标处到空格)</span><br><span class="line">daw:  无论光标在什么位置，删除光标所在的整个单词(包括空白字符)</span><br><span class="line">diw:  删除整个单词文本，但是保留空格字符不删除</span><br><span class="line">d2w:  删除从当前光标开始处的<span class="number">2</span>个单词</span><br><span class="line">d$:  删除从光标到一行末尾的整个文本</span><br><span class="line">d0:  删除从光标到一行开头的所有单词</span><br><span class="line">dl:  删除当前光标处的字符=x</span><br><span class="line">dh:  删除当前光标左边的字符=X</span><br><span class="line"></span><br><span class="line">行删除</span><br><span class="line">dd:  删除当前光标处的一整行=D</span><br><span class="line"><span class="number">5</span>dd:  删除从光标开始处的<span class="number">5</span>行代码</span><br><span class="line">dgg:  删除从光标到文本开头</span><br><span class="line">dG:  删除从光标到文本结尾</span><br><span class="line"></span><br><span class="line">行合并</span><br><span class="line">J:  删除一个分行符，将当前行与下一行合并</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="文本复制、剪切与粘贴"><a href="#文本复制、剪切与粘贴" class="headerlink" title="文本复制、剪切与粘贴"></a><strong>文本复制、剪切与粘贴</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">y:  复制，p:粘贴</span><br><span class="line">yw:  复制一个单词</span><br><span class="line">y2w:  复制<span class="number">2</span>个单词</span><br><span class="line">y$:  复制从当前光标到行结尾的所有单词</span><br><span class="line">y0:  复制从当前光标到行首的所有单词</span><br><span class="line">yy:  复制一整行</span><br><span class="line"><span class="number">2</span>yy:  复制从当前光标所在行开始的<span class="number">2</span>行</span><br><span class="line"></span><br><span class="line">复制文本块</span><br><span class="line">    <span class="number">1.</span>首先进入visual模式：v</span><br><span class="line">    <span class="number">2.</span>移动光标选择文本</span><br><span class="line">    <span class="number">3.</span>复制与粘贴的操作</span><br></pre></td></tr></table></figure>
+
+<h3 id="文本的修改与替换"><a href="#文本的修改与替换" class="headerlink" title="文本的修改与替换"></a><strong>文本的修改与替换</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cw:  删除从光标处到单词结尾的文本并进入到插入模式</span><br><span class="line">cb:  删除从光标处到单词开头的文本并进入到插入模式</span><br><span class="line">cc:  删除一整行并进入到插入模式</span><br><span class="line">~： 修改光标下字符的大小写</span><br><span class="line">r:  替换当前光标下的字符</span><br><span class="line">R:  进入到替换模式</span><br><span class="line">xp:  交换光标和下一个字符</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="文本的查找与替换"><a href="#文本的查找与替换" class="headerlink" title="文本的查找与替换"></a><strong>文本的查找与替换</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/<span class="built_in">string</span>   正向查找</span><br><span class="line">?<span class="built_in">string</span>   反向查找</span><br><span class="line"></span><br><span class="line">设置高亮显示</span><br><span class="line">    :<span class="built_in">set</span> hls</span><br><span class="line">    *按键将当前光标处的单词高亮显示，使用n浏览下一个查找高亮的结果</span><br><span class="line">:s/old/new   将当前行的第一个字符串old替换为new</span><br><span class="line">:s/old/new/g   将当前行的所有字符串old替换为new</span><br><span class="line">:<span class="number">90</span>s/old/new/g  将指定行的所有字符串old替换为new</span><br><span class="line">:<span class="number">90</span>,<span class="number">93</span>s/old/new/g  将指定范围的行的所有字符串old替换为new</span><br><span class="line">:%s/old/new/g   将文本中所有的字符串old替换为new</span><br><span class="line">:%s/old/new/gc  依次替换每个字符串关键字</span><br><span class="line">:%s/^<span class="keyword">struct</span>/<span class="type">int</span>/g   将所有以<span class="keyword">struct</span>开头的字符串替换为<span class="type">int</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="撤销修改、重做与保存"><a href="#撤销修改、重做与保存" class="headerlink" title="撤销修改、重做与保存"></a><strong>撤销修改、重做与保存</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">u:  撤销上一步的操作。</span><br><span class="line">Ctrl+r:  将原来的插销重做一遍</span><br><span class="line">:U  恢复一整行原来的面貌（文件打开时的文本状态）</span><br><span class="line">:q  若文件没有修改，直接退出</span><br><span class="line">:q!  文件已经被修改，放弃修改退出</span><br><span class="line">:wq  文件已经被修改，保存修改并退出</span><br><span class="line">:e!  放弃修改，重新回到文件打开时的状态</span><br></pre></td></tr></table></figure>
+
+<h3 id="编辑多个文件"><a href="#编辑多个文件" class="headerlink" title="编辑多个文件"></a><strong>编辑多个文件</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">文件和缓冲区的区别</span><br><span class="line">文件是保存在磁盘上的，而打开的文件的文件是在内存中，在内存中有一个缓冲区，用来存放打开的文件。vim每次打开文件时都会创建一个缓冲区，vim支持打开多个文件</span><br><span class="line">:buffers   查看缓冲区列表==ls</span><br><span class="line">:buffer N  根据缓冲区列表的编号跳转到指定缓冲区</span><br><span class="line">:bnext/bprev  遍历缓冲区列表</span><br><span class="line">:bfirst/blast  分别调到缓冲区列表的开头和结尾</span><br><span class="line">:write   将缓冲区的修改保存到磁盘上</span><br><span class="line">:edit! e!  放弃缓冲区的修改，恢复到文件打开时的状态</span><br><span class="line">:edit file  编辑另一个文件</span><br><span class="line">:wnext   保存当前缓冲区的修改并跳转到缓冲区列表中的下一个文件</span><br><span class="line">:<span class="built_in">set</span> autowrite</span><br></pre></td></tr></table></figure>
+
+<h3 id="标签页与折叠栏"><a href="#标签页与折叠栏" class="headerlink" title="标签页与折叠栏"></a><strong>标签页与折叠栏</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">标签页的新建：tabedit file/tab split</span><br><span class="line">标签页的切换: tabn/tabp</span><br><span class="line">按键：gt/gT</span><br><span class="line">标签页的关闭</span><br><span class="line">    tabclose </span><br><span class="line">关闭当前的标签页: tabonly</span><br><span class="line">创建一个折叠</span><br><span class="line">    zf200G:将光标和<span class="number">200</span>行之间的代码折叠起来</span><br><span class="line">折叠的打开与关闭</span><br><span class="line">    za:  打开和关闭折叠</span><br><span class="line">    zr/zm: 一层一层地打开和关闭折叠</span><br><span class="line">    zR/zM: 分别打开和关闭所有的折叠</span><br><span class="line">折叠键的光标移动</span><br><span class="line">    zj: 跳转到下一个折叠处</span><br><span class="line">    zk: 跳转到上一个折叠处</span><br><span class="line">删除折叠</span><br><span class="line">    zd: 删除光标下的折叠</span><br><span class="line">    zD: 删除光标下的折叠以及嵌套的折叠</span><br><span class="line">    zE: 删除所有的折叠标签</span><br><span class="line">    创建的折叠当退出vim之后就失效了。</span><br></pre></td></tr></table></figure>
+
+<h3 id="多窗口操作"><a href="#多窗口操作" class="headerlink" title="多窗口操作"></a><strong>多窗口操作</strong></h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">分割窗口</span><br><span class="line">    split/vsplit filename</span><br><span class="line">窗口间跳转</span><br><span class="line">    ctrl+w hjkl</span><br><span class="line">    ctrl+w w</span><br><span class="line">移动窗口</span><br><span class="line">    ctrl+w HJKL</span><br><span class="line">调整窗口尺寸</span><br><span class="line">    ctrl+w +/-  调整窗口的高度</span><br><span class="line">    ctrl+w &lt;/&gt;  调整窗口的宽度</span><br><span class="line">    ctrl+w = 所有的窗口设置相同的尺寸</span><br><span class="line">    :resize n将当前窗口尺寸调整为N行</span><br><span class="line">关闭窗口</span><br><span class="line">    close: 关闭一个窗口</span><br><span class="line">    qall: 退出所有窗口</span><br><span class="line">    qall!: 放弃修改，退出所有窗口</span><br><span class="line">    wqall: 保存并退出所有窗口</span><br><span class="line">    wall: 保存所有窗口</span><br></pre></td></tr></table></figure>
+
+<p>附：vim键盘命令图</p>
+<p><img src="https://pic2.zhimg.com/80/v2-f796a4d852827d7d2883b9a6ed3f7a49_1440w.webp" alt="img"></p>
+<p>vim配套的视频教程，可参考王老师的《Linux三剑客》：git、make、vim视频教程：</p>
+<p>在命令行中，可以使用”cp”命令来复制文件，使用”mv”命令来移动文件。</p>
+<p>复制文件的命令格式是：<br>cp 源文件路径 目标文件路径</p>
+<p>例如，要将文件a.txt复制到目标文件夹中，可以使用以下命令：<br>cp a.txt 目标文件夹路径</p>
+<p>粘贴文件的命令是将文件从一个路径移动到另一个路径。在命令行中，可以使用”mv”命令来移动文件，这等效于将文件粘贴到新的位置。</p>
+<p>移动文件的命令格式是：<br>mv 源文件路径 目标文件路径</p>
+<p>例如，要将文件a.txt移动到目标文件夹中，可以使用以下命令：<br>mv a.txt 目标文件夹路径</p>
+<p>请确保目标文件夹路径是存在的，并且有足够的权限来执行复制或粘贴操作。</p>
+<p>########################### </p>
+<p>使用git diff指令可以查看暂存区与当前版本之间的区别。</p>
+<p>可以使用以下命令来查看暂存区与当前版本之间的差异：</p>
+<p>git diff –staged</p>
+<p>或者使用以下命令：</p>
+<p>git diff –cached</p>
+<p>查看工作目录中尚未添加到暂存区的修改：git diff命令不加参数时，会显示当前工作目录中所有修改了但尚未添加到暂存区的文件的差异内容。</p>
+<p>比较暂存区与上一次提交的差异：通过命令git diff –staged或git diff –cached，可以比较当前暂存区与上一次提交的差异。</p>
+<p>比较两次提交之间的差异：通过指定两个不同的commit或者branch，例如git diff commit1 commit2，可以比较两次提交之间的差异内容。</p>
+<p>使用 git branch -d <branch_name> 命令可以删除一个已经合并到当前分支的分支。例如，如果想要删除名为 feature 的分支，可以运行以下命令：</p>
+<p>git branch -d feature</p>
+<p>如果要强制删除一个尚未合并的分支，可以使用 git branch -D <branch_name> 命令。例如，要删除名为 feature 的分支，可以运行以下命令：</p>
+<p>git branch -D feature</p>
+<p>请注意，删除一个分支将无法恢复其上的提交。在执行删除前，请确保您不再需要该分支上的任何更改。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Crazylychee WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%97%AE%E4%B8%8E%E7%AD%94/" rel="tag"># 问与答</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/08/08/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/" rel="prev" title="前端笔记">
+      <i class="fa fa-chevron-left"></i> 前端笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/08/08/%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="英语学习笔记">
+      英语学习笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vim%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">vim是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vim%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">vim的工作模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%89%E6%A0%87%E7%A7%BB%E5%8A%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">3.</span> <span class="nav-text">光标移动命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BB%9A%E5%B1%8F%E4%B8%8E%E8%B7%B3%E8%BD%AC"><span class="nav-number">4.</span> <span class="nav-text">滚屏与跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E6%8F%92%E5%85%A5%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">文本插入操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C"><span class="nav-number">6.</span> <span class="nav-text">文本删除操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E5%A4%8D%E5%88%B6%E3%80%81%E5%89%AA%E5%88%87%E4%B8%8E%E7%B2%98%E8%B4%B4"><span class="nav-number">7.</span> <span class="nav-text">文本复制、剪切与粘贴</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E7%9A%84%E4%BF%AE%E6%94%B9%E4%B8%8E%E6%9B%BF%E6%8D%A2"><span class="nav-number">8.</span> <span class="nav-text">文本的修改与替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%9C%AC%E7%9A%84%E6%9F%A5%E6%89%BE%E4%B8%8E%E6%9B%BF%E6%8D%A2"><span class="nav-number">9.</span> <span class="nav-text">文本的查找与替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%92%A4%E9%94%80%E4%BF%AE%E6%94%B9%E3%80%81%E9%87%8D%E5%81%9A%E4%B8%8E%E4%BF%9D%E5%AD%98"><span class="nav-number">10.</span> <span class="nav-text">撤销修改、重做与保存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E5%A4%9A%E4%B8%AA%E6%96%87%E4%BB%B6"><span class="nav-number">11.</span> <span class="nav-text">编辑多个文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E9%A1%B5%E4%B8%8E%E6%8A%98%E5%8F%A0%E6%A0%8F"><span class="nav-number">12.</span> <span class="nav-text">标签页与折叠栏</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%AA%97%E5%8F%A3%E6%93%8D%E4%BD%9C"><span class="nav-number">13.</span> <span class="nav-text">多窗口操作</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Crazylychee"
+      src="/images/en.png">
+  <p class="site-author-name" itemprop="name">Crazylychee</p>
+  <div class="site-description" itemprop="description">一个分享技术分享生活的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/crazylychee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;crazylychee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crazylychee</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

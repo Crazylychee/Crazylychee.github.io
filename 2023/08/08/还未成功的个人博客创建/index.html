@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"crazylychee.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="前言     一个个人博客，我其实早就想创建了但是，一来没有时间，二来不知从何入手，所以我一直没能创建。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建博客的失败经历">
+<meta property="og:url" content="https://crazylychee.github.io/2023/08/08/%E8%BF%98%E6%9C%AA%E6%88%90%E5%8A%9F%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/index.html">
+<meta property="og:site_name" content="Crazylychee&#39;s website">
+<meta property="og:description" content="前言     一个个人博客，我其实早就想创建了但是，一来没有时间，二来不知从何入手，所以我一直没能创建。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674201377650-82465745-511c-4e58-8f3f-4e26e4032cc3.png#averageHue=%23dbb187&clientId=uba3523dd-25dc-4&from=paste&height=389&id=u963cb658&name=image.png&originHeight=583&originWidth=657&originalType=binary&ratio=1&rotation=0&showTitle=false&size=50086&status=done&style=none&taskId=u9f26e0ee-eddb-49ff-852c-6d6451883d3&title=&width=438">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674202084263-26c29710-24ec-49c4-8a55-404a56f0f9d7.png#averageHue=%2311100f&clientId=uba3523dd-25dc-4&from=paste&height=394&id=uf6089aa2&name=image.png&originHeight=591&originWidth=928&originalType=binary&ratio=1&rotation=0&showTitle=false&size=60191&status=done&style=none&taskId=uc84cf6ce-9029-4ce1-9b61-d62a9410ccd&title=&width=618.6666666666666">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203817331-393a4a5e-8f57-4ea2-bb7d-9d9aad4be5d2.png#averageHue=%2313110f&clientId=uba3523dd-25dc-4&from=paste&height=103&id=u35080c44&name=image.png&originHeight=155&originWidth=1384&originalType=binary&ratio=1&rotation=0&showTitle=false&size=25563&status=done&style=none&taskId=u41383014-a6d1-4cb8-8293-bf6f36e34b3&title=&width=922.6666666666666">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203960893-7f22518a-ed24-416c-904c-c78985b7cfe9.png#clientId=uba3523dd-25dc-4&from=paste&height=130&id=u1b32907e&name=image.png&originHeight=195&originWidth=954&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29046&status=done&style=none&taskId=ud8f4c0cd-f19a-403e-9fd5-9160cdbfc4f&title=&width=636">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203736742-1e5d3f49-34d6-4b13-a353-f50023b77b0a.png#averageHue=%23191614&clientId=uba3523dd-25dc-4&from=paste&height=148&id=u51ce33ea&name=image.png&originHeight=222&originWidth=1444&originalType=binary&ratio=1&rotation=0&showTitle=false&size=46134&status=done&style=none&taskId=u6f492162-9bea-496e-8877-632cc3a14a9&title=&width=962.6666666666666">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203771391-acffef91-b538-496b-bfb2-ceaa1338de85.png#averageHue=%23e5feeb&clientId=uba3523dd-25dc-4&from=paste&height=234&id=u020a1dfb&name=image.png&originHeight=351&originWidth=803&originalType=binary&ratio=1&rotation=0&showTitle=false&size=26096&status=done&style=none&taskId=ub31895a1-cdf9-4024-bbbe-b1c8c0f69c5&title=&width=535.3333333333334">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203904069-5c3e6be5-80b5-424b-9e50-5123aa004300.png#averageHue=%23e2ba94&clientId=uba3523dd-25dc-4&from=paste&height=562&id=u27f7c7de&name=image.png&originHeight=843&originWidth=855&originalType=binary&ratio=1&rotation=0&showTitle=false&size=221075&status=done&style=none&taskId=uc5eb1cf8-a3a7-413b-9cb7-f2240c6d585&title=&width=570">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674204112772-4b50c8e3-d08f-4974-bb66-341f1c397ac8.png#averageHue=%23fee9e7&clientId=uba3523dd-25dc-4&from=paste&height=179&id=ua3b5032a&name=image.png&originHeight=268&originWidth=789&originalType=binary&ratio=1&rotation=0&showTitle=false&size=33708&status=done&style=none&taskId=uc351a646-f757-45a6-ac96-08bdafc9ff2&title=&width=526">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203910302-859f9727-1d00-4158-813d-794b757cec1b.png#averageHue=%23fcfcfc&clientId=uba3523dd-25dc-4&from=paste&height=93&id=u89cc7d1f&name=image.png&originHeight=140&originWidth=966&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21475&status=done&style=none&taskId=u0083b253-1b8b-4405-941e-c5990aeb780&title=&width=644">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674204128927-56e56fc6-3611-4248-b789-8839cb9c664b.png#averageHue=%23fbfbfb&clientId=uba3523dd-25dc-4&from=paste&height=551&id=uf6dc9392&name=image.png&originHeight=827&originWidth=505&originalType=binary&ratio=1&rotation=0&showTitle=false&size=86531&status=done&style=none&taskId=u8d92943c-dfd0-48d9-b21d-36cf69d6766&title=&width=336.6666666666667">
+<meta property="article:published_time" content="2023-08-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-07T16:00:00.000Z">
+<meta property="article:author" content="Crazylychee">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674201377650-82465745-511c-4e58-8f3f-4e26e4032cc3.png#averageHue=%23dbb187&clientId=uba3523dd-25dc-4&from=paste&height=389&id=u963cb658&name=image.png&originHeight=583&originWidth=657&originalType=binary&ratio=1&rotation=0&showTitle=false&size=50086&status=done&style=none&taskId=u9f26e0ee-eddb-49ff-852c-6d6451883d3&title=&width=438">
+
+<link rel="canonical" href="https://crazylychee.github.io/2023/08/08/%E8%BF%98%E6%9C%AA%E6%88%90%E5%8A%9F%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+<script async src="/lib/fireworks.js"></script>
+  <title>搭建博客的失败经历 | Crazylychee's website</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Crazylychee's website</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://crazylychee.github.io/2023/08/08/%E8%BF%98%E6%9C%AA%E6%88%90%E5%8A%9F%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/en.png">
+      <meta itemprop="name" content="Crazylychee">
+      <meta itemprop="description" content="一个分享技术分享生活的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Crazylychee's website">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          搭建博客的失败经历
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2023-08-08 00:00:00" itemprop="dateCreated datePublished" datetime="2023-08-08T00:00:00+08:00">2023-08-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <meta name="referrer" content="no-referrer"/>
+前言
+    一个个人博客，我其实早就想创建了但是，一来没有时间，二来不知从何入手，所以我一直没能创建。
+<span id="more"></span>
+今天的博客是基于hugo框架+github page 搭建的个人博客，已经能够访问，但是准备好的主题却没能正常显示。这就算是我折腾两天的结果吧！记录以未来怀念。
+步骤
+    注意：我的步骤其实也是学习网络上hugo博客创建而来，觉得不清楚可以去搜索一下。
+    运行环境：win11
+    准备工具：1.git   2.hugo（下载最新版，记得下extended版的，下拉展开隐藏会有，我当时还找不到。。。）
+安装hugo：你要先在文件路径没有空格的地方（推荐不是系统盘的根目录）创建hugo文件夹，在里面又创建一个bin文件夹和Sites文件夹，安装就是把这个就是把压缩包里的所有东西放到bin文件夹中（不要漏），把里面的.exe文件改名为hugo.exe，然后就是去配置hugo的环境变量了，配置为bin的路径，配置好就安装完成了。
+
+<p>接下来的操作：1.进入Sites文件夹打开cmd<br>   2.hugo new site +网站名<br>   3.cd 网站名<br>   4.这一步，我们要去将一个别人做好的主题下载到我们的themes文件夹（有些版本的hugo好像是theme），方法有两个，一个是网站下载，一个是git下载。网站下载去hugo官网选好主题按download跳转到github界面，直接在<img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674201377650-82465745-511c-4e58-8f3f-4e26e4032cc3.png#averageHue=%23dbb187&clientId=uba3523dd-25dc-4&from=paste&height=389&id=u963cb658&name=image.png&originHeight=583&originWidth=657&originalType=binary&ratio=1&rotation=0&showTitle=false&size=50086&status=done&style=none&taskId=u9f26e0ee-eddb-49ff-852c-6d6451883d3&title=&width=438" alt="image.png"><br>下载，然后解压到themes。如果是git下载，就要复制上面的ssh，在网站文件夹命令行 git init<br>git submodule add + ssh themes&#x2F;主题名<br>echo theme &#x3D; “主题名“ &gt;&gt; config.toml        应用主题<br>hugo new 文件夹名&#x2F;文件名.md       添加.md内容，有些主题好像对文件夹名有要求<br>hugo server -t 主题名称 –buildDrafts          预览主题<br>也可直接运行博客<br>hugo server<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674202084263-26c29710-24ec-49c4-8a55-404a56f0f9d7.png#averageHue=%2311100f&clientId=uba3523dd-25dc-4&from=paste&height=394&id=uf6089aa2&name=image.png&originHeight=591&originWidth=928&originalType=binary&ratio=1&rotation=0&showTitle=false&size=60191&status=done&style=none&taskId=uc84cf6ce-9029-4ce1-9b61-d62a9410ccd&title=&width=618.6666666666666" alt="image.png"><br>在浏览器中访问  http：&#x2F;&#x2F;localhost:1313&#x2F;        就可以看到博客预览的样子，按ctrl + C结束<br>接下来进入themes&#x2F;主题名&#x2F;examplesite中  复制config.toml到网站文件夹覆盖掉原来的config.toml配置文件。然后命令行  hugo 就能生成public文件夹了,生成之后在public文件夹中   git init<br>5.我们这里要到github上创建仓库，仓库名要求是：github用户名.github.io<br>把README也勾选上，是public仓库。<br>6.我们在生成的public目录下，为git本地库添加远程库（仅第一次需要）命令行是：git remote add origin +ssh<br>git pull origin master –allow-unrelated-histories<br>git add .<br>git commit -m “first commit”        这个first commit是提交说明，可以改成其他的<br>git push -u origin master          提交远程<br>&lt;我看有些博客说在拉取前要先清空备份除.git文件夹以外的所有文件，add时再放入，但我没做好像也没事&gt;<br>7.然后就能在github pages 那里看到。大体步骤就是这些，为啥搞了两天呢？<br>下面我来唠唠：<br>hugo文件夹作用：<br>·archetypes: Archetypes 是内容模板文件，其中包含预配置的首选项（日期、标题、草稿<br>等）。可以用自定义的预配置前端字段创建新的原型。<br>·assets: Assets 文件夹存储所有文件，这些文件由Hugo Pipes 处理（例如 CSS&#x2F;Sass 文<br>件）。默认不创建这个目录。<br>·config.toml: Hugo使用 config.toml、config.yaml或 config.json（可以在网站根目<br>录中找到）作为默认网站配置文件。除了单独的配置文件之外，你还可以使用 config directory<br>来分隔不同的环境<br>·content：所有内容文件放在这里。顶级文件夹计为内容部分。如果你有 devops 和nodejs<br>部分，那么你需要有content&#x2F;devops&#x2F;first-post.md 和 content&#x2F;nodejs&#x2F;second-post.md 目<br>录。<br>·data：这里用来存储配置文件，Hug0会在生成你网站时用到<br>·layouts：以.html文件的形式存储模板。有关更多信息，请参见 Styling 部分<br>·static：存储所有静态内容：图片、CSS、JavaScript 等。当Hugo创建你的网站时，static 目<br>录中的所有资源均按原样复制<br>themes：你所选择的Hugo 主题<br>出错：<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203817331-393a4a5e-8f57-4ea2-bb7d-9d9aad4be5d2.png#averageHue=%2313110f&clientId=uba3523dd-25dc-4&from=paste&height=103&id=u35080c44&name=image.png&originHeight=155&originWidth=1384&originalType=binary&ratio=1&rotation=0&showTitle=false&size=25563&status=done&style=none&taskId=u41383014-a6d1-4cb8-8293-bf6f36e34b3&title=&width=922.6666666666666" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203960893-7f22518a-ed24-416c-904c-c78985b7cfe9.png#clientId=uba3523dd-25dc-4&from=paste&height=130&id=u1b32907e&name=image.png&originHeight=195&originWidth=954&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29046&status=done&style=none&taskId=ud8f4c0cd-f19a-403e-9fd5-9160cdbfc4f&title=&width=636" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203736742-1e5d3f49-34d6-4b13-a353-f50023b77b0a.png#averageHue=%23191614&clientId=uba3523dd-25dc-4&from=paste&height=148&id=u51ce33ea&name=image.png&originHeight=222&originWidth=1444&originalType=binary&ratio=1&rotation=0&showTitle=false&size=46134&status=done&style=none&taskId=u6f492162-9bea-496e-8877-632cc3a14a9&title=&width=962.6666666666666" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203771391-acffef91-b538-496b-bfb2-ceaa1338de85.png#averageHue=%23e5feeb&clientId=uba3523dd-25dc-4&from=paste&height=234&id=u020a1dfb&name=image.png&originHeight=351&originWidth=803&originalType=binary&ratio=1&rotation=0&showTitle=false&size=26096&status=done&style=none&taskId=ub31895a1-cdf9-4024-bbbe-b1c8c0f69c5&title=&width=535.3333333333334" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203904069-5c3e6be5-80b5-424b-9e50-5123aa004300.png#averageHue=%23e2ba94&clientId=uba3523dd-25dc-4&from=paste&height=562&id=u27f7c7de&name=image.png&originHeight=843&originWidth=855&originalType=binary&ratio=1&rotation=0&showTitle=false&size=221075&status=done&style=none&taskId=uc5eb1cf8-a3a7-413b-9cb7-f2240c6d585&title=&width=570" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674204112772-4b50c8e3-d08f-4974-bb66-341f1c397ac8.png#averageHue=%23fee9e7&clientId=uba3523dd-25dc-4&from=paste&height=179&id=ua3b5032a&name=image.png&originHeight=268&originWidth=789&originalType=binary&ratio=1&rotation=0&showTitle=false&size=33708&status=done&style=none&taskId=uc351a646-f757-45a6-ac96-08bdafc9ff2&title=&width=526" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674203910302-859f9727-1d00-4158-813d-794b757cec1b.png#averageHue=%23fcfcfc&clientId=uba3523dd-25dc-4&from=paste&height=93&id=u89cc7d1f&name=image.png&originHeight=140&originWidth=966&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21475&status=done&style=none&taskId=u0083b253-1b8b-4405-941e-c5990aeb780&title=&width=644" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674204128927-56e56fc6-3611-4248-b789-8839cb9c664b.png#averageHue=%23fbfbfb&clientId=uba3523dd-25dc-4&from=paste&height=551&id=uf6dc9392&name=image.png&originHeight=827&originWidth=505&originalType=binary&ratio=1&rotation=0&showTitle=false&size=86531&status=done&style=none&taskId=u8d92943c-dfd0-48d9-b21d-36cf69d6766&title=&width=336.6666666666667" alt="image.png"></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="Crazylychee WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/08/08/%E8%AF%97%E8%AF%8D%E7%A7%AF%E7%B4%AF/" rel="next" title="诗歌摘抄">
+      诗歌摘抄 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Crazylychee"
+      src="/images/en.png">
+  <p class="site-author-name" itemprop="name">Crazylychee</p>
+  <div class="site-description" itemprop="description">一个分享技术分享生活的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/crazylychee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;crazylychee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Crazylychee</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
