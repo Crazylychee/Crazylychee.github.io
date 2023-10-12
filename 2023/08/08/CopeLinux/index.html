@@ -254,7 +254,7 @@
       
         <p>yum install -y httpd<br>rpm –import <a target="_blank" rel="noopener" href="https://repo.mysql.com/RPM-GPG-KEY-mysql-2022">https://repo.mysql.com/RPM-GPG-KEY-mysql-2022</a><br>rpm -Uvh <a target="_blank" rel="noopener" href="http://repo.mysql.com//mysql57-community-release-el7-7.noarch.rpm">http://repo.mysql.com//mysql57-community-release-el7-7.noarch.rpm</a><br>yum -y install mysql-community-server<br>systemctl start mysqld</p>
 <span id="more"></span>
-<p>systemctl enable mysqld<br>grep ‘temporary password’ &#x2F;var&#x2F;log&#x2F;mysqld.log<br>mysql -u root -p<br>set global validate_password_policy&#x3D;LOW;<br>set global validate_password_length&#x3D;5;<br>ALTER USER ‘root‘@’localhost’ IDENTIFIED BY ‘admin’;<br>grant all privileges on <em>.</em> to root@”%” identified by ‘1234’ with grant option;<br>flush privileges;<br>exit<br>netstat -anp | grep 3306<br>mkdir -p &#x2F;export&#x2F;server<br>这里要传入文件<br>tar -zxvf jdk-8u371-linux-x64.tar.gz<br>ln -s &#x2F;export&#x2F;server&#x2F;jdk1.8.0_351 &#x2F;export&#x2F;server&#x2F;jdk<br>export JAVA_HOME&#x3D;&#x2F;export&#x2F;server&#x2F;jdk<br>要去配环境变量，上面两个export不生效<br>source &#x2F;etc&#x2F;profile<br>rm -f &#x2F;usr&#x2F;bin&#x2F;java<br>ln -s &#x2F;export&#x2F;server&#x2F;jdk&#x2F;bin&#x2F;java &#x2F;usr&#x2F;bin&#x2F;java<br>java -version<br>javac -version<br>systemctl stop firewalld<br>systemctl disable firewalld<br>tar -zxvf apache-tomcat-10.0.27.tar.gz -C &#x2F;export&#x2F;server<br>ln -sf &#x2F;export&#x2F;server&#x2F;apache-tomcat-10.0.27 &#x2F;export&#x2F;server&#x2F;tomcat</p>
+<p>systemctl enable mysqld<br>grep ‘temporary password’ &#x2F;var&#x2F;log&#x2F;mysqld.log<br>mysql -u root -p<br>set global validate_password_policy&#x3D;LOW;<br>set global validate_password_length&#x3D;5;<br>ALTER USER ‘root‘@’localhost’ IDENTIFIED BY ‘admin’;<br>grant all privileges on <em>.</em> to root@”%” identified by ‘12345’ with grant option;<br>flush privileges;<br>exit<br>netstat -anp | grep 3306<br>mkdir -p &#x2F;export&#x2F;server<br>这里要传入文件<br>tar -zxvf jdk-8u371-linux-x64.tar.gz<br>ln -s &#x2F;export&#x2F;server&#x2F;jdk1.8.0_351 &#x2F;export&#x2F;server&#x2F;jdk<br>export JAVA_HOME&#x3D;&#x2F;export&#x2F;server&#x2F;jdk<br>要去配环境变量，上面两个export不生效<br>source &#x2F;etc&#x2F;profile<br>rm -f &#x2F;usr&#x2F;bin&#x2F;java<br>ln -s &#x2F;export&#x2F;server&#x2F;jdk&#x2F;bin&#x2F;java &#x2F;usr&#x2F;bin&#x2F;java<br>java -version<br>javac -version<br>systemctl stop firewalld<br>systemctl disable firewalld<br>tar -zxvf apache-tomcat-10.0.27.tar.gz -C &#x2F;export&#x2F;server<br>ln -sf &#x2F;export&#x2F;server&#x2F;apache-tomcat-10.0.27 &#x2F;export&#x2F;server&#x2F;tomcat</p>
 <p>netstat -anp | grep 8080</p>
 
     </div>
@@ -369,20 +369,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
