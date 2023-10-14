@@ -350,7 +350,7 @@
     <url>/2023/08/08/clion_1/</url>
     <content><![CDATA[<p>前言:之前一直用的是vs2013,编译器用的也是msvc,结果换环境之后,发现之前写的课设,在gcc下根本跑不了.</p>
 <span id="more"></span>
-<p>  你是转移课设文件进入一个已经设好的空项目,然后准备运行,发现那个运行按钮压根没亮.因为你的cmakelist.txt文件没写好.你根据项目里的文件来编写这个文件.如下图<br><img src="file://clion_1//1.png" alt="Example Image"><br>然后你写好了更新了cmake之后,可以运行了.<br>  但运行结果报了一堆错.这是因为你之前在msvc下写的c项目多个c源文件引用了一个c头文件.在编译环节没有发现错误,但在链接环节就会出现重定义的错误.可参考<a href="https://www.cnblogs.com/longdouhzt/archive/2012/07/03/2574071.html">https://www.cnblogs.com/longdouhzt/archive/2012/07/03/2574071.html</a><br>在为重定义的变量加上static修饰之后,程序可以运行了.<br>  但你又发现了新问题: 系统输出的中文结果是乱码.这个解决办法是<br>1.可以先按下  ctrl+shift+alt+&#x2F;  选择registry,然后把run.processes.with.pty勾选取消,然后再用GBK重新加载项目文件.</p>
+<p>  你是转移课设文件进入一个已经设好的空项目,然后准备运行,发现那个运行按钮压根没亮.因为你的cmakelist.txt文件没写好.你根据项目里的文件来编写这个文件.如下图<br><img src="/2023/08/08/clion_1/1.png" alt="Example Image"><br>然后你写好了更新了cmake之后,可以运行了.<br>  但运行结果报了一堆错.这是因为你之前在msvc下写的c项目多个c源文件引用了一个c头文件.在编译环节没有发现错误,但在链接环节就会出现重定义的错误.可参考<a href="https://www.cnblogs.com/longdouhzt/archive/2012/07/03/2574071.html">https://www.cnblogs.com/longdouhzt/archive/2012/07/03/2574071.html</a><br>在为重定义的变量加上static修饰之后,程序可以运行了.<br>  但你又发现了新问题: 系统输出的中文结果是乱码.这个解决办法是<br>1.可以先按下  ctrl+shift+alt+&#x2F;  选择registry,然后把run.processes.with.pty勾选取消,然后再用GBK重新加载项目文件.</p>
 <p>但还有问题: 文件读取时提示空指针,项目没找到文件<br>解决办法:<br>1.run-&gt;edit confignition-&gt;设置一下working directory为整个项目区域就好.</p>
 <p>2.或者是将本来的资源文件放到cmake-build-debug里面</p>
 <p>问题4: 换了环境后,clion的输出窗口不执行cls语句</p>
@@ -1371,7 +1371,7 @@ id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性
 <ul>
 <li>使用Junit4</li>
 </ul>
-<p><img src="/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012211256504.png" alt="image-20231012211256504"></p>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012211256504.png" alt="image-20231012211256504"></p>
 <ul>
 <li><ul>
 <li><p>@ Test所注解的方法被称为测试用例，包含了源程序的测试代码。</p>
@@ -1391,7 +1391,7 @@ id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性
 </ul>
 </li>
 </ul>
-<p><img src="/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012211946730.png" alt="image-20231012211946730"></p>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012211946730.png" alt="image-20231012211946730"></p>
 <h4 id="开发者测试的评分指标"><a href="#开发者测试的评分指标" class="headerlink" title="开发者测试的评分指标"></a>开发者测试的评分指标</h4><p>测试执行成功的情况-&gt; 可能是因为软件的质量很高   但也有可能是因为软件的测试不够充分</p>
 <p>为了检验测试是否充分，通过以下两个方面进行评分：</p>
 <ul>
@@ -1419,16 +1419,16 @@ id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性
 <li><p>程序变异：指基于预先定义的变异操作对程序进行修改,进而得到源<br>程序变异程序(也称为变异体)的过程</p>
 </li>
 </ul>
-<p><img src="/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012212852157.png" alt="image-20231012212852157"></p>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012212852157.png" alt="image-20231012212852157"></p>
 <p>程序变异示例</p>
-<p><img src="/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012214003688.png" alt="image-20231012214003688"></p>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012214003688.png" alt="image-20231012214003688"></p>
 <ul>
 <li><p>等价变异体<br>若变异体p’与原有程序p在语法上存在差异，但在语<br>义上与p保持一致,则称p’是p的等价变异体。</p>
 </li>
 <li><p>变异得分(Mutation Score) :是一种评价测试用例集错误检测有效性<br>的度量指标</p>
 </li>
 </ul>
-<p><img src="/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012214210609.png" alt="image-20231012214210609"></p>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012214210609.png" alt="image-20231012214210609"></p>
 <p>注： 被测试用例发现的变异体就叫做被杀死的变异体</p>
 <ul>
 <li><p>变异杀死（Mutant Killed）：当源程序与变异程序存在运行差异时，<br>则认为该测试用例检测到变异程序中的错误,变异程序被杀死</p>
@@ -1440,8 +1440,8 @@ id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性
 <li><p>Timeout限制用例运行时间<br>@Test (timeout&#x3D;1000)<br>public void testIstriangle() {</p>
 </li>
 </ul>
-<p><img src="/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012220341799.png" alt="image-20231012220341799"></p>
-<p><img src="/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012220402959.png" alt="image-20231012220402959"></p>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012220341799.png" alt="image-20231012220341799"></p>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85%E5%9F%B9%E8%AE%AD/image-20231012220402959.png" alt="image-20231012220402959"></p>
 <ul>
 <li>成绩是按照最后一次提交来算分的，第一次提交可能会超过五分钟</li>
 </ul>
