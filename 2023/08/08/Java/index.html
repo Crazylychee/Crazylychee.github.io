@@ -22,7 +22,7 @@
 
   <meta name="description" content="## Java基础知识笔记    Java的背景">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Crazylychee&#39;s website">
+<meta property="og:title" content="我的Java学习最初的简略笔记">
 <meta property="og:url" content="https://crazylychee.github.io/2023/08/08/Java/index.html">
 <meta property="og:site_name" content="Crazylychee&#39;s website">
 <meta property="og:description" content="## Java基础知识笔记    Java的背景">
@@ -64,7 +64,7 @@
   };
 </script>
 <script async src="/lib/fireworks.js"></script>
-  <title> | Crazylychee's website</title>
+  <title>我的Java学习最初的简略笔记 | Crazylychee's website</title>
   
 
 
@@ -230,7 +230,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          我的Java学习最初的简略笔记
         </h1>
 
         <div class="post-meta">
@@ -270,7 +270,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <meta name="referrer" content="no-referrer"/>
+        <meta name="referrer" content="no-referrer">
 ## Java基础知识笔记
 
 
@@ -296,15 +296,15 @@
 
 
 <h4 id="1-5this"><a href="#1-5this" class="headerlink" title="1.5this"></a>1.5this</h4><p>1.作用<br>  1.大部分时候，普通方法访问其他方法、成员变量时无须使用 this 前缀，但如果方法里有个局部变量和成员变量同名，但程序又需要在该方法里访问这个被覆盖的成员变量，则必须使用 this 前缀。<br>  2.this 关键字最大的作用就是让类中一个方法，访问该类里的另一个方法或实例变量。<br>   3.this( ) 用来访问本类的构造方法（构造方法是类的一种特殊方法，方法名称和类名相同，没有返回值。</p>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><p>1.6构造方法</p>
+<h4 id><a href="#" class="headerlink" title></a></h4><p>1.6构造方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> String name；</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> agej</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">(）&#123;</span></span><br><span class="line"><span class="params">        //空参构造</span></span><br><span class="line"><span class="params">    &#125;</span></span><br><span class="line"><span class="params">    <span class="keyword">public</span> Student(String name，<span class="type">int</span> age）&#123;</span></span><br><span class="line"><span class="params">        //带参构造</span></span><br><span class="line"><span class="params">    &#125;</span></span><br><span class="line"><span class="params">&#125;</span></span><br></pre></td></tr></table></figure>
 
 
 
 <h5 id="构造方法的格式"><a href="#构造方法的格式" class="headerlink" title="构造方法的格式"></a>构造方法的格式</h5><p>public class Student<br>修饰符 类名(参数){<br>方法体;<br>}</p>
-<h5 id="-1"><a href="#-1" class="headerlink" title=""></a></h5><p>特点:</p>
+<h5 id="-1"><a href="#-1" class="headerlink" title></a></h5><p>特点:</p>
 <p>1.方法名与类名相同，大小写也要一致<br>2.没有返回值类型，连void都没有<br>3.没有具体的返回值（不能由retrun带回结果数据</p>
-<h5 id="-2"><a href="#-2" class="headerlink" title=""></a></h5><p>执行时机:</p>
+<h5 id="-2"><a href="#-2" class="headerlink" title></a></h5><p>执行时机:</p>
 <p>1.创建对象的时候由虚拟机调用，不能手动调用构造方法<br>2，每创建一次对象，就会调用一次构造方法<br>构造方法概述<br>构造方法也叫作构造器、构造函数<br>作用：创造对象的时候，由虚拟机自动调用，给成员变量进行初始化的。</p>
 <h5 id="构造方法及各自的作用"><a href="#构造方法及各自的作用" class="headerlink" title="构造方法及各自的作用"></a>构造方法及各自的作用</h5><p>●无参数构造方法：初始化的对象时，成员变量的数据均采用默认值<br>o有参数构造方法：在初始化对象的时候，同时可以为对象进行赋值</p>
 <h5 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h5><p>●任何类定义出来，默认就自带了无参数构造器，写不写都有。<br>●一旦定义了有参数构造器，无参数构造器就没有了，此时就需要自己写无参数构造器了。<br>o建议在任何时候都手动写上空参和带全部参数的构造方法。</p>
@@ -363,7 +363,7 @@
 <h4 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h4><p>工具类是什么<br>●类中都是一些静态方法，每个方法都是以完成一个共用的功能为目的，这个类用来给系统开发人员共同使用的。</p>
 <p>工具类定义时的其他要求:<br>●由于工具里面都是静态方法，直接用类名即可访问，因此，工具类无需创建对象，建议将工具类的构造器进行私有</p>
 <h4 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h4><p>代码块概述<br>O代码块是类的5大成分之一（成员变量、构造器，方法，代码块，内部类），足义在类中方法外。<br>O在]ava类下，使用{括起来的代码被称为代码块。<br>代码块分为<br>O静态代码块<br>格式：static{}<br>特点：需要通过static关键字修饰，随着类的加载而加载，并且自动触发、只执行一次<br>使用场景：在类加载的时候做一些静态数据初始化的操作，以便后续使用<br>O构造代码块（了解，见的少）:<br>■格式：{}<br>特点：每次创建对象，调用构造器执行时，都会执行该代码块中的代码，并且在构造器执行前执行<br>使用场景：初始化实例资源</p>
-<h4 id="-3"><a href="#-3" class="headerlink" title=""></a></h4><h4 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h4><p>静态方法只能访问静态的成员，不口以自接访问实例成员<br>实例方法可以访问静态的成员，也可以访问实例成员<br>静态方法中是不可以出现this关键字的</p>
+<h4 id="-3"><a href="#-3" class="headerlink" title></a></h4><h4 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h4><p>静态方法只能访问静态的成员，不口以自接访问实例成员<br>实例方法可以访问静态的成员，也可以访问实例成员<br>静态方法中是不可以出现this关键字的</p>
 <h1 id="第二周笔记"><a href="#第二周笔记" class="headerlink" title="第二周笔记"></a>第二周笔记</h1><h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><h4 id="什么是继承？"><a href="#什么是继承？" class="headerlink" title="什么是继承？"></a>什么是继承？</h4><p>Java中提供一个关键字extends，用这个关键字，我们可以让一个类和另一个类建立起父子关系。<br>Student称为子类（派生类），People称为父类(基类 或超类)。</p>
 <h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>当子类继承父类后，就可以直接使用父类公共的属性和方法了，可以提高代码的复用性。</p>
 <h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><p>子类 extends父类</p>
@@ -430,7 +430,7 @@
 </ol>
 <h6 id="Lambda省略写法"><a href="#Lambda省略写法" class="headerlink" title="Lambda省略写法"></a>Lambda省略写法</h6><p>（进一步在Lambda表达式的基础上继续简化<br>O参数类型可以省略不写。<br>●如果只有一个参数，参数类型可以省略，同时()也可以省略<br>●如果Lambda表达式的方法体代码只有一行代码。可以省略大括号不写,同时要省略分号<br>O如果Lambda表达式的方法体代码只有一行代码。可以省略大括号不写。此时，如果这行代码是<br>return语句，必须省略return不写，同时也必须省略” “</p>
 <p>collection集合<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674986305438-bed61bea-a8e5-44cd-88d3-7f54edc624e5.png#averageHue=%23000000&clientId=u8146fc42-ca00-4&from=paste&height=171&id=ucf92834f&name=image.png&originHeight=257&originWidth=1790&originalType=binary&ratio=1&rotation=0&showTitle=false&size=10945&status=done&style=none&taskId=u60452153-751e-4bad-9784-1464cd66686&title=&width=1193.3333333333333" alt="image.png"><br>Collection单列集合，每个元素（数据）只包含一个值<br>Map双列集合，每个元素包含两个值（键值对)<br>注意:<br>前期先掌握Collection集合体系的使用<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674986076393-c7d42efa-de5e-4bb4-b899-85d48e0a9dd2.png#averageHue=%23040000&clientId=u8146fc42-ca00-4&from=paste&height=243&id=ub7738b22&name=image.png&originHeight=365&originWidth=1295&originalType=binary&ratio=1&rotation=0&showTitle=false&size=21583&status=done&style=none&taskId=ubd539d4a-c3a1-4238-bbbb-dec6e352388&title=&width=863.3333333333334" alt="image.png"></p>
-<h2 id="-4"><a href="#-4" class="headerlink" title=""></a><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674986107289-0d765fb0-20ad-4916-9f18-8b2f9a4bf580.png#averageHue=%23393434&clientId=u8146fc42-ca00-4&from=paste&height=371&id=u81b97583&name=image.png&originHeight=556&originWidth=1282&originalType=binary&ratio=1&rotation=0&showTitle=false&size=48399&status=done&style=none&taskId=u6c21f023-e3ff-46aa-bb19-3e7bc19839f&title=&width=854.6666666666666" alt="image.png"></h2><p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674986205947-49b0fccb-0b21-4fb5-bdf5-0c9a24f2c485.png#averageHue=%23230000&clientId=u8146fc42-ca00-4&from=paste&height=64&id=u45825699&name=image.png&originHeight=96&originWidth=1603&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11097&status=done&style=none&taskId=ua13e84b3-93ac-4017-b90c-5c50a6f1095&title=&width=1068.6666666666667" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674986224536-77332a6d-16bf-4c26-9c9b-f330272ed160.png#averageHue=%23f7f7dd&clientId=u8146fc42-ca00-4&from=paste&height=103&id=u39b57c0c&name=image.png&originHeight=155&originWidth=677&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7136&status=done&style=none&taskId=u4907c682-e04a-4150-8690-7a6812f8021&title=&width=451.3333333333333" alt="image.png"></p>
+<h2 id="-4"><a href="#-4" class="headerlink" title></a><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674986107289-0d765fb0-20ad-4916-9f18-8b2f9a4bf580.png#averageHue=%23393434&clientId=u8146fc42-ca00-4&from=paste&height=371&id=u81b97583&name=image.png&originHeight=556&originWidth=1282&originalType=binary&ratio=1&rotation=0&showTitle=false&size=48399&status=done&style=none&taskId=u6c21f023-e3ff-46aa-bb19-3e7bc19839f&title=&width=854.6666666666666" alt="image.png"></h2><p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674986205947-49b0fccb-0b21-4fb5-bdf5-0c9a24f2c485.png#averageHue=%23230000&clientId=u8146fc42-ca00-4&from=paste&height=64&id=u45825699&name=image.png&originHeight=96&originWidth=1603&originalType=binary&ratio=1&rotation=0&showTitle=false&size=11097&status=done&style=none&taskId=ua13e84b3-93ac-4017-b90c-5c50a6f1095&title=&width=1068.6666666666667" alt="image.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674986224536-77332a6d-16bf-4c26-9c9b-f330272ed160.png#averageHue=%23f7f7dd&clientId=u8146fc42-ca00-4&from=paste&height=103&id=u39b57c0c&name=image.png&originHeight=155&originWidth=677&originalType=binary&ratio=1&rotation=0&showTitle=false&size=7136&status=done&style=none&taskId=u4907c682-e04a-4150-8690-7a6812f8021&title=&width=451.3333333333333" alt="image.png"></p>
 <table>
 <thead>
 <tr>
@@ -491,7 +491,7 @@
 <h5 id="异常处理方式3一前两者结合"><a href="#异常处理方式3一前两者结合" class="headerlink" title="异常处理方式3一前两者结合"></a>异常处理方式3一前两者结合</h5><p>方法直接将异通过throws抛出去给调用者<br>调用者收刊异常后自接捕获处牌</p>
 <h5 id="运行时异常的处理形式"><a href="#运行时异常的处理形式" class="headerlink" title="运行时异常的处理形式"></a>运行时异常的处理形式</h5><p>●运行时异常编译阶段不会出错，是运行时才可能出错的，所以编译阶段不处理也可以<br>●按照规范建议还是处理：建议在最外层调用处集中捕获处理即可</p>
 <h2 id="下载idea"><a href="#下载idea" class="headerlink" title="下载idea"></a>下载idea</h2><p>破解<a target="_blank" rel="noopener" href="https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3">https://www.exception.site/essay/how-to-free-use-intellij-idea-2019-3</a><br>按教程做即可</p>
-<h4 id="-5"><a href="#-5" class="headerlink" title=""></a></h4>
+<h4 id="-5"><a href="#-5" class="headerlink" title></a></h4>
     </div>
 
     
@@ -524,12 +524,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/08/08/clion_1/" rel="prev" title="clion的踩坑史">
-      <i class="fa fa-chevron-left"></i> clion的踩坑史
+    <a href="/2023/08/08/experience_01/" rel="prev" title="java编程经验">
+      <i class="fa fa-chevron-left"></i> java编程经验
     </a></div>
       <div class="post-nav-item">
-    <a href="/2023/08/08/experience_01/" rel="next" title="java编程经验">
-      java编程经验 <i class="fa fa-chevron-right"></i>
+    <a href="/2023/08/08/Git/" rel="next" title="Git使用">
+      Git使用 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -605,20 +605,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

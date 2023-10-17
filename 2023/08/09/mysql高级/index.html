@@ -314,7 +314,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <meta name="referrer" content="no-referrer"/>
+        <meta name="referrer" content="no-referrer">
 <mark>此篇博客搬运自b站黑马程序员的javaweb学习资料，仅供个人学习参考，尊重他人知识劳动成果</mark>
 
 <h2 id="MySQL基础"><a href="#MySQL基础" class="headerlink" title="MySQL基础"></a>MySQL基础</h2><p><strong>今日目标：</strong></p>
@@ -525,7 +525,7 @@
 <ul>
 <li><strong>练习</strong></li>
 </ul>
-<p>为了演示以下的增删改操作是否操作成功，故先将查询所有数据的语句介绍给大家：<br>select * from stu; – 给指定列添加数据 INSERT INTO stu (id, NAME) VALUES (1, ‘张三’); – 给所有列添加数据，列名的列表可以省略的 INSERT INTO stu (id,NAME,sex,birthday,score,email,tel,STATUS) VALUES (2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#x69;&#x73;&#x69;&#x40;&#105;&#x74;&#99;&#x61;&#x73;&#x74;&#46;&#99;&#x6e;">&#108;&#x69;&#x73;&#x69;&#x40;&#105;&#x74;&#99;&#x61;&#x73;&#x74;&#46;&#99;&#x6e;</a>‘,’13888888888’,1); INSERT INTO stu VALUES (2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#x6c;&#x69;&#x73;&#105;&#x40;&#x69;&#x74;&#x63;&#x61;&#115;&#x74;&#46;&#x63;&#110;">&#x6c;&#x69;&#x73;&#105;&#x40;&#x69;&#x74;&#x63;&#x61;&#115;&#x74;&#46;&#x63;&#110;</a>‘,’13888888888’,1); – 批量添加数据 INSERT INTO stu VALUES  	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#x6c;&#105;&#115;&#x69;&#x40;&#x69;&#x74;&#x63;&#x61;&#115;&#x74;&#x2e;&#99;&#110;">&#x6c;&#105;&#115;&#x69;&#x40;&#x69;&#x74;&#x63;&#x61;&#115;&#x74;&#x2e;&#99;&#110;</a>‘,’13888888888’,1), 	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#105;&#x73;&#105;&#x40;&#105;&#x74;&#x63;&#x61;&#115;&#116;&#46;&#x63;&#x6e;">&#108;&#105;&#x73;&#105;&#x40;&#105;&#x74;&#x63;&#x61;&#115;&#116;&#46;&#x63;&#x6e;</a>‘,’13888888888’,1), 	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#x69;&#x73;&#x69;&#64;&#x69;&#116;&#x63;&#x61;&#115;&#x74;&#x2e;&#x63;&#110;">&#108;&#x69;&#x73;&#x69;&#64;&#x69;&#116;&#x63;&#x61;&#115;&#x74;&#x2e;&#x63;&#110;</a>‘,’13888888888’,1); </p>
+<p>为了演示以下的增删改操作是否操作成功，故先将查询所有数据的语句介绍给大家：<br>select * from stu; – 给指定列添加数据 INSERT INTO stu (id, NAME) VALUES (1, ‘张三’); – 给所有列添加数据，列名的列表可以省略的 INSERT INTO stu (id,NAME,sex,birthday,score,email,tel,STATUS) VALUES (2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#x6c;&#x69;&#x73;&#x69;&#x40;&#x69;&#116;&#99;&#x61;&#x73;&#116;&#x2e;&#99;&#x6e;">&#x6c;&#x69;&#x73;&#x69;&#x40;&#x69;&#116;&#99;&#x61;&#x73;&#116;&#x2e;&#99;&#x6e;</a>‘,’13888888888’,1); INSERT INTO stu VALUES (2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#105;&#115;&#105;&#x40;&#x69;&#x74;&#99;&#97;&#x73;&#116;&#46;&#99;&#110;">&#108;&#105;&#115;&#105;&#x40;&#x69;&#x74;&#99;&#97;&#x73;&#116;&#46;&#99;&#110;</a>‘,’13888888888’,1); – 批量添加数据 INSERT INTO stu VALUES  	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#108;&#105;&#115;&#x69;&#64;&#x69;&#x74;&#x63;&#97;&#x73;&#x74;&#x2e;&#x63;&#110;">&#108;&#105;&#115;&#x69;&#64;&#x69;&#x74;&#x63;&#97;&#x73;&#x74;&#x2e;&#x63;&#110;</a>‘,’13888888888’,1), 	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#x6c;&#x69;&#x73;&#x69;&#x40;&#x69;&#x74;&#99;&#97;&#x73;&#116;&#x2e;&#x63;&#110;">&#x6c;&#x69;&#x73;&#x69;&#x40;&#x69;&#x74;&#99;&#97;&#x73;&#116;&#x2e;&#x63;&#110;</a>‘,’13888888888’,1), 	(2,’李四’,’男’,’1999-11-11’,88.88,‘<a href="mailto:&#x6c;&#105;&#115;&#x69;&#x40;&#105;&#x74;&#99;&#97;&#x73;&#116;&#46;&#x63;&#110;">&#x6c;&#105;&#115;&#x69;&#x40;&#105;&#x74;&#99;&#97;&#x73;&#116;&#46;&#x63;&#110;</a>‘,’13888888888’,1); </p>
 <h3 id="7-2-修改数据"><a href="#7-2-修改数据" class="headerlink" title="7.2 修改数据"></a>7.2 修改数据</h3><ul>
 <li><strong>修改表数据</strong></li>
 </ul>
@@ -775,20 +775,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

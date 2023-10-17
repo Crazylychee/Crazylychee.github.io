@@ -20,20 +20,28 @@
     var CONFIG = {"hostname":"crazylychee.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="### 听力 ### 阅读 ### 作文 Directions: For this part, you are allowed 30 minutes to write an essay commenting on the saying “Help others, and you will be helped when you are in need.”You can cite examples">
+  <meta name="description" content="开发者的环境配置 开发者测试的简介：软件的持续快速迭代需求,大大压缩了软件开发的发布流程,使得一部分测试任务开始迁移,由软件开发人员担任这部分跟代码相关的软件测试工作,我们统称为开发者测试。开发者测试包括了传统的单元测试、集成测试、接口测试甚至部分系统测试相关的任务。开发者需要对自己开发的程序代码承担质量责任。在软件质量管理机制下，一般要求开发者首先自行对自己编写的代码进行审查和测试，保证提交的代">
 <meta property="og:type" content="article">
-<meta property="og:title" content="英语学习笔记">
-<meta property="og:url" content="https://crazylychee.github.io/2023/08/08/%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="软测开发者培训">
+<meta property="og:url" content="https://crazylychee.github.io/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/index.html">
 <meta property="og:site_name" content="Crazylychee&#39;s website">
-<meta property="og:description" content="### 听力 ### 阅读 ### 作文 Directions: For this part, you are allowed 30 minutes to write an essay commenting on the saying “Help others, and you will be helped when you are in need.”You can cite examples">
+<meta property="og:description" content="开发者的环境配置 开发者测试的简介：软件的持续快速迭代需求,大大压缩了软件开发的发布流程,使得一部分测试任务开始迁移,由软件开发人员担任这部分跟代码相关的软件测试工作,我们统称为开发者测试。开发者测试包括了传统的单元测试、集成测试、接口测试甚至部分系统测试相关的任务。开发者需要对自己开发的程序代码承担质量责任。在软件质量管理机制下，一般要求开发者首先自行对自己编写的代码进行审查和测试，保证提交的代">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-08-07T16:00:00.000Z">
-<meta property="article:modified_time" content="2023-08-07T16:00:00.000Z">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012211256504.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012211946730.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012212852157.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012214003688.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012214210609.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012220341799.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012220402959.png">
+<meta property="article:published_time" content="2023-10-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-11T16:00:00.000Z">
 <meta property="article:author" content="Crazylychee">
-<meta property="article:tag" content="英语">
+<meta property="article:tag" content="全国大学生软件测试大赛">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://crazylychee.github.io/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012211256504.png">
 
-<link rel="canonical" href="https://crazylychee.github.io/2023/08/08/%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+<link rel="canonical" href="https://crazylychee.github.io/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/">
 
 
 <script id="page-configurations">
@@ -46,7 +54,7 @@
   };
 </script>
 <script async src="/lib/fireworks.js"></script>
-  <title>英语学习笔记 | Crazylychee's website</title>
+  <title>软测开发者培训 | Crazylychee's website</title>
   
 
 
@@ -199,7 +207,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://crazylychee.github.io/2023/08/08/%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="https://crazylychee.github.io/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/en.png">
@@ -212,7 +220,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          英语学习笔记
+          软测开发者培训
         </h1>
 
         <div class="post-meta">
@@ -222,7 +230,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2023-08-08 00:00:00" itemprop="dateCreated datePublished" datetime="2023-08-08T00:00:00+08:00">2023-08-08</time>
+              <time title="Created: 2023-10-12 00:00:00" itemprop="dateCreated datePublished" datetime="2023-10-12T00:00:00+08:00">2023-10-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,7 +238,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%8B%B1%E8%AF%AD/" itemprop="url" rel="index"><span itemprop="name">英语</span></a>
+                  <a href="/categories/%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%A4%A7%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">全国大学生软件测试大赛</span></a>
                 </span>
             </span>
 
@@ -252,15 +260,114 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <meta name="referrer" content="no-referrer"/>
-### 听力
-### 阅读
-### 作文
-Directions: For this part, you are allowed 30 minutes to write an essay commenting on the saying “Help others, and you will be helped when you are in need.”You can cite examples to illustrate your views. You should write at least 150 words but no more than 200 words.
+        <h4 id="开发者的环境配置"><a href="#开发者的环境配置" class="headerlink" title="开发者的环境配置"></a>开发者的环境配置</h4><ul>
+<li><p>开发者测试的简介：<br>软件的持续快速迭代需求,大大压缩了软件开发的发布流程,使得一部分测试任务开始迁移,由软件开发人员担任这部分跟代码相关的软件测试工作,我们统称为开发者测试。开发者测试包括了传统的单元测试、集成测试、接口测试甚至部分系统测试相关的任务。开发者需要对自己开发的程序代码承担质量责任。在软件质量管理机制下，一般要求开发者首先自行对自己编写的代码进行审查和测试，保证提交的代码必须达到一定的质量标准。开发者测试中的单元测试和集成测试,<mark>主要采用白盒测试方法</mark>,要求做测试的人员对软件代码非常熟悉。这样的测试任务,由软件开发人员开发者来做效率会更高。</p>
+</li>
+<li><p>基于eclipse的插件</p>
+</li>
+</ul>
 <span id="more"></span>
-Nowadays, the growing individuals are trying to help others as they firmly believe that "Help others, and you will be helped when you are in need. " This proverb reflects the truth that kindness begets kindness. To start with, helping others can bring us a sense of satisfaction and happiness. When we do something good for others, we are usually rewarded with understanding, respect, and appreciation. It also makes us feel that we are being useful and making a difference in the world. Furthermore, helping others can also be beneficial to ourselves since it is one of the best ways to strengthen relationships and make new friends. In addition, when we help others, we are more likely to receive help in return when we are in need. This is because good deeds can inspire others to reciprocate or even surpass the kindness we gave in times of difficulties. For example, I had a friend who was struggling with a medical condition. He received lots of help from his family, friends, and colleagues. It was heartwarming to witness so many people coming together to support him during this trying time. In conclusion, helping others is not only beneficial to others, but also to ourselves.It is an act of kindness that will not only be appreciated, but also repaid in the future.
 
-<p>这篇作业我是直接用了ai写作的，它给了我一定的思路在，再遇到这样的作文时我不能再说不会写。<br>——————总结：<br>优秀表达上（也不说优秀，就是自己要积累一些吧）<br>1.the growing individuals<br>2.proverb<br>3.reflect<br>4.beget<br>5.reciprocate<br>6.surpass</p>
+<ul>
+<li>使用Junit4</li>
+</ul>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012211256504.png" alt="image-20231012211256504"></p>
+<ul>
+<li><ul>
+<li><p>@ Test所注解的方法被称为测试用例，包含了源程序的测试代码。</p>
+</li>
+<li><p>@lgnore所注解的方法在测试过程中不会运行。</p>
+</li>
+<li><p>@BeforeClass:所注解的方法是JUnit测试时首个被运行的方法，且只<br>被运行一次。</p>
+</li>
+<li><p>@AfterClass所注解的方法是JUnit测试时最后一个被运行的方法，且只<br>被运行一次。</p>
+</li>
+<li><p>@Before所注解的方法在每个测试用例运行之前运行，通用用于初始化<br>测试用例所需的资源。</p>
+</li>
+<li><p>@After所注解的方法在每个测试用例运行之后运行,通用用于释放</p>
+</li>
+<li><p>@Before所注解的方法打开的资源。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012211946730.png" alt="image-20231012211946730"></p>
+<h4 id="开发者测试的评分指标"><a href="#开发者测试的评分指标" class="headerlink" title="开发者测试的评分指标"></a>开发者测试的评分指标</h4><p>测试执行成功的情况-&gt; 可能是因为软件的质量很高   但也有可能是因为软件的测试不够充分</p>
+<p>为了检验测试是否充分，通过以下两个方面进行评分：</p>
+<ul>
+<li><p>覆盖测试</p>
+</li>
+<li><p>变异测试</p>
+<p>总成绩 &#x3D; 分支覆盖得分 * 0.5 + 编译得分 * 0.5</p>
+</li>
+</ul>
+<p>白盒测试与黑盒测试</p>
+<ul>
+<li><p>白盒测试：把测试对象看成一个打开的盒子，测试人员需要利用程序<br>内部的逻辑结构设计测试用例,对程序所有路径进行测试,通过在不<br>同点检查程序状态确定实际状态与预期状态一致</p>
+</li>
+<li><p>黑盒测试： 把测试对象看成一个黑盒子,测试人员完全不考虑程序内<br>部的逻辑结构和代码结构,只根据程序的需求规格说明书,检查程序<br>的功能是否符合它的功能说明</p>
+<p>测试覆盖情况</p>
+</li>
+<li><p>代码覆盖测试：以程序内逻辑结构为基础的动态白盒测试方法，该方<br>法要求程序在测试运行时实现对其逻辑结构的覆盖遍历</p>
+</li>
+<li><p>语句覆盖(Statement Coverage) :要求程序中的每条可运行语句至<br>少被运行一次</p>
+</li>
+<li><p>分支覆盖（Branch Coverage）：又称判定覆盖（Decision Coverage）<br>要求程序中每个条件判定语句的真值结果和假值结果都至少出现一次</p>
+</li>
+<li><p>变异测试：变异测试也称为”变异分析”，是一种对测试数据集的有效性、<br>充分性进行评估的技术    （评判测试用例发现bug的能力）</p>
+</li>
+<li><p>程序变异：指基于预先定义的变异操作对程序进行修改,进而得到源<br>程序变异程序(也称为变异体)的过程</p>
+</li>
+</ul>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012212852157.png" alt="image-20231012212852157"></p>
+<p>程序变异示例</p>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012214003688.png" alt="image-20231012214003688"></p>
+<ul>
+<li><p>等价变异体<br>若变异体p’与原有程序p在语法上存在差异，但在语<br>义上与p保持一致,则称p’是p的等价变异体。</p>
+</li>
+<li><p>变异得分(Mutation Score) :是一种评价测试用例集错误检测有效性<br>的度量指标</p>
+</li>
+</ul>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012214210609.png" alt="image-20231012214210609"></p>
+<p>注： 被测试用例发现的变异体就叫做被杀死的变异体</p>
+<ul>
+<li><p>变异杀死（Mutant Killed）：当源程序与变异程序存在运行差异时，<br>则认为该测试用例检测到变异程序中的错误,变异程序被杀死</p>
+</li>
+<li><p>变异存活（Mutant Survived）：当两个程序不存在运行差异时，则认<br>为该测试用例没有检测到变异程序中的错误，变异程序存活</p>
+</li>
+<li><p>使用断言杀死变异体<br>1.assertEquals<br>测试两个对象是否相等,该断言不能用于数组的比较<br>2.assertArrayEquals<br>测试两个数组是否相等<br>3.assertTrue, assertFalse<br>assertTrue和assertFalse用于测试boolean变量的值为true还是false<br>4.assertNull, assertNotNull<br>assertNull和assertNotNull用于测试变量的值是否为null<br>5.assertSame, assertNotSame<br>assertSame和assertNotSame用于测试两个对象的引用是否相同<br>6.assertThat<br>assertSame和assertNotSame用于测试两个对象的引用是否相同</p>
+</li>
+<li><p>Timeout限制用例运行时间<br>@Test (timeout&#x3D;1000)<br>public void testIstriangle() {</p>
+</li>
+</ul>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012220341799.png" alt="image-20231012220341799"></p>
+<p><img src="/2023/10/12/%E8%BD%AF%E6%B5%8B%E5%BC%80%E5%8F%91%E8%80%85/image-20231012220402959.png" alt="image-20231012220402959"></p>
+<ul>
+<li>成绩是按照最后一次提交来算分的，第一次提交可能会超过五分钟</li>
+</ul>
+<h4 id="开发者测试大赛遇到的问题"><a href="#开发者测试大赛遇到的问题" class="headerlink" title="开发者测试大赛遇到的问题"></a>开发者测试大赛遇到的问题</h4><ul>
+<li><p>问题一：<br>遇到了一个很奇怪的现象,写好test文件后一开始在本地跑<br>可以成功,也可以成功提交,但是提交后再在本地重新跑测<br>试文件就会报错,然后点project上的clean又恢复正常,好<br>奇run and summit改了什么设置<br>解决办法：</p>
+<p>右键项目名称 maven-&gt;update project</p>
+<pre><code>    Heap_Item&lt;String&gt; heap_Item0 = new Heap_Item&lt;String&gt;(&quot;,&quot;);
+    Heap_Item&lt;String&gt; heap_Item1 = new Heap_Item&lt;String&gt;(&quot;,&quot;);
+    heap_Item1.setLeftSon(heap_Item0);
+    heap_Item0.setLeftSon(heap_Item1);
+    heap_Item0.setRightSon(heap_Item1);
+    heap_Item1.replaceChild(&quot;$&quot;, heap_Item0);
+    heap_Item0.getSonByData(&quot;,&quot;);
+    heap_Item0.getSonByData(&quot;&quot;);
+    assertTrue(heap_Item0.hasLeftSon());	      Heap_Item&lt;String&gt; heap_Item0 = new Heap_Item&lt;String&gt;(&quot;,&quot;);
+        Heap_Item&lt;String&gt; heap_Item1 = new Heap_Item&lt;String&gt;(&quot;,&quot;);
+        heap_Item1.setLeftSon(heap_Item0);
+        heap_Item0.setLeftSon(heap_Item1);
+        heap_Item0.setRightSon(heap_Item1);
+        heap_Item1.replaceChild(&quot;$&quot;, heap_Item0);
+        heap_Item0.getSonByData(&quot;,&quot;);
+        heap_Item0.getSonByData(&quot;&quot;);
+        assertTrue(heap_Item0.hasLeftSon());
+</code></pre>
+</li>
+</ul>
 
     </div>
 
@@ -285,7 +392,7 @@ Nowadays, the growing individuals are trying to help others as they firmly belie
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%8B%B1%E8%AF%AD/" rel="tag"># 英语</a>
+              <a href="/tags/%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%A4%A7%E8%B5%9B/" rel="tag"># 全国大学生软件测试大赛</a>
           </div>
 
         
@@ -294,12 +401,12 @@ Nowadays, the growing individuals are trying to help others as they firmly belie
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/08/08/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/" rel="prev" title="前端笔记">
-      <i class="fa fa-chevron-left"></i> 前端笔记
+    <a href="/2023/09/20/Anyview/" rel="prev" title="">
+      <i class="fa fa-chevron-left"></i> 
     </a></div>
       <div class="post-nav-item">
-    <a href="/2023/08/08/vim%E5%91%BD%E4%BB%A4/" rel="next" title="clion的踩坑史">
-      clion的踩坑史 <i class="fa fa-chevron-right"></i>
+    <a href="/2023/10/14/%E7%94%B5%E5%B7%A5%E5%AD%A6/" rel="next" title="电工学">
+      电工学 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -359,6 +466,7 @@ Nowadays, the growing individuals are trying to help others as they firmly belie
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">开发者的环境配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E8%80%85%E6%B5%8B%E8%AF%95%E7%9A%84%E8%AF%84%E5%88%86%E6%8C%87%E6%A0%87"><span class="nav-number">2.</span> <span class="nav-text">开发者测试的评分指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E8%80%85%E6%B5%8B%E8%AF%95%E5%A4%A7%E8%B5%9B%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">开发者测试大赛遇到的问题</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -374,20 +482,20 @@ Nowadays, the growing individuals are trying to help others as they firmly belie
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

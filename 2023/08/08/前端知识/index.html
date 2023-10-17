@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674460998983-b7add9b0-42f7-4a9b-b86e-ddaa036aac9e.png#averageHue=%23f4f7f4&clientId=u8906dc9b-ad41-4&from=paste&height=258&id=ue4150605&name=image.png&originHeight=387&originWidth=765&originalType=binary&ratio=1&rotation=0&showTitle=false&size=105249&status=done&style=none&taskId=ub77a4493-91eb-4f32-a6df-ece797b50b6&title=&width=510">
 <meta property="og:image" content="https://crazylychee.github.io/2023/08/08/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/baidu.gif">
 <meta property="og:image" content="https://crazylychee.github.io/2023/08/08/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/images/baidu.gif">
-<meta property="og:image" content="https://crazylychee.github.io/2023/08/08/baidu.gif">
+<meta property="og:image" content="https://crazylychee.github.io/2023/08/08/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/baidu.gif">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674485957034-86418e23-8ee4-4bda-9417-950a5e82d202.png#averageHue=%23d2f0f7&clientId=u8f9f00e1-9f79-4&from=paste&height=325&id=u4afeb28a&name=image.png&originHeight=488&originWidth=1094&originalType=binary&ratio=1&rotation=0&showTitle=false&size=190082&status=done&style=none&taskId=u30aa907c-b53f-453f-894b-a261b7442a5&title=&width=729.3333333333334">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674519781922-03866dfd-0578-4e84-b140-34575080a392.png#averageHue=%23f5f8f5&clientId=u793f6397-9d7a-4&from=paste&height=219&id=u2227bc5b&name=image.png&originHeight=329&originWidth=1151&originalType=binary&ratio=1&rotation=0&showTitle=false&size=202438&status=done&style=none&taskId=udfcea370-4a5c-444a-96e9-ed18f61bb5c&title=&width=767.3333333333334">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674520139152-02849f27-9cad-4f0d-b89f-221158b99fbf.png#averageHue=%23daddda&clientId=u793f6397-9d7a-4&from=paste&height=215&id=ufd924550&name=image.png&originHeight=322&originWidth=806&originalType=binary&ratio=1&rotation=0&showTitle=false&size=246667&status=done&style=none&taskId=ub808bfc0-552a-492b-87e7-e53f417e8f3&title=&width=537.3333333333334">
@@ -266,11 +266,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <meta name="referrer" content="no-referrer"/>
+        <meta name="referrer" content="no-referrer">
 ## Web标准
 ### Web标准的构成
 主要包括结构（Structure）、表现（Presentation）和行为（Behavior）三个方面
 <span id="more"></span>
+<mark>此篇博客搬运自b站黑马程序员的javaweb学习资料，仅供个人学习参考，尊重他人知识劳动成果</mark>
 结构
 结构用于对网页元素进行整理和分类，现阶段主要学的是HTML
 表现
@@ -285,14 +286,14 @@ Web标准提出的最佳体验方案：结构、样式、行为相分离
 <h3 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h3><p>能够说出标签的书写注意规范<br>能够写出HTML骨架标签<br>能够写出超链接标签<br>能够写出图片标签并说出 alt 和 title 的区另<br>能多说出相对路径的三种形式</p>
 <p>查看浏览器市场份额：<a target="_blank" rel="noopener" href="http://tongji.baidu.com/data/browse">http://tongji.baidu.com/data/browse</a></p>
 <h1 id="html"><a href="#html" class="headerlink" title="html"></a>html</h1><h3 id="基本语法概述"><a href="#基本语法概述" class="headerlink" title="基本语法概述"></a>基本语法概述</h3><ol>
-<li>HTML 标签是由尖括号包围的关键词，例如<html>。</li>
-<li>HTML标签通常是成对出现的，例姻<html>和</html>，我们称为双标签。标签对中的第一个标签是<br>开始标签，第二个标签是结束标签。<br>3.有些特殊的标签必须是单个标签（极少情况），例如<br/>，我们称为单标签</li>
+<li>HTML 标签是由尖括号包围的关键词，例如<html>。</html></li>
+<li>HTML标签通常是成对出现的，例姻<html>和</html>，我们称为双标签。标签对中的第一个标签是<br>开始标签，第二个标签是结束标签。<br>3.有些特殊的标签必须是单个标签（极少情况），例如<br>，我们称为单标签</li>
 </ol>
-<h3 id="3-1文档类型声明标签"><a href="#3-1文档类型声明标签" class="headerlink" title="3.1文档类型声明标签"></a>3.1文档类型声明标签</h3><!DOCTYPE><p>文档类型声明，作用就是告诉浏览器使用哪种HTML版本来显示网页<br><!DOCTYPE html><br>这句代码的意思是:当前页面采取的是HTML5版本来显示网页<br>注意:<br>1.&lt;!DOCTYPE&gt;声明位于文档中的最前面的位置，处于<html>标签之前<br>2.&lt;!DOCTYPE&gt;不是一个HTML标签，它就是文档类型声明标签</p>
+<h3 id="3-1文档类型声明标签"><a href="#3-1文档类型声明标签" class="headerlink" title="3.1文档类型声明标签"></a>3.1文档类型声明标签</h3><!DOCTYPE><p>文档类型声明，作用就是告诉浏览器使用哪种HTML版本来显示网页<br><!DOCTYPE html><br>这句代码的意思是:当前页面采取的是HTML5版本来显示网页<br>注意:<br>1.&lt;!DOCTYPE&gt;声明位于文档中的最前面的位置，处于<html>标签之前<br>2.&lt;!DOCTYPE&gt;不是一个HTML标签，它就是文档类型声明标签</html></p>
 <h3 id="3-2-lang语言种类"><a href="#3-2-lang语言种类" class="headerlink" title="3.2 lang语言种类"></a>3.2 lang语言种类</h3><p>作用：用来定义当前文档显示的语言<br>en定义语言为英语<br>2.zh-CN定义语言为中文<br>简单来说,定义为en就是英文网页,定义为 zh-CN就是中文网页</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>1.以上三个代码Vscode自动生成,基本不需要我们重写<br>2.<!DOCTYPE html>文档类型声明标签,告诉浏览器这个页面采取htm15版本来显示页面<br>3.<html lang=“en”>告诉浏览器或者搜索引擎这是一个英文网站.本页面采取英文来显示<br>4. &lt;meta charset&#x3D;”UTF-8” &#x2F;&gt;必须写.采取 UTF-8来保存文字.如果不写就会乱码.具体原理后面分析</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>1.以上三个代码Vscode自动生成,基本不需要我们重写<br>2.<!DOCTYPE html>文档类型声明标签,告诉浏览器这个页面采取htm15版本来显示页面<br>3.<html lang="“en”">告诉浏览器或者搜索引擎这是一个英文网站.本页面采取英文来显示<br>4. &lt;meta charset&#x3D;”UTF-8” &#x2F;&gt;必须写.采取 UTF-8来保存文字.如果不写就会乱码.具体原理后面分析</html></p>
 <h3 id="4-1标签语义"><a href="#4-1标签语义" class="headerlink" title="4.1标签语义"></a>4.1标签语义</h3><p>学习标签是有技巧的，重点是记住每个标签的语义。简单理解就是指标签的含义，即这个标签是用来干嘛的<br>湘据标签的语义，在合适的地万给一个最为合理的标签，可以让页面结构更清晰</p>
-<h3 id="4-2标题标签-（重要）"><a href="#4-2标题标签-（重要）" class="headerlink" title="4.2标题标签 - （重要）"></a>4.2标题标签<h1> - <h6>（重要）</h3><p>为了使网页更具有语义化，我们经常会在页面中用到标题标签。HTML提供了6个等级的网页标题<br>即<h1> - <h6> 。</p>
+<h3 id="4-2标题标签-（重要）"><a href="#4-2标题标签-（重要）" class="headerlink" title="4.2标题标签 - （重要）"></a>4.2标题标签<h1> - <h6>（重要）</h6></h1></h3><p>为了使网页更具有语义化，我们经常会在页面中用到标题标签。HTML提供了6个等级的网页标题<br>即</p><h1> - <h6> 。<p></p>
 <h1>我是一级标题</h1>
 羊词head的缩写，意为头部、标题
 标签语义：作为标题使用，并且依据重要性递减
@@ -300,16 +301,16 @@ Web标准提出的最佳体验方案：结构、样式、行为相分离
 1.加了标题的文字会变的加粗，字号也会依次变大
 2.一个标题独占一行
 
-<h3 id="4-3段落和换行标签（重要）"><a href="#4-3段落和换行标签（重要）" class="headerlink" title="4.3段落和换行标签（重要）"></a>4.3段落和换行标签（重要）</h3><p>在网页中，要把文字有条理地显示出来，就需要将这些文字分段显示。在HTML标签中，<p>标签用于定义段<br>洛，它可以将整个网页分为若干个段落</p>
+<h3 id="4-3段落和换行标签（重要）"><a href="#4-3段落和换行标签（重要）" class="headerlink" title="4.3段落和换行标签（重要）"></a>4.3段落和换行标签（重要）</h3><p>在网页中，要把文字有条理地显示出来，就需要将这些文字分段显示。在HTML标签中，</p><p>标签用于定义段<br>洛，它可以将整个网页分为若干个段落</p>
 <p>我是一个段落标签</p>
 单词paragraph[lpaeragraef]的缩写，意为段落
 在HIML中，一个段洛中的又字会从左到石依次排列，直到浏览器窗口的石端，然后才目动换行。如果希望
-某段文本强制换行显示，就需要使用换行标签<br/>。
+某段文本强制换行显示，就需要使用换行标签<br>。
 
 
-<p>单词break的缩写，意为打断、换行<br>标签语义：强制换行<br>特点：<br>1.<br/>是个单标签<br>2.段落和段落之间保有空隙</p>
-<h3 id="4-4文本格式化标签"><a href="#4-4文本格式化标签" class="headerlink" title="4.4文本格式化标签"></a>4.4文本格式化标签</h3><p>在网页中，有时需要为文字设置粗体、斜体或下划线等效果，这时就需要用到HTML中的文本格式化标签，使<br>文字以特殊的方式显示<br>标签语义:突出重要性,比普通文字更重要<br>加粗<br><strong></strong>或者<b></b><br>更推荐使用<strong>标签加粗语义更强烈<br>倾斜<br><em></em>或者<i></i><br>更推荐使用<em>标签加粗语义更强烈<br>删除线<br><del></del>或者<s></s><br>更推荐使用<del>标签加粗语义更强烈<br>下划线<br><ins></ins>或者<u></u><br>更推荐使用<ins>标签加粗语义更强烈</p>
-<h3 id="4-5-和标签"><a href="#4-5-和标签" class="headerlink" title="4.5 和标签"></a>4.5 <div>和<span>标签</h3><div>和<span>是没有语义的，它们就是一个盒子，用来装内容的
+<p>单词break的缩写，意为打断、换行<br>标签语义：强制换行<br>特点：<br>1.<br>是个单标签<br>2.段落和段落之间保有空隙</p>
+<h3 id="4-4文本格式化标签"><a href="#4-4文本格式化标签" class="headerlink" title="4.4文本格式化标签"></a>4.4文本格式化标签</h3><p>在网页中，有时需要为文字设置粗体、斜体或下划线等效果，这时就需要用到HTML中的文本格式化标签，使<br>文字以特殊的方式显示<br>标签语义:突出重要性,比普通文字更重要<br>加粗<br><strong></strong>或者<b></b><br>更推荐使用<strong>标签加粗语义更强烈<br>倾斜<br><em></em>或者<i></i><br>更推荐使用<em>标签加粗语义更强烈<br>删除线<br><del></del>或者<s></s><br>更推荐使用<del>标签加粗语义更强烈<br>下划线<br><ins></ins>或者<u></u><br>更推荐使用<ins>标签加粗语义更强烈</ins></del></em></strong></p>
+<h3 id="4-5-和标签"><a href="#4-5-和标签" class="headerlink" title="4.5 和标签"></a>4.5 <div>和<span>标签</span></div></h3><div>和<span>是没有语义的，它们就是一个盒子，用来装内容的
 <div>这是头部</div>
 <span> 今日价格</span>
 div是 division的缩写，表示分割、分区。span意为跨度、跨距
@@ -322,14 +323,14 @@ div是 division的缩写，表示分割、分区。span意为跨度、跨距
 <h3 id="4-6图像标签和路径（重点）"><a href="#4-6图像标签和路径（重点）" class="headerlink" title="4.6图像标签和路径（重点）"></a>4.6图像标签和路径（重点）</h3><p>路径铺垫知识<br>1)目录文件夹和根目录<br>实际工作中，我们的文件不能随便乱放，否则用起来很难快速的找到他们，因此我们需要一个文件夹来管理他们<br>目录文件夹：就是普通文件夹，里面只不过存放了我们做页面所需要的相关素材，比如html文件、图片等<br>根目录：打开目录文件夹的第一层就是根目录<br>2）页面中的图片会非常多，通常我们会新建一个文件夹来存放这些图像文件（images），这时再查找图像，就需要采用“路径”的方式来指定图像文件的位置<br>路径可以分为：<br>1.相对路径<br>2.绝对路径</p>
 <h4 id="图像标签属性注意点："><a href="#图像标签属性注意点：" class="headerlink" title="图像标签属性注意点："></a>图像标签属性注意点：</h4><p>①图像标签可以拥有多个属性，必须写在标签名的后面<br>②属性之间不分先后顺序，标签名与属性、属性与属性之间均以空格分开<br>③属性采取键值对的格式，即key&#x3D; “value”的格式，属性&#x3D;“属性值”。</p>
 <h4 id="路径之相对路径"><a href="#路径之相对路径" class="headerlink" title="路径之相对路径"></a>路径之相对路径</h4><p>相对路径：以引用文件所在位置为参考基础，而建立出的目录路径。<br>这里简单来说，图片相对于HTML页面的位置</p>
-<h5 id="相对路径分类"><a href="#相对路径分类" class="headerlink" title="相对路径分类"></a>相对路径分类</h5><h6 id="同一级路径"><a href="#同一级路径" class="headerlink" title="同一级路径"></a>同一级路径</h6><p>图像文件位于HTML文件同一级如<img src="baidu.gif" /></p>
-<h6 id="下一级路径"><a href="#下一级路径" class="headerlink" title="下一级路径"></a>下一级路径</h6><p>&#x2F;<br>图像文件位于HTML文件下一级如<img src="images/baidu.gif" /></p>
-<h6 id="上一级路径"><a href="#上一级路径" class="headerlink" title="上一级路径"></a>上一级路径</h6><p>..&#x2F;<br>图像文件位于HTML文件上一级如<img src="../baidu.gif" /></p>
+<h5 id="相对路径分类"><a href="#相对路径分类" class="headerlink" title="相对路径分类"></a>相对路径分类</h5><h6 id="同一级路径"><a href="#同一级路径" class="headerlink" title="同一级路径"></a>同一级路径</h6><p>图像文件位于HTML文件同一级如<img src="/2023/08/08/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/baidu.gif"></p>
+<h6 id="下一级路径"><a href="#下一级路径" class="headerlink" title="下一级路径"></a>下一级路径</h6><p>&#x2F;<br>图像文件位于HTML文件下一级如<img src="images/baidu.gif"></p>
+<h6 id="上一级路径"><a href="#上一级路径" class="headerlink" title="上一级路径"></a>上一级路径</h6><p>..&#x2F;<br>图像文件位于HTML文件上一级如<img src="/2023/08/08/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86/baidu.gif"></p>
 <h4 id="路径之绝对路径"><a href="#路径之绝对路径" class="headerlink" title="路径之绝对路径"></a>路径之绝对路径</h4><p>绝对路径：是指目录下的绝对位置，真接到达目标位置，通常是从盘符开始的路径<br>人<br>列如，“D:\web\img\logo.gif”或完整的网络地址“<a target="_blank" rel="noopener" href="http://www.itcast.cn/images/logo.gif">http://www.itcast.cn/images/logo.gif</a>”。</p>
 <h3 id="4-7超链接标签（重点）"><a href="#4-7超链接标签（重点）" class="headerlink" title="4.7超链接标签（重点）"></a>4.7超链接标签（重点）</h3><h4 id="链接的语法格式"><a href="#链接的语法格式" class="headerlink" title="链接的语法格式"></a>链接的语法格式</h4><p><a href="跳转目标" target="目标窗口的弹出方式">文本或图像</a><br>单词 anchor[‘aenka(r)的缩写，意为：锚<br>两个属性的作用如下：</p>
 <h4 id="href"><a href="#href" class="headerlink" title="href"></a>href</h4><p>用于指定链接目标的url地址，（必须属性）当为标签应用href属性时，它就具有了超链接的功能</p>
 <h4 id="target"><a href="#target" class="headerlink" title="target"></a>target</h4><p>用于指定链接页面的打开方式，其中self为默认值，blank为汪新窗口中打开方式</p>
-<h3 id="4-9超链接标签（重点）"><a href="#4-9超链接标签（重点）" class="headerlink" title="4.9超链接标签（重点）"></a>4.9超链接标签（重点）</h3><h4 id="链接分类"><a href="#链接分类" class="headerlink" title="链接分类"></a>链接分类</h4><p>1.外部链接:例如<a href="[http://www.baidu.com">](http://www.baidu.com">)百度</a>。<br>2.内部链接:网站内部页面之间的相互链接.直接链接内部页面名称即可，例如<a href="index.html">首页</a ><br>3.空链接:如果当时没有确定链接目标时，<a href="#">首页</a>。<br>4. 下载链接:如果href 里面地址是一个文件或者压缩包，会下载这个文件。<br>5.网页元素链接:在网页中的各种网页元素，如文本、图像、表格、音频、视频等都可以添加超链接<br>6.锚点链接:点我们点击链接,可以快速定位到页面中的某个位置<br>。在链接文本的href 属性中，设置属性值为#名字的形式，如&lt;ahref&#x3D;”#two”&gt;第2集</a><br>●找到目标位置标签，里面添加一个id属性&#x3D;刚才的名字，如：<h3 id="two">第2集介绍&lt;&#x2F;h3</p>
+<h3 id="4-9超链接标签（重点）"><a href="#4-9超链接标签（重点）" class="headerlink" title="4.9超链接标签（重点）"></a>4.9超链接标签（重点）</h3><h4 id="链接分类"><a href="#链接分类" class="headerlink" title="链接分类"></a>链接分类</h4><p>1.外部链接:例如<a href="[http://www.baidu.com">](http://www.baidu.com">)百度</a>。<br>2.内部链接:网站内部页面之间的相互链接.直接链接内部页面名称即可，例如<a href="index.html">首页</a><br>3.空链接:如果当时没有确定链接目标时，<a href="#">首页</a>。<br>4. 下载链接:如果href 里面地址是一个文件或者压缩包，会下载这个文件。<br>5.网页元素链接:在网页中的各种网页元素，如文本、图像、表格、音频、视频等都可以添加超链接<br>6.锚点链接:点我们点击链接,可以快速定位到页面中的某个位置<br>。在链接文本的href 属性中，设置属性值为#名字的形式，如&lt;ahref&#x3D;”#two”&gt;第2集<br>●找到目标位置标签，里面添加一个id属性&#x3D;刚才的名字，如：</p><h3 id="two">第2集介绍&lt;&#x2F;h3<p></p>
 <h3 id="5-1注释"><a href="#5-1注释" class="headerlink" title="5.1注释"></a>5.1注释</h3><p>如果需要在HTML 文档中添加一些便于阅读和理解但又不需要显示在页面中的注释文字，就需要使用注释标签<br>HTML中的注释以“<!--”开头，以“-->”结束<br>快捷键：ctrl+</p>
 <!--注释语句-->
 <p>一句话:注释标签里面的内容是给程序猿看的,这个代码是不执行不显示到页面中的<br>添加注释是为了更好地解释代码的功能，便于相关开发人员理解和阅读代码，程序是不会执行注释内容的</p>
@@ -350,38 +351,37 @@ div是 division的缩写，表示分割、分区。span意为跨度、跨距
 <p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674520139152-02849f27-9cad-4f0d-b89f-221158b99fbf.png#averageHue=%23daddda&clientId=u793f6397-9d7a-4&from=paste&height=215&id=ufd924550&name=image.png&originHeight=322&originWidth=806&originalType=binary&ratio=1&rotation=0&showTitle=false&size=246667&status=done&style=none&taskId=ub808bfc0-552a-492b-87e7-e53f417e8f3&title=&width=537.3333333333334" alt="image.png"></p>
 <h4 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h4><p>先书制作表格的结构<br>1.第一行里面是th表头单元格<br>2.第二行开始里面是td普通单元格<br>3.单元格里面可以放任何元素文字链接图片等都可以<br>后书写表格属性<br>1.用到宽度高度边框cellpadding和 cellspacing<br>2.表格浏览器中对齐align</p>
 <h4 id="1-5表格结构标签"><a href="#1-5表格结构标签" class="headerlink" title="1.5表格结构标签"></a>1.5表格结构标签</h4><ol>
-<li><thead></thead>：用于定义表格的头部。<thead>内部必须拥有<tr>标签。一般是位于第一行。</li>
+<li><thead></thead>：用于定义表格的头部。<thead>内部必须拥有<tr>标签。一般是位于第一行。</tr></thead></li>
 <li><tbody></tbody>：用于定义表格的主体，主要用于放数据本体。
 3.以上标签都是放在<table></table>标签中</li>
 </ol>
-<h4 id="1-6合并单元格"><a href="#1-6合并单元格" class="headerlink" title="1.6合并单元格"></a>1.6合并单元格</h4><p>合并单元格方式·<br>跨行合并：rowspan&#x3D;”合并单元格的个数<br>跨列合并：colspan&#x3D;”合并单元格的个数<br>合开单元格三步曲：<br>1.先确定是跨行还是跨列合并。<br>2.找到目标单元格.写上合并方式&#x3D;合并的单元格数量。比如：&lt;tdcolspan&#x3D;“2”&gt;</td>。<br>3.删除多余的单元格</p>
+<h4 id="1-6合并单元格"><a href="#1-6合并单元格" class="headerlink" title="1.6合并单元格"></a>1.6合并单元格</h4><p>合并单元格方式·<br>跨行合并：rowspan&#x3D;”合并单元格的个数<br>跨列合并：colspan&#x3D;”合并单元格的个数<br>合开单元格三步曲：<br>1.先确定是跨行还是跨列合并。<br>2.找到目标单元格.写上合并方式&#x3D;合并的单元格数量。比如：&lt;tdcolspan&#x3D;“2”&gt;。<br>3.删除多余的单元格</p>
 <h4 id="无序列表（重点"><a href="#无序列表（重点" class="headerlink" title="无序列表（重点)"></a>无序列表（重点)</h4><ul>标签表示HTML页面中项目的无序列表，一般会以项目符号呈现列表项，而列表项使用<li>标签定义。
 无序列表的基本语法格式如下·
 <ul>
-<li>列表项1</1i>
-<li>列表项2</li>
+<li>列表项1
+</li><li>列表项2</li>
 <li>列表项3</li>
 .·
 </ul>
 1.无序列表的各个列表项之间没有顺序级别之分，是并列的
-2.<ul></ul>诗只能嵌套<li></li>，直接在<ul></ul>标签中输入其他标签或者文字的做法是不被允许的
+2.<ul></ul>诗只能嵌套</li><li></li>，直接在<ul></ul>标签中输入其他标签或者文字的做法是不被允许的
 3. <li> 与</li>之间相当于一个容器，可以容纳所有元素
 4.无序列表会带有自己的样式属性，但在实际使用时，我们会使用CSS来设置
 
-<h4 id="有序列表（理解"><a href="#有序列表（理解" class="headerlink" title="有序列表（理解)"></a>有序列表（理解)</h4><p>有序列表即为有排列顺序的列表，其各个列表项会按照一定的顺序排列定义<br>在HTML标签中，<ol>标签用于定义有序列表，列表排序以数字来显示，并且使用<li>标签来定义列表项<br>哈<br>有序列表的基本语法格式如下:</p>
+<h4 id="有序列表（理解"><a href="#有序列表（理解" class="headerlink" title="有序列表（理解)"></a>有序列表（理解)</h4><p>有序列表即为有排列顺序的列表，其各个列表项会按照一定的顺序排列定义<br>在HTML标签中，<ol>标签用于定义有序列表，列表排序以数字来显示，并且使用<li>标签来定义列表项<br>哈<br>有序列表的基本语法格式如下:</li></ol></p>
 <ol>
 <li>列表项1</li>
-<li>列表项2</lia
-<li>列表项3</li>
+<li>列表项2列表项3</li>
 -·
-</o1>
+
 
 <ol>
-<li><ol> </ol>中只能嵌套<li> </li>，直接在<ol></ol>标签中输入其他标签或者文字的做法是不被允许的</li>
-<li><li>与</li>之间相当于一个容器，可以容纳所有元素
-3.有序列表会带有自己样式属性，但在实际使用时，我们会使用CSS来设置</li>
+<li><ol> </ol>中只能嵌套</li><li> </li>，直接在<ol></ol>标签中输入其他标签或者文字的做法是不被允许的
+<li></li><li>与</li>之间相当于一个容器，可以容纳所有元素
+3.有序列表会带有自己样式属性，但在实际使用时，我们会使用CSS来设置
 </ol>
-<h4 id="自定义列表（重点"><a href="#自定义列表（重点" class="headerlink" title="自定义列表（重点)"></a>自定义列表（重点)</h4><p>在HTML标签中，<dl>标签用于定义描述列表（或定义列表），该标签会与<dt>（定义项目&#x2F;名字）和</p>
+<h4 id="自定义列表（重点"><a href="#自定义列表（重点" class="headerlink" title="自定义列表（重点)"></a>自定义列表（重点)</h4><p>在HTML标签中，<dl>标签用于定义描述列表（或定义列表），该标签会与<dt>（定义项目&#x2F;名字）和</dt></dl></p>
 <dd>（描述每一个项目/名字）一起使用
 其基本语法如下·
 <dl>
@@ -392,19 +392,19 @@ div是 division的缩写，表示分割、分区。span意为跨度、跨距
 1. <dl> </dl>里面只能包含<dt>和<dd>。
 2.<dt>和<dd>个数没有限制，经常是一个<dt>对应多个<dd>
 
-<p>在HTML标签中，<dl>标签用于定义描述列表（或定义列表），该标签会与<dt>（定义项目&#x2F;名字）和</p>
+<p>在HTML标签中，<dl>标签用于定义描述列表（或定义列表），该标签会与<dt>（定义项目&#x2F;名字）和</dt></dl></p>
 <dd>（描述每一个项目/名字）一起使用
 #### 小结
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/34892071/1674522354744-e4a9f6bc-8b72-4c6f-840a-eb1d5f9ecc33.png#averageHue=%23f5f8f5&clientId=u793f6397-9d7a-4&from=paste&height=157&id=uac05b843&name=image.png&originHeight=235&originWidth=1240&originalType=binary&ratio=1&rotation=0&showTitle=false&size=172026&status=done&style=none&taskId=udc9bfb98-a069-415b-b431-11f1620ee9e&title=&width=826.6666666666666)
 
 <h4 id="3-2表单的组成"><a href="#3-2表单的组成" class="headerlink" title="3.2表单的组成"></a>3.2表单的组成</h4><p>在HTML中，一个完整的表单通常由表单域、表单控件（也称为表单元素）和提示信息3个部分构成<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674522540504-72e1e121-0990-49b0-af52-f29214f472f8.png#averageHue=%23f8f9f8&clientId=u793f6397-9d7a-4&from=paste&height=406&id=u40553281&name=image.png&originHeight=609&originWidth=749&originalType=binary&ratio=1&rotation=0&showTitle=false&size=124775&status=done&style=none&taskId=ufc208872-ccff-4f8e-ab39-08555e5de14&title=&width=499.3333333333333" alt="image.png"></p>
-<h4 id="3-3表单域"><a href="#3-3表单域" class="headerlink" title="3.3表单域"></a>3.3表单域</h4><p>表单域是一个包含表单元素的区域<br>在HTML标签中，<form>标签用于定义表单域，以实现用户信息的收集和传递</p>
+<h4 id="3-3表单域"><a href="#3-3表单域" class="headerlink" title="3.3表单域"></a>3.3表单域</h4><p>表单域是一个包含表单元素的区域<br>在HTML标签中，<form>标签用于定义表单域，以实现用户信息的收集和传递</form></p>
 <form>会把它范围内的表单元素信息提交给服务器
 这里只需要记住两点
 1，在我们写表单元素之前,应该有个表单域把他们进行包含
 2、表单域是form标签
 
-<h4 id="3-4-1-表单元素"><a href="#3-4-1-表单元素" class="headerlink" title="3.4.1 表单元素"></a>3.4.1 <input>表单元素</h4><p>在英文单词中，input是输入的意思，而在表单元素中<input>标签用于收集用户信息<br>在<input>标签中，包含一个type属性，根据不同的type属性值，输入字段拥有很多种形式（可以是文本<br>字段、复选框、掩码后的文本控件、单选按钮、按钮等）<br><input type="属性值"  /><br><input />标签为单标签<br> type属性设置不同的属性值用来指定不同的控件类型<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674522938301-96fbfdc0-202c-4fa6-877a-a66c8ef8ae70.png#averageHue=%23f5f8f5&clientId=u793f6397-9d7a-4&from=paste&height=409&id=u3d953225&name=image.png&originHeight=613&originWidth=1163&originalType=binary&ratio=1&rotation=0&showTitle=false&size=325004&status=done&style=none&taskId=u9cb88c9f-ed25-436a-b1fd-7c91f0e0144&title=&width=775.3333333333334" alt="image.png"></p>
+<h4 id="3-4-1-表单元素"><a href="#3-4-1-表单元素" class="headerlink" title="3.4.1 表单元素"></a>3.4.1 <input>表单元素</h4><p>在英文单词中，input是输入的意思，而在表单元素中<input>标签用于收集用户信息<br>在<input>标签中，包含一个type属性，根据不同的type属性值，输入字段拥有很多种形式（可以是文本<br>字段、复选框、掩码后的文本控件、单选按钮、按钮等）<br><input type="属性值"><br><input>标签为单标签<br> type属性设置不同的属性值用来指定不同的控件类型<br><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674522938301-96fbfdc0-202c-4fa6-877a-a66c8ef8ae70.png#averageHue=%23f5f8f5&clientId=u793f6397-9d7a-4&from=paste&height=409&id=u3d953225&name=image.png&originHeight=613&originWidth=1163&originalType=binary&ratio=1&rotation=0&showTitle=false&size=325004&status=done&style=none&taskId=u9cb88c9f-ed25-436a-b1fd-7c91f0e0144&title=&width=775.3333333333334" alt="image.png"></p>
 <p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674523185635-9db543e0-e227-4dde-beda-a88483c79e04.png#averageHue=%23f1f4f1&clientId=u793f6397-9d7a-4&from=paste&height=591&id=u653952cf&name=image.png&originHeight=887&originWidth=868&originalType=binary&ratio=1&rotation=0&showTitle=false&size=148567&status=done&style=none&taskId=u1649b072-460f-49e6-a90f-a5e31975637&title=&width=578.6666666666666" alt="image.png"></p>
 <p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674523371165-5af0a1f0-c82c-4d69-b6df-130ce018c021.png#averageHue=%23f5f8f5&clientId=u793f6397-9d7a-4&from=paste&height=193&id=u497c2009&name=image.png&originHeight=289&originWidth=1193&originalType=binary&ratio=1&rotation=0&showTitle=false&size=148428&status=done&style=none&taskId=u3c5932a2-970d-444b-8de6-f45a944f7bb&title=&width=795.3333333333334" alt="image.png"></p>
 <ol>
@@ -412,13 +412,12 @@ div是 division的缩写，表示分割、分区。span意为跨度、跨距
 <li>name表单元素的名字,要求单选按钮和复选框要有相同的name值</li>
 <li>checked属性主要针对于单选按钮和复选框主要作用一打开页面,就要可以默认选中某个表单元素</li>
 </ol>
-<h4 id="3-4-1-表单元素-1"><a href="#3-4-1-表单元素-1" class="headerlink" title="3.4.1 表单元素"></a>3.4.1 <input>表单元素</h4><p>1.有些表单元素想刚打开页面就默认显示几个文字怎么做<br>答:可以给这些表单元素设置value属性&#x3D;“值<br>用户名：<input type="text" value="请输入用户名" /><br>长</p>
-<p>2.页面中的表单元素很多，如何区别不同的表单元素<br>答:name属性：当前input表单的名字，后台可以通过这个name属性找到这个表单。页面中的表单很多<br>name的主要作用就是用于区别不同的表单<br>用户名：<input type="text" value="请输入用户名" name="username" /></p>
-<p>o name属性后面的值，是自定义的<br>p radio(或者checkbox）如果是一组，我们必须给他们命名相同的名字<br><input type="radio" name="sex" />男<br><input type="radio" name="sex" />女</p>
-<p>4.如何让input表单元素展示不同的形态?比如单选按钮或者文本框<br>答: type属性：type属性可以让input表单元素设置不同的形态<br><input type="radio" name="sex" value="男" checked="checked" />男<br>&lt;input type&#x3D;”text” value&#x3D;”请输入用户名”&gt;</p>
+<h4 id="3-4-1-表单元素-1"><a href="#3-4-1-表单元素-1" class="headerlink" title="3.4.1 表单元素"></a>3.4.1 <input>表单元素</h4><p>1.有些表单元素想刚打开页面就默认显示几个文字怎么做<br>答:可以给这些表单元素设置value属性&#x3D;“值<br>用户名：<input type="text" value="请输入用户名"><br>长</p>
+<p>2.页面中的表单元素很多，如何区别不同的表单元素<br>答:name属性：当前input表单的名字，后台可以通过这个name属性找到这个表单。页面中的表单很多<br>name的主要作用就是用于区别不同的表单<br>用户名：<input type="text" value="请输入用户名" name="username"></p>
+<p>o name属性后面的值，是自定义的<br>p radio(或者checkbox）如果是一组，我们必须给他们命名相同的名字<br><input type="radio" name="sex">男<br><input type="radio" name="sex">女</p>
+<p>4.如何让input表单元素展示不同的形态?比如单选按钮或者文本框<br>答: type属性：type属性可以让input表单元素设置不同的形态<br><input type="radio" name="sex" value="男" checked="checked">男<br>&lt;input type&#x3D;”text” value&#x3D;”请输入用户名”&gt;</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2023/png/34892071/1674524247492-85031e3c-dbde-452a-9495-eafee6c48b18.png#averageHue=%23f5f8f5&clientId=u1948e378-7cf7-4&from=paste&height=407&id=u380ed95b&name=image.png&originHeight=611&originWidth=1167&originalType=binary&ratio=1&rotation=0&showTitle=false&size=318461&status=done&style=none&taskId=u833da442-5f12-4a1e-9a14-fee56e04ff0&title=&width=778" alt="image.png"></p>
-<h4 id="3-4-2-标签"><a href="#3-4-2-标签" class="headerlink" title="3.4.2 标签"></a>3.4.2 <label>标签</h4><p><label>标签为 input元素定义标注（标签）。<br>I<br><label>标签用于绑定一个表单元素当点击<label>标签内的文本时，浏览器就会自动将焦点(光标)转到或者<br>选择对应的表单元素上用来增加用户体验<br>语法：<br><label for="sex">男</label><br><input type="radio" name="sex"
-id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性相同</p>
+<h4 id="3-4-2-标签"><a href="#3-4-2-标签" class="headerlink" title="3.4.2 标签"></a>3.4.2 <label>标签</label></h4><p><label>标签为 input元素定义标注（标签）。<br>I<br><label>标签用于绑定一个表单元素当点击<label>标签内的文本时，浏览器就会自动将焦点(光标)转到或者<br>选择对应的表单元素上用来增加用户体验<br>语法：<br><label for="sex">男</label><br><input type="radio" name="sex" id="sex"><br>核心：<label>标签的for属性应当与相关元素的id属性相同</label></label></label></label></p>
 <h4 id="3-4表单控件-表单元素"><a href="#3-4表单控件-表单元素" class="headerlink" title="3.4表单控件(表单元素)"></a>3.4表单控件(表单元素)</h4><p>在表单域中可以定义各种表单元素，这些表单元素就是允许用户在表单中输入或者选择的内容控件<br>接下来我们讲解:</p>
 <ol>
 <li><p>input输入表单元素</p>
@@ -428,7 +427,7 @@ id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性
 <li><p>textarea文本域元素</p>
 </li>
 </ol>
-<h4 id="3-4-3-表单元素"><a href="#3-4-3-表单元素" class="headerlink" title="3.4.3 表单元素"></a>3.4.3 <select>表单元素</h4><p>吏用场景:在页面中，如果有多个选项让用户选择，并且想要节约页面空间时，我们可以使用<select>标签控件定义下拉列表</p>
+<h4 id="3-4-3-表单元素"><a href="#3-4-3-表单元素" class="headerlink" title="3.4.3 表单元素"></a>3.4.3 <select>表单元素</select></h4><p>吏用场景:在页面中，如果有多个选项让用户选择，并且想要节约页面空间时，我们可以使用<select>标签控件定义下拉列表</select></p>
 <h5 id="语法"><a href="#语法" class="headerlink" title="语法:"></a>语法:</h5><select>
 <option>选项1</option>
 <option>选项2</option>
@@ -443,7 +442,7 @@ id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性
 <p>W3C：<a target="_blank" rel="noopener" href="http://www.w3school.com.cn/">http://www.w3school.com.cn/</a><br>公<br>MDN: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN">https://developer.mozilla.org/zh-CN</a></p>
 <h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>1.CSS简介<br>1.2 CSS-网页的美容师<br>CSS是层叠样式表(Cascading Style Sheets）的简称<br>有时我们也会称之为CSS样式表或级联样式表<br>HTML<br>CSS<br>CSS是也是一种标记语言<br>CSS主要用于设置HTML页面中的文本内容（字体、大小、对齐方式等）、图片的外形（宽高、边框样式<br>边距等）以及版面的布局和外观显示样式<br>CSS让我们的网页更加丰富多彩，布局更加灵活自如。简单理解：CSS可以美化HTML，让HTML更漂亮<br>让页面布局更简单</p>
 <p>1.3 CSS语法规范<br>使用HTML时，需要遵从一定的规范，CSS也是如此。要想熟练地使用CSS对网页进行修饰，首先需要了解<br>CSS样式规则<br>CSS规则由两个主要的部分构成：选择器以及一条或多条声明<br>选择器是用于指定CSS样式的HTML标签，花括号内是对该对象设置的具体样式<br>O<br>属性和属性值以“键值对”的形式出现</p>
-
+</form></dd></dd></dt></dd></dt></dd></dt></dd></ol></ul></th></h3></span></span></div></div></span></div></h6></h1>
     </div>
 
     
@@ -476,12 +475,12 @@ id="sex"/><br>核心：<label>标签的for属性应当与相关元素的id属性
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/08/08/%E8%BF%98%E6%9C%AA%E6%88%90%E5%8A%9F%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%88%9B%E5%BB%BA/" rel="prev" title="搭建博客的失败经历">
-      <i class="fa fa-chevron-left"></i> 搭建博客的失败经历
+    <a href="/2023/08/08/vim%E5%91%BD%E4%BB%A4/" rel="prev" title="vim备忘录">
+      <i class="fa fa-chevron-left"></i> vim备忘录
     </a></div>
       <div class="post-nav-item">
-    <a href="/2023/08/08/%E5%A4%A7%E5%AD%A6%E9%98%B6%E6%AE%B5%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="英语学习笔记">
-      英语学习笔记 <i class="fa fa-chevron-right"></i>
+    <a href="/2023/08/08/experience_01/" rel="next" title="java编程经验">
+      java编程经验 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -967,20 +966,20 @@ CSS1.CSS简介1.2 CSS-网页的美容师CSS是层叠样式表(Cascading Style Sh
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
