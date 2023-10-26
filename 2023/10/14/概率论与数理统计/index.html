@@ -20,18 +20,29 @@
     var CONFIG = {"hostname":"crazylychee.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一个分享技术分享生活的个人博客">
+  <meta name="description" content="第三章§1 二维随机向量及其分布二维随机向量的定义及其分布函数 定义3.2 设(X,Y)是二维随机变量,对于任意实数x,y,二元函数F(x, y)&#x3D; P(X&lt;x,Ysy)称为二维随机变量(X,Y)的分布函数(或称联合分布函数).  分布函数的几何意义：联合分布函数F(x,y) &#x3D; P(X&lt;x,Y&lt;y)的值就是随机点（X,Y)落在区域D内的概率。  4、联合分布">
 <meta property="og:type" content="article">
 <meta property="og:title" content="概率论与数理统计">
 <meta property="og:url" content="https://crazylychee.github.io/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/index.html">
 <meta property="og:site_name" content="Crazylychee&#39;s website">
-<meta property="og:description" content="一个分享技术分享生活的个人博客">
+<meta property="og:description" content="第三章§1 二维随机向量及其分布二维随机向量的定义及其分布函数 定义3.2 设(X,Y)是二维随机变量,对于任意实数x,y,二元函数F(x, y)&#x3D; P(X&lt;x,Ysy)称为二维随机变量(X,Y)的分布函数(或称联合分布函数).  分布函数的几何意义：联合分布函数F(x,y) &#x3D; P(X&lt;x,Y&lt;y)的值就是随机点（X,Y)落在区域D内的概率。  4、联合分布">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018184721068.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018184823016.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018184855108.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018195632258.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018200227947.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018205312509.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018205957774.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018210017204.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018210743946.png">
+<meta property="og:image" content="https://crazylychee.github.io/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018211553982.png">
 <meta property="article:published_time" content="2023-10-13T16:00:00.000Z">
 <meta property="article:modified_time" content="2023-10-13T16:00:00.000Z">
 <meta property="article:author" content="Crazylychee">
 <meta property="article:tag" content="大学课程学习笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://crazylychee.github.io/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018184721068.png">
 
 <link rel="canonical" href="https://crazylychee.github.io/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/">
 
@@ -252,7 +263,71 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h2 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h2><h3 id="§1-二维随机向量及其分布"><a href="#§1-二维随机向量及其分布" class="headerlink" title="§1 二维随机向量及其分布"></a>§1 二维随机向量及其分布</h3><h4 id="二维随机向量的定义及其分布函数"><a href="#二维随机向量的定义及其分布函数" class="headerlink" title="二维随机向量的定义及其分布函数"></a>二维随机向量的定义及其分布函数</h4><ul>
+<li><p>定义3.2 设(X,Y)是二维随机变量,对于任意实数x,y,二元函数<br>F(x, y)&#x3D; P(X&lt;x,Ysy)<br>称为二维随机变量(X,Y)的分布函数(或称联合分布函数).</p>
+</li>
+<li><p>分布函数的几何意义：<br>联合分布函数<br>F(x,y) &#x3D; P(X&lt;x,Y&lt;y)<br>的值就是随机点（X,Y)落在<br>区域D内的概率。</p>
+</li>
+<li><p>4、联合分布函数F(x,y)&#x3D; P(X&lt;x,Y&lt;y)的性质</p>
+</li>
+<li><ul>
+<li>性质1对任意的x,y,有0&lt;F(x,y)s1;且有<br>F(+00,+00)&#x3D;1<br>F(x,-00)&#x3D; F(-00,y)&#x3D; F(-00,-00)&#x3D;0</li>
+<li>性质2 F(x,y)是变量x和y的单调非降函数;</li>
+<li><img src="/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018184721068.png" alt="image-20231018184721068" style="zoom:50%;"></li>
+<li><img src="/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018184823016.png" alt="image-20231018184823016" style="zoom:50%;"></li>
+<li><img src="/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018184855108.png" alt="image-20231018184855108" style="zoom:50%;"></li>
+</ul>
+</li>
+</ul>
+<h4 id="二、二维离散型随机变量"><a href="#二、二维离散型随机变量" class="headerlink" title="二、二维离散型随机变量"></a>二、二维离散型随机变量</h4><ul>
+<li><p>1、二维离散型随机变量的定义<br>如果二维随机变量(X,Y)的所有可能取的值是有限对或<br>可列无限对,则称(X,Y)是离散型随机变量.</p>
+</li>
+<li><p>称概率函数<br>P(X &#x3D; x,,Y &#x3D; y,)&#x3D; P i &#x3D; 1,2,…,n,…;j&#x3D; 1,2,…,m,…<br>为二维离散型随机变量(X,Y)的(联合)概率分布(律).<br>或列表为(概率分布也称为联合分布列)</p>
+</li>
+<li><p>称概率函数<br>P(X &#x3D; x,,Y &#x3D; y;)&#x3D; Pij i &#x3D; 1,2,…,n,…;j&#x3D; 1,2,…,m,…<br>为二维离散型随机变量(X,Y)的(联合)概率分布(律).<br>或列表为 (概率分布也称为联合分布列)</p>
+</li>
+</ul>
+<img src="/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018195632258.png" alt="image-20231018195632258" style="zoom:50%;">
+
+
+
+
+
+<h4 id="三、二维连续型随机变量"><a href="#三、二维连续型随机变量" class="headerlink" title="三、二维连续型随机变量"></a>三、二维连续型随机变量</h4><img src="/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018200227947.png" alt="image-20231018200227947" style="zoom:50%;">
+
+
+
+<h3 id="§2-边缘分布"><a href="#§2-边缘分布" class="headerlink" title="§2 边缘分布"></a>§2 边缘分布</h3><ul>
+<li><p>一、边缘分布函数<br>1、边缘分布的定义<br>一般地，对于二维随机变量（X，Y），若已知其联合分布，<br>则称随机变量X或Y的概率分布称为它的边缘分布。<br>2、边缘分布函数<br>若二随机变量(X,Y)的联合分布函数为F(x,y),则称<br>随机变量X(或)的分布函数Fx(x) (或F(y))为F(x,y)的<br>边缘分布函数。</p>
+</li>
+<li><p>问题：已知 的联合分布函数 ，如何求边缘分布?</p>
+<p>由分布函数的定义，有<br>Fx(x)&#x3D; P{Xsx) &#x3D; P{X&lt;x,Y&lt;+0o)&#x3D; F(x,+00)<br>同理有<br>Fy(y)&#x3D; F(+o, y)</p>
+<p>&#x3D;&#x3D;Z的取值为啥是-2，2&#x3D;&#x3D;</p>
+<img src="/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018205312509.png" alt="image-20231018205312509" style="zoom:50%;"></li>
+</ul>
+<h3 id="§3条件分布"><a href="#§3条件分布" class="headerlink" title="§3条件分布"></a>§3条件分布</h3><img src="/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018205957774.png" alt="image-20231018205957774" style="zoom:50%;">
+
+<img src="/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018210017204.png" alt="image-20231018210017204" style="zoom:50%;">
+
+
+
+
+
+<h3 id="§4随机变量的独立性"><a href="#§4随机变量的独立性" class="headerlink" title="§4随机变量的独立性"></a>§4随机变量的独立性</h3><img src="/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018210743946.png" alt="image-20231018210743946" style="zoom:50%;">
+
+<ul>
+<li>二维连续型随机变量相互独立的充要条件<br>f(x, y) &#x3D; fx(x) fy(y)</li>
+<li>随机变量独立性的判断<br>(1)判断随机变量的独立性一般有两种方法:<br>A：由定义判断，是否满足公式；<br>B:由问题的性质从直观上去判断.<br>(2)实际使用时往往从直观上去判断随机变量的独立性.</li>
+</ul>
+<h3 id="§5两个随机变量函数的分布"><a href="#§5两个随机变量函数的分布" class="headerlink" title="§5两个随机变量函数的分布"></a>§5两个随机变量函数的分布</h3><ul>
+<li>设二维随机变量(X,Y)的联合密度为f(x,y)<br>求随机变量Z&#x3D;g(X,Y)的&#x3D;&#x3D;概率密度&#x3D;&#x3D;？？？<ul>
+<li>方法:分布函数法<br>先求分布函数，再求概率密度。<br>随机变量Z的分布函数为</li>
+<li><img src="/2023/10/14/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/image-20231018211553982.png" alt="image-20231018211553982" style="zoom:50%;"></li>
+<li>公式法: 1、给出f(x,h(z,x))或f(h(z,y),y)的表达式<br>2、在ZOX或ZOY平面内画出密度函数取非零值的区域</li>
+</ul>
+</li>
+</ul>
+
     </div>
 
     
@@ -350,6 +425,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0"><span class="nav-number">1.</span> <span class="nav-text">第三章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%C2%A71-%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%90%91%E9%87%8F%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83"><span class="nav-number">1.1.</span> <span class="nav-text">§1 二维随机向量及其分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%90%91%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89%E5%8F%8A%E5%85%B6%E5%88%86%E5%B8%83%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.1.</span> <span class="nav-text">二维随机向量的定义及其分布函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BA%8C%E7%BB%B4%E7%A6%BB%E6%95%A3%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">二、二维离散型随机变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BA%8C%E7%BB%B4%E8%BF%9E%E7%BB%AD%E5%9E%8B%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.3.</span> <span class="nav-text">三、二维连续型随机变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%C2%A72-%E8%BE%B9%E7%BC%98%E5%88%86%E5%B8%83"><span class="nav-number">1.2.</span> <span class="nav-text">§2 边缘分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%C2%A73%E6%9D%A1%E4%BB%B6%E5%88%86%E5%B8%83"><span class="nav-number">1.3.</span> <span class="nav-text">§3条件分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%C2%A74%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="nav-number">1.4.</span> <span class="nav-text">§4随机变量的独立性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%C2%A75%E4%B8%A4%E4%B8%AA%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%86%E5%B8%83"><span class="nav-number">1.5.</span> <span class="nav-text">§5两个随机变量函数的分布</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -365,14 +441,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
