@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>【Docker】对Docker Remote API进行认证 | XYC の 博客</title><meta name="keywords" content="Docker,tls,Shell"><meta name="author"><meta name="copyright"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="【Docker】对Docker Remote Api 进行认证 将虚拟机配置docker docker的安装，我在我的博客里有写，这里就不写了。  开启认证的docker remote api  第一步 123cd &#x2F;etc&#x2F;dockerecho 01 | sudo tee ca.srlsudo openssl genrsa -des3 -out ca-key.pem 第二步 创建私钥的过程中，我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Docker】对Docker Remote API进行认证">
+<meta property="og:url" content="https://www.crazylychee.github.io/2024/06/26/%E3%80%90Docker%E3%80%91%E5%AF%B9Docker%20Remote%20API%E8%BF%9B%E8%A1%8C%E8%AE%A4%E8%AF%81/index.html">
+<meta property="og:site_name" content="XYC の 博客">
+<meta property="og:description" content="【Docker】对Docker Remote Api 进行认证 将虚拟机配置docker docker的安装，我在我的博客里有写，这里就不写了。  开启认证的docker remote api  第一步 123cd &#x2F;etc&#x2F;dockerecho 01 | sudo tee ca.srlsudo openssl genrsa -des3 -out ca-key.pem 第二步 创建私钥的过程中，我">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.crazylychee.github.io/static/202202230023069.jpg">
+<meta property="article:published_time" content="2024-06-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-07-13T03:58:57.907Z">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="tls">
+<meta property="article:tag" content="Shell">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.crazylychee.github.io/static/202202230023069.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.crazylychee.github.io/2024/06/26/%E3%80%90Docker%E3%80%91%E5%AF%B9Docker%20Remote%20API%E8%BF%9B%E8%A1%8C%E8%AE%A4%E8%AF%81/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":500},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Docker】对Docker Remote API进行认证',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-13 11:58:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/static/my.css"><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/static/favicon.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">38</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/todo/"><i class="fa-fw fas fa-list-alt"></i><span> ToDo</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-coffee"></i><span> 更多</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/contact/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/bookmarks/"><i class="fa-fw fas fa-bookmark"></i><span> 网址收藏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/static/202202230023069.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">XYC の 博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/todo/"><i class="fa-fw fas fa-list-alt"></i><span> ToDo</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-coffee"></i><span> 更多</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/contact/"><i class="fa-fw fas fa-comments"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/bookmarks/"><i class="fa-fw fas fa-bookmark"></i><span> 网址收藏</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">【Docker】对Docker Remote API进行认证</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-25T16:00:00.000Z" title="发表于 2024-06-26 00:00:00">2024-06-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-13T03:58:57.907Z" title="更新于 2024-07-13 11:58:57">2024-07-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/linux/">linux</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="【Docker】对Docker-Remote-Api-进行认证">【Docker】对Docker Remote Api 进行认证</h1>
+<h5 id="将虚拟机配置docker">将虚拟机配置docker</h5>
+<p>docker的安装，我在我的博客里有写，这里就不写了。</p>
+<ul>
+<li>开启认证的docker remote api</li>
+</ul>
+<h6 id="第一步">第一步</h6>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/docker</span><br><span class="line">echo 01 | sudo tee ca.srl</span><br><span class="line">sudo openssl genrsa -des3 -out ca-key.pem</span><br></pre></td></tr></table></figure>
+<h6 id="第二步">第二步</h6>
+<p>创建私钥的过程中，我们需要为CA密钥设置一个密码，我们需要牢记这个密码，并确保它的安全性。在新CA中，我们需要用这个密码来创建并对证书签名。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo openssl req -new -x509 -days 365 -key ca-key.pem -out ca.pem</span><br></pre></td></tr></table></figure>
+<h6 id="第三步">第三步</h6>
+<p>注意这里Common Name (e.g. server FQDN or YOUR name) []:docker.example.com，这里填写你的服务器的域名或者IP地址。(其他的跳过就好了)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo openssl genrsa -des3 -out server-key.pem</span><br></pre></td></tr></table></figure>
+<p>这将为我们的服务器创建一个密钥server-key.pem。像前面一样，我们要确保此密钥的安全性，这是保证我们的Docker服务器安全的基础。</p>
+<h6 id="第四步">第四步</h6>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo openssl req -new -key server-key.pem -out server.csr</span><br></pre></td></tr></table></figure>
+<h6 id="第五步">第五步</h6>
+<p>这将创建一个名为server.csr的文件。这也是一个请求，这个请求将为创建我们的服务器证书进行签名。在这些选项中最重要的是Common Name或CN。该项的值要么为Docker服务器（即从DNS中解析后得到的结果，<a target="_blank" rel="noopener" href="http://xn--docker-hh4kj42j.example.com">比如docker.example.com</a>）的FQDN（fully qualified domain name，完全限定的域名）形式，要么为*，这将允许在任何服务器上使用该服务器证书。<br>
+我直接输入了虚拟机的ip 192.168.73.123</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo openssl x509 -req -days 365 -in server.csr -CA ca.pem \</span><br><span class="line">-CAkey ca-key.pem -out server-cert.pem</span><br></pre></td></tr></table></figure>
+<h6 id="第六步">第六步</h6>
+<p>需要输入CA密钥文件的密码，该命令会生成一个名为server-cert.pem的文件，这个文件就是我们的服务器证书</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo openssl rsa -in server-key.pem -out server-key.pem</span><br></pre></td></tr></table></figure>
+<h6 id="第七步">第七步</h6>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod 0600 /etc/docker/server-key.pem /etc/docker/server-cert.pem \</span><br><span class="line">/etc/docker/ca-key.pem /etc/docker/ca.pem</span><br></pre></td></tr></table></figure>
+<h6 id="第八步">第八步</h6>
+<p>需要编辑/usr/lib/systemd/system/docker.service</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/lib/systemd/system/docker.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ExecStart=/usr/bin/docker -d -H tcp://0.0.0.0:2376 --tlsverify </span><br><span class="line">　--tlscacert=/etc/docker/ca.pem --tlscert=/etc/docker/server-cert.pem </span><br><span class="line">　--tlskey=/etc/docker/server-key.pem</span><br></pre></td></tr></table></figure>
+<h6 id="第九步">第九步</h6>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl --system daemon-reload</span><br></pre></td></tr></table></figure>
+<h6 id="第十步">第十步</h6>
+<ul>
+<li>
+<ul>
+<li>创建客户端证书和密钥</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo openssl genrsa -des3 -out client-key.pem</span><br></pre></td></tr></table></figure>
+<h6 id="第十一步">第十一步</h6>
+<p>创建一个名为client-key.pem的密钥文件。我们同样需要在创建阶段设置一个临时性的密码。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo openssl req -new -key client-key.pem -out client.csr</span><br></pre></td></tr></table></figure>
+<h6 id="第十二步">第十二步</h6>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo extendedKeyUsage = clientAuth &gt; extfile.cnf</span><br></pre></td></tr></table></figure>
+<h6 id="第十三步">第十三步</h6>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo openssl x509 -req -days 365 -in client.csr -CA ca.pem \</span><br><span class="line">-CAkey ca-key.pem -out client-cert.pem -extfile extfile.cnf</span><br></pre></td></tr></table></figure>
+<h6 id="第十四步">第十四步</h6>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo openssl rsa -in client-key.pem -out client-key.pem</span><br></pre></td></tr></table></figure>
+<h6 id="第十五步">第十五步</h6>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/.docker/</span><br><span class="line">cp ca.pem ~/.docker/ca.pem </span><br><span class="line">cp client-key.pem ~/.docker/key.pem </span><br><span class="line">cp client-cert.pem ~/.docker/cert.pem </span><br><span class="line">chmod 0600 ~/.docker/key.pem ~/.docker/cert.pem</span><br></pre></td></tr></table></figure>
+<h6 id="第十六步">第十六步</h6>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker -H=192.168.73.123:2376 --tlsverify info</span><br></pre></td></tr></table></figure>
+<h4 id="Shell脚本自动化">Shell脚本自动化</h4>
+<blockquote>
+<p>要注意：这里的环境是虚拟机的环境，生产环境需要替换ip为自己服务器的公网ip和域名</p>
+</blockquote>
+<p>下面我写了一个shell脚本进行自动化</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line">set -e</span><br><span class="line">if [ -z $1 ];then</span><br><span class="line">        echo &quot;请输入Docker服务器主机名&quot;</span><br><span class="line">        exit 0</span><br><span class="line">fi</span><br><span class="line">HOST=$1</span><br><span class="line">mkdir -p /opt/cert/docker</span><br><span class="line">cd /opt/cert/docker</span><br><span class="line">openssl genrsa -aes256 -out ca-key.pem 4096</span><br><span class="line">openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem</span><br><span class="line">openssl genrsa -out server-key.pem 4096</span><br><span class="line">openssl req -subj &quot;/CN=$HOST&quot; -sha256 -new -key server-key.pem -out server.csr</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">配置白名单，推荐配置0.0.0.0，允许所有IP连接但只有证书才可以连接成功</span></span><br><span class="line">echo subjectAltName = DNS:$HOST,IP:0.0.0.0 &gt; extfile.cnf</span><br><span class="line">openssl x509 -req -days 365 -sha256 -in server.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out server-cert.pem -extfile extfile.cnf</span><br><span class="line">openssl genrsa -out key.pem 4096</span><br><span class="line">openssl req -subj &#x27;/CN=client&#x27; -new -key key.pem -out client.csr</span><br><span class="line">echo extendedKeyUsage = clientAuth &gt; extfile.cnf</span><br><span class="line">openssl x509 -req -days 365 -sha256 -in client.csr -CA ca.pem -CAkey ca-key.pem -CAcreateserial -out cert.pem -extfile extfile.cnf</span><br><span class="line">rm -v client.csr server.csr</span><br><span class="line">chmod -v 0400 ca-key.pem key.pem server-key.pem</span><br><span class="line">chmod -v 0444 ca.pem server-cert.pem cert.pem</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://xn--createcert-xx2p90nw98b.sh">保存为createcert.sh</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">检查参数</span></span><br><span class="line">if [ -z &quot;$1&quot; ]; then</span><br><span class="line">  echo &quot;Usage: $0 &lt;hostname&gt;&quot;</span><br><span class="line">  exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">HOSTNAME=$1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">定义一个错误处理函数</span></span><br><span class="line">rollback() &#123;</span><br><span class="line">  echo &quot;An error occurred. Rolling back changes...&quot;</span><br><span class="line">  if [ -f /usr/lib/systemd/system/docker.service.old ]; then</span><br><span class="line">    cp /usr/lib/systemd/system/docker.service.old /usr/lib/systemd/system/docker.service</span><br><span class="line">    systemctl daemon-reload</span><br><span class="line">    systemctl restart docker</span><br><span class="line">  fi</span><br><span class="line">  exit 1</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">捕捉错误信号并调用 rollback 函数</span></span><br><span class="line">trap rollback ERR</span><br><span class="line"></span><br><span class="line">chmod +x /opt/sh/createcert.sh </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行证书生成脚本</span></span><br><span class="line">sh /opt/sh/createcert.sh $HOSTNAME || rollback</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">备份原始 docker.service 文件</span></span><br><span class="line">cp /usr/lib/systemd/system/docker.service /usr/lib/systemd/system/docker.service.old || rollback</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用 sed 命令在 ExecStart 属性后追加参数</span></span><br><span class="line">sed -i &#x27;/ExecStart=/ s|$| --tlsverify --tlscacert=/opt/cert/docker/ca.pem --tlscert=/opt/cert/docker/server-cert.pem --tlskey=/opt/cert/docker/server-key.pem -H tcp://0.0.0.0:2376 -H unix://var/run/docker.sock|&#x27;   /usr/lib/systemd/system/docker.service || rollback</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重新加载 systemd 配置并重启 Docker 服务</span></span><br><span class="line">systemctl daemon-reload || rollback</span><br><span class="line">systemctl restart docker || rollback</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">更新 /etc/hosts 文件</span></span><br><span class="line">if ! grep -q &quot;$HOSTNAME&quot; /etc/hosts; then</span><br><span class="line">  echo &quot;127.0.0.1 $HOSTNAME&quot; &gt;&gt; /etc/hosts || rollback</span><br><span class="line">fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">测试 ping 和 curl 命令</span></span><br><span class="line">ping -c 4 $HOSTNAME || rollback</span><br><span class="line">curl https://$HOSTNAME:2376/info --cert /opt/cert/docker/cert.pem --key /opt/cert/docker/key.pem --cacert /opt/cert/docker/ca.pem || rollback</span><br><span class="line"></span><br><span class="line">echo &quot;Script executed successfully.&quot;</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://xn--complete-remote-protect-tls-9y76b10be91aew3gzytjgx0i.sh">上面的保存为complete-remote-protect-tls.sh</a></p>
+<p>执行以下命令即可</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x complete-remote-protect-tls.sh</span><br><span class="line">./complete-remote-protect-tls.sh &lt;your-host-name&gt;</span><br></pre></td></tr></table></figure>
+<img src="/2024/06/26/%E3%80%90Docker%E3%80%91%E5%AF%B9Docker%20Remote%20API%E8%BF%9B%E8%A1%8C%E8%AE%A4%E8%AF%81/image-20240625230336046.png" class="" title="image-20240625230336046">
+<p>最后显示成这样就成功了。</p>
+<h4 id="总结-2">总结</h4>
+<p>tm这个折磨我一天了，网上的资料比较少，只能自己摸索。每次输入时都要重新复制粘贴，烦死了。所以我最后搞成自动化脚本一劳永逸。还好最后有发现一个大佬写的脚本启发了我，感谢大佬。👍👍</p>
+<h4 id="后记">后记</h4>
+<p>​    我配了之后，能用了很久。但是有一天，我恢复虚拟机的快照，忽然发现连接不上了，像下图这样：<img src="/2024/06/26/%E3%80%90Docker%E3%80%91%E5%AF%B9Docker%20Remote%20API%E8%BF%9B%E8%A1%8C%E8%AE%A4%E8%AF%81/image-20240711073704985.png" class="" title="image-20240711073704985"></p>
+<p>timeout 老问题了，我之前配docker的mysql的时候也遇到过，还以为是mysql配置出现了问题，然后一直在改配置。后来我才发现，虚拟机重启就能解决的了。但这次docker的重启了还是没用。折磨了一个晚上，终于在第二天发现，我虚拟机的防火墙没关。。。真是无语死了😢</p>
+<h2 id="参考资料">参考资料</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.bing.com/search?q=%E7%AC%AC%E4%B8%80%E6%9C%ACdocker%E4%B9%A6&amp;form=ANNTH1&amp;refig=667a779a686b433eb396d7e45650ec7f&amp;pc=U531">《第一本docker书》</a> - 第一步docker书</li>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1268797">阿里云开发者社区</a> - Docker实战 | 第四篇：Docker启用TLS加密解决暴露2375端口引发的安全漏洞，被黑掉三台云主机的教训总结</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Docker/">Docker</a><a class="post-meta__tags" href="/tags/tls/">tls</a><a class="post-meta__tags" href="/tags/Shell/">Shell</a></div><div class="post_share"></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/static/favicon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name"></div><div class="author-info__description">觉察即自由</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">38</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">17</div></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90Docker%E3%80%91%E5%AF%B9Docker-Remote-Api-%E8%BF%9B%E8%A1%8C%E8%AE%A4%E8%AF%81"><span class="toc-number">1.</span> <span class="toc-text">【Docker】对Docker Remote Api 进行认证</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%86%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AEdocker"><span class="toc-number">1.0.0.0.1.</span> <span class="toc-text">将虚拟机配置docker</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-number">1.0.0.0.1.1.</span> <span class="toc-text">第一步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="toc-number">1.0.0.0.1.2.</span> <span class="toc-text">第二步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="toc-number">1.0.0.0.1.3.</span> <span class="toc-text">第三步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5"><span class="toc-number">1.0.0.0.1.4.</span> <span class="toc-text">第四步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5"><span class="toc-number">1.0.0.0.1.5.</span> <span class="toc-text">第五步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E6%AD%A5"><span class="toc-number">1.0.0.0.1.6.</span> <span class="toc-text">第六步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E6%AD%A5"><span class="toc-number">1.0.0.0.1.7.</span> <span class="toc-text">第七步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E6%AD%A5"><span class="toc-number">1.0.0.0.1.8.</span> <span class="toc-text">第八步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E6%AD%A5"><span class="toc-number">1.0.0.0.1.9.</span> <span class="toc-text">第九步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E6%AD%A5"><span class="toc-number">1.0.0.0.1.10.</span> <span class="toc-text">第十步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E6%AD%A5"><span class="toc-number">1.0.0.0.1.11.</span> <span class="toc-text">第十一步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%8C%E6%AD%A5"><span class="toc-number">1.0.0.0.1.12.</span> <span class="toc-text">第十二步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%89%E6%AD%A5"><span class="toc-number">1.0.0.0.1.13.</span> <span class="toc-text">第十三步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E5%9B%9B%E6%AD%A5"><span class="toc-number">1.0.0.0.1.14.</span> <span class="toc-text">第十四步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%94%E6%AD%A5"><span class="toc-number">1.0.0.0.1.15.</span> <span class="toc-text">第十五步</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E5%85%AD%E6%AD%A5"><span class="toc-number">1.0.0.0.1.16.</span> <span class="toc-text">第十六步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Shell%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E5%8C%96"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">Shell脚本自动化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-2"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">后记</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.1.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/13/K8s%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="K8s学习笔记">K8s学习笔记</a><time datetime="2024-07-12T16:00:00.000Z" title="发表于 2024-07-13 00:00:00">2024-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/13/ELK%E5%AE%9E%E7%8E%B0%E5%85%A8%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%97%A5%E5%BF%97%E8%BF%BD%E8%B8%AA/" title="ELK实现全中间件日志追踪">ELK实现全中间件日志追踪</a><time datetime="2024-07-12T16:00:00.000Z" title="发表于 2024-07-13 00:00:00">2024-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/13/Mysql%E7%9A%84Docker%E9%83%A8%E7%BD%B2/" title="Mysql的Docker部署">Mysql的Docker部署</a><time datetime="2024-07-12T16:00:00.000Z" title="发表于 2024-07-13 00:00:00">2024-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/26/%E3%80%90Docker%E3%80%91%E5%AF%B9Docker%20Remote%20API%E8%BF%9B%E8%A1%8C%E8%AE%A4%E8%AF%81/" title="【Docker】对Docker Remote API进行认证">【Docker】对Docker Remote API进行认证</a><time datetime="2024-06-25T16:00:00.000Z" title="发表于 2024-06-26 00:00:00">2024-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/22/%E4%BC%98%E5%8C%96%E8%81%94%E8%A1%A8%E6%9F%A5%E8%AF%A2%E9%80%9F%E5%BA%A6%E7%9A%84%E6%96%B9%E6%B3%95/" title="优化联表查询速度的方法">优化联表查询速度的方法</a><time datetime="2024-06-21T16:00:00.000Z" title="发表于 2024-06-22 00:00:00">2024-06-22</time></div></div></div></div></div></div></main><footer id="footer" style="background: #0d0d0d"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By null</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="/pluginsSrc/katex/dist/katex.min.css"><script src="/pluginsSrc/katex/dist/contrib/copy-tex.min.js"></script><link rel="stylesheet" type="text/css" href="/pluginsSrc/katex/dist/contrib/copy-tex.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div></div></body></html>
